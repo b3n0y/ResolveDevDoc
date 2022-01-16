@@ -19,11 +19,12 @@ the included :ref:`API readme file txt document <resolveapi_readme>` or the :ref
 
 Contents
 --------
-.. toctree::
-   usage
-   api
 
 .. toctree::
    :caption: Included Docs
    resolveapi_readme
    workflow_readme
+
+.. toctree::
+   usage
+   api
