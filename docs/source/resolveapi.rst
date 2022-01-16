@@ -1,3 +1,4 @@
+.. _resolveapi:
 # Unofficial DaVinci Resolve Scripting Documentation
 
 ## About This Document

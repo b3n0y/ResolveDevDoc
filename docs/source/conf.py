@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'ResolveDevDoc'
+copyright = '2021, b3n0y'
+author = 'b3n0y'
 
 release = '0.1'
 version = '0.1.0'
