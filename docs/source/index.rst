@@ -24,7 +24,5 @@ Contents
    :caption: Included Docs
    resolveapi_readme
    workflow_readme
-
-.. toctree::
    usage
    api

@@ -1,7 +1,7 @@
-.. _workflow_readme:
-
 Workflow Integration Readme
 ===========================
+
+.. _workflow_readme:
 
 Updated as of 25 August, 2020
 ---------------------------
@@ -65,6 +65,7 @@ Using scriptable JavaScript API
 Scriptable JavaScript API execution happens under HTML environment like any typical website. Once HTML page is loaded it can execute scriptable JavaScript API as needed (like clicking on a button, etc.)
 
 This example JavaScript snippet creates a simple project in DaVinci Resolve Studio:
+..  codeblock::
     const WorkflowIntegration = require('./WorkflowIntegration.node');
     isInitialized = WorkflowIntegration.Initialize('com.blackmagicdesign.resolve.sampleplugin');
     if (isInitialized) {
@@ -109,7 +110,7 @@ When launched by Resolve, plugin scripts are automatically provided with 'resolv
 UIManager Introduction
 ----------------------
 There are two main objects needed to manage a window, the UIManager that handles layout, and the UIDispatcher that manages interaction events, accessed as follows:
-
+..  codeblock::
 	ui = fusion.UIManager()
 	dispatcher = bmd.UIDispatcher(ui)
 
@@ -125,7 +126,7 @@ The UIDispatcher object has a few important functions to manage processing of ev
 	ExitLoop(int):				Terminates the event processing, and returns any supplied exit code from RunLoop()
 
 Common usage is to create your window and set up any event handlers, including a Close handler for the window that calls ExitLoop(), then Show() your window and call RunLoop() to wait for user interaction:
-
+..  codeblock::
 	ui = fusion.UIManager
 	dispatcher = bmd.UIDispatcher(ui)
 
@@ -177,7 +178,7 @@ Some elements also have property arrays, indexed by item or column (zero-based),
 	Treeitem: 	Text[], StatusTip[], ToolTip[], WhatsThis[], SizeHint[], TextAlignment[], CheckState[], BackgroundColor[], TextColor[], Icon[], Font[]
 	
 Some elements like Label and Button will automatically recognise and render basic HTML in their Text attributes, and TextEdit is capable of displaying and returning HTML too. Element attributes can be specified when creating the element, or can be read or changed later:
-
+..  codeblock::
 	win.Find('myButton').Text = "Processing..."
 
 Most elements have functions that can be called from them as well:
@@ -239,7 +240,7 @@ Elements can be accessed by the window's FindWindow(id) function, or by assignin
 UIManager Layout
 ----------------
 Additionally, elements can be nested to define layout, using the HGroup and VGroup elements. As with Window and other elements, tou can pass a single dictionary or list with all properties and children, or separate them into a dict of properties and list of children, for convenience:
-
+..  codeblock::
 	winLayout = ui.VGroup([
 		ui.Label({ 'Text': "A 2x2 grid of buttons", 'Weight': 1 }),
 		
@@ -260,14 +261,14 @@ HGap and VGap elements can included for finer spacing control. Note also the Wei
 Event Handlers
 --------------
 Window objects will call user-defined event handler functions in response to various interaction events. Event handlers are managed using a window member called 'On'. This has sub-members for each GUI element with an ID, and those have members for each available event. To set up an event handler, define a function for it, then assign the function to the window's On.ID.Event member as follows:
-
+..  codeblock::
 	def OnClose(ev):
 		dispatcher.ExitLoop()
 
 	win.On.myWindow.Close = OnClose
 
 Alternatively, if your object's ID is stored in a string variable called 'buttonID', you could use:
-
+..  codeblock::
 	win.On[buttonID].Clicked = OnButtonClicked
 
 Many objects have specific events that can be handled:
@@ -301,7 +302,7 @@ Event handler functions are called with a dictionary of related attributes such 
 	FocusOut:			Reason
 
 Event handlers can be enabled or disabled for a given element by turning them on or off in the Events attribute:
-
+..  codeblock::
 	ui.Slider({ 'ID': 'mySlider', 'Events': { 'SliderMoved': true } })
 	
 Some common events like Clicked or Close are enabled by default.

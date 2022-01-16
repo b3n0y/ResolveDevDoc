@@ -1,7 +1,7 @@
-.. _resolveapi_readme:
-
 Resolve API Readme
 ==================
+
+.. _resolveapi_readme:
 
 Updated as of 21 October 2021
 -----------------------------
