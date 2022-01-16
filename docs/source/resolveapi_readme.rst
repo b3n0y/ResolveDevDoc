@@ -1,11 +1,14 @@
 .. _resolveapi_readme:
- Updated as of 21 October 2021
+
+Resolve API Readme
+==================
+
+Updated as of 21 October 2021
 -----------------------------
 In this package, you will find a brief introduction to the Scripting API for DaVinci Resolve Studio. Apart from this README.txt file, this package contains folders containing the basic import
 modules for scripting access (DaVinciResolve.py) and some representative examples.
 
 From v16.2.0 onwards, the nodeIndex parameters accepted by SetLUT() and SetCDL() are 1-based instead of 0-based, i.e. 1 <= nodeIndex <= total number of nodes.
-
 
 Overview
 --------
