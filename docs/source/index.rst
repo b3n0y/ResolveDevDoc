@@ -9,11 +9,9 @@ Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
 
 Check out the :doc:`resolveapi_readme` for further information, including
-the `included txt document from Blackmagic Design <resolveapi_readme_>`_ or the `Workflow Readme file <workflow_readme_>`_
+the included :ref:`API readme file txt document <resolveapi_readme>` or the :ref:`Workflow Readme file <workflow_readme>`
 
-Check out the :doc:`Workflow Integration Readme` section too
-
-`Link to create documentation <https://sphinx-tutorial.readthedocs.io/cheatsheet/>`_
+`Hyperlink to create documentation <https://sphinx-tutorial.readthedocs.io/cheatsheet/>`_
 
 
 .. note::
