@@ -2,12 +2,12 @@ Welcome to DavinciDevDoc's documentation!
 ===================================
 
 **DavinciDevDoc** 
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+Unofficial project to document scripting and workflow integration with Davinci resolveapi_api `Refer to the Application website <https://www.blackmagicdesign.com/>`
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
-You can also see the :ref:`included txt document from Blackmagic Design <resolveapi>` or the :ref:`Workflow Readme file <workflowreadme>`
+Section :doc:`resolveapi_api`
+You can also see the :ref:`included txt document from Blackmagic Design <resolveapi_readme>` or the :ref:`Workflow Readme file <workflow_readme>`
 
 .. note::
    DavinciDevDoc has its documentation hosted on Read the Docs.
@@ -20,5 +20,5 @@ Contents
 
 .. toctree::
    :caption: Included Docs
-   resolveapi
-   workflowreadme
+   resolveapi_api
+   workflow_readme

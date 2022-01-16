@@ -1,4 +1,4 @@
-.. _workflowreadme:
+.. _workflow_readme:
 Updated as of 25 August, 2020
 ---------------------------
 In this package, you will find a brief introduction to the Workflow Integration Plugins support for DaVinci Resolve Studio. Apart from this README.txt file, this package contains following folders:
