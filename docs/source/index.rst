@@ -21,8 +21,26 @@ Contents
 --------
 
 .. toctree::
+   :caption: Sample Scripts
+
+   timecode_display
    usage
-   api
+
+.. toctree::
+   :caption: UIManager Elements Attributes
+
+
+.. toctree::
+   :caption: UIManager Elements Functions
+
+
+.. toctree::
+   :caption: UIManager Layout
+
+
+.. toctree::
+   :caption: UIManager Elements Event Handlers
+
 
 .. toctree::
    :caption: Existing Documentation
