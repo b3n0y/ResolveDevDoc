@@ -214,6 +214,9 @@ Some elements like Label and Button will automatically recognise and render basi
 
 	win.Find('myButton').Text = "Processing..."
 
+Elements Functions
+------------------
+
 Most elements have functions that can be called from them as well:
 
 	Show()

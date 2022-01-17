@@ -1,17 +1,18 @@
 Welcome to DavinciDevDoc's documentation!
 =========================================
 
-**DavinciDevDoc** 
-Unofficial project to document scripting and workflow integration with Davinci resolveapi_api 
+Summary
+-------
+
+**DavinciDevDoc** is an unofficial documentaiton for scripting and workflow integration with Davinci Resolve 17
 `Refer to the Application website <https://www.blackmagicdesign.com/>`_
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+You can refer to the original documenation included with Davinci Resolve 17. 
+This documentation was slightly reformatted for ReadTheDocs. 
 
-Check out the :doc:`resolveapi_readme` for further information, including
-the included :ref:`API readme file txt document <resolveapi_readme>` or the :ref:`Workflow Readme file <workflow_readme>`
+:ref:`Scripting README.txt document <resolveapi_readme>` | :ref:`Workflow Integrations README.txt document <workflow_readme>`
 
-`Hyperlink to create documentation <https://sphinx-tutorial.readthedocs.io/cheatsheet/>`_
+Most of those script were made with the help of the `SteakUnderWater WSL community <https://www.steakunderwater.com/wesuckless/>`_
 
 
 .. note::
@@ -28,19 +29,23 @@ Contents
 
 .. toctree::
    :caption: UIManager Elements Attributes
-
+   
+   `UIManager Elements`
 
 .. toctree::
    :caption: UIManager Elements Functions
 
+   Elements Functions
 
 .. toctree::
    :caption: UIManager Layout
 
+   UIManager Layout
 
 .. toctree::
    :caption: UIManager Elements Event Handlers
 
+   Event Handlers
 
 .. toctree::
    :caption: Existing Documentation
