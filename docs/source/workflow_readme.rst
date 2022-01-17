@@ -156,18 +156,18 @@ UIManager Elements
 The element's ID is used to find, manage, and dispatch events for that element. GUI elements also support a set of common attributes including 
 Enabled, Hidden, Visible, Font, WindowTitle, BackgroundColor, Geometry, ToolTip, StatusTip, StyleSheet, WindowOpacity, MinimumSize, MaximumSize, and FixedSize. Some other common GUI elements and their main attributes include:
 
-.. list-table:: UIManager Elements
+.. list-table:: Title
    :widths: 50 50
    :header-rows: 1
 
-	* - Element
-	  - Attributes
-	* - Label:	
+   * - Element
+     - Attributes
+   * - Label:	
       -	Text, Alignment, FrameStyle, WordWrap, Indent, Margin
-	* - Button:	
-	  - Text, Down, Checkable, Checked, Icon, IconSize, Flat
-	* - CheckBox:
-	  - Text, Down, Checkable, Checked, Tristate, CheckState
+   * - Button:	
+     - Text, Down, Checkable, Checked, Icon, IconSize, Flat
+   * - CheckBox:
+     - Text, Down, Checkable, Checked, Tristate, CheckState
 	------------  -----------------------------------------------------------------------------------------------------------------------------
 	ComboBox:	  ItemText, Editable, CurrentIndex, CurrentText, Count
 	------------  -----------------------------------------------------------------------------------------------------------------------------
