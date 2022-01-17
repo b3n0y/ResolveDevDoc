@@ -3,9 +3,10 @@ Timecode Display Sample
 
 .. versionadded:: 1.5
 
-.. image:: images/timecode_display.png
-  :width: 400
-  :alt: timecode display preview
+..  image:: images/timecode_display.png
+    :width: 400px
+    :align: center
+    :alt: timecode display preview
 
 
 ..  code-block:: python
@@ -55,3 +56,6 @@ Timecode Display Sample
         win_timecode.On["open_prefs_btn"].Clicked = OnPrefs
 
         return win_timecode, win_timecode_items
+
+
+:download:`download timecode_display.py <samples/timecode_display.py>`
