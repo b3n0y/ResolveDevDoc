@@ -51,6 +51,7 @@ Workflow Integration Plugin directory structure
 
 Workflow Integration Plugins root directory
 -------------------------------------------
+
 User should place their Workflow Integration Plugin under the following directory:
 .. note::
 
@@ -62,14 +63,17 @@ User should place their Workflow Integration Plugin under the following director
 
 Supported platforms
 -------------------
+
 Plugins: Windows, Mac OS X (not supported on Linux currently)
 Scripts: Windows, Mac OS X, Linux
 
 Using scriptable JavaScript API
 -------------------------------
+
 Scriptable JavaScript API execution happens under HTML environment like any typical website. Once HTML page is loaded it can execute scriptable JavaScript API as needed (like clicking on a button, etc.)
 
 This example JavaScript snippet creates a simple project in DaVinci Resolve Studio:
+
 ..  code-block:: javascript
 
     const WorkflowIntegration = require('./WorkflowIntegration.node');
@@ -83,6 +87,7 @@ The resolve object is the fundamental starting point for scripting via Resolve. 
 
 WorkflowIntegration module API
 -------------------------------
+
 To interact with Resolve you need to use 'WorkflowIntegration.node' Node.js module file in your plugin app. Below are the WorkflowIntegration (module) JavaScript API functions to communicate with Resolve.
 
 WorkflowIntegration
@@ -98,6 +103,7 @@ WorkflowIntegration
 
 Supported callbacks
 -------------------
+
 'RenderStart'
 'RenderStop'
 
@@ -106,6 +112,7 @@ Please note that there is no console based support for JavaScript API.
 
 Sample Workflow Integration Script
 ----------------------------------
+
 A sample Workflow Integration Python script is also available in the "Examples" directory. In order for Resolve to register this script, it needs to be copied to the 'Workflow Integration Plugins' root directory (mentioned in the above section).
 Once a script is registered, it can be also loaded from the 'Workspace' menu, under 'Workflow Integrations'. This will invoke the script and show the sample UIManager window.
 
@@ -115,7 +122,9 @@ When launched by Resolve, plugin scripts are automatically provided with 'resolv
 
 UIManager Introduction
 ----------------------
+
 There are two main objects needed to manage a window, the UIManager that handles layout, and the UIDispatcher that manages interaction events, accessed as follows:
+
 ..  code-block:: python
 
 	ui = fusion.UIManager()
@@ -125,6 +134,7 @@ Windows are created with the the UIDispatcher, passing a dictionary of attribute
 
 UIDispatcher Functions
 --------------------
+
 The UIDispatcher object has a few important functions to manage processing of events. The most important are:
 
 	AddWindow(props, children):	Accepts a dictionary of properties and a list of children, returns a Window object
@@ -133,6 +143,7 @@ The UIDispatcher object has a few important functions to manage processing of ev
 	ExitLoop(int):				Terminates the event processing, and returns any supplied exit code from RunLoop()
 
 Common usage is to create your window and set up any event handlers, including a Close handler for the window that calls ExitLoop(), then Show() your window and call RunLoop() to wait for user interaction:
+
 ..  code-block:: python
 
 	ui = fusion.UIManager
@@ -201,7 +212,6 @@ and FixedSize. Some other common GUI elements and their main attributes include:
 | TreeItem:                                                                             | Selected, Hidden, Expanded, Disabled, FirstColumnSpanned, Flags, ChildIndicatorPolicy                                         |
 +---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------+
 
-
 Some elements also have property arrays, indexed by item or column (zero-based), e.g. newItem.Text[2] = 'Third column text'
 
 	Combo:		ItemText[]
@@ -210,6 +220,7 @@ Some elements also have property arrays, indexed by item or column (zero-based),
 	Treeitem: 	Text[], StatusTip[], ToolTip[], WhatsThis[], SizeHint[], TextAlignment[], CheckState[], BackgroundColor[], TextColor[], Icon[], Font[]
 	
 Some elements like Label and Button will automatically recognise and render basic HTML in their Text attributes, and TextEdit is capable of displaying and returning HTML too. Element attributes can be specified when creating the element, or can be read or changed later:
+
 ..  code-block:: python
 
 	win.Find('myButton').Text = "Processing..."
@@ -275,7 +286,9 @@ Elements can be accessed by the window's FindWindow(id) function, or by assignin
 
 UIManager Layout
 ----------------
+
 Additionally, elements can be nested to define layout, using the HGroup and VGroup elements. As with Window and other elements, tou can pass a single dictionary or list with all properties and children, or separate them into a dict of properties and list of children, for convenience:
+
 ..  code-block:: python
 
 	winLayout = ui.VGroup([
@@ -297,15 +310,20 @@ HGap and VGap elements can included for finer spacing control. Note also the Wei
 
 Event Handlers
 --------------
+
 Window objects will call user-defined event handler functions in response to various interaction events. Event handlers are managed using a window member called 'On'. This has sub-members for each GUI element with an ID, and those have members for each available event. To set up an event handler, define a function for it, then assign the function to the window's On.ID.Event member as follows:
+
 ..  code-block:: python
+
 	def OnClose(ev):
 		dispatcher.ExitLoop()
 
 	win.On.myWindow.Close = OnClose
 
 Alternatively, if your object's ID is stored in a string variable called 'buttonID', you could use:
+
 ..  code-block:: python
+
 	win.On[buttonID].Clicked = OnButtonClicked
 
 Many objects have specific events that can be handled:
@@ -339,6 +357,7 @@ Event handler functions are called with a dictionary of related attributes such 
 	FocusOut:			Reason
 
 Event handlers can be enabled or disabled for a given element by turning them on or off in the Events attribute:
+
 ..  code-block:: python
 
 	ui.Slider({ 'ID': 'mySlider', 'Events': { 'SliderMoved': true } })
@@ -347,7 +366,7 @@ Some common events like Clicked or Close are enabled by default.
 
 Basic Resolve API
 -----------------
-Please refer to the [Basic Resolve API] section in '../Developer/Scripting/README.txt' file for the list of the functions that Resolve offers for scripted control. For plugin scripts, the 'resolve' and 'project' variables are automatically set up for you, and may be used to access any part of Resolve's API.
+Please refer to the [Basic Resolve API] section in :ref:`'../Developer/Scripting/README.txt' <resolveapi_readme>` file for the list of the functions that Resolve offers for scripted control. For plugin scripts, the 'resolve' and 'project' variables are automatically set up for you, and may be used to access any part of Resolve's API.
 
 Further Information
 -------------------
