@@ -23,5 +23,8 @@ Contents
 .. toctree::
    usage
    api
+
+.. toctree::
+
    resolveapi_readme
    workflow_readme
