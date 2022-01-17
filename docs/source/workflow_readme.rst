@@ -155,8 +155,21 @@ UIManager Elements
 
 The element's ID is used to find, manage, and dispatch events for that element. GUI elements also support a set of common attributes including 
 Enabled, Hidden, Visible, Font, WindowTitle, BackgroundColor, Geometry, ToolTip, StatusTip, StyleSheet, WindowOpacity, MinimumSize, MaximumSize, and FixedSize. Some other common GUI elements and their main attributes include:
-
 .. list-table:: Title
+   :widths: 25 25 50
+   :header-rows: 1
+
+   * - Heading row 1, column 1
+     - Heading row 1, column 2
+     - Heading row 1, column 3
+   * - Row 1, column 1
+     -
+     - Row 1, column 3
+   * - Row 2, column 1
+     - Row 2, column 2
+     - Row 2, column 3
+     - 
+.. list-table:: UIManager Elements
    :widths: 50 50
    :header-rows: 1
 
