@@ -32,19 +32,21 @@ DaVinci Resolve Studio reads the basic details of the plugin from its manifest.x
 
 Workflow Integration Plugin directory structure
 -----------------------------------------------
-com.<company>.<plugin_name>/
-    package.js
-    main.js
-    index.html
-    manifest.xml
-    node_modules/
-        <Node.js modules>
-    js/
-        <supporting js files>
-    css/
-        <css files containing styling info>
-    img/
-        <image files>
+..  codeblock:: javascript
+
+	com.<company>.<plugin_name>/
+		package.js
+		main.js
+		index.html
+		manifest.xml
+		node_modules/
+			<Node.js modules>
+		js/
+			<supporting js files>
+		css/
+			<css files containing styling info>
+		img/
+			<image files>
 
 Workflow Integration Plugins root directory
 -------------------------------------------
@@ -65,7 +67,7 @@ Using scriptable JavaScript API
 Scriptable JavaScript API execution happens under HTML environment like any typical website. Once HTML page is loaded it can execute scriptable JavaScript API as needed (like clicking on a button, etc.)
 
 This example JavaScript snippet creates a simple project in DaVinci Resolve Studio:
-..  codeblock::
+..  codeblock:: javascript
     const WorkflowIntegration = require('./WorkflowIntegration.node');
     isInitialized = WorkflowIntegration.Initialize('com.blackmagicdesign.resolve.sampleplugin');
     if (isInitialized) {
@@ -150,15 +152,22 @@ As well as constructing new child elements and layouts, the UIManager also offer
 
 UIManager Elements
 ------------------
-The element's ID is used to find, manage, and dispatch events for that element. GUI elements also support a set of common attributes including Enabled, Hidden, Visible, Font, WindowTitle, BackgroundColor, Geometry, ToolTip, StatusTip, StyleSheet, WindowOpacity, MinimumSize, MaximumSize, and FixedSize. Some other common GUI elements and their main attributes include:
-	============  =============================================================================================================================
-	Element		  Attributes
-	============  =============================================================================================================================
-	Label:		  Text, Alignment, FrameStyle, WordWrap, Indent, Margin
-	------------  -----------------------------------------------------------------------------------------------------------------------------
-	Button:		  Text, Down, Checkable, Checked, Icon, IconSize, Flat
-	------------  -----------------------------------------------------------------------------------------------------------------------------
-	CheckBox:  	  Text, Down, Checkable, Checked, Tristate, CheckState
+
+The element's ID is used to find, manage, and dispatch events for that element. GUI elements also support a set of common attributes including 
+Enabled, Hidden, Visible, Font, WindowTitle, BackgroundColor, Geometry, ToolTip, StatusTip, StyleSheet, WindowOpacity, MinimumSize, MaximumSize, and FixedSize. Some other common GUI elements and their main attributes include:
+
+.. list-table:: UIManager Elements
+   :widths: 50 50
+   :header-rows: 1
+
+	* - Element
+	  - Attributes
+	* - Label:	
+      -	Text, Alignment, FrameStyle, WordWrap, Indent, Margin
+	* - Button:	
+	  - Text, Down, Checkable, Checked, Icon, IconSize, Flat
+	* - CheckBox:
+	  - Text, Down, Checkable, Checked, Tristate, CheckState
 	------------  -----------------------------------------------------------------------------------------------------------------------------
 	ComboBox:	  ItemText, Editable, CurrentIndex, CurrentText, Count
 	------------  -----------------------------------------------------------------------------------------------------------------------------
