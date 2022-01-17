@@ -3,8 +3,8 @@ Resolve API Readme
 
 .. _resolveapi_readme:
 
-Updated as of 21 October 2021
------------------------------
+.. versionadded:: Updated as of 21 October 2021
+
 In this package, you will find a brief introduction to the Scripting API for DaVinci Resolve Studio. Apart from this README.txt file, this package contains folders containing the basic import
 modules for scripting access (DaVinciResolve.py) and some representative examples.
 
