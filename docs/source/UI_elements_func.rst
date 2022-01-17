@@ -30,9 +30,161 @@ Most elements have functions that can be called from them as well:
 
 Some elements have extra functions of their own:
 
-	Label:				SetSelection(int, int), bool HasSelection(), string SelectedText(), int SelectionStart()
-	Button:				Click(), Toggle(), AnimateClick()
-	CheckBox:			Click(), Toggle(), AnimateClick()
+
+Label
+-----
+
+SetSelection(int, int)
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function used to 
+
+**Type:** int= int=
+
+..  note:: Not tested yet
+
+	win['mylabel'].SetSelection(0,1)
+
+
+HasSelection()
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function return True if Label has selection
+
+**Type:** return bool
+
+..  note:: Not tested yet
+
+	win['mylabel'].HasSelection()
+
+
+SelectedText()
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function return SelectedText string
+
+**Type:** return string
+
+..  note:: Not tested yet
+
+	win['mylabel'].SelectedText()
+
+
+SelectionStart()
+^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function return the index of the selection
+
+**Type:** return int
+
+..  note:: Not tested yet
+
+	win['mylabel'].SelectionStart()
+
+
+Button
+------
+
+Click()
+^^^^^^^
+
+..  topic:: Description
+
+	This function used to 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mybutton'].Click()
+
+
+Toggle()
+^^^^^^^^
+
+..  topic:: Description
+
+	This function used to 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mybutton'].Toggle()
+
+
+AnimateClick()
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function used to 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mybutton'].AnimateClick()
+
+
+CheckBox
+--------
+
+Click()
+^^^^^^^
+
+..  topic:: Description
+
+	This function used to 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycheckbox'].Click()
+
+
+Toggle()
+^^^^^^^^
+
+..  topic:: Description
+
+	This function used to 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycheckbox'].Toggle()
+
+
+AnimateClick()
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function used to 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycheckbox'].AnimateClick()
+
+
+ComboBox
+--------
+
+
+
 	ComboBox:			AddItem(string), InsertItem(string), AddItems(list), InsertItems(int, list), InsertSeparator(int), RemoveItem(int), Clear(),
 						SetEditText(string), ClearEditText(), Count(), ShowPopup(), HidePopup()
 	SpinBox:			SetRange(int, int), StepBy(int), StepUp(), StepDown(), SelectAll(), Clear()
@@ -51,8 +203,16 @@ Some elements have extra functions of their own:
 						SortByColumn(int, order), int FrameWidth()
 	TreeItem:			AddChild(item), InsertChild(item), RemoveChild(iitem), SortChildren(int, order), InsertChildren(int, list), AddChildren(list),
 						int IndexOfChild(item), item Clone(), tree TreeWidget(), item Parent(), item Child(int), item TakeChild(int),
-						int ChildCount(), int ColumnCount()
+						int ChildCount(), int ColumnCount() NewItem()
 	Window:				Show(), Hide(), RecalcLayout()
 	Dialog:				Exec(), IsRunning(), Done(), RecalcLayout()
 
-Elements can be accessed by the window's FindWindow(id) function, or by assigning them to a variable for later usage, which is more efficient. The GetItems() function will return a dictionary of all child elements for ease of access.
+
+Elements can be accessed by the window's FindWindow(id) function, or by assigning them to a variable for later usage, which is more efficient. 
+The GetItems() function will return a dictionary of all child elements for ease of access.
+
+
+..  code-block: python
+
+	win_itms = win.GetItems()
+	win_itms['ElementID'].func()
