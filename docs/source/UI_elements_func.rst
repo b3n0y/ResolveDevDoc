@@ -98,7 +98,7 @@ Click()
 
 ..  topic:: Description
 
-	This function used to 
+	This function is
 
 **Type:** func
 
@@ -112,7 +112,7 @@ Toggle()
 
 ..  topic:: Description
 
-	This function used to 
+	This function is 
 
 **Type:** func
 
@@ -126,7 +126,7 @@ AnimateClick()
 
 ..  topic:: Description
 
-	This function used to 
+	This function is 
 
 **Type:** func
 
@@ -143,7 +143,7 @@ Click()
 
 ..  topic:: Description
 
-	This function used to 
+	This function is
 
 **Type:** func
 
@@ -157,7 +157,7 @@ Toggle()
 
 ..  topic:: Description
 
-	This function used to 
+	This function is
 
 **Type:** func
 
@@ -171,7 +171,7 @@ AnimateClick()
 
 ..  topic:: Description
 
-	This function used to 
+	This function is
 
 **Type:** func
 
@@ -183,12 +183,296 @@ AnimateClick()
 ComboBox
 --------
 
+AddItem(string)
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycombobox'].AddItem('Item Name')
 
 
-	ComboBox:			AddItem(string), InsertItem(string), AddItems(list), InsertItems(int, list), InsertSeparator(int), RemoveItem(int), Clear(),
-						SetEditText(string), ClearEditText(), Count(), ShowPopup(), HidePopup()
-	SpinBox:			SetRange(int, int), StepBy(int), StepUp(), StepDown(), SelectAll(), Clear()
-	Slider:				SetRange(int, int), TriggerAction(string)
+InsertItem(string)
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycombobox'].InsertItem('Item Name')
+
+
+AddItems(list)
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycombobox'].AddItems(['Item1', 'Item2'])
+
+
+InsertItems(int, list)
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** int= index, list=[string]
+
+..  note:: Not tested yet
+
+	win['mycombobox'].InsertItems(2, ['Item1', 'Item2'])
+
+
+InsertSeparator(int)
+^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** int= index
+
+..  note:: Not tested yet
+
+	win['mycombobox'].InsertSeparator(2)
+
+
+RemoveItem(int)
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** int= index
+
+..  note:: Not tested yet
+
+	win['mycombobox'].RemoveItem(2)
+
+
+Clear()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycombobox'].Clear()
+
+
+SetEditText(string)
+^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycombobox'].SetEditText('My text')
+
+
+ClearEditText()
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycombobox'].ClearEditText()
+
+
+Count()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycombobox'].Count()
+
+
+ShowPopup()
+^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycombobox'].ShowPopup()
+
+
+HidePopup()
+^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is 
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['mycombobox'].HidePopup()
+
+
+SpinBox
+-------
+
+SetRange(int, int)
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['myspinbox'].SetRange(0, 2)
+
+
+StepBy(int)
+^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['myspinbox'].StepBy(2)
+
+
+StepUp()
+^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['myspinbox'].StepUp()
+
+
+StepDown()
+^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['myspinbox'].StepDown()
+
+
+SelectAll()
+^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['myspinbox'].SelectAll()
+
+
+Clear()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['myspinbox'].Clear()
+
+
+Slider
+------
+
+SetRange(int, int)
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['myslider'].SetRange(0, 2)
+
+
+TriggerAction(string)
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win['myslider'].TriggerAction(string)
+
+
+LineEdit
+--------
+
+
 	LineEdit:			SetSelection(int, int), bool HasSelectedText(), string SelectedText(), int SelectionStart(), SelectAll(), Clear(), Cut(), Copy(), Paste(),
 						Undo(), Redo(), Deselect(), Insert(string), Backspace(), Del(), Home(bool), End(bool), int CursorPositionAt(point)
 	TextEdit:			InsertPlainText(string), InsertHTML(string), Append(string), SelectAll(), Clear(), Cut(), Copy(), Paste(), Undo(), Redo(), 
