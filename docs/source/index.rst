@@ -22,18 +22,12 @@ Contents
 --------
 
 .. toctree::
-   :caption: UIManager
    
    UI_elements_attrb
    UI_elements_func
    UI_elements_layout
    UI_elements_events
-
-.. toctree::
-   :caption: UI Dispatcher 
-
    UI_dispatcher_func
-   
 
 
 .. toctree::
