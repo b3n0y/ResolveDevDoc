@@ -1,5 +1,5 @@
 Layout
-------
+======
 
 Additionally, elements can be nested to define layout, using the HGroup and VGroup elements. 
 As with Window and other elements, you can pass a single dictionary or list with all properties and children, 

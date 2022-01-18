@@ -1,5 +1,5 @@
 Functions
----------
+=========
 
 Most elements have functions that can be called from them as well:
 

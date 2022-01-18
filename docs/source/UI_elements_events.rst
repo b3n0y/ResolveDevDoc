@@ -1,5 +1,5 @@
 Event Handlers
---------------
+==============
 
 Window objects will call user-defined event handler functions in response to various interaction events. 
 Event handlers are managed using a window member called 'On'. 

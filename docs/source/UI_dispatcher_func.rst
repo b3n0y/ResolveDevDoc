@@ -1,11 +1,11 @@
-UIDispatcher Functions
-----------------------
+UIDispatcher
+============
 
 The UIDispatcher object has a few important functions to manage processing of events. The most important are:
 
 
-UIDispatcher
-------------
+Functions
+---------
 
 AddWindow({properties}, [children])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
