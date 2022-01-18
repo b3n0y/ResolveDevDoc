@@ -472,21 +472,1043 @@ TriggerAction(string)
 LineEdit
 --------
 
+SetSelection(int, int)
+^^^^^^^^^^^^^^^^^^^^^^
 
-	LineEdit:			SetSelection(int, int), bool HasSelectedText(), string SelectedText(), int SelectionStart(), SelectAll(), Clear(), Cut(), Copy(), Paste(),
-						Undo(), Redo(), Deselect(), Insert(string), Backspace(), Del(), Home(bool), End(bool), int CursorPositionAt(point)
-	TextEdit:			InsertPlainText(string), InsertHTML(string), Append(string), SelectAll(), Clear(), Cut(), Copy(), Paste(), Undo(), Redo(), 
-						ScrollToAnchor(string), ZoomIn(int), ZoomOut(int), EnsureCursorVisible(), MoveCursor(moveOperation, moveMode), bool CanPaste(),
-						string AnchorAt(point), bool Find(string, findFlags)
-	TabBar:				int AddTab(strubg), int InsertTab(string), int Count(), RemoveTab(int), MoveTab(int, int)
-	Tree:				AddTopLevelItem(item), InsertTopLevelItem(item), SetHeaderLabel(string), int CurrentColumn(), int SortColumn(),
-						int TopLevelItemCount(), item CurrentItem(), item TopLevelItem(int), item TakeTopLevelItem(int), item InvisibleRootItem(),
-						item HeaderItem(), int IndexOfTopLevelItem(item), item ItemAbove(item), item ItemBelow(item), item ItemAt(point), 
-						Clear(), rect VisualItemRect(item), SetHeaderLabels(list), SetHeaderItem(item), InsertTopLevelItems(list), AddTopLevelItems(list),
-						list SelectedItems(), list FindItems(string, flags), SortItems(int, order), ScrollToItem(item), ResetIndentation(), 
-						SortByColumn(int, order), int FrameWidth()
-	TreeItem:			AddChild(item), InsertChild(item), RemoveChild(iitem), SortChildren(int, order), InsertChildren(int, list), AddChildren(list),
-						int IndexOfChild(item), item Clone(), tree TreeWidget(), item Parent(), item Child(int), item TakeChild(int),
+..  topic:: Description
+
+	This function is
+
+**Type:** func int = index start, index end
+
+..  note:: Not tested yet
+
+	win['le_1'].SetSelection(0, 2)
+
+
+HasSelectedText()
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return bool
+
+..  note:: Not tested yet
+
+	win['le_1'].HasSelectedText()
+
+
+SelectedText()
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return string
+
+..  note:: Not tested yet
+
+	win['le_1'].SelectedText()
+
+
+SelectionStart()
+^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+
+	win['le_1'].SelectionStart()
+
+
+SelectAll()
+^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].SelectAll()
+
+
+Clear()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return 
+
+..  note:: Not tested yet
+
+	win['le_1'].Clear()
+
+
+Cut()
+^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].Cut()
+
+
+Copy()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return bool
+
+..  note:: Not tested yet
+
+	win['le_1'].Copy()
+
+
+Paste()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].Paste()
+
+
+Undo()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].Undo()
+
+
+Redo()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].Redo()
+
+
+Deselect()
+^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].Deselect()
+
+
+Insert(string)
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].Insert('My text')
+
+
+Backspace()
+^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].Backspace()
+
+
+Del()
+^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].Del()
+
+
+Home(bool)
+^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].Home(True)
+
+
+End(bool)
+^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+
+	win['le_1'].End(True)
+
+
+CursorPositionAt(point)
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+
+	win['le_1'].CursorPositionAt(point)
+
+
+TextEdit
+--------
+
+InsertPlainText(string)
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].InsertPlainText('My text')
+
+
+InsertHTML(string)
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].InsertHTML('<h1>My title</h1>')
+
+
+Append(string)
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].Append('My text')
+
+
+SelectAll()
+^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].SelectAll()
+
+
+Clear()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].Clear()
+
+
+
+
+Cut()
+^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].Cut()
+
+
+Copy()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].Copy()
+
+
+Paste()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].Paste()
+
+
+Undo()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].Undo()
+
+
+Redo()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].Redo()
+
+
+ScrollToAnchor(string)
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].ScrollToAnchor('My text')
+
+
+ZoomIn(int)
+^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].ZoomIn(2)
+
+
+ZoomOut(int)
+^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].ZoomOut(2)
+
+
+EnsureCursorVisible()
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func 
+
+..  note:: Not tested yet
+
+	win['te_1'].EnsureCursorVisible()
+
+
+MoveCursor(moveOperation, moveMode)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** moveOperation = , moveMode =
+
+..  note:: Not tested yet
+
+	win['te_1'].MoveCursor(moveOperation, moveMode)
+
+
+CanPaste()
+^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return bool 
+
+..  note:: Not tested yet
+
+	win['te_1'].CanPaste()
+
+
+AnchorAt(point)
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return string 
+
+..  note:: Not tested yet
+
+	win['te_1'].AnchorAt(point)
+
+
+Find(string, findFlags)
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** string= , findFlags= : return bool 
+
+..  note:: Not tested yet
+
+	win['te_1'].Find('my text', findFlags)
+
+
+TabBar
+------
+
+AddTab(strubg)
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int 
+
+..  note:: Not tested yet
+
+	win['te_1'].AddTab(strubg)
+
+
+InsertTab(string)
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int 
+
+..  note:: Not tested yet
+
+	win['te_1'].InsertTab('Tab name')
+
+
+Count()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int 
+
+..  note:: Not tested yet
+
+	win['te_1'].Count()
+
+
+RemoveTab(int)
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int= Tab index 
+
+..  note:: Not tested yet
+
+	win['te_1'].RemoveTab(1)
+
+
+MoveTab(int, int)
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int=tab index to move  int=tab index destination 
+
+..  note:: Not tested yet
+
+	win['te_1'].MoveTab(0, 2)
+
+
+Tree
+----
+
+AddTopLevelItem(item)
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** item= TreeItem
+
+..  note:: Not tested yet
+	item = win['mytree'].NewItem()
+	item.Text[0] = 'My Text'
+	win['mytree'].AddTopLevelItem(item)
+
+
+InsertTopLevelItem(item)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** item= TreeItem
+
+..  note:: Not tested yet
+	item = win['mytree'].NewItem()
+	item.Text[0] = 'My Text'
+	win['mytree'].InsertTopLevelItem(item)
+
+
+SetHeaderLabel(string)
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** string= header label
+
+..  note:: Not tested yet
+	win['mytree'].SetHeaderLabel('New header')
+
+
+CurrentColumn()
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+	win['mytree'].CurrentColumn()
+
+
+SortColumn()
+^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+	win['mytree'].SortColumn()
+
+
+TopLevelItemCount()
+^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+	win['mytree'].TopLevelItemCount()
+
+
+CurrentItem()
+^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return item
+
+..  note:: Not tested yet
+	win['mytree'].CurrentItem()
+
+
+TopLevelItem(int)
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int=   return item
+
+..  note:: Not tested yet
+	win['mytree'].TopLevelItem(1)
+
+
+TakeTopLevelItem(int)
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int=   return item
+
+..  note:: Not tested yet
+	win['mytree'].TakeTopLevelItem(1)
+
+
+InvisibleRootItem()
+^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return item
+
+..  note:: Not tested yet
+	win['mytree'].TakeTopLevelItem(1)
+
+
+HeaderItem()
+^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return item
+
+..  note:: Not tested yet
+	win['mytree'].HeaderItem()
+
+
+IndexOfTopLevelItem(item)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+	win['mytree'].IndexOfTopLevelItem(item)
+
+
+ItemAbove(item)
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** item=    return item
+
+..  note:: Not tested yet
+	win['mytree'].ItemAbove(item)
+
+
+ItemBelow(item)
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** item=    return item
+
+..  note:: Not tested yet
+	win['mytree'].ItemBelow(item)
+
+
+ItemAt(point)
+^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** point=    return item
+
+..  note:: Not tested yet
+	win['mytree'].ItemAt(point)
+
+
+Clear()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** 
+
+..  note:: Not tested yet
+	win['mytree'].Clear()
+
+
+VisualItemRect(item)
+^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return rect
+
+..  note:: Not tested yet
+	win['mytree'].VisualItemRect(item)
+
+
+SetHeaderLabels(list)
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** list = 
+
+..  note:: Not tested yet
+	win['mytree'].SetHeaderLabels(['header1', 'header2'])
+
+
+SetHeaderItem(item)
+^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** item = 
+
+..  note:: Not tested yet
+	win['mytree'].SetHeaderItem(item)
+
+
+InsertTopLevelItems(list)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** list = 
+
+..  note:: Not tested yet
+	win['mytree'].InsertTopLevelItems([item1, item2])
+
+
+AddTopLevelItems(list)
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** list = 
+
+..  note:: Not tested yet
+	win['mytree'].AddTopLevelItems([item1, item2])
+
+
+SelectedItems()
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return list
+
+..  note:: Not tested yet
+	win['mytree'].SelectedItems()
+
+
+FindItems(string, flags)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** string=  , flags=   return list
+
+..  note:: Not tested yet
+	win['mytree'].FindItems(string, flags)
+
+
+SortItems(int, order)
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int= , order= 
+
+..  note:: Not tested yet
+	win['mytree'].SortItems(0, 'AscendingOrder')
+
+
+ScrollToItem(item)
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** item=
+
+..  note:: Not tested yet
+	win['mytree'].ScrollToItem(item)
+
+
+ResetIndentation()
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+	win['mytree'].ResetIndentation()
+
+
+SortByColumn(int, order)
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int= , order= 
+
+..  note:: Not tested yet
+	win['mytree'].SortByColumn(0, 'AscendingOrder')
+
+
+FrameWidth()
+^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+	win['mytree'].FrameWidth()
+
+
+TreeItem
+--------
+
+AddChild(item)
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+	win['mytreeitem'].AddChild(item)
+
+
+InsertChild(item)
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+	win['mytreeitem'].InsertChild(item)
+
+
+RemoveChild(item)
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+	win['mytreeitem'].RemoveChild(item)
+
+
+SortChildren(int, order)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int= , order= 
+
+..  note:: Not tested yet
+	win['mytree'].SortChildren(0, 'AscendingOrder')
+
+
+InsertChildren(int, list)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int= , list= 
+
+..  note:: Not tested yet
+	win['mytree'].InsertChildren(int, list)
+
+
+AddChildren(list)
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** list= 
+
+..  note:: Not tested yet
+	win['mytree'].AddChildren(list)
+
+
+
+
+	TreeItem:			int IndexOfChild(item), item Clone(), tree TreeWidget(), item Parent(), item Child(int), item TakeChild(int),
 						int ChildCount(), int ColumnCount() NewItem()
 	Window:				Show(), Hide(), RecalcLayout()
 	Dialog:				Exec(), IsRunning(), Done(), RecalcLayout()
