@@ -3,30 +3,31 @@ Functions
 
 Most elements have functions that can be called from them as well:
 
-	Show()
-	Hide()
-	Raise()
-	Lower()
-	Close()				Returns boolean
-	Find(ID)			Returns child element with matching ID
-	GetChildren()		Returns list
-	AddChild(element)
-	RemoveChild(element)
-	SetParent(element)
-	Move(point)
-	Resize(size)
-	Size()				Returns size
-	Pos()				Returns position
-	HasFocus()			Returns boolean
-	SetFocus(reason)	Accepts string "MouseFocusReason", "TabFocusReason", "ActiveWindowFocusReason", "OtherFocusreason", etc
-	FocusWidget()		Returns element
-	IsActiveWindow()	Returns boolean
-	SetTabOrder(element)
-	Update()
-	Repaint()
-	SetPaletteColor(r,g,b)
-	QueueEvent(name, info)  Accepts event name string and dictionary of event attributes
-	GetItems()			Returns dictionary of all child elements
+* Show()
+* Hide()
+* Raise()
+* Lower()
+* Close()			Returns boolean
+* Find(ID)			Returns child element with matching ID
+* GetChildren()		Returns list
+* AddChild(element)
+* RemoveChild(element)
+* SetParent(element)
+* Move(point)
+* Resize(size)
+* Size()				Returns size
+* Pos()				Returns position
+* HasFocus()			Returns boolean
+* SetFocus(reason)	Accepts string "MouseFocusReason", "TabFocusReason", "ActiveWindowFocusReason", "OtherFocusreason", etc
+* FocusWidget()		Returns element
+* IsActiveWindow()	Returns boolean
+* SetTabOrder(element)
+* Update()
+* Repaint()
+* SetPaletteColor(r,g,b)
+* QueueEvent(name, info)  Accepts event name string and dictionary of event attributes
+* GetItems()			Returns dictionary of all child elements
+
 
 Some elements have extra functions of their own:
 
@@ -1067,6 +1068,7 @@ AddTopLevelItem(item)
 **Type:** item= TreeItem
 
 ..  note:: Not tested yet
+
 	item = win['mytree'].NewItem()
 	item.Text[0] = 'My Text'
 	win['mytree'].AddTopLevelItem(item)
@@ -1082,6 +1084,7 @@ InsertTopLevelItem(item)
 **Type:** item= TreeItem
 
 ..  note:: Not tested yet
+
 	item = win['mytree'].NewItem()
 	item.Text[0] = 'My Text'
 	win['mytree'].InsertTopLevelItem(item)
@@ -1097,6 +1100,7 @@ SetHeaderLabel(string)
 **Type:** string= header label
 
 ..  note:: Not tested yet
+
 	win['mytree'].SetHeaderLabel('New header')
 
 
@@ -1110,6 +1114,7 @@ CurrentColumn()
 **Type:** return int
 
 ..  note:: Not tested yet
+
 	win['mytree'].CurrentColumn()
 
 
@@ -1123,6 +1128,7 @@ SortColumn()
 **Type:** return int
 
 ..  note:: Not tested yet
+
 	win['mytree'].SortColumn()
 
 
@@ -1136,6 +1142,7 @@ TopLevelItemCount()
 **Type:** return int
 
 ..  note:: Not tested yet
+
 	win['mytree'].TopLevelItemCount()
 
 
@@ -1149,6 +1156,7 @@ CurrentItem()
 **Type:** return item
 
 ..  note:: Not tested yet
+
 	win['mytree'].CurrentItem()
 
 
@@ -1162,6 +1170,7 @@ TopLevelItem(int)
 **Type:** int=   return item
 
 ..  note:: Not tested yet
+
 	win['mytree'].TopLevelItem(1)
 
 
@@ -1175,6 +1184,7 @@ TakeTopLevelItem(int)
 **Type:** int=   return item
 
 ..  note:: Not tested yet
+
 	win['mytree'].TakeTopLevelItem(1)
 
 
@@ -1188,6 +1198,7 @@ InvisibleRootItem()
 **Type:** return item
 
 ..  note:: Not tested yet
+
 	win['mytree'].TakeTopLevelItem(1)
 
 
@@ -1201,6 +1212,7 @@ HeaderItem()
 **Type:** return item
 
 ..  note:: Not tested yet
+
 	win['mytree'].HeaderItem()
 
 
@@ -1214,6 +1226,7 @@ IndexOfTopLevelItem(item)
 **Type:** return int
 
 ..  note:: Not tested yet
+
 	win['mytree'].IndexOfTopLevelItem(item)
 
 
@@ -1227,6 +1240,7 @@ ItemAbove(item)
 **Type:** item=    return item
 
 ..  note:: Not tested yet
+
 	win['mytree'].ItemAbove(item)
 
 
@@ -1240,6 +1254,7 @@ ItemBelow(item)
 **Type:** item=    return item
 
 ..  note:: Not tested yet
+
 	win['mytree'].ItemBelow(item)
 
 
@@ -1253,6 +1268,7 @@ ItemAt(point)
 **Type:** point=    return item
 
 ..  note:: Not tested yet
+
 	win['mytree'].ItemAt(point)
 
 
@@ -1266,6 +1282,7 @@ Clear()
 **Type:** 
 
 ..  note:: Not tested yet
+
 	win['mytree'].Clear()
 
 
@@ -1279,6 +1296,7 @@ VisualItemRect(item)
 **Type:** return rect
 
 ..  note:: Not tested yet
+
 	win['mytree'].VisualItemRect(item)
 
 
@@ -1292,6 +1310,7 @@ SetHeaderLabels(list)
 **Type:** list = 
 
 ..  note:: Not tested yet
+	
 	win['mytree'].SetHeaderLabels(['header1', 'header2'])
 
 
@@ -1305,6 +1324,7 @@ SetHeaderItem(item)
 **Type:** item = 
 
 ..  note:: Not tested yet
+
 	win['mytree'].SetHeaderItem(item)
 
 
@@ -1318,6 +1338,7 @@ InsertTopLevelItems(list)
 **Type:** list = 
 
 ..  note:: Not tested yet
+
 	win['mytree'].InsertTopLevelItems([item1, item2])
 
 
@@ -1331,6 +1352,7 @@ AddTopLevelItems(list)
 **Type:** list = 
 
 ..  note:: Not tested yet
+
 	win['mytree'].AddTopLevelItems([item1, item2])
 
 
@@ -1344,6 +1366,7 @@ SelectedItems()
 **Type:** return list
 
 ..  note:: Not tested yet
+
 	win['mytree'].SelectedItems()
 
 
@@ -1357,6 +1380,7 @@ FindItems(string, flags)
 **Type:** string=  , flags=   return list
 
 ..  note:: Not tested yet
+
 	win['mytree'].FindItems(string, flags)
 
 
@@ -1370,6 +1394,7 @@ SortItems(int, order)
 **Type:** int= , order= 
 
 ..  note:: Not tested yet
+
 	win['mytree'].SortItems(0, 'AscendingOrder')
 
 
@@ -1383,6 +1408,7 @@ ScrollToItem(item)
 **Type:** item=
 
 ..  note:: Not tested yet
+
 	win['mytree'].ScrollToItem(item)
 
 
@@ -1396,6 +1422,7 @@ ResetIndentation()
 **Type:** func
 
 ..  note:: Not tested yet
+
 	win['mytree'].ResetIndentation()
 
 
@@ -1409,6 +1436,7 @@ SortByColumn(int, order)
 **Type:** int= , order= 
 
 ..  note:: Not tested yet
+
 	win['mytree'].SortByColumn(0, 'AscendingOrder')
 
 
@@ -1422,6 +1450,7 @@ FrameWidth()
 **Type:** return int
 
 ..  note:: Not tested yet
+
 	win['mytree'].FrameWidth()
 
 
@@ -1438,6 +1467,7 @@ AddChild(item)
 **Type:** func
 
 ..  note:: Not tested yet
+
 	win['mytreeitem'].AddChild(item)
 
 
@@ -1451,6 +1481,7 @@ InsertChild(item)
 **Type:** func
 
 ..  note:: Not tested yet
+
 	win['mytreeitem'].InsertChild(item)
 
 
@@ -1464,6 +1495,7 @@ RemoveChild(item)
 **Type:** func
 
 ..  note:: Not tested yet
+
 	win['mytreeitem'].RemoveChild(item)
 
 
@@ -1477,7 +1509,8 @@ SortChildren(int, order)
 **Type:** int= , order= 
 
 ..  note:: Not tested yet
-	win['mytree'].SortChildren(0, 'AscendingOrder')
+
+	win['mytreeitem'].SortChildren(0, 'AscendingOrder')
 
 
 InsertChildren(int, list)
@@ -1490,7 +1523,8 @@ InsertChildren(int, list)
 **Type:** int= , list= 
 
 ..  note:: Not tested yet
-	win['mytree'].InsertChildren(int, list)
+
+	win['mytreeitem'].InsertChildren(int, list)
 
 
 AddChildren(list)
@@ -1503,22 +1537,231 @@ AddChildren(list)
 **Type:** list= 
 
 ..  note:: Not tested yet
-	win['mytree'].AddChildren(list)
+
+	win['mytreeitem'].AddChildren(list)
 
 
+IndexOfChild(item)
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+
+	win['mytreeitem'].IndexOfChild(item)
 
 
-	TreeItem:			int IndexOfChild(item), item Clone(), tree TreeWidget(), item Parent(), item Child(int), item TakeChild(int),
-						int ChildCount(), int ColumnCount() NewItem()
-	Window:				Show(), Hide(), RecalcLayout()
-	Dialog:				Exec(), IsRunning(), Done(), RecalcLayout()
+Clone()
+^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return item
+
+..  note:: Not tested yet
+
+	win['mytreeitem'].Clone()
+
+
+TreeWidget()
+^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return tree
+
+..  note:: Not tested yet
+
+	win['mytreeitem'].TreeWidget()
+
+
+Parent()
+^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return item
+
+..  note:: Not tested yet
+
+	win['mytreeitem'].Parent()
+
+
+Child(int)
+^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int=   return item
+
+..  note:: Not tested yet
+
+	win['mytreeitem'].Child(int)
+
+
+TakeChild(int)
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** int=   return item
+
+..  note:: Not tested yet
+
+	win['mytreeitem'].TakeChild(int)
+
+
+ChildCount()
+^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+
+	win['mytreeitem'].ChildCount()
+
+
+ColumnCount()
+^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** return int
+
+..  note:: Not tested yet
+
+	win['mytreeitem'].ColumnCount()
+
+
+Window
+------
+
+Show()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win.Show()
+
+
+Hide()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win.Hide()
+
+
+RecalcLayout()
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	win.RecalcLayout()
+
+
+Dialog
+------
+
+Exec()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	dialog.Exec()
+
+
+IsRunning()
+^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	dialog.IsRunning()
+
+
+Done()
+^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+
+	dialog.Done()
+
+
+RecalcLayout()
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	This function is
+
+**Type:** func
+
+..  note:: Not tested yet
+	
+	dialog.RecalcLayout()
 
 
 Elements can be accessed by the window's FindWindow(id) function, or by assigning them to a variable for later usage, which is more efficient. 
 The GetItems() function will return a dictionary of all child elements for ease of access.
 
 
-..  code-block: python
+..  code-block:: python
 
 	win_itms = win.GetItems()
 	win_itms['ElementID'].func()

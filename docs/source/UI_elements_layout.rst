@@ -1,7 +1,9 @@
 Layout
 ------
 
-Additionally, elements can be nested to define layout, using the HGroup and VGroup elements. As with Window and other elements, tou can pass a single dictionary or list with all properties and children, or separate them into a dict of properties and list of children, for convenience:
+Additionally, elements can be nested to define layout, using the HGroup and VGroup elements. 
+As with Window and other elements, you can pass a single dictionary or list with all properties and children, 
+or separate them into a dict of properties and list of children, for convenience:
 
 ..  code-block:: python
 
@@ -18,6 +20,13 @@ Additionally, elements can be nested to define layout, using the HGroup and VGro
 			ui.Button({ 'ID': "myButtonB",  'Text': "End" }),
 			]),
 		]),
+
 	win = dispatcher.AddWindow({ 'ID': "myWindow" }, winLayout)
 
-HGap and VGap elements can included for finer spacing control. Note also the Weight attribute, which can be applied to most elements to control how they adjust their relative sizes. A Weight of 0 will use the element's minimum size.
+
+HGap and VGap elements can included for finer spacing control. Note also the Weight attribute, 
+which can be applied to most elements to control how they adjust their relative sizes. 
+
+..  note:: 
+
+	A Weight of 0 will use the element's minimum size.
