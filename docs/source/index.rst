@@ -23,6 +23,7 @@ Contents
 
 .. toctree::
    :caption: UI Elements
+   :maxdepth: 1
 
    UI_elements_attrb
    UI_elements_func
@@ -32,6 +33,7 @@ Contents
 
 
 .. toctree::
+   :caption: Resolve API
 
    API_intro
    API_basic
