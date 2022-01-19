@@ -3,8 +3,8 @@
 # -- Project information
 
 project = 'ResolveDevDoc'
-copyright = '2021, b3n0y'
-author = 'b3n0y'
+copyright = '2022, b3n0y'
+author = 'Benoit Breault'
 
 release = '0.1'
 version = '0.1.0'

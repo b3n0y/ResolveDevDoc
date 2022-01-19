@@ -1,26 +1,154 @@
 Basic Resolve API
------------------
+=================
 
-Some commonly used API functions are described below (*). As with the resolve object, each object is inspectable for properties and functions.
+| Some commonly used API functions are described below (*). 
+| As with the resolve object, each object is inspectable for properties and functions.
 
 Resolve
-  Fusion()                                        --> Fusion             # Returns the Fusion object. Starting point for Fusion scripts.
-  GetMediaStorage()                               --> MediaStorage       # Returns the media storage object to query and act on media locations.
-  GetProjectManager()                             --> ProjectManager     # Returns the project manager object for currently open database.
-  w(pageName)                              --> Bool               # Switches to indicated page in DaVinci Resolve. Input can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver").
-  GetCurrentPage()                                --> String             # Returns the page currently displayed in the main window. Returned value can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver", None).
-  GetProductName()                                --> string             # Returns product name.
-  GetVersion()                                    --> [version fields]   # Returns list of product version fields in [major, minor, patch, build, suffix] format.
-  GetVersionString()                              --> string             # Returns product version in "major.minor.patch[suffix].build" format.
-  LoadLayoutPreset(presetName)                    --> Bool               # Loads UI layout from saved preset named 'presetName'.
-  UpdateLayoutPreset(presetName)                  --> Bool               # Overwrites preset named 'presetName' with current UI layout.
-  ExportLayoutPreset(presetName, presetFilePath)  --> Bool               # Exports preset named 'presetName' to path 'presetFilePath'.
-  DeleteLayoutPreset(presetName)                  --> Bool               # Deletes preset named 'presetName'.
-  SaveLayoutPreset(presetName)                    --> Bool               # Saves current UI layout as a preset named 'presetName'.
-  ImportLayoutPreset(presetFilePath, presetName)  --> Bool               # Imports preset from path 'presetFilePath'. The optional argument 'presetName' specifies how the preset shall be named. If not specified, the preset is named based on the filename.
-  Quit()                                          --> None               # Quits the Resolve App.
+-------
+
+Fusion()
+^^^^^^^^
+
+..  topic:: Description
+
+	  Returns the Fusion object. Starting point for Fusion scripts.
+
+    **Type:** Fusion
+
+
+GetMediaStorage()
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	  Returns the media storage object to query and act on media locations.
+
+    **Type:** MediaStorage
+
+
+GetProjectManager()
+^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	  Returns the project manager object for currently open database.
+
+    **Type:** ProjectManager
+
+
+OpenPage(pageName)
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	  Switches to indicated page in DaVinci Resolve. Input can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver").
+
+    **Type:** Bool
+
+
+GetCurrentPage()
+^^^^^^^^^^^^^^^^
+..  topic:: Description
+    
+    Returns the page currently displayed in the main window. Returned value can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver", None).
+
+    **Type:** String            
+
+GetProductName()
+^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns product name.
+
+    **Type:** String
+
+GetVersion()
+^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns list of product version fields in [major, minor, patch, build, suffix] format.
+
+    **Type:** [version fields]
+
+GetVersionString()  
+^^^^^^^^^^^^^^^^^^  
+
+..  topic:: Description
+
+	  Returns product version in "major.minor.patch[suffix].build" format. 
+
+    **Type:** string
+
+LoadLayoutPreset(presetName) 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	  Loads UI layout from saved preset named 'presetName'. 
+
+    **Type:** Bool 
+
+UpdateLayoutPreset(presetName)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	  Overwrites preset named 'presetName' with current UI layout. 
+
+    **Type:** Bool
+
+ExportLayoutPreset(presetName, presetFilePath)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	  Exports preset named 'presetName' to path 'presetFilePath'. 
+
+**Type:** Bool
+
+DeleteLayoutPreset(presetName)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	  Deletes preset named 'presetName'. 
+
+**Type:** Bool
+
+SaveLayoutPreset(presetName)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	  Saves current UI layout as a preset named 'presetName'. 
+
+**Type:** Bool
+
+ImportLayoutPreset(presetFilePath, presetName)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+	  Imports preset from path 'presetFilePath'. The optional argument 'presetName' specifies how the preset shall be named. If not specified, the preset is named based on the filename. 
+
+**Type:** Bool
+
+Quit()     
+^^^^^^
+
+..  topic:: Description
+
+	  Quits the Resolve App. 
+
+    **Type:** None
+
 
 ProjectManager
+--------------
+
   CreateProject(projectName)                      --> Project            # Creates and returns a project if projectName (string) is unique, and None if it is not.
   DeleteProject(projectName)                      --> Bool               # Delete project in the current folder if not currently loaded
   LoadProject(projectName)                        --> Project            # Loads and returns the project with name = projectName (string) if there is a match found, and None if there is no matching Project.
@@ -46,6 +174,8 @@ ProjectManager
                                                                          # 'IpAddress': IP address of the PostgreSQL server (string, optional key - defaults to '127.0.0.1')
 
 Project
+-------
+
   GetMediaPool()                                  --> MediaPool          # Returns the Media Pool object.
   GetTimelineCount()                              --> int                # Returns the number of timelines currently present in the project.
   GetTimelineByIndex(idx)                         --> Timeline           # Returns timeline at the given index, 1 <= idx <= project.GetTimelineCount()
@@ -85,6 +215,8 @@ Project
   RefreshLUTList()                                --> Bool               # Refreshes LUT List
 
 MediaStorage
+------------
+
   GetMountedVolumeList()                          --> [paths...]         # Returns list of folder paths corresponding to mounted volumes displayed in Resolve’s Media Storage.
   GetSubFolderList(folderPath)                    --> [paths...]         # Returns list of folder paths in the given absolute folder path.
   GetFileList(folderPath)                         --> [paths...]         # Returns list of media and file listings in the given absolute folder path. Note that media listings may be logically consolidated entries.
@@ -95,6 +227,8 @@ MediaStorage
   AddTimelineMattesToMediaPool([paths])           --> [MediaPoolItems]   # Adds specified media files as timeline mattes in current media pool folder. Returns a list of created MediaPoolItems.
 
 MediaPool
+---------
+
   GetRootFolder()                                 --> Folder             # Returns root Folder of Media Pool
   AddSubFolder(folder, name)                      --> Folder             # Adds new subfolder under specified Folder object with the given name.
   CreateEmptyTimeline(name)                       --> Timeline           # Adds new timeline with given name.
@@ -130,11 +264,15 @@ MediaPool
                                                                          # If no clips are specified, all clips from media pool will be used.
 
 Folder
+------
+
   GetClipList()                                   --> [clips...]         # Returns a list of clips (items) within the folder.
   GetName()                                       --> string             # Returns the media folder name.
   GetSubFolderList()                              --> [folders...]       # Returns a list of subfolders in the folder.
 
 MediaPoolItem
+-------------
+
   GetName()                                       --> string             # Returns the clip name.
   GetMetadata(metadataType=None)                  --> string|dict        # Returns the metadata value for the key 'metadataType'.
                                                                          # If no argument is specified, a dict of all set metadata properties is returned.
@@ -166,6 +304,8 @@ MediaPoolItem
   ReplaceClip(filePath)                           --> Bool               # Replaces the underlying asset and metadata of MediaPoolItem with the specified absolute clip path.
 
 Timeline
+--------
+
   GetName()                                       --> string             # Returns the timeline name.
   SetName(timelineName)                           --> Bool               # Sets the timeline name if timelineName (string) is unique. Returns True if successful.
   GetStartFrame()                                 --> int                # Returns the frame number at the start of timeline.
@@ -218,6 +358,8 @@ Timeline
   GrabAllStills(stillFrameSource)                 --> [galleryStill]     # Grabs stills from all the clips of the timeline at 'stillFrameSource' (1 - First frame, 2 - Middle frame). Returns the list of GalleryStill objects.
 
 TimelineItem
+------------
+
   GetName()                                       --> string             # Returns the item name.
   GetDuration()                                   --> int                # Returns the item duration.
   GetEnd()                                        --> int                # Returns the end frame position on the timeline.
@@ -279,6 +421,8 @@ TimelineItem
   CopyGrades([tgtTimelineItems])                  --> Bool               # Copies the current grade to all the items in tgtTimelineItems list. Returns True on success and False if any error occured.
 
 Gallery
+-------
+
   GetAlbumName(galleryStillAlbum)                 --> string             # Returns the name of the GalleryStillAlbum object 'galleryStillAlbum'.
   SetAlbumName(galleryStillAlbum, albumName)      --> Bool               # Sets the name of the GalleryStillAlbum object 'galleryStillAlbum' to 'albumName'.
   GetCurrentStillAlbum()                          --> galleryStillAlbum  # Returns current album as a GalleryStillAlbum object.
@@ -286,6 +430,8 @@ Gallery
   GetGalleryStillAlbums()                         --> [galleryStillAlbum] # Returns the gallery albums as a list of GalleryStillAlbum objects.
 
 GalleryStillAlbum
+-----------------
+
   GetStills()                                     --> [galleryStill]     # Returns the list of GalleryStill objects in the album.
   GetLabel(galleryStill)                          --> string             # Returns the label of the galleryStill.
   SetLabel(galleryStill, label)                   --> Bool               # Sets the new 'label' to GalleryStill object 'galleryStill'.
@@ -293,3 +439,4 @@ GalleryStillAlbum
   DeleteStills([galleryStill])                    --> Bool               # Deletes specified list of GalleryStill objects '[galleryStill]'.
 
 GalleryStill                                                             # This class does not provide any API functions but the object type is used by functions in other classes.
+------------

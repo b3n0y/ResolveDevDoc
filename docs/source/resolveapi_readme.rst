@@ -12,6 +12,7 @@ From v16.2.0 onwards, the nodeIndex parameters accepted by SetLUT() and SetCDL()
 
 Overview
 --------
+
 As with Blackmagic Design Fusion scripts, user scripts written in Lua and Python programming languages are supported. By default, scripts can be invoked from the Console window in the Fusion page,
 or via command line. This permission can be changed in Resolve Preferences, to be only from Console, or to be invoked from the local network. Please be aware of the security implications when
 allowing scripting access from outside of the Resolve application.
@@ -19,6 +20,7 @@ allowing scripting access from outside of the Resolve application.
 
 Prerequisites
 -------------
+
 DaVinci Resolve scripting requires one of the following to be installed (for all users):
 
     Lua 5.1
@@ -28,6 +30,7 @@ DaVinci Resolve scripting requires one of the following to be installed (for all
 
 Using a script
 --------------
+
 DaVinci Resolve needs to be running for a script to be invoked.
 
 For a Resolve script to be executed from an external folder, the script needs to know of the API location. 
@@ -81,19 +84,21 @@ in Lua and dir, help etc in Python (among other methods). A notable scriptable o
 
 Running DaVinci Resolve in headless mode
 ----------------------------------------
+
 DaVinci Resolve can be launched in a headless mode without the user interface using the -nogui command line option. When DaVinci Resolve is launched using this option, the user interface is disabled.
 However, the various scripting APIs will continue to work as expected.
 
 
 Basic Resolve API
 -----------------
+
 Some commonly used API functions are described below (*). As with the resolve object, each object is inspectable for properties and functions.
 
 Resolve
   Fusion()                                        --> Fusion             # Returns the Fusion object. Starting point for Fusion scripts.
   GetMediaStorage()                               --> MediaStorage       # Returns the media storage object to query and act on media locations.
   GetProjectManager()                             --> ProjectManager     # Returns the project manager object for currently open database.
-  w(pageName)                              --> Bool               # Switches to indicated page in DaVinci Resolve. Input can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver").
+  OpenPage(pageName)                              --> Bool               # Switches to indicated page in DaVinci Resolve. Input can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver").
   GetCurrentPage()                                --> String             # Returns the page currently displayed in the main window. Returned value can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver", None).
   GetProductName()                                --> string             # Returns product name.
   GetVersion()                                    --> [version fields]   # Returns list of product version fields in [major, minor, patch, build, suffix] format.
@@ -382,12 +387,14 @@ GalleryStill                                                             # This 
 
 List and Dict Data Structures
 -----------------------------
+
 Beside primitive data types, Resolve's Python API mainly uses list and dict data structures. Lists are denoted by [ ... ] and dicts are denoted by { ... } above.
 As Lua does not support list and dict data structures, the Lua API implements "list" as a table with indices, e.g. { [1] = listValue1, [2] = listValue2, ... }.
 Similarly the Lua API implements "dict" as a table with the dictionary key as first element, e.g. { [dictKey1] = dictValue1, [dictKey2] = dictValue2, ... }.
 
 Looking up Project and Clip properties
 --------------------------------------
+
 This section covers additional notes for the functions "Project:GetSetting", "Project:SetSetting", "Timeline:GetSetting", "Timeline:SetSetting", "MediaPoolItem:GetClipProperty" and 
 "MediaPoolItem:SetClipProperty". These functions are used to get and set properties otherwise available to the user through the Project Settings and the Clip Attributes dialogs.
 
@@ -424,6 +431,7 @@ Affects:
 
 Looking up Render Settings
 --------------------------
+
 This section covers the supported settings for the method SetRenderSettings({settings})
 
 The parameter setting is a dictionary containing the following keys:
@@ -456,6 +464,7 @@ The parameter setting is a dictionary containing the following keys:
 
 Looking up timeline export properties
 -------------------------------------
+
 This section covers the parameters for the argument Export(fileName, exportType, exportSubtype).
 
 exportType can be one of the following constants:
@@ -489,6 +498,7 @@ Note: Replace 'resolve.' when using the constants above, if a different Resolve 
 
 Looking up Timeline item properties
 -----------------------------------
+
 This section covers additional notes for the function "TimelineItem:SetProperty" and "TimelineItem:GetProperty". These functions are used to get and set properties mentioned.
 
 The supported keys with their accepted values are:
@@ -594,6 +604,7 @@ Getting the values for the keys that uses constants will return the number which
 
 Deprecated Resolve API Functions
 --------------------------------
+
 The following API functions are deprecated.
 
 ProjectManager
@@ -630,6 +641,7 @@ TimelineItem
 
 Unsupported Resolve API Functions
 ---------------------------------
+
 The following API (functions and paraameters) are no longer supported. Use job IDs instead of indices.
 
 Project
