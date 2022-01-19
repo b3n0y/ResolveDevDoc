@@ -1,6 +1,3 @@
-Resolve API
-===========
-
 .. versionadded:: Updated as of 21 October 2021
 
 

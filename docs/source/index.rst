@@ -34,6 +34,7 @@ Contents
 
 .. toctree::
    :caption: Resolve API
+   :maxdepth: 1
 
    API_intro
    API_basic
