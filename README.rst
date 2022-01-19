@@ -1,9 +1,8 @@
-Template for the Read the Docs tutorial
-=======================================
+ReadTheDocs ResolveDevDoc
+=========================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This GitHub repository was made to document Davinci Resolve Scripting and Workflow Integrations.
+Access via https://resolvedevdoc.readthedocs.io/
 
-Read the tutorial here:
-
-https://docs.readthedocs.io/en/stable/tutorial/
+written using ReStructuredText format and generated with Sphinx
+https://www.sphinx-doc.org/en/master/index.html
