@@ -64,21 +64,13 @@ dispatcher = bmd.UIDispatcher(ui)
 def create_main_window():
     # define the window UI layout
     win = dispatcher.AddWindow({
-        'ID': "tc_display",
+        'ID': "my_window",
         'Geometry': [ 400,200,225,100 ],
-        'WindowTitle': "Timecode Display v" + __version__,
-        'BackgroundColor': {"R":0.1, "G":0.1, "B":0.2, "A":0.3}
+        'WindowTitle': 'My Window'
         },
         ui.VGroup([
-            ui.Label({ 'ID': 'timecodeID', 'Text': 'my text',
-                'Weight': 0,
-                'StyleSheet' : update_css_label()
-            }),
-            ui.Button({ 'ID': 'open_prefs_btn', 'Text': u"\u2699",
-                'Weight': 0,
-                'StyleSheet' : css_prefs
-            }),
-        ])
+                ui.CheckBox({ 'ID': 'ok_btn',  'Text': "OK" })
+             ])
     )
     win_items = win.GetItems()
 
@@ -88,7 +80,7 @@ def create_main_window():
 
 
     # assign event handlers
-    win.On["tc_display"].Close = OnClose
+    win.On["my_window"].Close = OnClose
 
 
     return win, win_items

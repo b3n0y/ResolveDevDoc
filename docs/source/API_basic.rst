@@ -954,6 +954,7 @@ ImportMedia([{clipInfo}])
 
     Imports file path(s) into current Media Pool folder as specified in list of clipInfo dict. Returns a list of the MediaPoolItems created.
     Each clipInfo gets imported as one MediaPoolItem unless 'Show Individual Frames' is turned on.
+    
     Example: ImportMedia([{"FilePath":"file_%03d.dpx", "StartIndex":1, "EndIndex":100}]) would import clip "file_[001-100].dpx".
 
     **Returns** [MediaPoolItems]              

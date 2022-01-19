@@ -26,6 +26,11 @@ Text
 
 	ui.Label({ 'Text': "This is a text" })
 
+
+..  image:: images/UI_label_text.png
+	:width: 400px
+	:align: center
+
 Alignment 
 ^^^^^^^^^
 
@@ -38,11 +43,15 @@ Alignment
 	* AlignCenter
 	* AlignHCenter
 	* AlighVCenter
-	* Others to list
+	* Others to list...
 
 ..  code-block:: python
 
 	ui.Label({ 'Text': "This is a text", 'Alignment': { 'AlignCenter' : True } })
+
+..  image:: images/UI_label_alignment.png
+	:width: 400px
+	:align: center
 
 
 FrameStyle
@@ -71,6 +80,10 @@ WordWrap
 	
 	ui.Label({ 'Text': "This is a longer text than the window that was created" , 'WordWrap': True })
 
+..  image:: images/UI_label_wordwrap.png
+	:width: 400px
+	:align: center
+
 Indent
 ^^^^^^
 
@@ -97,6 +110,7 @@ Margin
 
 	ui.Label({ 'Margin': "" })
 
+
 Button
 ------
 
@@ -106,18 +120,24 @@ Text
 **Type:** string
 
 ..  topic:: Description	
+
 	This label attribute is used to display Text on the element. 
 
 ..  code-block:: 
 
     ui.Button({ 'ID': 'ok_btn',  'Text': "OK" })
 
+..  image:: images/UI_button_text.png
+	:width: 400px
+	:align: center
+
 Down
 ^^^^
 
 **Type:** bool
 
-..  topic:: Description	
+..  topic:: Description
+
 	This label attribute is used to 
 
 ..  note:: Not yet tested
@@ -136,6 +156,14 @@ Checkable
 ..  note:: Not yet tested
 
     ui.Button({ 'ID': 'ok_btn',  'Checkable': True })
+
+..  image:: images/UI_button_checkable_off.png
+	:width: 200px
+	:align: center
+
+..  image:: images/UI_button_checkable_on.png
+	:width: 200px
+	:align: center
 
 
 Checked
@@ -203,6 +231,11 @@ Text
 ..  code-block:: 
 
     ui.CheckBox({ 'ID': 'ok_btn',  'Text': "OK" })
+
+..  image:: images/UI_checkbox_text.png
+	:width: 400px
+	:align: center
+
 
 Down
 ^^^^
