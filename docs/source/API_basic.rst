@@ -549,9 +549,8 @@ SetRenderSettings({settings})
 
     **Returns** Bool
                                                                         
-..  note:: 
+    Refer to :doc:`"Looking up render settings" for more information <../API_render>` section for information for supported settings
 
-    Refer to :ref: `"Looking up render settings <api_render>"` section for information for supported settings
 
 GetRenderJobStatus(jobId)                            
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1059,6 +1058,9 @@ AddMarker(frameId, color, name, note, duration,customData)
           
     **Returns** Bool
 
+
+.. _MediaPoolItem GetMarkers():
+
 GetMarkers()                                           
 ^^^^^^^^^^^^
 
@@ -1297,6 +1299,9 @@ AddMarker(frameId, color, name, note, duration, customData)
 
     **Returns** Bool 
 
+
+.. _Timeline GetMarkers():
+
 GetMarkers()                                           
 ^^^^^^^^^^^^
 
@@ -1490,7 +1495,7 @@ Export(fileName, exportType, exportSubtype)
 
     **Returns** Bool
 
-    Refer to section :ref:`"Looking up timeline exports properties"<API_timeline_export>` for information on the parameters.
+    Refer to section :doc:`"Looking up timeline exports properties"<../API_timeline_export>` for information on the parameters.
 
 GetSetting(settingName)                                      
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1674,7 +1679,7 @@ SetProperty(propertyKey, propertyValue)
 
     Sets the value of property "propertyKey" to value "propertyValue"
 
-    Refer to "Looking up Timeline item properties" for more information
+    Refer to :doc:`"Looking up Timeline item properties" for more information <../API_timeline_items>`
 
     **Returns** Bool
 
