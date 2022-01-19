@@ -22,7 +22,8 @@ Contents
 --------
 
 .. toctree::
-   
+   :caption: UI Elements
+
    UI_elements_attrb
    UI_elements_func
    UI_elements_layout
