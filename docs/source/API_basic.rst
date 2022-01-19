@@ -324,6 +324,7 @@ SetCurrentDatabase({dbInfo})
 ..  topic:: Description
 
     Switches current database connection to the database specified by the keys below, and closes any open project.
+
     * **'DbType':** 'Disk' or 'PostgreSQL' (string)
     * **'DbName':** database name (string)
     * **'IpAddress':** IP address of the PostgreSQL server (string, optional key - defaults to '127.0.0.1')
@@ -334,732 +335,1828 @@ SetCurrentDatabase({dbInfo})
 Project
 -------
 
-  GetMediaPool()                                  **Returns** MediaPool          ..  topic:: Description
+GetMediaPool()
+^^^^^^^^^^^^^^
+   
+..  topic:: Description
 
-	  Returns the Media Pool object.
-  GetTimelineCount()                              **Returns** int                ..  topic:: Description
+    Returns the Media Pool object.
 
-	  Returns the number of timelines currently present in the project.
-  GetTimelineByIndex(idx)                         **Returns** Timeline           ..  topic:: Description
+    **Returns** MediaPool
 
-	  Returns timeline at the given index, 1 <= idx <= project.GetTimelineCount()
-  GetCurrentTimeline()                            **Returns** Timeline           ..  topic:: Description
+GetTimelineCount()
+^^^^^^^^^^^^^^^^^^
 
-	  Returns the currently loaded timeline.
-  SetCurrentTimeline(timeline)                    **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Sets given timeline as current timeline for the project. Returns True if successful.
-  GetGallery()                                    **Returns** Gallery            ..  topic:: Description
+    Returns the number of timelines currently present in the project.
 
-	  Returns the Gallery object.
-  GetName()                                       **Returns** string             ..  topic:: Description
+    **Returns** int
 
-	  Returns project name.
-  SetName(projectName)                            **Returns** Bool               ..  topic:: Description
+GetTimelineByIndex(idx) 
+^^^^^^^^^^^^^^^^^^^^^^^
+                                   
+..  topic:: Description
 
-	  Sets project name if given projectname (string) is unique.
-  GetPresetList()                                 **Returns** [presets...]       ..  topic:: Description
+    Returns timeline at the given index, 1 <= idx <= project.GetTimelineCount()
 
-	  Returns a list of presets and their information.
-  SetPreset(presetName)                           **Returns** Bool               ..  topic:: Description
+    **Returns** Timeline
 
-	  Sets preset by given presetName (string) into project.
-  AddRenderJob()                                  **Returns** string             ..  topic:: Description
+GetCurrentTimeline()   
+^^^^^^^^^^^^^^^^^^^^
+                                   
+..  topic:: Description
 
-	  Adds a render job based on current render settings to the render queue. Returns a unique job id (string) for the new render job.
-  DeleteRenderJob(jobId)                          **Returns** Bool               ..  topic:: Description
+    Returns the currently loaded timeline.
 
-	  Deletes render job for input job id (string).
-  DeleteAllRenderJobs()                           **Returns** Bool               ..  topic:: Description
+    **Returns** Timeline  
 
-	  Deletes all render jobs in the queue.
-  GetRenderJobList()                              **Returns** [render jobs...]   ..  topic:: Description
+SetCurrentTimeline(timeline)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   
+..  topic:: Description
 
-	  Returns a list of render jobs and their information.
-  GetRenderPresetList()                           **Returns** [presets...]       ..  topic:: Description
+    Sets given timeline as current timeline for the project. Returns True if successful.
 
-	  Returns a list of render presets and their information.
-  StartRendering(jobId1, jobId2, ...)             **Returns** Bool               ..  topic:: Description
+    **Returns** Bool
 
-	  Starts rendering jobs indicated by the input job ids.
-  StartRendering([jobIds...], isInteractiveMode=False)    **Returns** Bool       ..  topic:: Description
+GetGallery()                                                
+^^^^^^^^^^^^
 
-	  Starts rendering jobs indicated by the input job ids.
-                                                                         ..  topic:: Description
+..  topic:: Description
 
-	  The optional "isInteractiveMode", when set, enables error feedback in the UI during rendering.
-  StartRendering(isInteractiveMode=False)                 **Returns** Bool       ..  topic:: Description
+    Returns the Gallery object.
 
-	  Starts rendering all queued render jobs. 
-                                                                         ..  topic:: Description
+    **Returns** Gallery
 
-	  The optional "isInteractiveMode", when set, enables error feedback in the UI during rendering.
-  StopRendering()                                 **Returns** None               ..  topic:: Description
+GetName()                                                    
+^^^^^^^^^
 
-	  Stops any current render processes.
-  IsRenderingInProgress()                         **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Returns True if rendering is in progress.
-  LoadRenderPreset(presetName)                    **Returns** Bool               ..  topic:: Description
+    Returns project name.
 
-	  Sets a preset as current preset for rendering if presetName (string) exists.
-  SaveAsNewRenderPreset(presetName)               **Returns** Bool               ..  topic:: Description
+    **Returns** string
 
-	  Creates new render preset by given name if presetName(string) is unique.
-  SetRenderSettings({settings})                   **Returns** Bool               ..  topic:: Description
+SetName(projectName)                                           
+^^^^^^^^^^^^^^^^^^^^
 
-	  Sets given settings for rendering. Settings is a dict, with support for the keys:
-                                                                         ..  topic:: Description
+..  topic:: Description
 
-	  Refer to "Looking up render settings" section for information for supported settings
-  GetRenderJobStatus(jobId)                       **Returns** {status info}      ..  topic:: Description
+    Sets project name if given projectname (string) is unique.
 
-	  Returns a dict with job status and completion percentage of the job by given jobId (string).
-  GetSetting(settingName)                         **Returns** string             ..  topic:: Description
+    **Returns** Bool
 
-	  Returns value of project setting (indicated by settingName, string). Check the section below for more information.
-  SetSetting(settingName, settingValue)           **Returns** Bool               ..  topic:: Description
+GetPresetList()                                 
+^^^^^^^^^^^^^^^
 
-	  Sets the project setting (indicated by settingName, string) to the value (settingValue, string). Check the section below for more information.
-  GetRenderFormats()                              **Returns** {render formats..} ..  topic:: Description
+..  topic:: Description
 
-	  Returns a dict (format -> file extension) of available render formats.
-  GetRenderCodecs(renderFormat)                   **Returns** {render codecs...} ..  topic:: Description
+    Returns a list of presets and their information.
 
-	  Returns a dict (codec description -> codec name) of available codecs for given render format (string).
-  GetCurrentRenderFormatAndCodec()                **Returns** {format, codec}    ..  topic:: Description
+    **Returns** [presets...]       
 
-	  Returns a dict with currently selected format 'format' and render codec 'codec'.
-  SetCurrentRenderFormatAndCodec(format, codec)   **Returns** Bool               ..  topic:: Description
+SetPreset(presetName)                                        
+^^^^^^^^^^^^^^^^^^^^^
 
-	  Sets given render format (string) and render codec (string) as options for rendering.
-  GetCurrentRenderMode()                          **Returns** int                ..  topic:: Description
+..  topic:: Description
 
-	  Returns the render mode: 0 - Individual clips, 1 - Single clip.
-  SetCurrentRenderMode(renderMode)                **Returns** Bool               ..  topic:: Description
+    Sets preset by given presetName (string) into project.
 
-	  Sets the render mode. Specify renderMode = 0 for Individual clips, 1 for Single clip.
-  GetRenderResolutions(format, codec)             **Returns** [{Resolution}]     ..  topic:: Description
+    **Returns** Bool  
 
-	  Returns list of resolutions applicable for the given render format (string) and render codec (string). Returns full list of resolutions if no argument is provided. Each element in the list is a dictionary with 2 keys "Width" and "Height".
-  RefreshLUTList()                                **Returns** Bool               ..  topic:: Description
+AddRenderJob()                                             
+^^^^^^^^^^^^^^
 
-	  Refreshes LUT List
+..  topic:: Description
+
+    Adds a render job based on current render settings to the render queue. Returns a unique job id (string) for the new render job.
+
+    **Returns** string  
+
+DeleteRenderJob(jobId)                                      
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes render job for input job id (string).
+
+    **Returns** Bool  
+
+DeleteAllRenderJobs()                                         
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes all render jobs in the queue.
+
+    **Returns** Bool 
+
+GetRenderJobList()                              
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a list of render jobs and their information.
+
+    **Returns** [render jobs...]   
+
+GetRenderPresetList()                             
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a list of render presets and their information.
+
+    **Returns** [presets...]    
+
+StartRendering(jobId1, jobId2, ...)                        
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Starts rendering jobs indicated by the input job ids.
+
+    **Returns** Bool    
+
+StartRendering([jobIds...], isInteractiveMode=False)    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Starts rendering jobs indicated by the input job ids.
+
+    **Returns** Bool       
+                                                                      
+..  note:: 
+
+    The optional "isInteractiveMode", when set, enables error feedback in the UI during rendering.
+
+StartRendering(isInteractiveMode=False)                       
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Starts rendering all queued render jobs. 
+
+    **Returns** Bool
+
+..  note:: 
+
+    The optional "isInteractiveMode", when set, enables error feedback in the UI during rendering.
+
+StopRendering()
+^^^^^^^^^^^^^^^
+                                                
+..  topic:: Description
+
+    Stops any current render processes.
+
+    **Returns** None
+
+IsRenderingInProgress()                                        
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns True if rendering is in progress.
+
+    **Returns** Bool
+
+LoadRenderPreset(presetName)                                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets a preset as current preset for rendering if presetName (string) exists.
+
+    **Returns** Bool
+
+SaveAsNewRenderPreset(presetName)                              
+
+..  topic:: Description
+
+    Creates new render preset by given name if presetName(string) is unique.
+
+    **Returns** Bool
+
+SetRenderSettings({settings})                                  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets given settings for rendering. Settings is a dict, with support for the keys:
+
+    **Returns** Bool
+                                                                        
+..  note:: 
+
+    Refer to :ref: `"Looking up render settings <api_render>"` section for information for supported settings
+
+GetRenderJobStatus(jobId)                            
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a dict with job status and completion percentage of the job by given jobId (string).
+
+    **Returns** {status info} 
+
+GetSetting(settingName)                                      
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns value of project setting (indicated by settingName, string). Check the section below for more information.
+
+    **Returns** string
+
+SetSetting(settingName, settingValue)                          
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets the project setting (indicated by settingName, string) to the value (settingValue, string). Check the section below for more information.
+
+    **Returns** Bool
+
+GetRenderFormats()                               
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a dict (format -> file extension) of available render formats.
+
+    **Returns** {render formats..}
+
+GetRenderCodecs(renderFormat)                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a dict (codec description -> codec name) of available codecs for given render format (string).
+
+    **Returns** {render codecs...} 
+
+GetCurrentRenderFormatAndCodec()                 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a dict with currently selected format 'format' and render codec 'codec'.
+
+    **Returns** {format, codec}   
+
+SetCurrentRenderFormatAndCodec(format, codec)                  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets given render format (string) and render codec (string) as options for rendering.
+
+    **Returns** Bool
+
+GetCurrentRenderMode()                                     
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the render mode: 0 - Individual clips, 1 - Single clip.
+
+    **Returns** int    
+
+SetCurrentRenderMode(renderMode)                              
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets the render mode. Specify renderMode = 0 for Individual clips, 1 for Single clip.
+
+    **Returns** Bool 
+
+GetRenderResolutions(format, codec)              
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns list of resolutions applicable for the given render format (string) and render codec (string). Returns full list of resolutions if no argument is provided. Each element in the list is a dictionary with 2 keys "Width" and "Height".
+
+    **Returns** [{Resolution}]    
+
+RefreshLUTList()                                              
+^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Refreshes LUT List
+
+    **Returns** Bool 
+
 
 MediaStorage
 ------------
 
-  GetMountedVolumeList()                          **Returns** [paths...]         ..  topic:: Description
+GetMountedVolumeList()
+^^^^^^^^^^^^^^^^^^^^^^
+                                 
+..  topic:: Description
 
-	  Returns list of folder paths corresponding to mounted volumes displayed in Resolve’s Media Storage.
-  GetSubFolderList(folderPath)                    **Returns** [paths...]         ..  topic:: Description
+    Returns list of folder paths corresponding to mounted volumes displayed in Resolve's Media Storage.
 
-	  Returns list of folder paths in the given absolute folder path.
-  GetFileList(folderPath)                         **Returns** [paths...]         ..  topic:: Description
+    **Returns** [paths...]  
 
-	  Returns list of media and file listings in the given absolute folder path. Note that media listings may be logically consolidated entries.
-  RevealInStorage(path)                           **Returns** Bool               ..  topic:: Description
+GetSubFolderList(folderPath)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Expands and displays given file/folder path in Resolve’s Media Storage.
-  AddItemListToMediaPool(item1, item2, ...)       **Returns** [clips...]         ..  topic:: Description
+..  topic:: Description
 
-	  Adds specified file/folder paths from Media Storage into current Media Pool folder. Input is one or more file/folder paths. Returns a list of the MediaPoolItems created.
-  AddItemListToMediaPool([items...])              **Returns** [clips...]         ..  topic:: Description
+    Returns list of folder paths in the given absolute folder path.
 
-	  Adds specified file/folder paths from Media Storage into current Media Pool folder. Input is an array of file/folder paths. Returns a list of the MediaPoolItems created.
-  AddClipMattesToMediaPool(MediaPoolItem, [paths], stereoEye) **Returns** Bool   ..  topic:: Description
+    **Returns** [paths...]  
 
-	  Adds specified media files as mattes for the specified MediaPoolItem. StereoEye is an optional argument for specifying which eye to add the matte to for stereo clips ("left" or "right"). Returns True if successful.
-  AddTimelineMattesToMediaPool([paths])           **Returns** [MediaPoolItems]   ..  topic:: Description
+GetFileList(folderPath)                                 
+^^^^^^^^^^^^^^^^^^^^^^^
+..  topic:: Description
 
-	  Adds specified media files as timeline mattes in current media pool folder. Returns a list of created MediaPoolItems.
+    Returns list of media and file listings in the given absolute folder path. Note that media listings may be logically consolidated entries.
+
+    **Returns** [paths...] 
+
+RevealInStorage(path)                                         
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Expands and displays given file/folder path in Resolve’s Media Storage.
+
+    **Returns** Bool 
+
+AddItemListToMediaPool(item1, item2, ...)              
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Adds specified file/folder paths from Media Storage into current Media Pool folder. 
+    Input is one or more file/folder paths. Returns a list of the MediaPoolItems created.
+
+    **Returns** [clips...]  
+
+AddItemListToMediaPool([items...])                      
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Adds specified file/folder paths from Media Storage into current Media Pool folder. Input is an array of file/folder paths. 
+    Returns a list of the MediaPoolItems created.
+
+    **Returns** [clips...] 
+
+AddClipMattesToMediaPool(MediaPoolItem, [paths], stereoEye) 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Adds specified media files as mattes for the specified MediaPoolItem. 
+    StereoEye is an optional argument for specifying which eye to add the matte to for stereo clips ("left" or "right"). Returns True if successful.
+
+    **Returns** Bool   
+
+AddTimelineMattesToMediaPool([paths])             
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Adds specified media files as timeline mattes in current media pool folder. Returns a list of created MediaPoolItems.
+
+    **Returns** [MediaPoolItems] 
+
 
 MediaPool
 ---------
 
-  GetRootFolder()                                 **Returns** Folder             
-  ..  topic:: Description
+GetRootFolder()
+^^^^^^^^^^^^^^^
+                                              
+..  topic:: Description
 
-	    Returns root Folder of Media Pool
-  
-  AddSubFolder(folder, name)                      **Returns** Folder             
-  ..  topic:: Description
+    Returns root Folder of Media Pool
+    
+    **Returns** Folder
 
-	  Adds new subfolder under specified Folder object with the given name.
-  
-  CreateEmptyTimeline(name)                       **Returns** Timeline           
-  ..  topic:: Description
+AddSubFolder(folder, name)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   
+..  topic:: Description
 
-	  Adds new timeline with given name.
-  AppendToTimeline(clip1, clip2, ...)             **Returns** [TimelineItem]     
-  ..  topic:: Description
+    Adds new subfolder under specified Folder object with the given name.
 
-	  Appends specified MediaPoolItem objects in the current timeline. Returns the list of appended timelineItems.
-  AppendToTimeline([clips])                       **Returns** [TimelineItem]     
-  ..  topic:: Description
+    **Returns** Folder
 
-	  Appends specified MediaPoolItem objects in the current timeline. Returns the list of appended timelineItems.
-  AppendToTimeline([{clipInfo}, ...])             **Returns** [TimelineItem]     
-  ..  topic:: Description
+CreateEmptyTimeline(name)                                  
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Appends list of clipInfos specified as dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int), (optional) "mediaType" (int; 1 - Video only, 2 - Audio only). Returns the list of appended timelineItems.
-  CreateTimelineFromClips(name, clip1, clip2,...) **Returns** Timeline           
-  ..  topic:: Description
+..  topic:: Description
 
-	  Creates new timeline with specified name, and appends the specified MediaPoolItem objects.
-  CreateTimelineFromClips(name, [clips])          **Returns** Timeline           
-  ..  topic:: Description
+    Adds new timeline with given name.
 
-	  Creates new timeline with specified name, and appends the specified MediaPoolItem objects.
-  CreateTimelineFromClips(name, [{clipInfo}])     **Returns** Timeline           
-  ..  topic:: Description
+    **Returns** Timeline
 
-	  Creates new timeline with specified name, appending the list of clipInfos specified as a dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int).
-  ImportTimelineFromFile(filePath, {importOptions}) **Returns** Timeline         
-  ..  topic:: Description
+AppendToTimeline(clip1, clip2, ...)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                
+..  topic:: Description
 
-	  Creates timeline based on parameters within given file and optional importOptions dict, with support for the keys:
-                                                                         
-                                                                         ..  topic:: Description
+    Appends specified MediaPoolItem objects in the current timeline. Returns the list of appended timelineItems.
 
-	  "timelineName": string, specifies the name of the timeline to be created
-                                                                         ..  topic:: Description
+    **Returns** [TimelineItem]  
 
-	  "importSourceClips": Bool, specifies whether source clips should be imported, True by default
-                                                                         ..  topic:: Description
+AppendToTimeline([clips])                            
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  "sourceClipsPath": string, specifies a filesystem path to search for source clips if the media is inaccessible in their original path and if "importSourceClips" is True
-                                                                         ..  topic:: Description
+..  topic:: Description
 
-	  "sourceClipsFolders": List of Media Pool folder objects to search for source clips if the media is not present in current folder and if "importSourceClips" is False
-                                                                         ..  topic:: Description
+    Appends specified MediaPoolItem objects in the current timeline. Returns the list of appended timelineItems.
 
-	  "interlaceProcessing": Bool, specifies whether to enable interlace processing on the imported timeline being created. valid only for AAF import
-  DeleteTimelines([timeline])                     **Returns** Bool               ..  topic:: Description
+    **Returns** [TimelineItem]
 
-	  Deletes specified timelines in the media pool.
-  GetCurrentFolder()                              **Returns** Folder             ..  topic:: Description
+AppendToTimeline([{clipInfo}, ...])
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 
+..  topic:: Description
 
-	  Returns currently selected Folder.
-  SetCurrentFolder(Folder)                        **Returns** Bool               ..  topic:: Description
+    Appends list of clipInfos specified as dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int), (optional) "mediaType" (int; 1 - Video only, 2 - Audio only). Returns the list of appended timelineItems.
 
-	  Sets current folder by given Folder.
-  DeleteClips([clips])                            **Returns** Bool               ..  topic:: Description
+    **Returns** [TimelineItem]  
 
-	  Deletes specified clips or timeline mattes in the media pool
-  DeleteFolders([subfolders])                     **Returns** Bool               ..  topic:: Description
+CreateTimelineFromClips(name, clip1, clip2,...)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            
+..  topic:: Description
 
-	  Deletes specified subfolders in the media pool
-  MoveClips([clips], targetFolder)                **Returns** Bool               ..  topic:: Description
+    Creates new timeline with specified name, and appends the specified MediaPoolItem objects.
 
-	  Moves specified clips to target folder.
-  MoveFolders([folders], targetFolder)            **Returns** Bool               ..  topic:: Description
+    **Returns** Timeline
 
-	  Moves specified folders to target folder.
-  GetClipMatteList(MediaPoolItem)                 **Returns** [paths]            ..  topic:: Description
+CreateTimelineFromClips(name, [clips])
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Get mattes for specified MediaPoolItem, as a list of paths to the matte files.
-  GetTimelineMatteList(Folder)                    **Returns** [MediaPoolItems]   ..  topic:: Description
+..  topic:: Description
 
-	  Get mattes in specified Folder, as list of MediaPoolItems.
-  DeleteClipMattes(MediaPoolItem, [paths])        **Returns** Bool               ..  topic:: Description
+    Creates new timeline with specified name, and appends the specified MediaPoolItem objects.
 
-	  Delete mattes based on their file paths, for specified MediaPoolItem. Returns True on success.
-  RelinkClips([MediaPoolItem], folderPath)        **Returns** Bool               ..  topic:: Description
+    **Returns** Timeline 
 
-	  Update the folder location of specified media pool clips with the specified folder path.
-  UnlinkClips([MediaPoolItem])                    **Returns** Bool               ..  topic:: Description
+CreateTimelineFromClips(name, [{clipInfo}])
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Unlink specified media pool clips.
-  ImportMedia([items...])                         **Returns** [MediaPoolItems]   ..  topic:: Description
+..  topic:: Description
 
-	  Imports specified file/folder paths into current Media Pool folder. Input is an array of file/folder paths. Returns a list of the MediaPoolItems created.
-  ImportMedia([{clipInfo}])                       **Returns** [MediaPoolItems]   ..  topic:: Description
+    Creates new timeline with specified name, appending the list of clipInfos specified as a dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int).
 
-	  Imports file path(s) into current Media Pool folder as specified in list of clipInfo dict. Returns a list of the MediaPoolItems created.
-                                                                         ..  topic:: Description
+    **Returns** Timeline
 
-	  Each clipInfo gets imported as one MediaPoolItem unless 'Show Individual Frames' is turned on.
-                                                                         ..  topic:: Description
+ImportTimelineFromFile(filePath, {importOptions}) 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Example: ImportMedia([{"FilePath":"file_%03d.dpx", "StartIndex":1, "EndIndex":100}]) would import clip "file_[001-100].dpx".
-  ExportMetadata(fileName, [clips])               **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Exports metadata of specified clips to 'fileName' in CSV format.
-                                                                         ..  topic:: Description
+    Creates timeline based on parameters within given file and optional importOptions dict, with support for the keys:
+                                                                          
+    * "timelineName": string, specifies the name of the timeline to be created
+    * "importSourceClips": Bool, specifies whether source clips should be imported, True by default
+    * "sourceClipsPath": string, specifies a filesystem path to search for source clips if the media is inaccessible in their original path and if "importSourceClips" is True
+    * "sourceClipsFolders": List of Media Pool folder objects to search for source clips if the media is not present in current folder and if "importSourceClips" is False
+    * "interlaceProcessing": Bool, specifies whether to enable interlace processing on the imported timeline being created. valid only for AAF import
 
-	  If no clips are specified, all clips from media pool will be used.
+    **Returns** Timeline
+
+DeleteTimelines([timeline])                                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes specified timelines in the media pool.
+
+    **Returns** Bool 
+
+GetCurrentFolder()                                           
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns currently selected Folder.
+
+    **Returns** Folder
+
+SetCurrentFolder(Folder)                                       
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets current folder by given Folder.
+    
+    **Returns** Bool
+
+DeleteClips([clips])                                           
+^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes specified clips or timeline mattes in the media pool
+
+    **Returns** Bool
+
+DeleteFolders([subfolders])                                    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes specified subfolders in the media pool
+
+    **Returns** Bool
+
+MoveClips([clips], targetFolder)                               
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Moves specified clips to target folder.
+
+    **Returns** Bool
+
+MoveFolders([folders], targetFolder)                           
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Moves specified folders to target folder.
+
+    **Returns** Bool
+
+GetClipMatteList(MediaPoolItem)                             
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Get mattes for specified MediaPoolItem, as a list of paths to the matte files.
+
+    **Returns** [paths]
+
+GetTimelineMatteList(Folder)                      
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Get mattes in specified Folder, as list of MediaPoolItems.
+
+    **Returns** [MediaPoolItems] 
+
+DeleteClipMattes(MediaPoolItem, [paths])                       
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Delete mattes based on their file paths, for specified MediaPoolItem. Returns True on success.
+
+    **Returns** Bool
+
+RelinkClips([MediaPoolItem], folderPath)                       
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Update the folder location of specified media pool clips with the specified folder path.
+
+    **Returns** Bool
+
+UnlinkClips([MediaPoolItem])                                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Unlink specified media pool clips.
+
+    **Returns** Bool
+
+ImportMedia([items...])                           
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Imports specified file/folder paths into current Media Pool folder. Input is an array of file/folder paths. Returns a list of the MediaPoolItems created.
+
+    **Returns** [MediaPoolItems] 
+
+ImportMedia([{clipInfo}])                          
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Imports file path(s) into current Media Pool folder as specified in list of clipInfo dict. Returns a list of the MediaPoolItems created.
+    Each clipInfo gets imported as one MediaPoolItem unless 'Show Individual Frames' is turned on.
+    Example: ImportMedia([{"FilePath":"file_%03d.dpx", "StartIndex":1, "EndIndex":100}]) would import clip "file_[001-100].dpx".
+
+    **Returns** [MediaPoolItems]              
+
+
+ExportMetadata(fileName, [clips])
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Exports metadata of specified clips to 'fileName' in CSV format.
+    If no clips are specified, all clips from media pool will be used.
+
+    **Returns** Bool
 
 Folder
 ------
 
-  GetClipList()                                   **Returns** [clips...]         ..  topic:: Description
+GetClipList()                                            
+^^^^^^^^^^^^^
 
-	  Returns a list of clips (items) within the folder.
-  GetName()                                       **Returns** string             ..  topic:: Description
+..  topic:: Description
 
-	  Returns the media folder name.
-  GetSubFolderList()                              **Returns** [folders...]       ..  topic:: Description
+    Returns a list of clips (items) within the folder.
 
-	  Returns a list of subfolders in the folder.
+    **Returns** [clips...]
+
+GetName()                                                    
+^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the media folder name.
+
+    **Returns** string
+
+GetSubFolderList()                                     
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a list of subfolders in the folder.
+
+    **Returns** [folders...]
 
 MediaPoolItem
 -------------
 
-  GetName()                                       **Returns** string             ..  topic:: Description
+GetName()                                                    
+^^^^^^^^^
 
-	  Returns the clip name.
-  GetMetadata(metadataType=None)                  **Returns** string|dict        ..  topic:: Description
+..  topic:: Description
 
-	  Returns the metadata value for the key 'metadataType'.
-                                                                         ..  topic:: Description
+    Returns the clip name.
 
-	  If no argument is specified, a dict of all set metadata properties is returned.
-  SetMetadata(metadataType, metadataValue)        **Returns** Bool               ..  topic:: Description
+    **Returns** string
 
-	  Sets the given metadata to metadataValue (string). Returns True if successful.
-  SetMetadata({metadata})                         **Returns** Bool               ..  topic:: Description
+GetMetadata(metadataType=None)                         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Sets the item metadata with specified 'metadata' dict. Returns True if successful.
-  GetMediaId()                                    **Returns** string             ..  topic:: Description
+..  topic:: Description
 
-	  Returns the unique ID for the MediaPoolItem.
-  AddMarker(frameId, color, name, note, duration, **Returns** Bool               ..  topic:: Description
+    Returns the metadata value for the key 'metadataType'.
+    If no argument is specified, a dict of all set metadata properties is returned.
 
-	  Creates a new marker at given frameId position and with given marker information. 'customData' is optional and helps to attach user specific data to the marker.
-            customData)
-  GetMarkers()                                    **Returns** {markers...}       ..  topic:: Description
+    **Returns** string|dict 
 
-	  Returns a dict (frameId -> {information}) of all markers and dicts with their information.
-                                                                         ..  topic:: Description
+SetMetadata(metadataType, metadataValue)                      
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Example of output format: {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...}
-                                                                         ..  topic:: Description
+..  topic:: Description
 
-	  In the above example - there is one 'Green' marker at offset 96 (position of the marker)
-  GetMarkerByCustomData(customData)               **Returns** {markers...}       ..  topic:: Description
+    Sets the given metadata to metadataValue (string). Returns True if successful.
 
-	  Returns marker {information} for the first matching marker with specified customData.
-  UpdateMarkerCustomData(frameId, customData)     **Returns** Bool               ..  topic:: Description
+    **Returns** Bool 
 
-	  Updates customData (string) for the marker at given frameId position. CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.
-  GetMarkerCustomData(frameId)                    **Returns** string             ..  topic:: Description
+SetMetadata({metadata})                                       
+^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Returns customData string for the marker at given frameId position.
-  DeleteMarkersByColor(color)                     **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Delete all markers of the specified color from the media pool item. "All" as argument deletes all color markers.
-  DeleteMarkerAtFrame(frameNum)                   **Returns** Bool               ..  topic:: Description
+    Sets the item metadata with specified 'metadata' dict. Returns True if successful.
 
-	  Delete marker at frame number from the media pool item.
-  DeleteMarkerByCustomData(customData)            **Returns** Bool               ..  topic:: Description
+    **Returns** Bool 
 
-	  Delete first matching marker with specified customData.
-  AddFlag(color)                                  **Returns** Bool               ..  topic:: Description
+GetMediaId()                                               
+^^^^^^^^^^^^
 
-	  Adds a flag with given color (string).
-  GetFlagList()                                   **Returns** [colors...]        ..  topic:: Description
+..  topic:: Description
 
-	  Returns a list of flag colors assigned to the item.
-  ClearFlags(color)                               **Returns** Bool               ..  topic:: Description
+    Returns the unique ID for the MediaPoolItem.
 
-	  Clears the flag of the given color if one exists. An "All" argument is supported and clears all flags.
-  GetClipColor()                                  **Returns** string             ..  topic:: Description
+    **Returns** string  
 
-	  Returns the item color as a string.
-  SetClipColor(colorName)                         **Returns** Bool               ..  topic:: Description
+AddMarker(frameId, color, name, note, duration,customData)               
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Sets the item color based on the colorName (string).
-  ClearClipColor()                                **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Clears the item color.
-  GetClipProperty(propertyName=None)              **Returns** string|dict        ..  topic:: Description
+    Creates a new marker at given frameId position and with given marker information. 
+    'customData' is optional and helps to attach user specific data to the marker.
+          
+    **Returns** Bool
 
-	  Returns the property value for the key 'propertyName'. 
-                                                                         ..  topic:: Description
+GetMarkers()                                           
+^^^^^^^^^^^^
 
-	  If no argument is specified, a dict of all clip properties is returned. Check the section below for more information.
-  SetClipProperty(propertyName, propertyValue)    **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Sets the given property to propertyValue (string). Check the section below for more information.
-  LinkProxyMedia(proxyMediaFilePath)              **Returns** Bool               ..  topic:: Description
+    Returns a dict (frameId -> {information}) of all markers and dicts with their information.
+                                                                          
+    Example of output format: {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...}
+    In the above example - there is one 'Green' marker at offset 96 (position of the marker)
 
-	  Links proxy media located at path specified by arg 'proxyMediaFilePath' with the current clip. 'proxyMediaFilePath' should be absolute clip path.
-  UnlinkProxyMedia()                              **Returns** Bool               ..  topic:: Description
+    **Returns** {markers...}
 
-	  Unlinks any proxy media associated with clip.
-  ReplaceClip(filePath)                           **Returns** Bool               ..  topic:: Description
+GetMarkerByCustomData(customData)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Replaces the underlying asset and metadata of MediaPoolItem with the specified absolute clip path.
+..  topic:: Description
+
+    Returns marker {information} for the first matching marker with specified customData.
+
+    **Returns** {markers...} 
+
+UpdateMarkerCustomData(frameId, customData)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Updates customData (string) for the marker at given frameId position. 
+    CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.
+
+    **Returns** Bool
+
+GetMarkerCustomData(frameId)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns customData string for the marker at given frameId position.
+
+    **Returns** string
+
+DeleteMarkersByColor(color)                                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Delete all markers of the specified color from the media pool item. "All" as argument deletes all color markers.
+
+    **Returns** Bool 
+
+DeleteMarkerAtFrame(frameNum)                                  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Delete marker at frame number from the media pool item.
+
+    **Returns** Bool
+
+DeleteMarkerByCustomData(customData)                           
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Delete first matching marker with specified customData.
+
+    **Returns** Bool
+
+AddFlag(color)                                               
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Adds a flag with given color (string).
+
+    **Returns** Bool  
+
+GetFlagList()                                          
+^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a list of flag colors assigned to the item.
+
+    **Returns** [colors...] 
+
+ClearFlags(color)                                              
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Clears the flag of the given color if one exists. An "All" argument is supported and clears all flags.
+
+    **Returns** Bool
+
+GetClipColor()                                               
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the item color as a string.
+
+    **Returns** string
+
+SetClipColor(colorName)                                       
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets the item color based on the colorName (string).
+    
+    **Returns** Bool 
+
+ClearClipColor()                                              
+^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Clears the item color.
+
+    **Returns** Bool 
+
+GetClipProperty(propertyName=None)                      
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the property value for the key 'propertyName'. 
+
+    If no argument is specified, a dict of all clip properties is returned. Check the section below for more information.
+
+    **Returns** string|dict
+
+
+SetClipProperty(propertyName, propertyValue)               
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets the given property to propertyValue (string). Check the section below for more information.
+
+    **Returns** Bool    
+
+LinkProxyMedia(proxyMediaFilePath)                             
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Links proxy media located at path specified by arg 'proxyMediaFilePath' with the current clip. 'proxyMediaFilePath' should be absolute clip path.
+
+    **Returns** Bool
+
+UnlinkProxyMedia()                                             
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Unlinks any proxy media associated with clip.
+
+    **Returns** Bool
+
+ReplaceClip(filePath)                                          
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Replaces the underlying asset and metadata of MediaPoolItem with the specified absolute clip path.
+
+    **Returns** Bool
+
 
 Timeline
 --------
 
-  GetName()                                       **Returns** string             ..  topic:: Description
+GetName()                                                    
+^^^^^^^^^
 
-	  Returns the timeline name.
-  SetName(timelineName)                           **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Sets the timeline name if timelineName (string) is unique. Returns True if successful.
-  GetStartFrame()                                 **Returns** int                ..  topic:: Description
+    Returns the timeline name.
 
-	  Returns the frame number at the start of timeline.
-  GetEndFrame()                                   **Returns** int                ..  topic:: Description
+    **Returns** string
 
-	  Returns the frame number at the end of timeline.
-  GetTrackCount(trackType)                        **Returns** int                ..  topic:: Description
+SetName(timelineName)                                          
+^^^^^^^^^^^^^^^^^^^^^
 
-	  Returns the number of tracks for the given track type ("audio", "video" or "subtitle").
-  GetItemListInTrack(trackType, index)            **Returns** [items...]         ..  topic:: Description
+..  topic:: Description
 
-	  Returns a list of timeline items on that track (based on trackType and index). 1 <= index <= GetTrackCount(trackType).
-  AddMarker(frameId, color, name, note, duration, **Returns** Bool               ..  topic:: Description
+    Sets the timeline name if timelineName (string) is unique. Returns True if successful.
 
-	  Creates a new marker at given frameId position and with given marker information. 'customData' is optional and helps to attach user specific data to the marker.
-            customData)
-  GetMarkers()                                    **Returns** {markers...}       ..  topic:: Description
+    **Returns** Bool
 
-	  Returns a dict (frameId -> {information}) of all markers and dicts with their information.
-                                                                         ..  topic:: Description
+GetStartFrame()                                                 
+^^^^^^^^^^^^^^^
 
-	  Example: a value of {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...} indicates a single green marker at timeline offset 96
-  GetMarkerByCustomData(customData)               **Returns** {markers...}       ..  topic:: Description
+..  topic:: Description
 
-	  Returns marker {information} for the first matching marker with specified customData.
-  UpdateMarkerCustomData(frameId, customData)     **Returns** Bool               ..  topic:: Description
+    Returns the frame number at the start of timeline.
 
-	  Updates customData (string) for the marker at given frameId position. CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.
-  GetMarkerCustomData(frameId)                    **Returns** string             ..  topic:: Description
+    **Returns** int
 
-	  Returns customData string for the marker at given frameId position.
-  DeleteMarkersByColor(color)                     **Returns** Bool               ..  topic:: Description
+GetEndFrame()                                                  
+^^^^^^^^^^^^^
 
-	  Deletes all timeline markers of the specified color. An "All" argument is supported and deletes all timeline markers.
-  DeleteMarkerAtFrame(frameNum)                   **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Deletes the timeline marker at the given frame number.
-  DeleteMarkerByCustomData(customData)            **Returns** Bool               ..  topic:: Description
+    Returns the frame number at the end of timeline.
 
-	  Delete first matching marker with specified customData.
-  ApplyGradeFromDRX(path, gradeMode, item1, item2, ...)**Returns** Bool          ..  topic:: Description
+    **Returns** int 
 
-	  Loads a still from given file path (string) and applies grade to Timeline Items with gradeMode (int): 0 - "No keyframes", 1 - "Source Timecode aligned", 2 - "Start Frames aligned".
-  ApplyGradeFromDRX(path, gradeMode, [items])     **Returns** Bool               ..  topic:: Description
+GetTrackCount(trackType)                                        
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Loads a still from given file path (string) and applies grade to Timeline Items with gradeMode (int): 0 - "No keyframes", 1 - "Source Timecode aligned", 2 - "Start Frames aligned".
-  GetCurrentTimecode()                            **Returns** string             ..  topic:: Description
+..  topic:: Description
 
-	  Returns a string timecode representation for the current playhead position, while on Cut, Edit, Color, Fairlight and Deliver pages.
-  SetCurrentTimecode(timecode)                    **Returns** Bool               ..  topic:: Description
+    Returns the number of tracks for the given track type ("audio", "video" or "subtitle").
 
-	  Sets current playhead position from input timecode for Cut, Edit, Color, Fairlight and Deliver pages.
-  GetCurrentVideoItem()                           **Returns** item               ..  topic:: Description
+    **Returns** int
 
-	  Returns the current video timeline item.
-  GetCurrentClipThumbnailImage()                  **Returns** {thumbnailData}    ..  topic:: Description
+GetItemListInTrack(trackType, index)                     
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Returns a dict (keys "width", "height", "format" and "data") with data containing raw thumbnail image data (RGB 8-bit image data encoded in base64 format) for current media in the Color Page.
-                                                                         ..  topic:: Description
+..  topic:: Description
 
-	  An example of how to retrieve and interpret thumbnails is provided in 6_get_current_media_thumbnail.py in the Examples folder.
-  GetTrackName(trackType, trackIndex)             **Returns** string             ..  topic:: Description
+    Returns a list of timeline items on that track (based on trackType and index). 1 <= index <= GetTrackCount(trackType).
 
-	  Returns the track name for track indicated by trackType ("audio", "video" or "subtitle") and index. 1 <= trackIndex <= GetTrackCount(trackType).
-  SetTrackName(trackType, trackIndex, name)       **Returns** Bool               ..  topic:: Description
+    **Returns** [items...]
 
-	  Sets the track name (string) for track indicated by trackType ("audio", "video" or "subtitle") and index. 1 <= trackIndex <= GetTrackCount(trackType).
-  DuplicateTimeline(timelineName)                 **Returns** timeline           ..  topic:: Description
+AddMarker(frameId, color, name, note, duration, customData)               
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Duplicates the timeline and returns the created timeline, with the (optional) timelineName, on success.
-  CreateCompoundClip([timelineItems], {clipInfo}) **Returns** timelineItem       ..  topic:: Description
+..  topic:: Description
 
-	  Creates a compound clip of input timeline items with an optional clipInfo map: {"startTimecode" : "00:00:00:00", "name" : "Compound Clip 1"}. It returns the created timeline item.
-  CreateFusionClip([timelineItems])               **Returns** timelineItem       ..  topic:: Description
+    Creates a new marker at given frameId position and with given marker information. 
+    'customData' is optional and helps to attach user specific data to the marker.
+         
 
-	  Creates a Fusion clip of input timeline items. It returns the created timeline item.
-  ImportIntoTimeline(filePath, {importOptions})   **Returns** Bool               ..  topic:: Description
+    **Returns** Bool 
 
-	  Imports timeline items from an AAF file and optional importOptions dict into the timeline, with support for the keys:
-                                                                         ..  topic:: Description
+GetMarkers()                                           
+^^^^^^^^^^^^
 
-	  "autoImportSourceClipsIntoMediaPool": Bool, specifies if source clips should be imported into media pool, True by default
-                                                                         ..  topic:: Description
+..  topic:: Description
 
-	  "ignoreFileExtensionsWhenMatching": Bool, specifies if file extensions should be ignored when matching, False by default
-                                                                         ..  topic:: Description
+    Returns a dict (frameId -> {information}) of all markers and dicts with their information.                                                                
 
-	  "linkToSourceCameraFiles": Bool, specifies if link to source camera files should be enabled, False by default
-                                                                         ..  topic:: Description
+    Example: a value of {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...} indicates a single green marker at timeline offset 96
 
-	  "useSizingInfo": Bool, specifies if sizing information should be used, False by default
-                                                                         ..  topic:: Description
+    **Returns** {markers...}
 
-	  "importMultiChannelAudioTracksAsLinkedGroups": Bool, specifies if multi-channel audio tracks should be imported as linked groups, False by default
-                                                                         ..  topic:: Description
+GetMarkerByCustomData(customData)                      
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  "insertAdditionalTracks": Bool, specifies if additional tracks should be inserted, True by default
-                                                                         ..  topic:: Description
+..  topic:: Description
 
-	  "insertWithOffset": string, specifies insert with offset value in timecode format - defaults to "00:00:00:00", applicable if "insertAdditionalTracks" is False
-                                                                         ..  topic:: Description
+    Returns marker {information} for the first matching marker with specified customData.
 
-	  "sourceClipsPath": string, specifies a filesystem path to search for source clips if the media is inaccessible in their original path and if "ignoreFileExtensionsWhenMatching" is True
-                                                                         ..  topic:: Description
+    **Returns** {markers...}
 
-	  "sourceClipsFolders": string, list of Media Pool folder objects to search for source clips if the media is not present in current folder
+UpdateMarkerCustomData(frameId, customData)                    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  Export(fileName, exportType, exportSubtype)     **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Exports timeline to 'fileName' as per input exportType & exportSubtype format.
-                                                                         ..  topic:: Description
+    Updates customData (string) for the marker at given frameId position. CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.
 
-	  Refer to section "Looking up timeline exports properties" for information on the parameters.
-  GetSetting(settingName)                         **Returns** string             ..  topic:: Description
+    **Returns** Bool
 
-	  Returns value of timeline setting (indicated by settingName : string). Check the section below for more information.
-  SetSetting(settingName, settingValue)           **Returns** Bool               ..  topic:: Description
+GetMarkerCustomData(frameId)                                 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Sets timeline setting (indicated by settingName : string) to the value (settingValue : string). Check the section below for more information.
-  InsertGeneratorIntoTimeline(generatorName)      **Returns** TimelineItem       ..  topic:: Description
+..  topic:: Description
 
-	  Inserts a generator (indicated by generatorName : string) into the timeline.
-  InsertFusionGeneratorIntoTimeline(generatorName) **Returns** TimelineItem      ..  topic:: Description
+    Returns customData string for the marker at given frameId position.
 
-	  Inserts a Fusion generator (indicated by generatorName : string) into the timeline.
-  InsertOFXGeneratorIntoTimeline(generatorName)   **Returns** TimelineItem       ..  topic:: Description
+    **Returns** string
 
-	  Inserts an OFX generator (indicated by generatorName : string) into the timeline.
-  InsertTitleIntoTimeline(titleName)              **Returns** TimelineItem       ..  topic:: Description
+DeleteMarkersByColor(color)                                    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Inserts a title (indicated by titleName : string) into the timeline.
-  InsertFusionTitleIntoTimeline(titleName)        **Returns** TimelineItem       ..  topic:: Description
+..  topic:: Description
 
-	  Inserts a Fusion title (indicated by titleName : string) into the timeline.
-  GrabStill()                                     **Returns** galleryStill       ..  topic:: Description
+    Deletes all timeline markers of the specified color. An "All" argument is supported and deletes all timeline markers.
 
-	  Grabs still from the current video clip. Returns a GalleryStill object.
-  GrabAllStills(stillFrameSource)                 **Returns** [galleryStill]     ..  topic:: Description
+    **Returns** Bool
 
-	  Grabs stills from all the clips of the timeline at 'stillFrameSource' (1 - First frame, 2 - Middle frame). Returns the list of GalleryStill objects.
+DeleteMarkerAtFrame(frameNum)                                  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes the timeline marker at the given frame number.
+
+    **Returns** Bool
+
+DeleteMarkerByCustomData(customData)                           
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Delete first matching marker with specified customData.
+
+    **Returns** Bool
+
+ApplyGradeFromDRX(path, gradeMode, item1, item2, ...)           
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Loads a still from given file path (string) and applies grade to Timeline Items with gradeMode (int): 0 - "No keyframes", 1 - "Source Timecode aligned", 2 - "Start Frames aligned".
+
+    **Returns** Bool
+
+ApplyGradeFromDRX(path, gradeMode, [items])                    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Loads a still from given file path (string) and applies grade to Timeline Items with gradeMode (int): 0 - "No keyframes", 1 - "Source Timecode aligned", 2 - "Start Frames aligned".
+
+    **Returns** Bool
+
+GetCurrentTimecode()                                         
+^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a string timecode representation for the current playhead position, while on Cut, Edit, Color, Fairlight and Deliver pages.
+
+    **Returns** string
+
+SetCurrentTimecode(timecode)                                  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets current playhead position from input timecode for Cut, Edit, Color, Fairlight and Deliver pages.
+
+    **Returns** Bool 
+
+GetCurrentVideoItem()                                          
+^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the current video timeline item.
+
+    **Returns** item
+
+GetCurrentClipThumbnailImage()                      
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a dict (keys "width", "height", "format" and "data") with data containing raw thumbnail image data (RGB 8-bit image data encoded in base64 format) for current media in the Color Page.
+    An example of how to retrieve and interpret thumbnails is provided in 6_get_current_media_thumbnail.py in the Examples folder.
+
+    **Returns** {thumbnailData}
+
+GetTrackName(trackType, trackIndex)                          
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the track name for track indicated by trackType ("audio", "video" or "subtitle") and index. 1 <= trackIndex <= GetTrackCount(trackType).
+
+    **Returns** string
+
+SetTrackName(trackType, trackIndex, name)                      
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets the track name (string) for track indicated by trackType ("audio", "video" or "subtitle") and index. 1 <= trackIndex <= GetTrackCount(trackType).
+
+    **Returns** Bool
+
+DuplicateTimeline(timelineName)                            
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Duplicates the timeline and returns the created timeline, with the (optional) timelineName, on success.
+
+    **Returns** timeline
+
+CreateCompoundClip([timelineItems], {clipInfo})        
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Creates a compound clip of input timeline items with an optional clipInfo map: {"startTimecode" : "00:00:00:00", "name" : "Compound Clip 1"}. It returns the created timeline item.
+
+    **Returns** timelineItem
+
+CreateFusionClip([timelineItems])                      
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Creates a Fusion clip of input timeline items. It returns the created timeline item.
+
+    **Returns** timelineItem
+
+ImportIntoTimeline(filePath, {importOptions})                
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Imports timeline items from an AAF file and optional importOptions dict into the timeline, with support for the keys:
+
+    * "autoImportSourceClipsIntoMediaPool": Bool, specifies if source clips should be imported into media pool, True by default
+    * "ignoreFileExtensionsWhenMatching": Bool, specifies if file extensions should be ignored when matching, False by default
+    * "linkToSourceCameraFiles": Bool, specifies if link to source camera files should be enabled, False by default
+    * "useSizingInfo": Bool, specifies if sizing information should be used, False by default
+    * "importMultiChannelAudioTracksAsLinkedGroups": Bool, specifies if multi-channel audio tracks should be imported as linked groups, False by default
+    * "insertAdditionalTracks": Bool, specifies if additional tracks should be inserted, True by default
+    * "insertWithOffset": string, specifies insert with offset value in timecode format - defaults to "00:00:00:00", applicable if "insertAdditionalTracks" is False
+    * "sourceClipsPath": string, specifies a filesystem path to search for source clips if the media is inaccessible in their original path and if "ignoreFileExtensionsWhenMatching" is True
+    * "sourceClipsFolders": string, list of Media Pool folder objects to search for source clips if the media is not present in current folder
+
+    **Returns** Bool
+
+Export(fileName, exportType, exportSubtype)                    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Exports timeline to 'fileName' as per input exportType & exportSubtype format.
+
+    **Returns** Bool
+
+    Refer to section :ref:`"Looking up timeline exports properties"<API_timeline_export>` for information on the parameters.
+
+GetSetting(settingName)                                      
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns value of timeline setting (indicated by settingName : string). Check the section below for more information.
+
+    **Returns** string
+
+SetSetting(settingName, settingValue)                          
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets timeline setting (indicated by settingName : string) to the value (settingValue : string). Check the section below for more information.
+
+    **Returns** Bool
+
+InsertGeneratorIntoTimeline(generatorName)             
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Inserts a generator (indicated by generatorName : string) into the timeline.
+
+    **Returns** TimelineItem
+
+InsertFusionGeneratorIntoTimeline(generatorName)       
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Inserts a Fusion generator (indicated by generatorName : string) into the timeline.
+
+    **Returns** TimelineItem
+
+InsertOFXGeneratorIntoTimeline(generatorName)          
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Inserts an OFX generator (indicated by generatorName : string) into the timeline.
+
+    **Returns** TimelineItem
+
+InsertTitleIntoTimeline(titleName)                     
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Inserts a title (indicated by titleName : string) into the timeline.
+
+    **Returns** TimelineItem
+
+InsertFusionTitleIntoTimeline(titleName)              
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Inserts a Fusion title (indicated by titleName : string) into the timeline.
+
+    **Returns** TimelineItem 
+
+GrabStill()                                            
+^^^^^^^^^^^
+
+..  topic:: Description
+
+    Grabs still from the current video clip. Returns a GalleryStill object.
+
+    **Returns** galleryStill
+
+GrabAllStills(stillFrameSource)                      
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Grabs stills from all the clips of the timeline at 'stillFrameSource' (1 - First frame, 2 - Middle frame). Returns the list of GalleryStill objects.
+
+    **Returns** [galleryStill]
+
 
 TimelineItem
 ------------
 
-  GetName()                                       **Returns** string             ..  topic:: Description
+GetName()                                                   
+^^^^^^^^^
 
-	  Returns the item name.
-  GetDuration()                                   **Returns** int                ..  topic:: Description
+..  topic:: Description
 
-	  Returns the item duration.
-  GetEnd()                                        **Returns** int                ..  topic:: Description
+    Returns the item name.
 
-	  Returns the end frame position on the timeline.
-  GetFusionCompCount()                            **Returns** int                ..  topic:: Description
+    **Returns** string 
 
-	  Returns number of Fusion compositions associated with the timeline item.
-  GetFusionCompByIndex(compIndex)                 **Returns** fusionComp         ..  topic:: Description
+GetDuration()                                                   
+^^^^^^^^^^^^^
 
-	  Returns the Fusion composition object based on given index. 1 <= compIndex <= timelineItem.GetFusionCompCount()
-  GetFusionCompNameList()                         **Returns** [names...]         ..  topic:: Description
+..  topic:: Description
 
-	  Returns a list of Fusion composition names associated with the timeline item.
-  GetFusionCompByName(compName)                   **Returns** fusionComp         ..  topic:: Description
+    Returns the item duration.
 
-	  Returns the Fusion composition object based on given name.
-  GetLeftOffset()                                 **Returns** int                ..  topic:: Description
+    **Returns** int
+    
+GetEnd()                                                       
+^^^^^^^^
 
-	  Returns the maximum extension by frame for clip from left side.
-  GetRightOffset()                                **Returns** int                ..  topic:: Description
+..  topic:: Description
 
-	  Returns the maximum extension by frame for clip from right side.
-  GetStart()                                      **Returns** int                ..  topic:: Description
+    Returns the end frame position on the timeline.
 
-	  Returns the start frame position on the timeline.
-  SetProperty(propertyKey, propertyValue)         **Returns** Bool               ..  topic:: Description
+    **Returns** int 
 
-	  Sets the value of property "propertyKey" to value "propertyValue"
-                                                                         ..  topic:: Description
+GetFusionCompCount()                                            
+^^^^^^^^^^^^^^^^^^^^
 
-	  Refer to "Looking up Timeline item properties" for more information
-  GetProperty(propertyKey)                        **Returns** int/[key:value]    ..  topic:: Description
+..  topic:: Description
 
-	  returns the value of the specified key
-                                                                         ..  topic:: Description
+    Returns number of Fusion compositions associated with the timeline item.
 
-	  if no key is specified, the method returns a dictionary(python) or table(lua) for all supported keys
-  AddMarker(frameId, color, name, note, duration, **Returns** Bool               ..  topic:: Description
+    **Returns** int
 
-	  Creates a new marker at given frameId position and with given marker information. 'customData' is optional and helps to attach user specific data to the marker.
-            customData)
-  GetMarkers()                                    **Returns** {markers...}       ..  topic:: Description
+GetFusionCompByIndex(compIndex)                          
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Returns a dict (frameId -> {information}) of all markers and dicts with their information.
-                                                                         ..  topic:: Description
+..  topic:: Description
 
-	  Example: a value of {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...} indicates a single green marker at clip offset 96
-  GetMarkerByCustomData(customData)               **Returns** {markers...}       ..  topic:: Description
+    Returns the Fusion composition object based on given index. 1 <= compIndex <= timelineItem.GetFusionCompCount()
 
-	  Returns marker {information} for the first matching marker with specified customData.
-  UpdateMarkerCustomData(frameId, customData)     **Returns** Bool               ..  topic:: Description
+    **Returns** fusionComp
 
-	  Updates customData (string) for the marker at given frameId position. CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.
-  GetMarkerCustomData(frameId)                    **Returns** string             ..  topic:: Description
+GetFusionCompNameList()                                  
+^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Returns customData string for the marker at given frameId position.
-  DeleteMarkersByColor(color)                     **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Delete all markers of the specified color from the timeline item. "All" as argument deletes all color markers.
-  DeleteMarkerAtFrame(frameNum)                   **Returns** Bool               ..  topic:: Description
+    Returns a list of Fusion composition names associated with the timeline item.
 
-	  Delete marker at frame number from the timeline item.
-  DeleteMarkerByCustomData(customData)            **Returns** Bool               ..  topic:: Description
+    **Returns** [names...]
 
-	  Delete first matching marker with specified customData.
-  AddFlag(color)                                  **Returns** Bool               ..  topic:: Description
+GetFusionCompByName(compName)                            
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Adds a flag with given color (string).
-  GetFlagList()                                   **Returns** [colors...]        ..  topic:: Description
+..  topic:: Description
 
-	  Returns a list of flag colors assigned to the item.
-  ClearFlags(color)                               **Returns** Bool               ..  topic:: Description
+    Returns the Fusion composition object based on given name.
 
-	  Clear flags of the specified color. An "All" argument is supported to clear all flags. 
-  GetClipColor()                                  **Returns** string             ..  topic:: Description
+    **Returns** fusionComp
 
-	  Returns the item color as a string.
-  SetClipColor(colorName)                         **Returns** Bool               ..  topic:: Description
+GetLeftOffset()                                                
+^^^^^^^^^^^^^^^
 
-	  Sets the item color based on the colorName (string).
-  ClearClipColor()                                **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Clears the item color.
-  AddFusionComp()                                 **Returns** fusionComp         ..  topic:: Description
+    Returns the maximum extension by frame for clip from left side.
 
-	  Adds a new Fusion composition associated with the timeline item.
-  ImportFusionComp(path)                          **Returns** fusionComp         ..  topic:: Description
+    **Returns** int 
 
-	  Imports a Fusion composition from given file path by creating and adding a new composition for the item.
-  ExportFusionComp(path, compIndex)               **Returns** Bool               ..  topic:: Description
+GetRightOffset()                                                
+^^^^^^^^^^^^^^^^
 
-	  Exports the Fusion composition based on given index to the path provided.
-  DeleteFusionCompByName(compName)                **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Deletes the named Fusion composition.
-  LoadFusionCompByName(compName)                  **Returns** fusionComp         ..  topic:: Description
+    Returns the maximum extension by frame for clip from right side.
 
-	  Loads the named Fusion composition as the active composition.
-  RenameFusionCompByName(oldName, newName)        **Returns** Bool               ..  topic:: Description
+    **Returns** int
 
-	  Renames the Fusion composition identified by oldName.
-  AddVersion(versionName, versionType)            **Returns** Bool               ..  topic:: Description
+GetStart()                                                     
+^^^^^^^^^^
 
-	  Adds a new color version for a video clipbased on versionType (0 - local, 1 - remote).
-  GetCurrentVersion()                             **Returns** {versionName...}   ..  topic:: Description
+..  topic:: Description
 
-	  Returns the current version of the video clip. The returned value will have the keys versionName and versionType(0 - local, 1 - remote).
-  DeleteVersionByName(versionName, versionType)   **Returns** Bool               ..  topic:: Description
+    Returns the start frame position on the timeline.
 
-	  Deletes a color version by name and versionType (0 - local, 1 - remote).
-  LoadVersionByName(versionName, versionType)     **Returns** Bool               ..  topic:: Description
+    **Returns** int 
 
-	  Loads a named color version as the active version. versionType: 0 - local, 1 - remote.
-  RenameVersionByName(oldName, newName, versionType)**Returns** Bool             ..  topic:: Description
+SetProperty(propertyKey, propertyValue)                        
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Renames the color version identified by oldName and versionType (0 - local, 1 - remote).
-  GetVersionNameList(versionType)                 **Returns** [names...]         ..  topic:: Description
+..  topic:: Description
 
-	  Returns a list of all color versions for the given versionType (0 - local, 1 - remote).
-  GetMediaPoolItem()                              **Returns** MediaPoolItem      ..  topic:: Description
+    Sets the value of property "propertyKey" to value "propertyValue"
 
-	  Returns the media pool item corresponding to the timeline item if one exists.
-  GetStereoConvergenceValues()                    **Returns** {keyframes...}     ..  topic:: Description
+    Refer to "Looking up Timeline item properties" for more information
 
-	  Returns a dict (offset -> value) of keyframe offsets and respective convergence values.
-  GetStereoLeftFloatingWindowParams()             **Returns** {keyframes...}     ..  topic:: Description
+    **Returns** Bool
 
-	  For the LEFT eye -> returns a dict (offset -> dict) of keyframe offsets and respective floating window params. Value at particular offset includes the left, right, top and bottom floating window values.
-  GetStereoRightFloatingWindowParams()            **Returns** {keyframes...}     ..  topic:: Description
 
-	  For the RIGHT eye -> returns a dict (offset -> dict) of keyframe offsets and respective floating window params. Value at particular offset includes the left, right, top and bottom floating window values.
-  SetLUT(nodeIndex, lutPath)                      **Returns** Bool               ..  topic:: Description
+GetProperty(propertyKey)                            
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Sets LUT on the node mapping the node index provided, 1 <= nodeIndex <= total number of nodes.
-                                                                         ..  topic:: Description
+..  topic:: Description
 
-	  The lutPath can be an absolute path, or a relative path (based off custom LUT paths or the master LUT path).
-                                                                         ..  topic:: Description
+    returns the value of the specified key
+    if no key is specified, the method returns a dictionary(python) or table(lua) for all supported keys
 
-	  The operation is successful for valid lut paths that Resolve has already discovered (see Project.RefreshLUTList).
-  SetCDL([CDL map])                               **Returns** Bool               ..  topic:: Description
+    **Returns** int/[key:value]
 
-	  Keys of map are: "NodeIndex", "Slope", "Offset", "Power", "Saturation", where 1 <= NodeIndex <= total number of nodes.
-                                                                         ..  topic:: Description
+AddMarker(frameId, color, name, note, duration,customData)            
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Example python code - SetCDL({"NodeIndex" : "1", "Slope" : "0.5 0.4 0.2", "Offset" : "0.4 0.3 0.2", "Power" : "0.6 0.7 0.8", "Saturation" : "0.65"})
-  AddTake(mediaPoolItem, startFrame, endFrame)    **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. By default, the full clip extents is added. startFrame (int) and endFrame (int) are optional arguments used to specify the extents.
-  GetSelectedTakeIndex()                          **Returns** int                ..  topic:: Description
+    Creates a new marker at given frameId position and with given marker information. 'customData' is optional and helps to attach user specific data to the marker.
+          
+    **Returns** Bool   
 
-	  Returns the index of the currently selected take, or 0 if the clip is not a take selector.
-  GetTakesCount()                                 **Returns** int                ..  topic:: Description
+GetMarkers()                                          
+^^^^^^^^^^^^
 
-	  Returns the number of takes in take selector, or 0 if the clip is not a take selector.
-  GetTakeByIndex(idx)                             **Returns** {takeInfo...}      ..  topic:: Description
+..  topic:: Description
 
-	  Returns a dict (keys "startFrame", "endFrame" and "mediaPoolItem") with take info for specified index.
-  DeleteTakeByIndex(idx)                          **Returns** Bool               ..  topic:: Description
+    Returns a dict (frameId -> {information}) of all markers and dicts with their information.
 
-	  Deletes a take by index, 1 <= idx <= number of takes.
-  SelectTakeByIndex(idx)                          **Returns** Bool               ..  topic:: Description
+    **Returns** {markers...} 
 
-	  Selects a take by index, 1 <= idx <= number of takes.
-  FinalizeTake()                                  **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Finalizes take selection.
-  CopyGrades([tgtTimelineItems])                  **Returns** Bool               ..  topic:: Description
+  Example: a value of {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...} indicates a single green marker at clip offset 96
 
-	  Copies the current grade to all the items in tgtTimelineItems list. Returns True on success and False if any error occured.
+GetMarkerByCustomData(customData)                     
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns marker {information} for the first matching marker with specified customData.
+
+    **Returns** {markers...} 
+
+UpdateMarkerCustomData(frameId, customData)                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Updates customData (string) for the marker at given frameId position. CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.
+
+    **Returns** Bool 
+
+GetMarkerCustomData(frameId)                                 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns customData string for the marker at given frameId position.
+
+    **Returns** string
+
+DeleteMarkersByColor(color)                                    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Delete all markers of the specified color from the timeline item. "All" as argument deletes all color markers.
+
+    **Returns** Bool
+
+DeleteMarkerAtFrame(frameNum)                                  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Delete marker at frame number from the timeline item.
+
+    **Returns** Bool
+
+DeleteMarkerByCustomData(customData)                           
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Delete first matching marker with specified customData.
+
+    **Returns** Bool
+
+AddFlag(color)                                                
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Adds a flag with given color (string).
+
+    **Returns** Bool 
+
+GetFlagList()                                           
+^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a list of flag colors assigned to the item.
+
+    **Returns** [colors...]
+
+ClearFlags(color)                                              
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Clear flags of the specified color. An "All" argument is supported to clear all flags. 
+
+    **Returns** Bool
+
+GetClipColor()                                              
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the item color as a string.
+
+    **Returns** string 
+
+SetClipColor(colorName)                                        
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets the item color based on the colorName (string).
+
+    **Returns** Bool
+    
+ClearClipColor()                                               
+^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Clears the item color.
+
+    **Returns** Bool
+
+AddFusionComp()                                          
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Adds a new Fusion composition associated with the timeline item.
+
+    **Returns** fusionComp
+
+ImportFusionComp(path)                                   
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Imports a Fusion composition from given file path by creating and adding a new composition for the item.
+
+    **Returns** fusionComp
+
+ExportFusionComp(path, compIndex)                              
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Exports the Fusion composition based on given index to the path provided.
+
+    **Returns** Bool
+
+DeleteFusionCompByName(compName)                               
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes the named Fusion composition.
+
+    **Returns** Bool
+
+LoadFusionCompByName(compName)                           
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Loads the named Fusion composition as the active composition.
+
+    **Returns** fusionComp
+
+RenameFusionCompByName(oldName, newName)                       
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Renames the Fusion composition identified by oldName.
+
+    **Returns** Bool
+
+AddVersion(versionName, versionType)                           
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Adds a new color version for a video clipbased on versionType (0 - local, 1 - remote).
+
+    **Returns** Bool
+
+GetCurrentVersion()                                
+^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the current version of the video clip. The returned value will have the keys versionName and versionType(0 - local, 1 - remote).
+
+    **Returns** {versionName...}
+
+DeleteVersionByName(versionName, versionType)                  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes a color version by name and versionType (0 - local, 1 - remote).
+
+    **Returns** Bool
+
+LoadVersionByName(versionName, versionType)                    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Loads a named color version as the active version. versionType: 0 - local, 1 - remote.
+
+    **Returns** Bool
+
+RenameVersionByName(oldName, newName, versionType)             
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Renames the color version identified by oldName and versionType (0 - local, 1 - remote).
+
+    **Returns** Bool
+
+GetVersionNameList(versionType)                          
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a list of all color versions for the given versionType (0 - local, 1 - remote).
+
+    **Returns** [names...]
+
+GetMediaPoolItem()                                    
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the media pool item corresponding to the timeline item if one exists.
+
+    **Returns** MediaPoolItem
+
+GetStereoConvergenceValues()                         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a dict (offset -> value) of keyframe offsets and respective convergence values.
+
+    **Returns** {keyframes...}
+
+GetStereoLeftFloatingWindowParams()                 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    For the LEFT eye -> returns a dict (offset -> dict) of keyframe offsets and respective floating window params. Value at particular offset includes the left, right, top and bottom floating window values.
+
+    **Returns** {keyframes...} 
+
+GetStereoRightFloatingWindowParams()              
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    For the RIGHT eye -> returns a dict (offset -> dict) of keyframe offsets and respective floating window params. Value at particular offset includes the left, right, top and bottom floating window values.
+
+    **Returns** {keyframes...}   
+
+SetLUT(nodeIndex, lutPath)                                     
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets LUT on the node mapping the node index provided, 1 <= nodeIndex <= total number of nodes.
+    The lutPath can be an absolute path, or a relative path (based off custom LUT paths or the master LUT path).
+    The operation is successful for valid lut paths that Resolve has already discovered (see Project.RefreshLUTList).
+
+    **Returns** Bool
+
+SetCDL([CDL map])                                              
+^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Keys of map are: "NodeIndex", "Slope", "Offset", "Power", "Saturation", where 1 <= NodeIndex <= total number of nodes.
+    
+    Example python code - SetCDL({"NodeIndex" : "1", "Slope" : "0.5 0.4 0.2", "Offset" : "0.4 0.3 0.2", "Power" : "0.6 0.7 0.8", "Saturation" : "0.65"})
+
+    **Returns** Bool
+
+AddTake(mediaPoolItem, startFrame, endFrame)                  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. By default, the full clip extents is added. startFrame (int) and endFrame (int) are optional arguments used to specify the extents.
+
+    **Returns** Bool 
+
+GetSelectedTakeIndex()                                         
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the index of the currently selected take, or 0 if the clip is not a take selector.
+
+    **Returns** int 
+
+GetTakesCount()                                                 
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the number of takes in take selector, or 0 if the clip is not a take selector.
+
+    **Returns** int
+
+GetTakeByIndex(idx)                                   
+^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns a dict (keys "startFrame", "endFrame" and "mediaPoolItem") with take info for specified index.
+
+    **Returns** {takeInfo...}
+
+DeleteTakeByIndex(idx)                                         
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes a take by index, 1 <= idx <= number of takes.
+
+    **Returns** Bool
+
+SelectTakeByIndex(idx)                                        
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Selects a take by index, 1 <= idx <= number of takes.
+
+    **Returns** Bool 
+
+FinalizeTake()                                                 
+^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Finalizes take selection.
+
+    **Returns** Bool
+
+CopyGrades([tgtTimelineItems])                                
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Copies the current grade to all the items in tgtTimelineItems list. Returns True on success and False if any error occured.
+
+    **Returns** Bool 
+
 
 Gallery
 -------
 
-  GetAlbumName(galleryStillAlbum)                 **Returns** string             ..  topic:: Description
+GetAlbumName(galleryStillAlbum)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Returns the name of the GalleryStillAlbum object 'galleryStillAlbum'.
-  SetAlbumName(galleryStillAlbum, albumName)      **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Sets the name of the GalleryStillAlbum object 'galleryStillAlbum' to 'albumName'.
-  GetCurrentStillAlbum()                          **Returns** galleryStillAlbum  ..  topic:: Description
+    Returns the name of the GalleryStillAlbum object 'galleryStillAlbum'.
 
-	  Returns current album as a GalleryStillAlbum object.
-  SetCurrentStillAlbum(galleryStillAlbum)         **Returns** Bool               ..  topic:: Description
+    **Returns** string
 
-	  Sets current album to GalleryStillAlbum object 'galleryStillAlbum'.
-  GetGalleryStillAlbums()                         **Returns** [galleryStillAlbum] ..  topic:: Description
+SetAlbumName(galleryStillAlbum, albumName)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	  Returns the gallery albums as a list of GalleryStillAlbum objects.
+..  topic:: Description
+
+    Sets the name of the GalleryStillAlbum object 'galleryStillAlbum' to 'albumName'.
+
+    **Returns** Bool
+
+GetCurrentStillAlbum()
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns current album as a GalleryStillAlbum object.
+
+    **Returns** galleryStillAlbum
+
+SetCurrentStillAlbum(galleryStillAlbum)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..  topic:: Description
+
+    Sets current album to GalleryStillAlbum object 'galleryStillAlbum'.
+
+    **Returns** Bool
+
+GetGalleryStillAlbums()
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the gallery albums as a list of GalleryStillAlbum objects.
+
+    **Returns** [galleryStillAlbum]
+
 
 GalleryStillAlbum
 -----------------
 
-  GetStills()                                     **Returns** [galleryStill]     ..  topic:: Description
+GetStills()
+^^^^^^^^^^^
 
-	  Returns the list of GalleryStill objects in the album.
-  GetLabel(galleryStill)                          **Returns** string             ..  topic:: Description
+..  topic:: Description
 
-	  Returns the label of the galleryStill.
-  SetLabel(galleryStill, label)                   **Returns** Bool               ..  topic:: Description
+    Returns the list of GalleryStill objects in the album.
 
-	  Sets the new 'label' to GalleryStill object 'galleryStill'.
-  ExportStills([galleryStill], folderPath, filePrefix, format) **Returns** Bool  ..  topic:: Description
+    **Returns** [galleryStill]
+    
+GetLabel(galleryStill)
+^^^^^^^^^^^^^^^^^^^^^^
 
-	  Exports list of GalleryStill objects '[galleryStill]' to directory 'folderPath', with filename prefix 'filePrefix', using file format 'format' (supported formats: dpx, cin, tif, jpg, png, ppm, bmp, xpm).
-  DeleteStills([galleryStill])                    **Returns** Bool               ..  topic:: Description
+..  topic:: Description
 
-	  Deletes specified list of GalleryStill objects '[galleryStill]'.
+    Returns the label of the galleryStill.
 
-GalleryStill                                                             ..  topic:: Description
+    **Returns** string
 
-	  This class does not provide any API functions but the object type is used by functions in other classes.
+SetLabel(galleryStill, label)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Sets the new 'label' to GalleryStill object 'galleryStill'.
+
+    **Returns** Bool 
+
+ExportStills([galleryStill], folderPath, filePrefix, format)   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Exports list of GalleryStill objects '[galleryStill]' to directory 'folderPath', with filename prefix 'filePrefix', using file format 'format' (supported formats: dpx, cin, tif, jpg, png, ppm, bmp, xpm).
+
+    **Returns** Bool
+
+DeleteStills([galleryStill])                                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Deletes specified list of GalleryStill objects '[galleryStill]'.
+
+
+GalleryStill                                                             
 ------------
+
+..  topic:: Description
+
+    This class does not provide any API functions but the object type is used by functions in other classes.
+
+    **Returns** Bool
