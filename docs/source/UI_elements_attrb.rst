@@ -615,11 +615,15 @@ Orientation
 
 	* Vertical
 	* Horizontal
+	* ...
 
 ..  code-block:: python
 
     ui.Slider({ 'ID': 'slider_1',  'Orientation': 'Vertical' })
 
+..  image:: images/UI_slider_orientation.png
+	:width: 400px
+	:align: center
 
 Tracking
 ^^^^^^^^
