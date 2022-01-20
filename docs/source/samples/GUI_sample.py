@@ -69,7 +69,8 @@ def create_main_window():
         'WindowTitle': 'My Window'
         },
         ui.VGroup([
-                ui.CheckBox({ 'ID': 'ok_btn',  'Tristate': True })
+
+    ui.Slider({ 'ID': 'slider_1',  'Value': 5, 'SliderPosition': "right" })
              ])
     )
     win_items = win.GetItems()
