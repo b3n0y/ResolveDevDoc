@@ -330,11 +330,11 @@ ItemText
 **Type:**
 
 ..  topic:: Description		
-	This label attribute is used to display Text on the element. 
+	This label attribute is used to
 
 ..  note:: Not yet tested
 
-    ui.ComboBox({ 'ID': 'combo_1',  'ItemText': "OK" })
+    ui.ComboBox({ 'ID': 'combo_1',  'ItemText': 'test' })
 
 
 Editable
@@ -347,7 +347,7 @@ Editable
 
 ..  note:: Not yet tested
 
-    ui.ComboBox({ 'ID': 'ok_btn',  'Editable': "" })
+    ui.ComboBox({ 'ID': 'combo_1',  'Editable': "" })
 
 
 CurrentIndex
@@ -360,7 +360,7 @@ CurrentIndex
 
 ..  note:: Not yet tested
 
-    ui.ComboBox({ 'ID': 'ok_btn',  'CurrentIndex': "" })
+    ui.ComboBox({ 'ID': 'combo_1',  'CurrentIndex': "" })
 
 
 CurrentText
@@ -373,7 +373,7 @@ CurrentText
 
 ..  note:: Not yet tested
 
-    ui.ComboBox({ 'ID': 'ok_btn',  'CurrentText': "" })
+    ui.ComboBox({ 'ID': 'combo_1',  'CurrentText': "" })
 
 
 Count
@@ -386,7 +386,7 @@ Count
 
 ..  note:: Not yet tested
 
-    ui.ComboBox({ 'ID': 'ok_btn',  'Count': "" })
+    ui.ComboBox({ 'ID': 'combo_1',  'Count': 3 })
 
 
 SpinBox
@@ -395,79 +395,95 @@ SpinBox
 Value
 ^^^^^
 
-**Type:**
+**Type:** int
 
 ..  topic:: Description		
-	This label attribute is used to
+	This spinbox attribute is used to set the current SpinBox value (default max=99)
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.SpinBox({ 'ID': 'spin_1',  'Value': "OK" })
+    ui.SpinBox({ 'ID': 'spin_1',  'Value': 10 })
 
+..  image:: images/UI_spinbox_value.png
+	:width: 400px
+	:align: center
 
 Minimum
 ^^^^^^^
 
-**Type:**
+**Type:** int
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This spinbox attribute is used to set a Minimum value to the SpinBox
 
-    ui.SpinBox({ 'ID': 'spin_1',  'Minimum': "OK" })
+..  code-block:: python
+
+    ui.SpinBox({ 'ID': 'spin_1',  'Minimum': 5 })
 
 
 Maximum
 ^^^^^^^
 
-**Type:**
+**Type:** int
 
 ..  topic:: Description		
-	This label attribute is used to
 
-..  note:: Not yet tested
+	This spinbox attribute is used to set a Maximum value to the SpinBox
 
-    ui.SpinBox({ 'ID': 'spin_1',  'Maximum': "" })
+..  code-block:: python
+
+    ui.SpinBox({ 'ID': 'spin_1',  'Maximum': 8 })
 
 
 SingleStep
 ^^^^^^^^^^
 
-**Type:**
+**Type:** int
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
 
-..  note:: Not yet tested
+	This spinbox attribute is used to set the step value of the SpinBox
 
-    ui.SpinBox({ 'ID': 'spin_1',  'SingleStep': "" })
+..  code-block:: python
+
+    ui.SpinBox({ 'ID': 'spin_1',  'SingleStep': 2 })
 
 
 Prefix
 ^^^^^^
 
-**Type:**
+**Type:** string
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
 
-..  note:: Not yet tested
+	This spinbox attribute is used add a text prefix to the spinbox value
 
-    ui.SpinBox({ 'ID': 'spin_1',  'Prefix': "" })
+..  code-block:: python
+
+    ui.SpinBox({ 'ID': 'spin_1',  'Prefix': "ABC_0" })
+
+..  image:: images/UI_spinbox_prefix.png
+	:width: 400px
+	:align: center
 
 
 Suffix
 ^^^^^^
 
-**Type:**
+**Type:** string
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
 
-..  note:: Not yet tested
+	This spinbox attribute is used add a text suffix to the spinbox value
 
-    ui.SpinBox({ 'ID': 'spin_1',  'Suffix': "" })
+..  code-block:: python
+
+    ui.SpinBox({ 'ID': 'spin_1',  'Suffix': '_XYZ' })
+
+..  image:: images/UI_spinbox_suffix.png
+	:width: 400px
+	:align: center
 
 
 Alignment
@@ -476,11 +492,12 @@ Alignment
 **Type:**
 
 ..  topic:: Description		
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
 
-    ui.SpinBox({ 'ID': 'spin_1',  'Alignment': "OK" })
+    ui.SpinBox({ 'ID': 'spin_1',  'Alignment': "" })
 
 
 ReadOnly
@@ -488,10 +505,11 @@ ReadOnly
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
 
-..  note:: Not yet tested
+	This spinbox attribute is used limit the spinbox usage to the side arrows. Keyboard entry disabled
+
+..  code-block:: python
 
     ui.SpinBox({ 'ID': 'spin_1',  'ReadOnly': True })
 
@@ -501,10 +519,11 @@ Wrapping
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This spinbox attribute is used to allow the value to return to the Minimum value when passed Maximum and vice-versa
+
+..  code-block:: python
 
     ui.SpinBox({ 'ID': 'spin_1',  'Wrapping': True })
 
@@ -515,53 +534,60 @@ Slider
 Value
 ^^^^^
 
-**Type:**
+**Type:** int
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
 
-..  note:: Not yet tested
+	This slider attribute is used to set the slider value
 
-    ui.Slider({ 'ID': 'slider_1',  'Value': "" })
+..  code-block:: python
 
+    ui.Slider({ 'ID': 'slider_1',  'Value': 5 })
+
+..  image:: images/UI_slider_value.png
+	:width: 400px
+	:align: center
 
 Minimum
 ^^^^^^^
 
-**Type:**
+**Type:** int
 
 ..  topic:: Description		
-	This label attribute is used to
 
-..  note:: Not yet tested
+	This slider attribute is used to set a Minimum value to the Slider
 
-    ui.Slider({ 'ID': 'slider_1',  'Minimum': "" })
+..  code-block:: python
+
+    ui.Slider({ 'ID': 'slider_1',  'Minimum': 2 })
 
 
 Maximum
 ^^^^^^^
 
-**Type:**
+**Type:** int
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
 
-..  note:: Not yet tested
+	This slider attribute is used to set a Maximum value to the Slider
 
-    ui.Slider({ 'ID': 'slider_1',  'Maximum': "" })
+..  code-block:: python
+
+    ui.Slider({ 'ID': 'slider_1',  'Maximum': 8 })
 
 
 SingleStep
 ^^^^^^^^^^
 
-**Type:**
+**Type:** int
 
 ..  topic:: Description		
-	This label attribute is used to
 
-..  note:: Not yet tested
+	This slider attribute is used to set the step value of the slider
 
-    ui.Slider({ 'ID': 'slider_1',  'SingleStep': "" })
+..  code-block:: python
+
+    ui.Slider({ 'ID': 'slider_1',  'SingleStep': 2 })
 
 
 PageStep
@@ -570,6 +596,7 @@ PageStep
 **Type:**
 
 ..  topic:: Description		
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
@@ -580,14 +607,18 @@ PageStep
 Orientation
 ^^^^^^^^^^^
 
-**Type:**
+**Type:** string
 
 ..  topic:: Description		
-	This label attribute is used to
 
-..  note:: Not yet tested
+	This slider attribute is used to set the orientation of the slider
 
-    ui.Slider({ 'ID': 'slider_1',  'Orientation': "" })
+	* Vertical
+	* Horizontal
+
+..  code-block:: python
+
+    ui.Slider({ 'ID': 'slider_1',  'Orientation': 'Vertical' })
 
 
 Tracking
@@ -613,7 +644,7 @@ SliderPosition
 
 ..  note:: Not yet tested
 
-    ui.Slider({ 'ID': 'slider_1',  'SliderPosition': "" })
+    ui.Slider({ 'ID': 'slider_1',  'SliderPosition': ""})
 
 
 LineEdit
