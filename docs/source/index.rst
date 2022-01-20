@@ -1,10 +1,10 @@
-Welcome to DavinciDevDoc's documentation!
+Welcome to ResolveDevDoc's documentation!
 =========================================
 
 Summary
 -------
 
-**DavinciDevDoc** is an unofficial documentation for scripting and workflow integration with `Davinci Resolve 17 <https://www.blackmagicdesign.com/products/davinciresolve/>`_
+**ResolveDevDoc** is an unofficial documentation for scripting and workflow integration with `Davinci Resolve 17 <https://www.blackmagicdesign.com/products/davinciresolve/>`_
 
 This documentation was reformatted for ReadTheDocs to display additionnal informations about elements and API for Davinci Resolve.
 Please refer to the original documentation if needed. A reformated version is also available below (work in progress):
@@ -21,7 +21,7 @@ Some of those script were made with the help of the `SteakUnderWater WSL communi
 
 
 .. note::
-   DavinciDevDoc has its documentation hosted on Read the Docs.
+   ResolveDevDoc has its documentation hosted on Read the Docs.
 
 Contents
 --------
@@ -55,5 +55,5 @@ Contents
    :caption: Existing Documentation
    :maxdepth: 1
 
-   resolveapi_readme
-   workflow_readme
+   readme_resolveapi
+   readme_workflow
