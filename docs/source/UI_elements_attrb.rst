@@ -24,7 +24,7 @@ Text
 
 ..  code-block:: python
 
-	ui.Label({ 'Text': "This is a text" })
+	ui.Label({ 'ID':'label_1', 'Text': "This is a text" })
 
 
 ..  image:: images/UI_label_text.png
@@ -48,7 +48,7 @@ Alignment
 
 ..  code-block:: python
 
-	ui.Label({ 'Text': "This is a text", 'Alignment': { 'AlignCenter' : True } })
+	ui.Label({ 'ID':'label_1', 'Text': "This is a text", 'Alignment': { 'AlignCenter' : True } })
 
 ..  image:: images/UI_label_alignment.png
 	:width: 400px
@@ -66,7 +66,7 @@ FrameStyle
 
 ..  note:: Not yet tested
 
-	ui.Label({ 'FrameStyle': "" })
+	ui.Label({ 'ID':'label_1', 'FrameStyle': "" })
 
 WordWrap
 ^^^^^^^^
@@ -79,7 +79,7 @@ WordWrap
 
 ..  code-block:: python
 	
-	ui.Label({ 'Text': "This is a longer text than the window that was created" , 'WordWrap': True })
+	ui.Label({ 'ID':'label_1', 'Text': "This is a longer text than the window that was created" , 'WordWrap': True })
 
 ..  image:: images/UI_label_wordwrap.png
 	:width: 400px
@@ -96,7 +96,7 @@ Indent
 
 ..  note:: Not yet tested
 
-	ui.Label({ 'Indent': "" })
+	ui.Label({ 'ID':'label_1', 'Indent': "" })
 
 Margin
 ^^^^^^
@@ -109,7 +109,7 @@ Margin
 
 ..  note:: Not yet tested
 
-	ui.Label({ 'Margin': "" })
+	ui.Label({ 'ID':'label_1', 'Margin': "" })
 
 
 Button
@@ -233,7 +233,7 @@ Text
 
 ..  code-block:: 
 
-    ui.CheckBox({ 'ID': 'ok_btn',  'Text': "OK" })
+    ui.CheckBox({ 'ID': 'checkbox_1',  'Text': "OK" })
 
 ..  image:: images/UI_checkbox_text.png
 	:width: 400px
@@ -250,7 +250,7 @@ Down
 
 ..  note:: Not yet tested
 
-    ui.CheckBox({ 'ID': 'ok_btn',  'Down': "" })
+    ui.CheckBox({ 'ID': 'checkbox_1',  'Down': "" })
 
 Checkable
 ^^^^^^^^^
@@ -262,7 +262,7 @@ Checkable
 
 ..  note:: Not yet tested
 
-    ui.CheckBox({ 'ID': 'ok_btn',  'Checkable': True })
+    ui.CheckBox({ 'ID': 'checkbox_1',  'Checkable': True })
 
 
 Checked
@@ -275,7 +275,7 @@ Checked
 
 ..  code-block:: python
 
-    ui.CheckBox({ 'ID': 'ok_btn',  'Checked': True })
+    ui.CheckBox({ 'ID': 'checkbox_1',  'Checked': True })
 
 ..  image:: images/UI_checkbox_checked.png
 	:width: 400px
@@ -291,20 +291,20 @@ Tristate
 
 ..  code-block:: python
 
-    ui.CheckBox({ 'ID': 'ok_btn',  'Tristate': True })
+    ui.CheckBox({ 'ID': 'checkbox_1',  'Tristate': True })
 
 
-.. 	|img1| image:: images/UI_checkbox_tristate1.png
+.. 	|tri1| image:: images/UI_checkbox_tristate1.png
     :width: 300pt
 
-..  |img2| image:: images/UI_checkbox_tristate2.png
+..  |tri2| image:: images/UI_checkbox_tristate2.png
 	:width: 300pt
 
-..  |img3| image:: images/UI_checkbox_tristate3.png
+..  |tri3| image:: images/UI_checkbox_tristate3.png
 	:width: 300pt
 
 +---------+---------+---------+
-| |img1|  | |img2|  | |img3|  |
+| |tri1|  | |tri2|  | |tri3|  |
 +---------+---------+---------+
 
 
@@ -318,7 +318,7 @@ CheckState
 
 ..  note:: Not yet tested
 
-    ui.CheckBox({ 'ID': 'ok_btn',  'CheckState': "" })
+    ui.CheckBox({ 'ID': 'checkbox_1',  'CheckState': "" })
 
 
 ComboBox
