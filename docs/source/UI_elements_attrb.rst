@@ -42,7 +42,8 @@ Alignment
 
 	* AlignCenter
 	* AlignHCenter
-	* AlighVCenter
+	* AlignVCenter
+	* AlignTop
 	* Others to list...
 
 ..  code-block:: python
@@ -157,13 +158,15 @@ Checkable
 
     ui.Button({ 'ID': 'ok_btn',  'Checkable': True })
 
-..  image:: images/UI_button_checkable_off.png
-	:width: 200px
-	:align: center
+..  |checkon| image:: images/UI_button_checkable_on.png
+	:width: 300pt
 
-..  image:: images/UI_button_checkable_on.png
-	:width: 200px
-	:align: center
+..  |checkoff| image:: images/UI_button_checkable_off.png
+	:width: 300pt
+
++------------+------------+
+| |checkon|  | |checkoff| |
++------------+------------+
 
 
 Checked
@@ -270,10 +273,13 @@ Checked
 ..  topic:: Description		
 	This label attribute is used to 
 
-..  note:: Not yet tested
+..  code-block:: python
 
     ui.CheckBox({ 'ID': 'ok_btn',  'Checked': True })
 
+..  image:: images/UI_checkbox_checked.png
+	:width: 400px
+	:align: center
 
 Tristate
 ^^^^^^^^
@@ -281,11 +287,25 @@ Tristate
 **Type:**
 
 ..  topic:: Description		
-	This label attribute is used to 
+	This label attribute is used to activate a 3 state checkbox
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.CheckBox({ 'ID': 'ok_btn',  'Tristate': "" })
+    ui.CheckBox({ 'ID': 'ok_btn',  'Tristate': True })
+
+
+.. 	|img1| image:: images/UI_checkbox_tristate1.png
+    :width: 300pt
+
+..  |img2| image:: images/UI_checkbox_tristate2.png
+	:width: 300pt
+
+..  |img3| image:: images/UI_checkbox_tristate3.png
+	:width: 300pt
+
++---------+---------+---------+
+| |img1|  | |img2|  | |img3|  |
++---------+---------+---------+
 
 
 CheckState

@@ -69,7 +69,7 @@ def create_main_window():
         'WindowTitle': 'My Window'
         },
         ui.VGroup([
-                ui.CheckBox({ 'ID': 'ok_btn',  'Text': "OK" })
+                ui.CheckBox({ 'ID': 'ok_btn',  'Tristate': True })
              ])
     )
     win_items = win.GetItems()
