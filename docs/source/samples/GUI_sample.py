@@ -19,6 +19,7 @@ __status__ = "Dev"
 
 #STYLESHEETS
 default_css_label_color = 'rgb(255, 99, 71)'
+color_dict = {'R':0.3, 'G':0.1, 'B':0}
 # css_label_color = 'Tomato'
 
 home_dir = os.path.expanduser("~")
@@ -70,9 +71,11 @@ def create_main_window():
         },
         ui.VGroup([
 
-    ui.Slider({ 'ID': 'slider_1',  'Value': 5, 'SliderPosition': "right" })
-             ])
+                ui.Button({ 'ID': "Browse",  'Text': " Browse", "Icon": ui.Icon({'File': r"UserData:/Scripts/images/csv.png"}), }),
+            ])
+    
     )
+    
     win_items = win.GetItems()
 
     # Event handlers

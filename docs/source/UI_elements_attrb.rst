@@ -10,8 +10,14 @@ and FixedSize. Some other common GUI elements and their main attributes include:
 	For better management of elements, define an ID attribute. Not all example will contain an ID but keep that in mind. 
 	You can then use the win.Find('ID') to find and update an element and update an attribute win.Find('myButton').Text = "Processing..."
 
+
+You need to create a Window with a dictionnary of parameter and list of item to contain your element and attribute. 
+Check :ref:`UI Element Layout page <UI_elements_layout>` for more details
+
 Label
 -----
+
+.. _Label Text:
 
 Text
 ^^^^
@@ -114,6 +120,8 @@ Margin
 
 Button
 ------
+
+.. _Button Text:
 
 Text
 ^^^^
@@ -630,7 +638,8 @@ Tracking
 
 **Type:**
 
-..  topic:: Description		
+..  topic:: Description	
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
@@ -643,7 +652,8 @@ SliderPosition
 
 **Type:**
 
-..  topic:: Description		
+..  topic:: Description	
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
@@ -659,12 +669,17 @@ Text
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
+
+	This attribute is used to set and display the Text in the LineEdit box. For Multi-Line text, use the TextEdit_ element.  
 
 ..  note:: Not yet tested
 
-    ui.LineEdit({ 'ID': 'le_1',  'Text': "" })
+    ui.LineEdit({ 'ID': 'le_1',  'Text': "My Text" })
+
+..  image:: images/UI_lineedit_text.png
+	:width: 400px
+	:align: center
 
 
 PlaceholderText
@@ -673,11 +688,17 @@ PlaceholderText
 **Type:** string
 
 ..  topic:: Description		
-	This label attribute is used to
 
-..  note:: Not yet tested
+	This attribute is used to display a text in the lineEdit box. 
+	The PlaceholderText will be replaced by user input. 
 
-    ui.LineEdit({ 'ID': 'le_1',  'PlaceholderText': "" })
+..  code-block:: python
+
+    ui.LineEdit({ 'ID': 'le_1',  'PlaceholderText': "My Placeholder text" })
+
+..  image:: images/UI_lineedit_placeholdertext.png
+	:width: 400px
+	:align: center
 
 
 Font
@@ -686,7 +707,7 @@ Font
 **Type:** 
 
 ..  topic:: Description		
-	This label attribute is used to
+	This attribute is used to
 
 ..  note:: Not yet tested
 
@@ -698,12 +719,13 @@ MaxLength
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to limit the user input to x(int) character
 
-    ui.LineEdit({ 'ID': 'le_1',  'MaxLength': 50 })
+..  code-block:: python
+
+    ui.LineEdit({ 'ID': 'le_1',  'MaxLength': 10 })
 
 
 ReadOnly
@@ -712,7 +734,7 @@ ReadOnly
 **Type:** bool
 
 ..  topic:: Description		
-	This label attribute is used to set the LineEdit to be Read-Only. 
+	This attribute is used to set the LineEdit to be Read-Only. 
 
 ..  code-block:: python
 
@@ -724,7 +746,8 @@ Modified
 
 **Type:** 
 
-..  topic:: Description		
+..  topic:: Description
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
@@ -737,13 +760,17 @@ ClearButtonEnabled
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to add a button to clear the text field
 
-    ui.LineEdit({ 'ID': 'le_1',  'ClearButtonEnabled': True })
+..  code-block:: python
 
+    ui.LineEdit({ 'ID': 'le_1', 'ClearButtonEnabled': True })
+
+..  image:: images/UI_lineedit_ClearButtonEnabled.png
+	:width: 400px
+	:align: center
 
 
 TextEdit
@@ -755,11 +782,17 @@ Text
 **Type:** string
 
 ..  topic:: Description		
-	This label attribute is used to
 
-..  note:: Not yet tested
+	This attribute is used to set and display the Text in the TextEdit box. 
 
-    ui.TextEdit({ 'ID': 'te_1',  'Text': "" })
+..  code-block:: python
+
+    ui.TextEdit({ 'ID': 'te_1',  'Text': "My Text" })
+
+..  image:: images/UI_textedit_text.png
+	:width: 400px
+	:align: center
+
 
 
 PlaceholderText
@@ -768,11 +801,13 @@ PlaceholderText
 **Type:** string
 
 ..  topic:: Description		
-	This label attribute is used to
 
-..  note:: Not yet tested
+	This attribute is used to display a text in the lineEdit box. 
+	The PlaceholderText will be replaced by user input. 
 
-    ui.TextEdit({ 'ID': 'te_1',  'PlaceholderText': "" })
+..  code-block:: python
+
+    ui.TextEdit({ 'ID': 'te_1',  'PlaceholderText': "My Placeholder Text" })
 
 
 HTML
@@ -780,13 +815,17 @@ HTML
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used render HTML code inside the TextEdit box
 
-    ui.TextEdit({ 'ID': 'te_1',  'HTML': "" })
+..  code-block:: python
 
+    ui.TextEdit({ 'ID': 'te_1',  'HTML': "<h1>HTML code</h1>" })
+
+..  image:: images/UI_textedit_html.png
+	:width: 400px
+	:align: center
 
 Font
 ^^^^
@@ -794,6 +833,7 @@ Font
 **Type:** 
 
 ..  topic:: Description		
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
@@ -806,7 +846,8 @@ Alignment
 
 **Type:** dict
 
-..  topic:: Description		
+..  topic:: Description
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
@@ -830,14 +871,15 @@ ReadOnly
 TextColor
 ^^^^^^^^^
 
-**Type:** dict(r,g,b)
+**Type:** dict(r,g,b) ?
 
 ..  topic:: Description		
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
 
-    ui.TextEdit({ 'ID': 'te_1',  'TextColor': {'R':1, 'G':1, 'B':0} })
+    ui.TextEdit({ 'ID': 'te_1',  'TextColor': )
 
 
 TextBackgroundColor
@@ -845,12 +887,13 @@ TextBackgroundColor
 
 **Type:** string
 
-..  topic:: Description		
+..  topic:: Description
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
 
-    ui.TextEdit({ 'ID': 'te_1',  'TextBackgroundColor': "" })
+    ui.TextEdit({ 'ID': 'te_1',  'TextBackgroundColor': "blue" })
 
 
 TabStopWidth
@@ -858,10 +901,11 @@ TabStopWidth
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to set the width of the Tab when inserted. 
+
+..  code-block:: python
 
     ui.TextEdit({ 'ID': 'te_1',  'TabStopWidth': 50 })
 
@@ -871,8 +915,9 @@ Lexer
 
 **Type:** 
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
+	
+	This attribute is used to
 
 ..  note:: Not yet tested
 
@@ -885,7 +930,8 @@ LexerColors
 **Type:** 
 
 ..  topic:: Description		
-	This label attribute is used to
+
+	This attribute is used to
 
 ..  note:: Not yet tested
 
@@ -900,33 +946,43 @@ Text
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
 
-..  note:: Not yet tested
+	This attribute is used to display a Text with the ColorPicker
 
-    ui.ColorPicker({ 'ID': 'colorpicker_1',  'Text': "" })
+..  code-block:: python
 
+    ui.ColorPicker({ 'ID': 'colorpicker_1',  'Text': "My ColorPicker" })
+
+..  image:: images/UI_colorpicker_text.png
+	:width: 400px
+	:align: center
 
 Color
 ^^^^^
 
 **Type:** dict
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to set a default color to the ColorPicker. 
+	Each RGB color using a float value betwee 0 and 1.
 
-    ui.ColorPicker({ 'ID': 'colorpicker_1',  'Color': "" })
+..  code-block:: python
 
+    ui.ColorPicker({ 'ID': 'colorpicker_1', 'Color': {'R':0.5, 'G':0, 'B':1.0} })
+
+..  image:: images/UI_colorpicker_color.png
+	:width: 400px
+	:align: center
 
 Tracking
 ^^^^^^^^
 
 **Type:** bool
 
-..  topic:: Description		
+..  topic:: Description
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
@@ -940,12 +996,16 @@ DoAlpha
 **Type:** bool
 
 ..  topic:: Description		
-	This label attribute is used to include Alpha value in the RGB ColorPicker
+
+	This attribute is used to include Alpha value in the RGB ColorPicker
 
 ..  code-block:: python
 
     ui.ColorPicker({ 'ID': 'colorpicker_1',  'DoAlpha': True })
 
+..  image:: images/UI_colorpicker_doalpha.png
+	:width: 400px
+	:align: center
 
 Font
 ----
@@ -955,12 +1015,23 @@ Family
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to set the font family. 
+	Combine with an element using text. 
 
-    ui.Font({ 'Family': "" })
+	* Times New Roman
+	* Arial
+	* Most font family available with CSS
+
+..  code-block:: python
+
+    ui.Label({'Text': "My Label", "Font": ui.Font({ 'Family': "Times New Roman" }),
+
+..  image:: images/UI_font_family.png
+	:width: 400px
+	:align: center
+
 
 
 StyleName
@@ -981,12 +1052,13 @@ PointSize
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
 
-..  note:: Not yet tested
+	This attribute is used to set a size to the Font (pt). 
 
-    ui.Font({ 'PointSize': 12 })
+..  code-block:: python
+
+    ui.Label({'Text': "My Label", "Font": ui.Font({ 'PointSize': 36 }),
 
 
 PixelSize
@@ -994,12 +1066,13 @@ PixelSize
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
 
-..  note:: Not yet tested
+	This attribute is used to set a size to the Font (px). 
 
-    ui.Font({ 'PixelSize': 14 })
+..  code-block:: python
+
+    ui.Label({'Text': "My Label", "Font": ui.Font({ 'PixelSize': 36 }),
 
 
 Bold
@@ -1007,12 +1080,13 @@ Bold
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to apply **bold** to the text
 
-    ui.Font({ 'Bold': True })
+..  note:: Do not seems to apply on all fonts
+
+    ui.Label({'Text': "My Label", "Font": ui.Font({ 'Bold': True }),
 
 
 Italic
@@ -1020,12 +1094,13 @@ Italic
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to apply *Italic* to the text
 
-    ui.Font({ 'Italic': True })
+..  code-block:: python
+
+    ui.Label({'Text': "My Label", "Font": ui.Font({ 'Italic': True }),
 
 
 Underline
@@ -1033,12 +1108,13 @@ Underline
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to add a line under the text
 
-    ui.Font({ 'Underline': True })
+..  code-block:: python
+
+    ui.Label({'Text': "My Label", "Font": ui.Font({ 'Underline': True }),
 
 
 Overline
@@ -1046,12 +1122,13 @@ Overline
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to add a line on top of the text
 
-    ui.Font({ 'Overline': True })
+..  code-block:: python
+
+    ui.Label({'Text': "My Label", "Font": ui.Font({ 'Overline': True }),
 
 
 StrikeOut
@@ -1059,25 +1136,27 @@ StrikeOut
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
 
-..  note:: Not yet tested
+	This attribute is used to add a line through the text
 
-    ui.Font({ 'StrikeOut': True })
+..  code-block:: python
+
+    ui.Label({'Text': "My Label", "Font": ui.Font({ 'StrikeOut': True }),
 
 
 Kerning
 ^^^^^^^
 
-**Type:** bool
+**Type:** 
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description	
+
+	This attribute is used to
 
 ..  note:: Not yet tested
 
-    ui.Font({ 'Kerning': True })
+    ui.Font({ 'Kerning': 24 })
 
 
 Weight
@@ -1085,8 +1164,10 @@ Weight
 
 **Type:** int, float
 
-..  topic:: Description		
-	This label attribute is used to set a size relative to other element of the group . Element with Weight 0.5 will be twice the size of an element with Weight 0.25
+..  topic:: Description
+
+	This attribute is used to set a size relative to other element of the group. 
+	Element with Weight 0.5 will be twice the size of an element with Weight 0.25
 
 ..  note:: Not yet tested
 
@@ -1098,8 +1179,9 @@ Stretch
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
+
+	This attribute is used to
 
 ..  note:: Not yet tested
 
@@ -1111,7 +1193,8 @@ MonoSpaced
 
 **Type:** bool
 
-..  topic:: Description		
+..  topic:: Description
+
 	This label attribute is used to
 
 ..  note:: Not yet tested
@@ -1127,15 +1210,21 @@ File
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to point at the image file to use for the Icon Element
+..  topic:: Description
+
+	This attribute is used to point to an image file path to use for the Icon Element.
+	Need to be joint to an element supporting Icon attribute. (ie: ui.Button)
 
 	* .png 
 	* .jpg
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.Font({ 'File': "" })
+	ui.Button({ 'ID': "Browse",  'Text': " Browse", "Icon": ui.Icon({'File': r"UserData:/Scripts/images/csv.png"})})
+
+..  image:: images/UI_icon_file.png
+	:width: 400px
+	:align: center
 
 
 Tabbar
@@ -1147,7 +1236,7 @@ CurrentIndex
 **Type:** int
 
 ..  topic:: Description		
-	This label attribute is used to 
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1159,8 +1248,9 @@ TabsClosable
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1172,8 +1262,9 @@ Expanding
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1185,8 +1276,9 @@ AutoHide
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1198,8 +1290,9 @@ Movable
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1211,8 +1304,9 @@ DrawBase
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1224,8 +1318,9 @@ UsesScrollButtons
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1237,8 +1332,9 @@ DocumentMode
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1250,8 +1346,9 @@ ChangeCurrentOnDrag
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1267,8 +1364,9 @@ ColumnCount
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1280,8 +1378,9 @@ SortingEnabled
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1293,8 +1392,9 @@ ItemsExpandable
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1306,8 +1406,9 @@ ExpandsOnDoubleClick
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1319,8 +1420,9 @@ AutoExpandDelay
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1332,8 +1434,9 @@ HeaderHidden
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1345,8 +1448,9 @@ IconSize
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1358,8 +1462,9 @@ RootIsDecorated
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1371,8 +1476,9 @@ Animated
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1384,8 +1490,9 @@ AllColumnsShowFocus
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1397,8 +1504,9 @@ WordWrap
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1410,8 +1518,9 @@ TreePosition
 
 **Type:** 
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1423,8 +1532,9 @@ SelectionBehavior
 
 **Type:** 
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1436,8 +1546,9 @@ SelectionMode
 
 **Type:** 
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1449,8 +1560,9 @@ UniformRowHeights
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1462,8 +1574,9 @@ Indentation
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1475,8 +1588,9 @@ VerticalScrollMode
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1488,8 +1602,9 @@ HorizontalScrollMode
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1501,8 +1616,9 @@ AutoScroll
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1514,8 +1630,9 @@ AutoScrollMargin
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1527,8 +1644,9 @@ TabKeyNavigation
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1540,8 +1658,9 @@ AlternatingRowColors
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1553,8 +1672,9 @@ FrameStyle
 
 **Type:** 
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1566,8 +1686,9 @@ LineWidth
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1579,8 +1700,9 @@ MidLineWidth
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1592,8 +1714,9 @@ FrameRect
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1605,8 +1728,9 @@ FrameShape
 
 **Type:** 
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1618,8 +1742,9 @@ FrameShadow
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1634,8 +1759,9 @@ Selected
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1647,8 +1773,9 @@ Hidden
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1660,8 +1787,9 @@ Expanded
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1674,8 +1802,9 @@ Disabled
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1687,8 +1816,9 @@ FirstColumnSpanned
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1700,8 +1830,9 @@ Flags
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1713,8 +1844,9 @@ ChildIndicatorPolicy
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1732,8 +1864,9 @@ ItemText[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1748,8 +1881,9 @@ TabText[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1761,8 +1895,9 @@ TabToolTip[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1774,8 +1909,9 @@ TabWhatsThis[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1787,8 +1923,9 @@ TabTextColor[ ]
 
 **Type:** dict
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1803,8 +1940,9 @@ ColumnWidth[ ]
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1819,8 +1957,9 @@ Text[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1832,8 +1971,9 @@ StatusTip[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1845,8 +1985,9 @@ ToolTip[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1858,8 +1999,9 @@ WhatsThis[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1871,8 +2013,9 @@ SizeHint[ ]
 
 **Type:** int
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1884,8 +2027,9 @@ TextAlignment[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1897,8 +2041,9 @@ CheckState[ ]
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1910,8 +2055,9 @@ BackgroundColor[ ]
 
 **Type:** dict
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1923,8 +2069,9 @@ TextColor[ ]
 
 **Type:** dict
 
-..  topic:: Description		
-	This label attribute is used to change the color of the text
+..  topic:: Description
+	
+	This attribute is used to change the color of the text
 
 ..  note:: Not yet tested
 
@@ -1936,8 +2083,9 @@ Icon[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1949,8 +2097,9 @@ Font[ ]
 
 **Type:** string
 
-..  topic:: Description		
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to 
 
 ..  note:: Not yet tested
 
@@ -1974,7 +2123,8 @@ Interval
 
 **Type:** int
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This attribute is used to set a time in milisecs
 
 ..  code-block:: python
@@ -1990,7 +2140,8 @@ Singleshot
 
 **Type:** int
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This attribute is used to
 
 ..  note:: Not yet tested
@@ -2002,7 +2153,8 @@ RemainingTime
 
 **Type:** int
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This attribute is used to
 
 ..  note:: Not yet tested
@@ -2014,7 +2166,8 @@ IsActive
 
 **Type:** bool
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This attribute is used to
 
 ..  note:: Not yet tested
