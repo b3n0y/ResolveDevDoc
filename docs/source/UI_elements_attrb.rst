@@ -1227,20 +1227,29 @@ File
 	:align: center
 
 
-Tabbar
+TabBar
 ------
+
+..  note:: 
+
+	Before you can edit TabBar attributes, you need to create a TabBar element, then use the `UI Element function <UI_elements_func>`_ AddTab()
 
 CurrentIndex
 ^^^^^^^^^^^^
 
 **Type:** int
 
-..  topic:: Description		
-	This attribute is used to 
+..  topic:: Description
+
+	This attribute is used to set the current TabBar index
 
 ..  note:: Not yet tested
 
-    ui.Tabbar({ 'CurrentIndex': 1 })
+    ui.TabBar({ 'ID':'tabbar_1', 'CurrentIndex': 3 })
+	win.Find('tabbar_1').AddTab('Tab1')
+    win.Find('tabbar_1').AddTab('Tab2')
+
+
 
 
 TabsClosable
@@ -1250,11 +1259,17 @@ TabsClosable
 
 ..  topic:: Description
 
-	This attribute is used to 
+	This attribute is used to add a button to close tabs
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.Tabbar({ 'TabsClosable': True })
+    ui.TabBar({ 'ID':'tabbar_1', 'TabsClosable': True })
+	win.Find('tabbar_1').AddTab('Tab1')
+    win.Find('tabbar_1').AddTab('Tab2')
+
+..  image:: images/UI_tabbar_TabsClosable.png
+	:width: 400px
+	:align: center
 
 
 Expanding
@@ -1264,12 +1279,15 @@ Expanding
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to force tabs to expand or not on Window resize. (default=True)
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.Tabbar({ 'Expanding': True })
+    ui.TabBar({ 'ID':'tabbar_1', 'Expanding': False })
 
+..  image:: images/UI_tabbar_Expanding.png
+	:width: 400px
+	:align: center
 
 AutoHide
 ^^^^^^^^
@@ -1282,7 +1300,7 @@ AutoHide
 
 ..  note:: Not yet tested
 
-    ui.Tabbar({ 'AutoHide': True })
+    ui.TabBar({ 'AutoHide': True })
 
 
 Movable
@@ -1292,11 +1310,11 @@ Movable
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to enable Drag'n Drop to reorder tabs (default=False)
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.Tabbar({ 'Movable': True })
+    ui.TabBar({ 'ID':'tabbar_1', 'Movable': True })
 
 
 DrawBase
@@ -1324,7 +1342,7 @@ UsesScrollButtons
 
 ..  note:: Not yet tested
 
-    ui.Tabbar({ 'UsesScrollButtons': True })
+    ui.Tabbar({ 'ID':'tabbar_1', 'UsesScrollButtons': True })
 
 
 DocumentMode
@@ -1356,6 +1374,28 @@ ChangeCurrentOnDrag
 
 
 
+
+Stack
+-----
+
+..  topic:: Description #NotInReadme
+
+	Stack are groups of Elements used with TabBar to manage each pages
+
+..  code-block:: python
+
+	ui.Stack({'ID':'stack_1'})
+
+CurrentIndex
+^^^^^^^^^^^^
+toolbox_items['Stack'].CurrentIndex = 0
+
+
+AddChild()
+^^^^^^^^^^
+toolbox_items['Stack'].AddChild(ui.Button({'ID': "Browse", "Icon": ui.Icon({'File': r"UserData:/Scripts/images/test.gif"}), 'IconSize' : [15, 15]}))
+
+
 Tree
 ----
 
@@ -1366,11 +1406,15 @@ ColumnCount
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to set the number of column in the Tree 
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.Tree({ 'ID':'my_tree', 'ColumnCount': 1 })
+    ui.Tree({ 'ID':'my_tree', 'ColumnCount': 2 })
+
+..  image:: images/UI_tree_columncount.png
+	:width: 400px
+	:align: center
 
 
 SortingEnabled
@@ -1436,9 +1480,9 @@ HeaderHidden
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to hide the header row. 
 
-..  note:: Not yet tested
+..  code-block:: python
 
     ui.Tree({ 'ID':'my_tree', 'HeaderHidden': True })
 
@@ -1511,6 +1555,10 @@ WordWrap
 ..  note:: Not yet tested
 
     ui.Tree({ 'ID':'my_tree', 'WordWrap': True })
+	itm = win.Find('my_tree').NewItem()
+    itm.Text[0] = "too long text for the cell"
+	itm.Text[1] = "this is also too long"
+    win.Find('my_tree').AddTopLevelItem(itm)
 
 
 TreePosition
@@ -1754,6 +1802,11 @@ FrameShadow
 TreeItem
 --------
 
+..  note:: 
+
+	Before you can edit TreeItem attributes, you need to create a Tree element, then use the `UI Element function <UI_elements_func>`_ AddItem()
+
+
 Selected
 ^^^^^^^^
 
@@ -1918,18 +1971,25 @@ TabWhatsThis[ ]
     newItem.TabWhatsThis[2] = "Third Tab WhatsThis Text"
 
 
-TabTextColor[ ]
-^^^^^^^^^^^^^^^
+TabTextColor[index]
+^^^^^^^^^^^^^^^^^^^
 
 **Type:** dict
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to change the Tab Text color with RGBA dictionary values. 
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    newItem.TabTextColor[2] = {'R':1, 'G':1, 'B':1}
+    ui.TabBar({ 'ID':'tabbar_1'})
+	win.Find('tabbar_1').AddTab('Tab1')
+	win.Find('tabbar_1').TabTextColor[0] = { 'R':1, 'G': 0, 'B':0, 'A':1 }
+
+..  image:: images/UI_tabbar_TabTextColor.png
+	:width: 400px
+	:align: center
+
 
 
 Tree Property Array

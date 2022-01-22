@@ -43,16 +43,6 @@ except AttributeError as e:
     print("Please open a Davinci Resolve")
     sys.exit(0)
 
-try:
-    startFrame = currentTimeline.GetStartFrame()
-    print("Project name: " + project_name)
-    print("Timeline name: " + currentTimeline.GetName())
-    print("Start frame is: " + str(startFrame))
-    print("Timeline framerate: " + str(projectFPS))
-
-except AttributeError as e:
-    print("Please open a project")
-    sys.exit(0)
 
 bmd = GetModule_fusionscript()
 fusion = GetApp("Fusion")
@@ -70,13 +60,14 @@ def create_main_window():
         'WindowTitle': 'My Window'
         },
         ui.VGroup([
-
-                ui.Button({ 'ID': "Browse",  'Text': " Browse", "Icon": ui.Icon({'File': r"UserData:/Scripts/images/csv.png"}), }),
+    ui.Tree({ 'ID':'my_tree', 'ColumnCount': 2, 'WordWrap': False })
             ])
     
     )
     
     win_items = win.GetItems()
+    
+    
 
     # Event handlers
     def OnClose(ev):
@@ -96,8 +87,13 @@ def initialize():
     global win, win_items
 
     win, win_items = create_main_window()
-        
     
+    itm = win.Find('my_tree').NewItem()
+    itm.Text[0] = "too long text for the cell"
+    itm.Text[1] = "this is also too long"
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+
 def main():
     initialize()
     # Main dispatcher loop
