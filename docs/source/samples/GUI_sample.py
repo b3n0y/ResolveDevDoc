@@ -56,14 +56,17 @@ def create_main_window():
     # define the window UI layout
     win = dispatcher.AddWindow({
         'ID': "my_window",
-        'Geometry': [ 400,200,225,100 ],
+        'Geometry': [ 400,200,250,125 ],
         'WindowTitle': 'My Window'
         },
         ui.VGroup([
-    ui.Tree({ 'ID':'my_tree', 'ColumnCount': 2, 'WordWrap': False })
-            ])
-    
+ 
+    ui.Tree({ 'ID':'my_tree', 'ColumnCount': 2 })
+        ])
     )
+    
+        
+
     
     win_items = win.GetItems()
     
@@ -89,10 +92,17 @@ def initialize():
     win, win_items = create_main_window()
     
     itm = win.Find('my_tree').NewItem()
-    itm.Text[0] = "too long text for the cell"
-    itm.Text[1] = "this is also too long"
+
+    itm.Text[0] = "First column"
+    itm.Text[1] = "Second column"
 
     win.Find('my_tree').AddTopLevelItem(itm)
+    win.Find('my_tree').ColumnWidth[0] = 200
+
+
+    # win.Find('my_tree').AddTopLevelItem(itm2)
+    # win.Find('my_tree').AddTopLevelItem(itm3)
+
 
 def main():
     initialize()

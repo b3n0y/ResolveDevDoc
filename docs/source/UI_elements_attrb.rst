@@ -8,10 +8,12 @@ and FixedSize. Some other common GUI elements and their main attributes include:
 
 ..  note:: 
 	For better management of elements, define an ID attribute. Not all example will contain an ID but keep that in mind. 
+	
 	You can then use the win.Find('ID') to find and update an element and update an attribute win.Find('myButton').Text = "Processing..."
 
 
 You need to create a Window with a dictionnary of parameter and list of item to contain your element and attribute. 
+
 Check :ref:`UI Element Layout page <UI_elements_layout>` for more details
 
 Label
@@ -118,6 +120,27 @@ Margin
 	ui.Label({ 'ID':'label_1', 'Margin': "" })
 
 
+StyleSheet
+^^^^^^^^^^
+
+**Type:** string
+
+..  topic:: Description
+
+	This attribute is set to apply a StyleSheet to the Element (similar to CSS)
+
+..  code-block:: python
+	
+	css_style = f"""
+	color: rgb(205, 205, 245); 
+	font-family: Garamond; 
+	font-weight: bold; 
+	font-size: 16px;
+	"""
+
+	ui.Label({ 'ID':'label_1', 'StyleSheet': css_style })
+
+
 Button
 ------
 
@@ -195,7 +218,8 @@ Icon
 
 **Type:** 
 
-..  topic:: Description	
+..  topic:: Description
+	
 	This label attribute is used to 
 
 ..  note:: Not yet tested
@@ -208,7 +232,8 @@ IconSize
 
 **Type:** bool
 
-..  topic:: Description	
+..  topic:: Description
+	
 	This label attribute is used to 
 
 ..  note:: Not yet tested
@@ -701,12 +726,15 @@ PlaceholderText
 	:align: center
 
 
+.. _Element Font:
+
 Font
 ^^^^
 
 **Type:** 
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This attribute is used to
 
 ..  note:: Not yet tested
@@ -733,7 +761,8 @@ ReadOnly
 
 **Type:** bool
 
-..  topic:: Description		
+..  topic:: Description
+
 	This attribute is used to set the LineEdit to be Read-Only. 
 
 ..  code-block:: python
@@ -802,7 +831,8 @@ PlaceholderText
 
 ..  topic:: Description		
 
-	This attribute is used to display a text in the lineEdit box. 
+	This attribute is used to display a text in the lineEdit box.
+
 	The PlaceholderText will be replaced by user input. 
 
 ..  code-block:: python
@@ -830,15 +860,15 @@ HTML
 Font
 ^^^^
 
-**Type:** 
+**Type:** ui.Font
 
 ..  topic:: Description		
 
-	This label attribute is used to
+	This attribute is used to specify a Font element with parameters
 
-..  note:: Not yet tested
+ .. code-block:: python
 
-    ui.TextEdit({ 'ID': 'te_1',  'Font': "" })
+    ui.TextEdit({ 'ID': 'te_1',  'Font': ui.Font({ 'Family': "Times New Roman" }) })
 
 
 Alignment
@@ -860,10 +890,11 @@ ReadOnly
 
 **Type:** bool
 
-..  topic:: Description		
-	This label attribute is used to
+..  topic:: Description
+	
+	This label attribute is used to set the TextEdit to ReadOnly. User cannot add or remove text. 
 
-..  note:: Not yet tested
+..  code-block:: python
 
     ui.TextEdit({ 'ID': 'te_1',  'ReadOnly': True })
 
@@ -871,7 +902,7 @@ ReadOnly
 TextColor
 ^^^^^^^^^
 
-**Type:** dict(r,g,b) ?
+**Type:** dict(r,g,b, a) ?
 
 ..  topic:: Description		
 
@@ -879,7 +910,7 @@ TextColor
 
 ..  note:: Not yet tested
 
-    ui.TextEdit({ 'ID': 'te_1',  'TextColor': )
+    ui.TextEdit({ 'ID': 'te_1',  'TextColor': { 'R':1, 'G': 0, 'B':0, 'A':1 })
 
 
 TextBackgroundColor
@@ -1022,7 +1053,7 @@ Family
 
 	* Times New Roman
 	* Arial
-	* Most font family available with CSS
+	* list available font...
 
 ..  code-block:: python
 
@@ -1039,7 +1070,8 @@ StyleName
 
 **Type:** string
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This label attribute is used to
 
 ..  note:: Not yet tested
@@ -1202,6 +1234,8 @@ MonoSpaced
     ui.Font({ 'MonoSpaced': True })
 
 
+.. _Element Icon:
+
 Icon
 ----
 
@@ -1233,6 +1267,8 @@ TabBar
 ..  note:: 
 
 	Before you can edit TabBar attributes, you need to create a TabBar element, then use the `UI Element function <UI_elements_func>`_ AddTab()
+	
+	Also note that TabBar has `TabBar Property Array`_
 
 CurrentIndex
 ^^^^^^^^^^^^
@@ -1248,8 +1284,6 @@ CurrentIndex
     ui.TabBar({ 'ID':'tabbar_1', 'CurrentIndex': 3 })
 	win.Find('tabbar_1').AddTab('Tab1')
     win.Find('tabbar_1').AddTab('Tab2')
-
-
 
 
 TabsClosable
@@ -1694,9 +1728,9 @@ TabKeyNavigation
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to allow Tab to go to next row, Shift+Tab to previous. (default=False)
 
-..  note:: Not yet tested
+..  code-block:: python
 
     ui.Tree({ 'ID':'my_tree', 'TabKeyNavigation': True })
 
@@ -1708,9 +1742,9 @@ AlternatingRowColors
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used activate atlerning row colors on the Tree (default=False) 
 
-..  note:: Not yet tested
+..  code-block:: python
 
     ui.Tree({ 'ID':'my_tree', 'AlternatingRowColors': True })
 
@@ -1804,8 +1838,10 @@ TreeItem
 
 ..  note:: 
 
-	Before you can edit TreeItem attributes, you need to create a Tree element, then use the `UI Element function <UI_elements_func>`_ AddItem()
-
+	Before you can edit TreeItem attributes, you need to create a Tree element, then use the `UI Element function <UI_elements_func>`_ to add Item to the Tree
+	
+	``itm = win.Find('my_tree').NewItem()``
+	``win.Find('my_tree').AddTopLevelItem(itm)``
 
 Selected
 ^^^^^^^^
@@ -1814,12 +1850,18 @@ Selected
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to define the selected status to an item of the Tree. (default=False)
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.TreeItem({ 'Selected': True })
+	itm = win.Find('my_tree').NewItem()
+	win.Find('my_tree').AddTopLevelItem(itm)
 
+    itm.Selected = True
+
+..  image:: images/UI_treeitem_selected.png
+	:width: 400px
+	:align: center
 
 Hidden
 ^^^^^^
@@ -1828,11 +1870,14 @@ Hidden
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to define the selected status to an item of the Tree. (default=False)
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.TreeItem({ 'Hidden': True })
+	itm = win.Find('my_tree').NewItem()
+	win.Find('my_tree').AddTopLevelItem(itm)
+
+    itm.Hidden = True
 
 
 Expanded
@@ -1842,12 +1887,24 @@ Expanded
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to define the expanded status to an item of the Tree. (default=False)
+	TreeItem needs to have child to display. 
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.TreeItem({ 'Expanded': True })
+    itm = win.Find('my_tree').NewItem()
+    itm2 = win.Find('my_tree').NewItem()
 
+    itm.Text[0] = "First cell"
+    itm2.Text[0] = "Child of itm"
+    itm.AddChild(itm2)
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+    itm.Expanded = True
+
+..  image:: images/ui_treeitem_expanded_true.png
+	:width: 400px
+	:align: center
 
 
 Disabled
@@ -1857,11 +1914,25 @@ Disabled
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to define the disabled status to an item of the Tree. (default=False)
+	
+	TreeItem will be grayed out.
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.TreeItem({ 'Disabled': True })
+    itm = win.Find('my_tree').NewItem()
+    itm2 = win.Find('my_tree').NewItem()
+
+    itm.Text[0] = "First cell"
+    itm2.Text[0] = "Child of itm"
+    itm.AddChild(itm2)
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+    itm.Disabled = True
+
+..  image:: images/ui_treeitem_disabled.png
+	:width: 400px
+	:align: center
 
 
 FirstColumnSpanned
@@ -1875,7 +1946,7 @@ FirstColumnSpanned
 
 ..  note:: Not yet tested
 
-    ui.TreeItem({ 'Selected': True })
+    ui.TreeItem({ 'FirstColumnSpanned': True })
 
 
 Flags
@@ -1906,13 +1977,14 @@ ChildIndicatorPolicy
     ui.TreeItem({ 'Selected': True })
 
 
-Some elements also have property arrays, indexed by item or column (zero-based), e.g. newItem.Text[2] = 'Third column text'
+
+.. important:: Some elements also have property arrays, indexed by item or column (zero-based), e.g. newItem.Text[2] = 'Third column text'
 
 
 Combo
 -----
 
-ItemText[ ]
+ItemText[index]
 ^^^^^^^^^^^
 
 **Type:** string
@@ -1923,7 +1995,6 @@ ItemText[ ]
 
 ..  note:: Not yet tested
 
-    newItem.Text[2] = 'Third column text'
 
 
 TabBar Property Array
@@ -1982,7 +2053,7 @@ TabTextColor[index]
 
 ..  code-block:: python
 
-    ui.TabBar({ 'ID':'tabbar_1'})
+    ui.TabBar({'ID':'tabbar_1'})
 	win.Find('tabbar_1').AddTab('Tab1')
 	win.Find('tabbar_1').TabTextColor[0] = { 'R':1, 'G': 0, 'B':0, 'A':1 }
 
@@ -1991,39 +2062,55 @@ TabTextColor[index]
 	:align: center
 
 
-
 Tree Property Array
 -------------------
 
-ColumnWidth[ ]
-^^^^^^^^^^^^^^
+ColumnWidth[index]
+^^^^^^^^^^^^^^^^^^
 
 **Type:** int
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used change the Width of a Tree column 
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    newItem.ColumnWidth[2] = 50
+    itm = win.Find('my_tree').NewItem()
+    itm.Text[0] = "First column"
+    itm.Text[1] = "Second column"
+    win.Find('my_tree').AddTopLevelItem(itm)
+
+	win.Find('my_tree').ColumnWidth[0] = 200
+
+..  image:: images/UI_tree_columnwidth.png
+	:width: 400px
+	:align: center
 
 
 Treeitem Property Array
 -----------------------
 
-Text[ ]
-^^^^^^^
+Text[index]
+^^^^^^^^^^^
 
 **Type:** string
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to set the TreeItem text at column index
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    newItem.Text[2] = 'Text inside Tree in third row'
+    itm = win.Find('my_tree').NewItem()
+    itm.Text[0] = "First column"
+    itm.Text[1] = "Second column"
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+
+..  image:: images/UI_treeitem_text.png
+	:width: 400px
+	:align: center
 
 
 StatusTip[ ]
@@ -2037,21 +2124,32 @@ StatusTip[ ]
 
 ..  note:: Not yet tested
 
-    newItem.StatusTip[2] = 'StatusTip inside Tree in third row'
+    newItem.StatusTip[2] = 'StatusTip'
 
 
-ToolTip[ ]
-^^^^^^^^^^
+ToolTip[index]
+^^^^^^^^^^^^^^
 
 **Type:** string
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to display a text when mouse hover a cell
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    newItem.ToolTip[2] = 'ToolTip inside Tree in third row'
+    itm = win.Find('my_tree').NewItem()
+
+    itm.Text[0] = "First column"
+    itm.Text[1] = "Second column"
+    itm.ToolTip[0] = 'ToolTip on cell1'
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+
+
+..  image:: images/UI_treeitem_tooltip.png
+	:width: 400px
+	:align: center
 
 
 WhatsThis[ ]
@@ -2061,11 +2159,11 @@ WhatsThis[ ]
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to ...
 
 ..  note:: Not yet tested
 
-    newItem.WhatsThis[2] = 'WhatsThis inside Tree in third row'
+    newItem.WhatsThis[2] = 'WhatsThis'
 
 
 SizeHint[ ]
@@ -2085,7 +2183,7 @@ SizeHint[ ]
 TextAlignment[ ]
 ^^^^^^^^^^^^^^^^
 
-**Type:** string
+**Type:** 
 
 ..  topic:: Description
 	
@@ -2110,65 +2208,111 @@ CheckState[ ]
     newItem.CheckState[2] = 'CheckState inside Tree in third row'
 
 
-BackgroundColor[ ]
-^^^^^^^^^^^^^^^^^^
+BackgroundColor[index]
+^^^^^^^^^^^^^^^^^^^^^^
 
 **Type:** dict
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to set a BackgroundColor to a cell using RGBA dictionary. 
 
 ..  note:: Not yet tested
 
-    newItem.BackgroundColor[2] = {'R':1, 'G':1, 'B':1}
+    itm = win.Find('my_tree').NewItem()
+
+    itm.Text[0] = "First column"
+    itm.Text[1] = "Second column"
+    itm.BackgroundColor[1] =  {'R':1, 'G':1, 'B':1, 'A':1}
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+
+..  image:: images/UI_treeitem_backgroundcolor.png
+	:width: 400px
+	:align: center
 
 
-TextColor[ ]
-^^^^^^^^^^^^
+TextColor[index]
+^^^^^^^^^^^^^^^^
 
 **Type:** dict
 
 ..  topic:: Description
 	
-	This attribute is used to change the color of the text
+	This attribute is used to change the color of the text using RGBA dictionary
 
 ..  note:: Not yet tested
 
-    newItem.TextColor[2] = {'R':1, 'G':1, 'B':1}
+    itm = win.Find('my_tree').NewItem()
+
+    itm.Text[0] = "First column"
+    itm.Text[1] = "Second column"
+    itm.TextColor[1] =  {'R':1, 'G':1, 'B':1, 'A':1}
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+
+..  image:: images/UI_treeitem_textcolor.png
+	:width: 400px
+	:align: center
 
 
-Icon[ ]
-^^^^^^^
+Icon[index]
+^^^^^^^^^^^
 
-**Type:** string
+**Type:** ui.Icon
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to add an icon image into a cell.
 
-..  note:: Not yet tested
-
-    newItem.Icon[2] = 
+	Refer to :ref:`Element Icon` for property list. 
 
 
-Font[ ]
-^^^^^^^
+.. code-block:: python
 
-**Type:** string
+    itm = win.Find('my_tree').NewItem()
+
+    itm.Text[0] = "First column"
+    itm.Text[1] = "Second column"
+    itm.Icon[1] =  ui.Icon({'File': r"UserData:/Scripts/images/logo.png"})
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+
+..  image:: images/UI_treeitem_logo.png
+	:width: 400px
+	:align: center
+
+
+Font[index]
+^^^^^^^^^^^
+
+**Type:** ui.Font
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to modify the Font used inside a cell. 
 
-..  note:: Not yet tested
+	Refer to :ref:`Element Font` for property list. 
 
-    newItem.Font[2] = 'Font inside Tree in third row'
+..  code-block:: python
+
+    itm = win.Find('my_tree').NewItem()
+
+    itm.Text[0] = "First column"
+    itm.Text[1] = "Second column"
+    itm.Font[1] =  ui.Font({ 'Family': "Arial", 'PointSize': 14})
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+
+..  image:: images/UI_treeitem_font.png
+	:width: 400px
+	:align: center
 
 	
 Some elements like Label and Button will automatically recognise and render basic HTML in their Text attributes, 
 and TextEdit is capable of displaying and returning HTML too. 
 Element attributes can be specified when creating the element, or can be read or changed later:
+
 
 ..  code-block:: python
 
@@ -2185,14 +2329,16 @@ Interval
 
 ..  topic:: Description
 	
-	This attribute is used to set a time in milisecs
+	This attribute is used to set a time in milisecs to the ui.Timer Element. 
 
 ..  code-block:: python
 
 	ui.Timer({ 'ID': 'MyTimer', 'Interval': 1000 })  # 1000 millisecs
-    mytimer.Start() Start() and Stop()   to add in the UI_elements_func.rst
-	dispatcher['On']['Timeout'] = OnTimer
+    mytimer.Start()
+	dispatcher['On']['Timeout'] = OnTimer  #this create a loop each 1000ms
 
+	:ref: UI_elements_func_
+	Start() and Stop()   to add in the UI_elements_func.rst
 
 
 Singleshot
@@ -2205,6 +2351,7 @@ Singleshot
 	This attribute is used to
 
 ..  note:: Not yet tested
+
 	ui.Timer({ 'ID': 'MyTimer', 'Singleshot': 1000 })
 
 
@@ -2218,6 +2365,7 @@ RemainingTime
 	This attribute is used to
 
 ..  note:: Not yet tested
+	
 	ui.Timer({ 'ID': 'MyTimer', 'RemainingTime': 1000 })
 
 
@@ -2231,6 +2379,7 @@ IsActive
 	This attribute is used to
 
 ..  note:: Not yet tested
+
 	ui.Timer({ 'ID': 'MyTimer', 'IsActive': True })
 
 

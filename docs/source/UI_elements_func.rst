@@ -1462,13 +1462,20 @@ AddChild(item)
 
 ..  topic:: Description
 
-	This function is
+	This function is addind an item as a child of an existing TreeItem. 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].AddChild(item)
+	itm = win.Find('my_tree').NewItem()
+	itm.Text[0] = "First cell"
+    itm2 = win.Find('my_tree').NewItem()
+	itm2.Text[0] = "Child of itm"
+
+    win.Find('my_tree').AddTopLevelItem(itm)
+
+	itm.AddChild(itm2)
 
 
 InsertChild(item)
