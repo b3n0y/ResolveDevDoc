@@ -245,7 +245,8 @@ Flat
 
 **Type:** bool
 
-..  topic:: Description	
+..  topic:: Description
+	
 	This label attribute is used to 
 
 ..  note:: Not yet tested
@@ -261,7 +262,8 @@ Text
 
 **Type:** string
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This label attribute is used to display Text on the element. 
 
 ..  code-block:: 
@@ -278,7 +280,8 @@ Down
 
 **Type:** bool
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This label attribute is used to 
 
 ..  note:: Not yet tested
@@ -290,7 +293,8 @@ Checkable
 
 **Type:** bool
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This label attribute is used to 
 
 ..  note:: Not yet tested
@@ -303,7 +307,8 @@ Checked
 
 **Type:** bool
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This label attribute is used to 
 
 ..  code-block:: python
@@ -319,7 +324,8 @@ Tristate
 
 **Type:**
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This label attribute is used to activate a 3 state checkbox
 
 ..  code-block:: python
@@ -346,7 +352,8 @@ CheckState
 
 **Type:**
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This label attribute is used to 
 
 ..  note:: Not yet tested
@@ -357,30 +364,38 @@ CheckState
 ComboBox
 --------
 
+Refer to the :ref:`UI Element Function page <UI_elements_func>` to AddItems to the ComboBox list
+
+
 ItemText
 ^^^^^^^^
 
 **Type:**
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This label attribute is used to
 
 ..  note:: Not yet tested
 
     ui.ComboBox({ 'ID': 'combo_1',  'ItemText': 'test' })
+	win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
 
 
 Editable
 ^^^^^^^^
 
-**Type:**bool
+**Type:** bool
 
-..  topic:: Description	
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to allow users to add items to the ComboBox
 
-..  note:: Not yet tested
+	Note that those items are not added permanently to the ComboBox list.  
 
-    ui.ComboBox({ 'ID': 'combo_1',  'Editable': "" })
+..  code-block:: python
+
+    ui.ComboBox({ 'ID': 'combo_1',  'Editable': True })
 
 
 CurrentIndex
@@ -388,33 +403,44 @@ CurrentIndex
 
 **Type:**
 
-..  topic:: Description	
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to get or change the selected item from the ComboBox
+	
+..  code-block:: python
 
-..  note:: Not yet tested
+    ui.ComboBox({ 'ID': 'combo_1' })
+	win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
+    
+	print(win.Find("combo_1").CurrentIndex) #0 will be printed for the first item (default)
 
-    ui.ComboBox({ 'ID': 'combo_1',  'CurrentIndex': "" })
+	win.Find("combo_1").CurrentIndex =  3 #"Yellow" will be selected
 
 
 CurrentText
 ^^^^^^^^^^^
 
-**Type:**string
+**Type:** string
 
-..  topic:: Description	
-	This label attribute is used to 
+..  topic:: Description
+	
+	This attribute is used to get the Text from the selected Item 
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.ComboBox({ 'ID': 'combo_1',  'CurrentText': "" })
+    ui.ComboBox({ 'ID': 'combo_1' })
+
+	win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red"])
+    print(win.Find("combo_1").CurrentText)  # print the first item by default "Blue"
 
 
 Count
 ^^^^^
 
-**Type:**int
+**Type:** int
 
-..  topic:: Description	
+..  topic:: Description
+	
 	This label attribute is used to 
 
 ..  note:: Not yet tested
@@ -430,7 +456,8 @@ Value
 
 **Type:** int
 
-..  topic:: Description		
+..  topic:: Description
+	
 	This spinbox attribute is used to set the current SpinBox value (default max=99)
 
 ..  code-block:: python
@@ -1985,7 +2012,7 @@ Combo
 -----
 
 ItemText[index]
-^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 **Type:** string
 
@@ -1994,6 +2021,9 @@ ItemText[index]
 	This attribute is used to 
 
 ..  note:: Not yet tested
+
+	win_recolorize.Find("new_colorID").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
+
 
 
 

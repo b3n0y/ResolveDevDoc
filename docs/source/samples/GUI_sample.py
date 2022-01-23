@@ -61,7 +61,7 @@ def create_main_window():
         },
         ui.VGroup([
  
-    ui.Tree({ 'ID':'my_tree', 'ColumnCount': 2 })
+    ui.ComboBox({ 'ID': 'combo_1',  })
         ])
     )
     
@@ -91,13 +91,17 @@ def initialize():
 
     win, win_items = create_main_window()
     
-    itm = win.Find('my_tree').NewItem()
+    win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
 
-    itm.Text[0] = "First column"
-    itm.Text[1] = "Second column"
+    
 
-    win.Find('my_tree').AddTopLevelItem(itm)
-    win.Find('my_tree').ColumnWidth[0] = 200
+    # itm = win.Find('my_tree').NewItem()
+
+    # itm.Text[0] = "First column"
+    # itm.Text[1] = "Second column"
+
+    # win.Find('my_tree').AddTopLevelItem(itm)
+    # win.Find('my_tree').ColumnWidth[0] = 200
 
 
     # win.Find('my_tree').AddTopLevelItem(itm2)
