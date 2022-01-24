@@ -27,7 +27,7 @@ Contents
 --------
 
 .. toctree::
-   :caption: UI Elements
+   :caption: UI Fusion/DavinciResolve
    :maxdepth: 1
 
    UI_elements_attrb

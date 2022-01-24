@@ -57,10 +57,10 @@ def create_main_window():
     win = dispatcher.AddWindow({
         'ID': "my_window",
         'Geometry': [ 400,200,250,125 ],
-        'WindowTitle': 'My Window'
+        'WindowTitle': 'My Window',
         },
         ui.VGroup([
-    		ui.Label({ 'ID': 'label_1', 'Text':'My text' })
+    ui.TabBar({'ID':'tabbar_1'})
         ])
     )
     
@@ -89,11 +89,16 @@ def initialize():
     global win, win_items
 
     win, win_items = create_main_window()
-    print(win.Find('my_window').Geometry)
+    # print(win.Find('slider_1').Tracking)
+    # print(win.Find('checkbox_1').Down)
     
     # win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
 
-    
+    win.Find('tabbar_1').AddTab('Tab1')
+    win.Find('tabbar_1').AddTab('Tab2')
+
+    print(win.Find('tabbar_1').TabText[0])
+
 
     # itm = win.Find('my_tree').NewItem()
 

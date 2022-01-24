@@ -24,6 +24,7 @@ Alternatively, if your object's ID is stored in a string variable called 'button
 
 Many objects have specific events that can be handled:
 
+
 Button
 ------
 
@@ -647,13 +648,18 @@ ItemDoubleClicked
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when a TreeItem is DoubleClicked (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
+
+	ui.Tree({'ID':'my_tree', 'Events' : { 'ItemDoubleClicked' : True } })
 
 	win.On['my_tree'].ItemDoubleClicked = OnTreeItemDoubleClicked
+
+	def OnTreeItemDoubleClicked(ev):
+		print('Item was double clicked')
 
 
 ItemChanged

@@ -1,5 +1,5 @@
-Attributes
-==========
+Elements
+========
 
 
 The element's ID is used to find, manage, and dispatch events for that element. GUI elements also support a set of common attributes including 
@@ -69,7 +69,7 @@ BackgroundColor
 
 ..  topic:: Description
 
-	This attribute is used change the Window's background color
+	This attribute is used change the Window's background color.
 
 ..  code-block:: python
 
@@ -103,49 +103,6 @@ Geometry
     )
 
 
-MinimumSize
-^^^^^^^^^^^
-
-**Type:** 
-
-..  topic:: Description
-
-	This attribute is used
-
-..  note:: Not yet tested
-
-	ui.Label({ 'ID':'label_1', 'MinimumSize':  })
-
-
-
-MaximumSize
-^^^^^^^^^^^
-
-**Type:** int
-
-..  topic:: Description
-
-	This attribute is used
-
-..  note:: Not yet tested
-
-	ui.Label({ 'ID':'label_1', 'MaximumSize':  })
-
-
-FixedSize
-^^^^^^^^^
-
-**Type:** int
-
-..  topic:: Description
-
-	This attribute is used
-
-..  note:: Not yet tested
-
-	ui.Label({ 'ID':'label_1', 'FixedSize':  })
-
-
 Label
 -----
 
@@ -176,13 +133,18 @@ Alignment
 
 ..  topic:: Description
 
-	This label attribute is used to display Text on the element.
+	This label attribute is used to align Text inside the Label element. 
+	`Check out the qt5 documentatatoin for more details <https://doc.qt.io/qt-5/qt.html#AlignmentFlag-enum>`_
 
 	* AlignCenter
+	* AlignLeft
+	* AlignRight
 	* AlignHCenter
 	* AlignVCenter
 	* AlignTop
-	* Others to list...
+	* AlignBottom
+	* AlignJustify
+	* AlignBaseline
 
 ..  code-block:: python
 
@@ -196,15 +158,26 @@ Alignment
 FrameStyle
 ^^^^^^^^^^
 
-**Type:** 
+**Type:** int
 
 ..  topic:: Description
 
-	This label attribute is used to Style
+	This label attribute is used to Style the frame of the Label Element. 
+	`Check out the qt5 documentatatoin for more details <https://doc.qt.io/qt-5/qframe.html#Shape-enum>`_
 
-..  note:: Not yet tested
+	* 0: NoFrame
+	* 1: Box
+	* 2: Panel
+	* 3: WinPanel
+	* 4: HLine
+	* 5: VLine
+	* 6: StyledPanel
+	* other to try
 
-	ui.Label({ 'ID':'label_1', 'FrameStyle': "" })
+..  code-block:: python
+
+	ui.Label({ 'ID': 'label_1', 'Text':'My text', 'FrameStyle': 1 })
+
 
 WordWrap
 ^^^^^^^^
@@ -223,6 +196,7 @@ WordWrap
 	:width: 400px
 	:align: center
 
+
 Indent
 ^^^^^^
 
@@ -235,6 +209,7 @@ Indent
 ..  note:: Not yet tested
 
 	ui.Label({ 'ID':'label_1', 'Indent': "" })
+
 
 Margin
 ^^^^^^
@@ -271,6 +246,49 @@ StyleSheet
 	ui.Label({ 'ID':'label_1', 'StyleSheet': css_style })
 
 
+MinimumSize
+^^^^^^^^^^^
+
+**Type:** [width, height]
+
+..  topic:: Description
+
+	This attribute is used to set a minimum width and height for the element if user resize the window. 
+
+..  code-block:: python
+
+	ui.Label({ 'ID': 'label_1', 'Text':'My text','MinimumSize': [200, 200] })
+
+
+MaximumSize
+^^^^^^^^^^^
+
+**Type:** [width, height]
+
+..  topic:: Description
+
+	This attribute is used to set a maximum width and height for the element if user resize the window. 
+
+..  code-block:: python
+
+	ui.Label({ 'ID': 'label_1', 'Text':'My text','MaximumSize': [400, 400] })
+
+
+FixedSize
+^^^^^^^^^
+
+**Type:** [width, height]
+
+..  topic:: Description
+
+	This attribute is used to set prevent users to resize the window.
+
+..  note:: Not yet tested
+
+	ui.Label({ 'ID': 'label_1', 'Text':'My text','FixedSize': [250, 125] })
+
+
+
 Button
 ------
 
@@ -293,6 +311,7 @@ Text
 	:width: 400px
 	:align: center
 
+
 Down
 ^^^^
 
@@ -305,6 +324,7 @@ Down
 ..  note:: Not yet tested
 
     ui.Button({ 'ID': 'ok_btn',  'Down': "" })
+
 
 Checkable
 ^^^^^^^^^
@@ -418,6 +438,7 @@ Down
 
     ui.CheckBox({ 'ID': 'checkbox_1',  'Down': "" })
 
+
 Checkable
 ^^^^^^^^^
 
@@ -448,6 +469,7 @@ Checked
 ..  image:: images/UI_checkbox_checked.png
 	:width: 400px
 	:align: center
+
 
 Tristate
 ^^^^^^^^
@@ -598,6 +620,7 @@ Value
 	:width: 400px
 	:align: center
 
+
 Minimum
 ^^^^^^^
 
@@ -738,6 +761,7 @@ Value
 	:width: 400px
 	:align: center
 
+
 Minimum
 ^^^^^^^
 
@@ -805,7 +829,6 @@ Orientation
 
 	* Vertical
 	* Horizontal
-	* ...
 
 ..  code-block:: python
 
@@ -815,14 +838,15 @@ Orientation
 	:width: 400px
 	:align: center
 
+
 Tracking
 ^^^^^^^^
 
-**Type:**
+**Type:** bool
 
 ..  topic:: Description	
 
-	This label attribute is used to
+	This label attribute is used to... (default=False)
 
 ..  note:: Not yet tested
 
@@ -836,11 +860,11 @@ SliderPosition
 
 ..  topic:: Description	
 
-	This label attribute is used to
+	This label attribute returns the current Slider value. 
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.Slider({ 'ID': 'slider_1',  'SliderPosition': ""})
+    print(win.Find('slider_1').SliderPosition)  #default=0
 
 
 LineEdit
@@ -1480,6 +1504,7 @@ Expanding
 	:width: 400px
 	:align: center
 
+
 AutoHide
 ^^^^^^^^
 
@@ -1564,8 +1589,6 @@ ChangeCurrentOnDrag
     ui.Tabbar({ 'ChangeCurrentOnDrag': True })
 
 
-
-
 Stack
 -----
 
@@ -1576,6 +1599,7 @@ Stack
 ..  code-block:: python
 
 	ui.Stack({'ID':'stack_1'})
+
 
 CurrentIndex
 ^^^^^^^^^^^^
@@ -2020,6 +2044,7 @@ Selected
 	:width: 400px
 	:align: center
 
+
 Hidden
 ^^^^^^
 
@@ -2156,36 +2181,48 @@ ItemText[index]
 
 
 
-
 TabBar Property Array
 ---------------------
 
-TabText[ ]
-^^^^^^^^^^
+TabText[index]
+^^^^^^^^^^^^^^
 
 **Type:** string
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to get or set the Tab Text of the selected Tab index. 
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    newItem.TabText[2] = "Third Tab Text"
+    ui.TabBar({'ID':'tabbar_1'})
+
+    win.Find('tabbar_1').AddTab('Tab1')
+    win.Find('tabbar_1').AddTab('Tab2')
+    print(win.Find('tabbar_1').TabText[0])  #Tab1
+
+    win.Find('tabbar_1').TabText[0] = 'New Text'
+
+..  image:: images/ui_tabbar_tabtext.png
+	:width: 400px
+	:align: center
 
 
-TabToolTip[ ]
-^^^^^^^^^^^^^
+TabToolTip[index]
+^^^^^^^^^^^^^^^^^
 
 **Type:** string
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to display a text when mouse hover the tab
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    newItem.TabToolTip[2] = "Third Tab Tooltip Text"
+    ui.TabBar({'ID':'tabbar_1'})
+	win.Find('tabbar_1').AddTab('Tab1')
+
+    win.Find('tabbar_1').TabToolTip[0] = 'Tool tip'
 
 
 TabWhatsThis[ ]
@@ -2220,6 +2257,7 @@ TabTextColor[index]
 ..  image:: images/UI_tabbar_TabTextColor.png
 	:width: 400px
 	:align: center
+
 
 
 Tree Property Array
@@ -2487,7 +2525,7 @@ Interval
 
 **Type:** int
 
-..  topic:: Description
+..  topic:: Description #NotInReadme
 	
 	This attribute is used to set a time in milisecs to the ui.Timer Element. 
 
