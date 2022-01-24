@@ -58,13 +58,14 @@ def create_main_window():
         'ID': "my_window",
         'Geometry': [ 400,200,250,125 ],
         'WindowTitle': 'My Window',
+        'Events': {'Resize': True} 
         },
         ui.VGroup([
-    ui.LineEdit({'ID':'le_1', 'Events': { 'TextEdited': True} })
+    ui.Tree({'ID':'tree_1',})
         ])
     )
     
-    # 'Events': { 'EditingFinished': True} 
+    # 'Events': {'ItemPressed': True} 
         
     win_items = win.GetItems()
     
@@ -75,14 +76,19 @@ def create_main_window():
         dispatcher.ExitLoop()
         
         
-    def OnLineEditTextEdited(ev):
-        print(f"LineEdit Text Edited")   
+    def OnItemPressed(ev):
+        print(f"Item Pressed")   
 
-    # assign event handlersdfg
-    win.On['le_1'].TextEdited = OnLineEditTextEdited
+        
+    def OnWindowResize(ev):
+        print(f"Window resized")   
+
+    # assign event handlers
+    win.On['tree_1'].ItemPressed = OnItemPressed
 
 
     win.On["my_window"].Close = OnClose
+    win.On['my_window'].Resize = OnWindowResize
 
 
     return win, win_items
@@ -105,17 +111,17 @@ def initialize():
     # print(win.Find('tabbar_1').TabText[0])
 
 
-    # itm = win.Find('my_tree').NewItem()
+    itm = win.Find('tree_1').NewItem()
 
-    # itm.Text[0] = "First column"
-    # itm.Text[1] = "Second column"
+    itm.Text[0] = "First column"
+    itm.Text[1] = "Second column"
 
-    # win.Find('my_tree').AddTopLevelItem(itm)
-    # win.Find('my_tree').ColumnWidth[0] = 200
+    win.Find('tree_1').AddTopLevelItem(itm)
+    win.Find('tree_1').ColumnWidth[0] = 200
 
 
-    # win.Find('my_tree').AddTopLevelItem(itm2)
-    # win.Find('my_tree').AddTopLevelItem(itm3)
+    # win.Find('tree_1').AddTopLevelItem(itm2)
+    # win.Find('tree_1').AddTopLevelItem(itm3)
 
 
 def main():

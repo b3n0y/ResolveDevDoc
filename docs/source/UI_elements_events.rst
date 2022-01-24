@@ -532,7 +532,7 @@ TextEdited
 
 ..  code-block:: python
 
-    ui.LineEdit({'ID':'le_1', 'Events': {'TextEdited': True} })
+    ui.LineEdit({'ID':'le_1', 'Events': {'TextEdited': True } })
 
     def OnLineEditTextEdited(ev):
         print(f"LineEdit Text Edited")   
@@ -546,13 +546,19 @@ EditingFinished
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered if, after a modification to the Text, Return is pressed or Focus change to another Element.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_le'].EditingFinished = OnLineEditEditingFinished
+    ui.LineEdit({'ID':'le_1', 'Events': { 'EditingFinished': True } })
+
+  	def OnLineEditEditingFinished(ev):
+        print(f"Editing Finished")   
+
+    # assign event handlersdfg
+    win.On['le_1'].EditingFinished = OnLineEditEditingFinished
 
 
 ReturnPressed
@@ -560,13 +566,19 @@ ReturnPressed
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when Return is pressed with LineEdit element selected.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_le'].ReturnPressed = OnLineEditReturnPressed
+    ui.LineEdit({'ID':'le_1', 'Events': { 'ReturnPressed': True } })
+
+    def OnLineEditReturnPressed(ev):
+        print(f"Return Pressed")   
+
+    # assign event handlersdfg
+    win.On['le_1'].ReturnPressed = OnLineEditReturnPressed
 
 
 SelectionChanged
@@ -588,13 +600,20 @@ CursorPositionChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time the cursor change position in the LineEdit Element.   (default=False)  
+	Inserting new character also changes the cursor position. 
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_le'].CursorPositionChanged = OnLineEditCursorPositionChanged
+    ui.LineEdit({'ID':'le_1', 'Events': { 'CursorPositionChanged': True} })
+
+    def OnLineEditCursorPositionChanged(ev):
+        print(f"Cursor Position Changed")   
+
+    # assign event handlersdfg
+    win.On['le_1'].CursorPositionChanged = OnLineEditCursorPositionChanged
 
 
 TextEdit
@@ -605,13 +624,19 @@ TextChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time Text is modified in the TextEdit element.  (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_te'].TextChanged = OnTextEditTextChanged
+    ui.TextEdit({'ID':'te_1' })
+
+    def OnLineEditTextChanged(ev):
+        print(f"TextEdit text changed")   
+
+    # assign event handlersdfg
+    win.On['te_1'].TextChanged = OnTextEditTextChanged
 
 
 SelectionChanged
@@ -633,13 +658,20 @@ CursorPositionChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time the cursor change position in the TextEdit Element.   (default=False)  
+	Inserting new character also changes the cursor position. 
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_te'].CursorPositionChanged = OnTextEditCursorPositionChanged
+    ui.TextEdit({'ID':'te_1', 'Events': { 'CursorPositionChanged': True } })
+
+    def OnTextEditCursorPositionChanged(ev):
+        print(f"Cursor Position Changed")   
+
+    # assign event handlersdfg
+    win.On['te_1'].CursorPositionChanged = OnTextEditCursorPositionChanged
 
 
 ColorPicker
@@ -650,13 +682,19 @@ ColorChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when color is changed on ColorPicker element. (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_colorpicker'].ColorChanged = OnColorPickerColorChanged
+    ui.ColorPicker({'ID':'colorpicker_1' })
+
+    def OnColorPickerColorChanged(ev):
+        print(f"Color Changed")   
+
+    # assign event handlersdfg
+    win.On['colorpicker_1'].ColorChanged = OnColorPickerColorChanged
 
 
 TabBar
@@ -667,13 +705,19 @@ CurrentChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time Tab is changed.  (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_tabbar'].CurrentChanged = OnTabBarCurrentChanged
+    ui.TabBar({'ID':'tabbar_1'})
+
+    def OnTabBarCurrentChanged(ev):
+        print(f"Tab Changed")   
+
+    # assign event handlersdfg
+    win.On['tabbar_1'].CurrentChanged = OnTabBarCurrentChanged
 
 
 CloseRequested
@@ -681,13 +725,20 @@ CloseRequested
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when a Tab is closed.  (default=False)
+	``TabsClosable must be set to True``
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_tabbar'].CloseRequested = OnTabBarCloseRequested
+    ui.TabBar({'ID':'tabbar_1', 'TabsClosable': True, 'Events': {'CloseRequested': True} })
+    
+	def OnTabBarCloseRequested(ev):
+        print(f"Tab Close Requested")   
+
+    # assign event handlersdfg
+    win.On['tabbar_1'].CloseRequested = OnTabBarCloseRequested
 
 
 TabMoved
@@ -695,13 +746,21 @@ TabMoved
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when a Tab is moved.  (default=False)
+	``TabBar must be Movable``
+
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_tabbar'].TabMoved = OnTabBarTabMoved
+    ui.TabBar({'ID':'tabbar_1', 'Movable': True, 'Events': {'TabMoved': True} })
+	    
+	def OnTabBarTabMoved(ev):
+        print(f"Tab Moved")   
+
+    # assign event handlersdfg
+    win.On['tabbar_1'].TabMoved = OnTabBarTabMoved
 
 
 TabBarClicked
@@ -709,13 +768,19 @@ TabBarClicked
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time the TabBar is clicked.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_tabbar'].TabBarClicked = OnTabBarClicked
+    ui.TabBar({'ID':'tabbar_1', 'Events': {'TabBarClicked': True} })
+
+    def OnTabBarClicked(ev):
+        print(f"TabBar Clicked")   
+
+    # assign event handlersdfg
+    win.On['tabbar_1'].TabBarClicked = OnTabBarClicked
 
 
 TabBarDoubleClicked
@@ -723,20 +788,26 @@ TabBarDoubleClicked
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time the TabBar is double clicked.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_tabbar'].TabBarDoubleClicked = OnTabBarDoubleClicked
+    ui.TabBar({'ID':'tabbar_1', 'Events': {'TabBarDoubleClicked': True} })
+
+    def OnTabBarDoubleClicked(ev):
+        print(f"TabBar Double Clicked")   
+
+    # assign event handlersdfg
+    win.On['tabbar_1'].TabBarDoubleClicked = OnTabBarDoubleClicked
 
 
 Tree
 ----
 
 CurrentItemChanged
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
@@ -754,13 +825,18 @@ ItemClicked
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when a TreeItem is Clicked.  (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
+
+	ui.Tree({'ID':'my_tree' })
 
 	win.On['my_tree'].ItemClicked = OnTreeItemClicked
+
+	def OnTreeItemClicked(ev):
+		print('Item was clicked')
 
 
 ItemPressed
@@ -768,13 +844,18 @@ ItemPressed
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when a TreeItem is Clicked.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
+
+	ui.Tree({'ID':'my_tree' })
 
 	win.On['my_tree'].ItemPressed = OnTreeItemPressed
+
+	def OnTreeItemPressed(ev):
+		print('Item was pressed')
 
 
 ItemActivated
@@ -796,7 +877,7 @@ ItemDoubleClicked
 
 ..  topic:: Description
 
-	This event is triggered when a TreeItem is DoubleClicked (default=False)
+	This event is triggered when a TreeItem is DoubleClicked.  (default=False)
 
 **Type:** event
 
@@ -902,11 +983,15 @@ Close
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when the Window close button is pressed. (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
+
+    # Event handlers
+    def OnWindowClose(ev):
+        dispatcher.ExitLoop()
 
 	win.On['my_window'].Close = OnWindowClose
 
@@ -916,13 +1001,11 @@ Show
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when the Show() function is called.
 
 **Type:** event
 
 ..  note:: Not tested yet
-
-	win.On['my_window'].Show = OnWindowShow
 
 
 Hide
@@ -944,12 +1027,25 @@ Resize
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time the Window is resized.  (default=False)
 
 **Type:** event
 
 ..  note:: Not tested yet
 
+    win = dispatcher.AddWindow({
+        'ID': "my_window",
+        'Events': {'Resize': True } 
+        },
+        ui.VGroup([
+    		ui.Label({'ID':'label_1', 'Text': 'My label' })
+        ])
+    )
+
+	def OnWindowResize(ev):
+        print(f"Window resized")   
+
+    # assign event handler
 	win.On['my_window'].Resize = OnWindowResize
 
 
