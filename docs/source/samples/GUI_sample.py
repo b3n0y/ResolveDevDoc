@@ -60,13 +60,12 @@ def create_main_window():
         'WindowTitle': 'My Window',
         },
         ui.VGroup([
-    ui.TabBar({'ID':'tabbar_1'})
+    ui.LineEdit({'ID':'le_1', 'Events': { 'TextEdited': True} })
         ])
     )
     
+    # 'Events': { 'EditingFinished': True} 
         
-
-    
     win_items = win.GetItems()
     
     
@@ -74,9 +73,15 @@ def create_main_window():
     # Event handlers
     def OnClose(ev):
         dispatcher.ExitLoop()
+        
+        
+    def OnLineEditTextEdited(ev):
+        print(f"LineEdit Text Edited")   
+
+    # assign event handlersdfg
+    win.On['le_1'].TextEdited = OnLineEditTextEdited
 
 
-    # assign event handlers
     win.On["my_window"].Close = OnClose
 
 
@@ -94,10 +99,10 @@ def initialize():
     
     # win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
 
-    win.Find('tabbar_1').AddTab('Tab1')
-    win.Find('tabbar_1').AddTab('Tab2')
+    # win.Find('tabbar_1').AddTab('Tab1')
+    # win.Find('tabbar_1').AddTab('Tab2')
 
-    print(win.Find('tabbar_1').TabText[0])
+    # print(win.Find('tabbar_1').TabText[0])
 
 
     # itm = win.Find('my_tree').NewItem()

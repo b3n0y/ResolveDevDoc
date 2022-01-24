@@ -22,6 +22,17 @@ Alternatively, if your object's ID is stored in a string variable called 'button
 	win.On[buttonID].Clicked = OnButtonClicked
 
 
+..  important::
+
+	Event handlers can be enabled or disabled for a given element by turning them on or off in the Events attribute:
+
+	..  code-block:: python
+
+		ui.Slider({ 'ID': 'mySlider', 'Events': { 'SliderMoved': True } })
+	
+	Some common events like Clicked or Close are enabled by default.
+
+
 Many objects have specific events that can be handled:
 
 
@@ -33,13 +44,19 @@ Clicked
 
 ..  topic:: Description
 
-	This event is triggered with a mouse click
+	This event is triggered with a mouse click. (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_button'].Clicked = OnButtonClicked
+    ui.Button({'ID':'buttonID', 'Text': "My Button"})
+
+	def OnButtonClicked(ev):
+        print(f"{win.Find('buttonID').Text} was clicked")
+
+    # assign event handlers
+	win.On['buttonID'].Clicked = OnButtonClicked
 
 
 Toggled
@@ -47,13 +64,19 @@ Toggled
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered if button is Toggled
 
 **Type:** event
 
 ..  note:: Not tested yet
 
-	win.On['my_button'].Toggled = OnToggle
+    ui.Button({'ID':'buttonID', 'Text': "My Button"})
+
+    def OnButtonToggled(ev):
+        print(f"{win.Find('buttonID').Text} was Toggled")
+
+    # assign event handlers
+    win.On['buttonID'].Toggled = OnButtonToggled
 
 
 Pressed
@@ -61,13 +84,19 @@ Pressed
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered button is pressed. (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
+	
+    ui.Button({'ID':'buttonID', 'Text': "My Button", 'Events': { 'Pressed': True }})
 
-	win.On['my_button'].Pressed = OnPress
+    def OnButtonPressed(ev):
+        print(f"{win.Find('buttonID').Text} was Pressed")
+
+    # assign event handlers
+    win.On['buttonID'].Pressed = OnButtonPressed
 
 
 Released
@@ -75,13 +104,19 @@ Released
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when button is released. (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_button'].Released = OnRelease
+    ui.Button({'ID':'buttonID', 'Text': "My Button", 'Events': { 'Released': True }})
+
+    def OnButtonReleased(ev):
+        print(f"{win.Find('buttonID').Text} was Released")
+
+    # assign event handlers
+    win.On['buttonID'].Released = OnButtonReleased
 
 
 CheckBox
@@ -92,13 +127,19 @@ Clicked
 
 ..  topic:: Description
 
-	This event is triggered with a mouse click
+	This event is triggered with a mouse click  (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_checkbox'].Clicked = OnCheckboxClicked
+    ui.CheckBox({'ID':'my_checkbox', 'Text': "My CheckBox" })
+
+    def OnCheckBoxClicked(ev):
+        print(f"{win.Find('my_checkbox').Text} was Clicked")
+
+    # assign event handlers
+    win.On['my_checkbox'].Clicked = OnCheckBoxClicked
 
 
 Toggled
@@ -120,13 +161,20 @@ Pressed
 
 ..  topic:: Description
 
-	This event is triggered
+	This event is triggered when CheckBox is pressed (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_checkbox'].Pressed = OnCheckboxPress
+    ui.CheckBox({'ID':'my_checkbox', 'Text': "My CheckBox", 'Events': { 'Pressed': True } })
+    
+	def OnCheckBoxPressed(ev):
+        print(f"{win.Find('my_checkbox').Text} was Pressed")
+
+    # assign event handlers
+    win.On['my_checkbox'].Pressed = OnCheckBoxPressed
+
 
 
 Released
@@ -134,13 +182,20 @@ Released
 
 ..  topic:: Description
 
-	This event is triggered
+	This event is triggered when CheckBox is released  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_checkbox'].Released = OnCheckboxRelease
+    ui.CheckBox({'ID':'my_checkbox', 'Text': "My CheckBox", 'Events': { 'Released': True } })
+
+    def OnCheckBoxReleased(ev):
+        print(f"{win.Find('my_checkbox').Text} was Released")
+
+    # assign event handlers
+    win.On['my_checkbox'].Released = OnCheckBoxReleased
+
 
 
 ComboBox
@@ -165,13 +220,19 @@ CurrentTextChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time the ComboBox current Text is changed
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_combobox'].CurrentTextChanged = OnComboBoxCurrentTextChanged
+    ui.ComboBox({'ID':'combo_1', 'Text': "My ComboBox", 'Events': { 'CurrentTextChanged': True} })
+    
+	def OnComboBoxCurrentTextChanged(ev):
+        print(f"ComboBox CurrentTextChanged changed")
+
+    # assign event handlers
+    win.On['combo_1'].CurrentTextChanged = OnComboBoxCurrentTextChanged
 
 
 TextEdited
@@ -179,13 +240,20 @@ TextEdited
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when Text is edited by user in a ComboBox item.
+	``The ComboBox must be Editable``
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_combobox'].TextEdited = OnComboBoxTextEdited
+    ui.ComboBox({'ID':'combo_1', 'Text': "My ComboBox", 'Editable': True, 'Events': { 'TextEdited': True} })
+
+    def OnComboBoxTextEdited(ev):
+        print(f"ComboBox Text was Edited")
+
+    # assign event handlers
+    win.On['combo_1'].TextEdited = OnComboBoxTextEdited
 
 
 EditTextChanged
@@ -193,7 +261,9 @@ EditTextChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when modifications are made to a ComboBox item and ComboBox is changed. 
+	``The ComboBox must be Editable``
+
 
 **Type:** event
 
@@ -208,6 +278,8 @@ EditingFinished
 ..  topic:: Description
 
 	This event is triggered 
+	``The ComboBox must be Editable``
+
 
 **Type:** event
 
@@ -221,13 +293,21 @@ ReturnPressed
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when Return is pressed with the ComboBox item selected.
+	Return will also add the modified ComboBox item to the list
+	``The ComboBox must be Editable``
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_combobox'].ReturnPressed = OnComboBoxReturnPressed
+    ui.ComboBox({'ID':'combo_1', 'Text': "My ComboBox", 'Editable': True, 'Events': { 'ReturnPressed': True} })
+
+	def OnComboBoxReturnPressed(ev):
+        print(f"ReturnPressed on ComboBox")   
+
+    # assign event handlers
+    win.On['combo_1'].ReturnPressed = OnComboBoxReturnPressed
 
 
 Activated
@@ -235,13 +315,19 @@ Activated
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when activity is detected on the ComboBox. 
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_combobox'].Activated = OnComboBoxActivated
+    ui.ComboBox({'ID':'combo_1', 'Text': "My ComboBox", 'Events': { 'Activated': True } })
+
+    def OnComboBoxIActivated(ev):
+        print(f"ComboBox was Activated")
+
+    # assign event handlers
+    win.On['combo_1'].Activated = OnComboBoxIActivated
 
 
 SpinBox
@@ -252,13 +338,19 @@ ValueChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when SpinBox value is changed. (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_spinbox'].ValueChanged = OnSpinBoxValueChanged
+    ui.SpinBox({'ID':'spinbox_1'})
+    
+	def OnSpinBoxValueChanged(ev):
+        print(f"Value Changed on SpinBox")   
+
+    # assign event handlers
+    win.On['spinbox_1'].ValueChanged = OnSpinBoxValueChanged
 
 
 EditingFinished
@@ -266,13 +358,19 @@ EditingFinished
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when Edit are made to the SpinBox items. (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_spinbox'].EditingFinished = OnSpinBoxEditingFinished
+    ui.SpinBox({'ID':'spinbox_1', 'Events': { 'EditingFinished': True} })
+
+    def OnSpinBoxEditingFinished(ev):
+        print(f"EditingFinished on SpinBox")   
+
+    # assign event handlers
+    win.On['spinbox_1'].EditingFinished = OnSpinBoxEditingFinished
 
 
 Slider
@@ -283,13 +381,19 @@ ValueChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when Slider value is changed (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_slider'].ValueChanged = OnSliderValueChanged
+    ui.Slider({'ID':'slider_1'})
+
+	def OnSliderValueChanged(ev):
+        print(f"Slider value changed")   
+
+    # assign event handlers
+    win.On['slider_1'].ValueChanged = OnSliderValueChanged
 
 
 SliderMoved
@@ -297,13 +401,19 @@ SliderMoved
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time the slider is moved with mouse cursor. (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_slider'].SliderMoved = OnSliderSliderMoved
+    ui.Slider({'ID':'slider_1', 'Events': {'SliderMoved': True } })
+
+   	def OnSliderSliderMoved(ev):
+        print(f"Slider moved")   
+
+    # assign event handlers
+    win.On['slider_1'].SliderMoved = OnSliderSliderMoved
 
 
 ActionTriggered
@@ -311,13 +421,19 @@ ActionTriggered
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when activity is detected on the Slider. (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
+	
+    ui.Slider({'ID':'slider_1', 'Events': { 'ActionTriggered': True}  })
 
-	win.On['my_slider'].ActionTriggered = OnSliderActionTriggered
+    def OnSliderActionTriggered(ev):
+        print(f"Action Triggered")   
+
+    # assign event handlers
+    win.On['slider_1'].ActionTriggered = OnSliderActionTriggered
 
 
 SliderPressed
@@ -325,13 +441,19 @@ SliderPressed
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time the slider is pressed, even if not moved.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_slider'].SliderPressed = OnSliderPressed
+    ui.Slider({'ID':'slider_1', 'Events': {'SliderPressed': True}  })
+
+    def OnSliderSliderPressed(ev):
+        print(f"Slider pressed")   
+
+    # assign event handlers
+    win.On['slider_1'].SliderPressed = OnSliderSliderPressed
 
 
 SliderReleased
@@ -339,13 +461,19 @@ SliderReleased
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time the slider is released, even if not moved.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_slider'].SliderReleased = OnSliderReleased
+    ui.Slider({'ID':'slider_1', 'Events': { 'SliderReleased': True}  })
+
+    def OnSliderSliderReleased(ev):
+        print(f"Slider released")   
+
+    # assign event handlers
+    win.On['slider_1'].SliderReleased = OnSliderSliderReleased
 
 
 RangeChanged
@@ -353,13 +481,21 @@ RangeChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered is Minimum or Maximum slider value is change. (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_slider'].RangeChanged = OnSliderRangeChanged
+    ui.Slider({'ID':'slider_1', 'Events': { 'RangeChanged': True}  })
+    
+	def OnSliderRangeChanged(ev):
+        print("Range Changed")   
+
+    # assign event handlers
+    win.On['slider_1'].RangeChanged = OnSliderRangeChanged
+
+	win.Find('slider_1').Maximum = 4  #trigger RangeChanged
 
 
 LineEdit
@@ -370,13 +506,19 @@ TextChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time Text is modified in the LineEdit element.  (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_le'].TextChanged = OnLineEditTextChanged
+    ui.LineEdit({'ID':'le_1' })
+
+    def OnLineEditTextChanged(ev):
+        print(f"LineEdit text changed")   
+
+    # assign event handlersdfg
+    win.On['le_1'].TextChanged = OnLineEditTextChanged
 
 
 TextEdited
@@ -384,13 +526,19 @@ TextEdited
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered each time Text is modified in the LineEdit element.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_le'].TextEdited = OnLineEditTextEdited
+    ui.LineEdit({'ID':'le_1', 'Events': {'TextEdited': True} })
+
+    def OnLineEditTextEdited(ev):
+        print(f"LineEdit Text Edited")   
+
+    # assign event handlersdfg
+    win.On['le_1'].TextEdited = OnLineEditTextEdited
 
 
 EditingFinished
@@ -989,12 +1137,3 @@ Event handler functions are called with a dictionary of related attributes such 
 * **FocusIn:**			Reason
 * **FocusOut:**			Reason
 
-..  warning::
-
-	Event handlers can be enabled or disabled for a given element by turning them on or off in the Events attribute:
-
-	..  code-block:: python
-
-		ui.Slider({ 'ID': 'mySlider', 'Events': { 'SliderMoved': true } })
-	
-	Some common events like Clicked or Close are enabled by default.

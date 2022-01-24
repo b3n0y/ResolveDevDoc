@@ -56,6 +56,3 @@ Timecode Display Sample
         win_timecode.On["open_prefs_btn"].Clicked = OnPrefs
 
         return win_timecode, win_timecode_items
-
-
-:download:`download timecode_display.py <samples/timecode_display.py>`
