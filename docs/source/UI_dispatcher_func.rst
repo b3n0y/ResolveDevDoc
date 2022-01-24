@@ -12,7 +12,7 @@ AddWindow({properties}, [children])
 
 ..  topic:: Description
 
-	This function is
+	This function is creating a window element. 
 
 **Type:** function: Accepts a dictionary of properties and a list of children, returns a Window object
 
@@ -94,7 +94,7 @@ then Show() your window and call RunLoop() to wait for user interaction:
 	dispatcher.RunLoop()
 
 
-AddWindow() will also accept a single child without needing a list, or a single dictionary containing both proprties and child elements, for ease of use.
+AddWindow() will also accept a single child without needing a list, or a single dictionary containing both properties and child elements, for ease of use.
 
 As well as constructing new child elements and layouts, the UIManager also offers a few useful functions:
 

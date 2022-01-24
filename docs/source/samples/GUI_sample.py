@@ -60,8 +60,7 @@ def create_main_window():
         'WindowTitle': 'My Window'
         },
         ui.VGroup([
- 
-    ui.ComboBox({ 'ID': 'combo_1',  })
+    		ui.Label({ 'ID': 'label_1', 'Text':'My text' })
         ])
     )
     
@@ -90,8 +89,9 @@ def initialize():
     global win, win_items
 
     win, win_items = create_main_window()
+    print(win.Find('my_window').Geometry)
     
-    win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
+    # win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
 
     
 

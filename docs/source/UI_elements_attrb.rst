@@ -1,20 +1,150 @@
 Attributes
 ==========
 
+
 The element's ID is used to find, manage, and dispatch events for that element. GUI elements also support a set of common attributes including 
 Enabled, Hidden, Visible, Font, WindowTitle, BackgroundColor, Geometry, ToolTip, StatusTip, StyleSheet, WindowOpacity, MinimumSize, MaximumSize, 
-and FixedSize. Some other common GUI elements and their main attributes include:
+and FixedSize. 
 
 
 ..  note:: 
+
 	For better management of elements, define an ID attribute. Not all example will contain an ID but keep that in mind. 
 	
 	You can then use the win.Find('ID') to find and update an element and update an attribute win.Find('myButton').Text = "Processing..."
 
 
-You need to create a Window with a dictionnary of parameter and list of item to contain your element and attribute. 
+..  important:: You need to create a Window to contain your element and attribute. 
 
-Check :ref:`UI Element Layout page <UI_elements_layout>` for more details
+	Check :doc:`UI Element Layout page <UI_elements_layout>` and :doc:`UI Dispatcher functions <UI_dispatcher_func>` for more details.
+
+
+Window
+------
+
+WindowTitle
+^^^^^^^^^^^
+
+**Type:** string
+
+..  topic:: Description
+
+	This attribute is used to display a text on the window's title bar. 
+
+..  code-block:: python
+
+    win = dispatcher.AddWindow({
+        'ID': "my_window",
+        'WindowTitle': 'My Window'
+        },
+        ui.VGroup([
+    		ui.Label({ 'ID': 'label_1', 'Text':'My text' })
+        ])
+    )
+
+WindowOpacity
+^^^^^^^^^^^^^
+
+**Type:** float
+
+..  topic:: Description
+
+	This attribute is used to set the Windows's opacity, (default=1)
+
+..  code-block:: python
+
+    win = dispatcher.AddWindow({
+        'ID': "my_window",
+        'WindowOpacity': 0.5,  #50% opacity
+        },
+        ui.VGroup([
+    		ui.Label({ 'ID': 'label_1', 'Text':'My text' })
+        ])
+    )
+
+BackgroundColor
+^^^^^^^^^^^^^^^
+
+**Type:** dict RGBA
+
+..  topic:: Description
+
+	This attribute is used change the Window's background color
+
+..  code-block:: python
+
+    win = dispatcher.AddWindow({
+        'ID': "my_window",
+        'BackgroundColor': {'R':0.5, 'G':0, 'B':0, 'A':0.5},
+        },
+        ui.VGroup([
+    		ui.Label({ 'ID': 'label_1', 'Text':'My text' })
+        ])
+    )
+
+Geometry
+^^^^^^^^
+
+**Type:** [posX, posY, width, height]
+
+..  topic:: Description
+
+	This attribute is used to change the Window's position and size.
+
+..  code-block:: python
+
+    win = dispatcher.AddWindow({
+        'ID': "my_window",
+        'Geometry': [ 400,200,250,125 ],
+        },
+        ui.VGroup([
+    		ui.Label({ 'ID': 'label_1', 'Text':'My text' })
+        ])
+    )
+
+
+MinimumSize
+^^^^^^^^^^^
+
+**Type:** 
+
+..  topic:: Description
+
+	This attribute is used
+
+..  note:: Not yet tested
+
+	ui.Label({ 'ID':'label_1', 'MinimumSize':  })
+
+
+
+MaximumSize
+^^^^^^^^^^^
+
+**Type:** int
+
+..  topic:: Description
+
+	This attribute is used
+
+..  note:: Not yet tested
+
+	ui.Label({ 'ID':'label_1', 'MaximumSize':  })
+
+
+FixedSize
+^^^^^^^^^
+
+**Type:** int
+
+..  topic:: Description
+
+	This attribute is used
+
+..  note:: Not yet tested
+
+	ui.Label({ 'ID':'label_1', 'FixedSize':  })
+
 
 Label
 -----
@@ -153,7 +283,7 @@ Text
 
 ..  topic:: Description	
 
-	This label attribute is used to display Text on the element. 
+	This attribute is used to display Text on the element. 
 
 ..  code-block:: 
 
