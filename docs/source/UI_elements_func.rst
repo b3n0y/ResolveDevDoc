@@ -136,6 +136,7 @@ AnimateClick()
 	win['mybutton'].AnimateClick()
 
 
+
 CheckBox
 --------
 
@@ -181,6 +182,7 @@ AnimateClick()
 	win['mycheckbox'].AnimateClick()
 
 
+
 ComboBox
 --------
 
@@ -189,27 +191,27 @@ AddItem(string)
 
 ..  topic:: Description
 
-	This function is
+	This function add the item to the ComboBox list. 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].AddItem('Item Name')
+	win.Find('combo_1').AddItem('Item Name')
 
 
-InsertItem(string)
-^^^^^^^^^^^^^^^^^^
+InsertItem(int, string)
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function is inserting an item at the specified index. 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].InsertItem('Item Name')
+	win.Find('combo_1').InsertItem(1, 'New item')
 
 
 AddItems(list)
@@ -217,13 +219,13 @@ AddItems(list)
 
 ..  topic:: Description
 
-	This function is 
+	This function is adding a list of item to the ComboBox list. 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].AddItems(['Item1', 'Item2'])
+	win.Find('combo_1').AddItems(['Item 1', 'Item 2', 'Item 3'])
 
 
 InsertItems(int, list)
@@ -231,13 +233,13 @@ InsertItems(int, list)
 
 ..  topic:: Description
 
-	This function is 
+	This function is inserting a list of items at the specified index. 
 
 **Type:** int= index, list=[string]
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].InsertItems(2, ['Item1', 'Item2'])
+	win.Find('combo_1').InsertItems(1, ['Item 1', 'Item 2'])
 
 
 InsertSeparator(int)
@@ -245,13 +247,13 @@ InsertSeparator(int)
 
 ..  topic:: Description
 
-	This function is 
+	This function inserts a Seprator in the list at the specified index. 
 
 **Type:** int= index
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].InsertSeparator(2)
+	win.Find('combo_1').InsertSeparator(2)  #insert after second item
 
 
 RemoveItem(int)
@@ -263,9 +265,9 @@ RemoveItem(int)
 
 **Type:** int= index
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].RemoveItem(2)
+	win.Find('combo_1').RemoveItem(2)  #remove third item
 
 
 Clear()
@@ -273,13 +275,13 @@ Clear()
 
 ..  topic:: Description
 
-	This function is 
+	This function removes all item from the ComboBox list
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].Clear()
+	win.Find('combo_1').Clear()
 
 
 SetEditText(string)
@@ -287,13 +289,17 @@ SetEditText(string)
 
 ..  topic:: Description
 
-	This function is 
+	This function sets the Text to appear in the editable Combox Item. 
+
+	``ComboBox must be Editable``
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].SetEditText('My text')
+	ui.ComboBox({'ID':'combo_1', 'Editable': True }),
+
+	win.Find('combo_1').SetEditText('My text')
 
 
 ClearEditText()
@@ -301,13 +307,17 @@ ClearEditText()
 
 ..  topic:: Description
 
-	This function is 
+	This function clears the EditText box in the Combox Item. 
+
+	``ComboBox must be Editable``
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].ClearEditText()
+		ui.ComboBox({'ID':'combo_1', 'Editable': True }),
+
+	    win.Find('combo_1').ClearEditText()
 
 
 Count()
@@ -315,13 +325,16 @@ Count()
 
 ..  topic:: Description
 
-	This function is 
+	This function returns the number of item in the ComboBox list. 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].Count()
+    ui.ComboBox({'ID':'combo_1'}),
+	win.Find("combo_1").AddItems(["Item 1","Item 2","Item 3"])
+	item_count = win.Find('combo_1').Count()
+	print(item_count)  # 3
 
 
 ShowPopup()
@@ -329,13 +342,13 @@ ShowPopup()
 
 ..  topic:: Description
 
-	This function is 
+	This function opens the ComboBox list to display content
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].ShowPopup()
+	win.Find('combo_1').ShowPopup()
 
 
 HidePopup()
@@ -343,13 +356,13 @@ HidePopup()
 
 ..  topic:: Description
 
-	This function is 
+	This function closes the ComboBox list to hide content
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mycombobox'].HidePopup()
+	win.Find('combo_1').HidePopup()
 
 
 SpinBox
@@ -360,13 +373,13 @@ SetRange(int, int)
 
 ..  topic:: Description
 
-	This function is
+	This function is setting a Minimum and Maximum value to the SpinBox. 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['myspinbox'].SetRange(0, 2)
+	win.Find('spinbox_1').SetRange(0, 4)  #min=0, max=4
 
 
 StepBy(int)
@@ -374,13 +387,13 @@ StepBy(int)
 
 ..  topic:: Description
 
-	This function is
+	This function adding the specified value to the SpinBox.
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['myspinbox'].StepBy(2)
+	win.Find('spinbox_1').StepBy(2)  #adds 2
 
 
 StepUp()
@@ -388,13 +401,13 @@ StepUp()
 
 ..  topic:: Description
 
-	This function is
+	This function is adding the current Step value to the SpinBox (default=1)
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['myspinbox'].StepUp()
+        win.Find('spinbox_1').StepUp()
 
 
 StepDown()
@@ -402,11 +415,11 @@ StepDown()
 
 ..  topic:: Description
 
-	This function is
+	This function is removing the current Step value to the SpinBox (default=1)
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
 	win['myspinbox'].StepDown()
 
@@ -416,13 +429,13 @@ SelectAll()
 
 ..  topic:: Description
 
-	This function is
+	This function is selecting all the numbers in the SpinBox 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['myspinbox'].SelectAll()
+	win.Find('spinbox_1').SelectAll()
 
 
 Clear()
@@ -430,13 +443,14 @@ Clear()
 
 ..  topic:: Description
 
-	This function is
+	This function clears the SpinBox display
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['myspinbox'].Clear()
+	win.Find('spinbox_1').Clear()
+
 
 
 Slider
@@ -447,13 +461,13 @@ SetRange(int, int)
 
 ..  topic:: Description
 
-	This function is
+	This function is setting a Minimum and Maximum value to the Slider. 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['myslider'].SetRange(0, 2)
+	win.Find('slider_1').SetRange(0, 4)  #min=0, max=4
 
 
 TriggerAction(string)
@@ -478,13 +492,13 @@ SetSelection(int, int)
 
 ..  topic:: Description
 
-	This function is
+	This function is selecting a range of characters in the LineEdit. 
 
 **Type:** func int = index start, index end
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].SetSelection(0, 2)
+	win.Find('le_1').SetSelection(0, 4)  #selects the first 4 characters
 
 
 HasSelectedText()
