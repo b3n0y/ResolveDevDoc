@@ -811,13 +811,18 @@ CurrentItemChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when the TreeItem is changed.  (default=True)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_tree'].CurrentItemChanged = OnTreeCurrentItemChanged
+	ui.Tree({'ID':'tree_1'})
+
+	def OnCurrentItemChanged(ev):
+		print('TreeItem was changed')
+
+	win.On['my_tree'].CurrentItemChanged = OnCurrentItemChanged
 
 
 ItemClicked
@@ -833,10 +838,10 @@ ItemClicked
 
 	ui.Tree({'ID':'my_tree' })
 
-	win.On['my_tree'].ItemClicked = OnTreeItemClicked
-
 	def OnTreeItemClicked(ev):
 		print('Item was clicked')
+
+	win.On['my_tree'].ItemClicked = OnTreeItemClicked
 
 
 ItemPressed
@@ -852,10 +857,10 @@ ItemPressed
 
 	ui.Tree({'ID':'my_tree' })
 
-	win.On['my_tree'].ItemPressed = OnTreeItemPressed
-
 	def OnTreeItemPressed(ev):
 		print('Item was pressed')
+
+	win.On['my_tree'].ItemPressed = OnTreeItemPressed
 
 
 ItemActivated
@@ -863,11 +868,16 @@ ItemActivated
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when a TreeItem is DoubleClicked or...  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
+
+	ui.Tree({'ID':'my_tree', 'Events' : { 'ItemDouItemActivatedbleClicked' : True } })
+
+	def OnTreeItemActivated(ev):
+		print('Item was activated')
 
 	win.On['my_tree'].ItemActivated = OnTreeItemActivated
 
@@ -885,10 +895,10 @@ ItemDoubleClicked
 
 	ui.Tree({'ID':'my_tree', 'Events' : { 'ItemDoubleClicked' : True } })
 
-	win.On['my_tree'].ItemDoubleClicked = OnTreeItemDoubleClicked
-
 	def OnTreeItemDoubleClicked(ev):
 		print('Item was double clicked')
+
+	win.On['my_tree'].ItemDoubleClicked = OnTreeItemDoubleClicked
 
 
 ItemChanged
@@ -910,13 +920,19 @@ ItemEntered
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when Enter is pressed on a TreeItem.  (default=False)
 
 **Type:** event
 
 ..  note:: Not tested yet
 
-	win.On['my_tree'].ItemEntered = OnTreeItemEntered
+	ui.Tree({'ID':'tree_1', 'Events': {'ItemEntered': True} })
+
+    def OnItemEntered(ev):
+        print(f"Item Entered")   
+
+    # assign event handlers
+    win.On['tree_1'].ItemEntered = OnItemEntered
 
 
 ItemExpanded
@@ -924,13 +940,19 @@ ItemExpanded
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when a TreeItem with Child is Expanded.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_tree'].ItemExpanded = OnTreeItemExpanded
+	ui.Tree({'ID':'tree_1', 'Events': {'ItemExpanded': True} })
+
+    def OnItemExpanded(ev):
+        print(f"Item Expanded")   
+
+    # assign event handlers
+    win.On['tree_1'].ItemExpanded = OnItemExpanded
 
 
 ItemCollapsed
@@ -938,13 +960,19 @@ ItemCollapsed
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when a TreeItem with Child is Collapsed.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_tree'].ItemCollapsed = OnTreeItemCollapsed
+	ui.Tree({'ID':'tree_1', 'Events': {'ItemCollapsed': True} })
+
+    def OnItemExpanded(ev):
+        print(f"Item Collapsed")   
+
+    # assign event handlers
+    win.On['tree_1'].ItemCollapsed = OnItemCollapsed
 
 
 CurrentItemChanged
@@ -952,13 +980,19 @@ CurrentItemChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when the selected Tree item is changed.  (default=True)
 
 **Type:** event
 
 ..  note:: Not tested yet
 
-	win.On['my_tree'].CurrentItemChanged = OnTreeCurrentItemChanged
+	ui.Tree({'ID':'tree_1'})
+
+    def OnCurrentItemChanged(ev):
+        print(f"Current Item Changed")   
+
+    # assign event handlers
+    win.On['tree_1'].CurrentItemChanged = OnCurrentItemChanged
 
 
 ItemSelectionChanged
@@ -966,13 +1000,19 @@ ItemSelectionChanged
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when the selected Tree item is changed.  (default=False)
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win.On['my_tree'].ItemSelectionChanged = OnTreeItemSelectionChanged
+	ui.Tree({'ID':'tree_1', 'Events': {'ItemSelectionChanged': True}  })
+
+    def OnItemSelectionChanged(ev):
+        print(f"Item Selection Changed")   
+
+    # assign event handlers
+    win.On['tree_1'].ItemSelectionChanged = OnItemSelectionChanged
 
 
 Window
@@ -1001,11 +1041,28 @@ Show
 
 ..  topic:: Description
 
-	This event is triggered when the Show() function is called.
+	This event is triggered when the Window is shown or returns from a hidden state. 
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
+
+    win = dispatcher.AddWindow({
+        'ID': "my_window",
+        'Geometry': [ 400,200,250,125 ],
+        'WindowTitle': 'My Window',
+        'Events': {'Show': True, 'Clicked': True, 'Close': True} 
+        },
+        ui.VGroup([
+    		ui.Label({'ID':'label_1', 'Text': 'My label' })
+        ])
+    )
+
+    def OnWindowShow(ev):
+        print(f"Show") 
+
+	# assign event handlers
+	win.On['my_window'].Show = OnWindowShow
 
 
 Hide
@@ -1013,12 +1070,27 @@ Hide
 
 ..  topic:: Description
 
-	This event is triggered 
+	This event is triggered when the Window is hidden by another Window
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
+    win = dispatcher.AddWindow({
+        'ID': "my_window",
+        'Geometry': [ 400,200,250,125 ],
+        'WindowTitle': 'My Window',
+        'Events': {'Hide': True, 'Clicked': True, 'Close': True} 
+        },
+        ui.VGroup([
+    		ui.Label({'ID':'label_1', 'Text': 'My label' })
+        ])
+    )
+
+    def OnWindowHide(ev):
+        print(f"Hidden") 
+
+	# assign event handlers
 	win.On['my_window'].Hide = OnWindowHide
 
 
@@ -1031,11 +1103,11 @@ Resize
 
 **Type:** event
 
-..  note:: Not tested yet
+..  code-block:: python
 
     win = dispatcher.AddWindow({
         'ID': "my_window",
-        'Events': {'Resize': True } 
+        'Events': {'Resize': True, 'Clicked': True, 'Close': True} 
         },
         ui.VGroup([
     		ui.Label({'ID':'label_1', 'Text': 'My label' })

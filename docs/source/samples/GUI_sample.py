@@ -58,14 +58,14 @@ def create_main_window():
         'ID': "my_window",
         'Geometry': [ 400,200,250,125 ],
         'WindowTitle': 'My Window',
-        'Events': {'Resize': True} 
+        'Events': {'Hide': True, 'Show': True, 'Clicked': True, 'Close': True} 
         },
         ui.VGroup([
-    ui.Tree({'ID':'tree_1',})
-        ])
+    		ui.Tree({'ID':'tree_1', 'Events': {'ItemEntered': True} })
+        ])      
     )
     
-    # 'Events': {'ItemPressed': True} 
+    # 'Events': {'ItemEntered': True} 
         
     win_items = win.GetItems()
     
@@ -76,20 +76,14 @@ def create_main_window():
         dispatcher.ExitLoop()
         
         
-    def OnItemPressed(ev):
-        print(f"Item Pressed")   
-
-        
-    def OnWindowResize(ev):
-        print(f"Window resized")   
+    def OnItemEntered(ev):
+        print(f"Item Entered")   
 
     # assign event handlers
-    win.On['tree_1'].ItemPressed = OnItemPressed
+    win.On['tree_1'].ItemEntered = OnItemEntered
 
 
     win.On["my_window"].Close = OnClose
-    win.On['my_window'].Resize = OnWindowResize
-
 
     return win, win_items
 
@@ -100,8 +94,6 @@ def initialize():
     global win, win_items
 
     win, win_items = create_main_window()
-    # print(win.Find('slider_1').Tracking)
-    # print(win.Find('checkbox_1').Down)
     
     # win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
 
@@ -112,16 +104,19 @@ def initialize():
 
 
     itm = win.Find('tree_1').NewItem()
+    itm2 = win.Find('tree_1').NewItem()
+    itm2.Text[0] = "Child of itm"
+
 
     itm.Text[0] = "First column"
     itm.Text[1] = "Second column"
 
     win.Find('tree_1').AddTopLevelItem(itm)
     win.Find('tree_1').ColumnWidth[0] = 200
+    itm.AddChild(itm2)
 
 
-    # win.Find('tree_1').AddTopLevelItem(itm2)
-    # win.Find('tree_1').AddTopLevelItem(itm3)
+    win.Find('tree_1').AddTopLevelItem(itm2)
 
 
 def main():

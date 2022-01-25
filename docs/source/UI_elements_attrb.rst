@@ -2070,7 +2070,7 @@ Expanded
 ..  topic:: Description
 	
 	This attribute is used to define the expanded status to an item of the Tree. (default=False)
-	TreeItem needs to have child to display. 
+	``TreeItem must have child to display.``
 
 ..  code-block:: python
 
@@ -2098,7 +2098,7 @@ Disabled
 	
 	This attribute is used to define the disabled status to an item of the Tree. (default=False)
 	
-	TreeItem will be grayed out.
+	``TreeItem will be grayed out.``
 
 ..  code-block:: python
 
