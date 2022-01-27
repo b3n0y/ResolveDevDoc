@@ -548,13 +548,13 @@ SelectAll()
 
 ..  topic:: Description
 
-	This function is
+	This function is selecting all the text in the LineEdit element. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].SelectAll()
+	win.Find('le_1').SelectAll()
 
 
 Clear()
@@ -562,13 +562,13 @@ Clear()
 
 ..  topic:: Description
 
-	This function is
+	This function deletes all the text in the LineEdit element. 
 
 **Type:** return 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Clear()
+	win.Find('le_1').Clear()
 
 
 Cut()
@@ -576,27 +576,32 @@ Cut()
 
 ..  topic:: Description
 
-	This function is
+	This function will copy to clipboard and remove the selected LineEdit characters. 
+	``A selection in the LineEdit is required``
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Cut()
-
+	win.Find('le_1').SetSelection(0, 4)
+	win.Find('le_1').Cut()  #this will cut the first 4 characters
+	
 
 Copy()
 ^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function will copy to clipboard the selected LineEdit characters.
+	``A selection in the LineEdit is required``
+ 
 
-**Type:** return bool
+**Type:** return
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Copy()
+	win.Find('le_1').SetSelection(0, 4)
+	win.Find('le_1').Copy()  #this will copy the first 4 characters
 
 
 Paste()
@@ -604,13 +609,13 @@ Paste()
 
 ..  topic:: Description
 
-	This function is
+	This function paste the clipboard content to the LineEdit element. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Paste()
+	win.Find('le_1').Paste()
 
 
 Undo()
@@ -618,13 +623,13 @@ Undo()
 
 ..  topic:: Description
 
-	This function is
+	This function wil undo the last action made in the TextEdit element. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Undo()
+	win.Find('le_1').Undo()
 
 
 Redo()
@@ -646,13 +651,13 @@ Deselect()
 
 ..  topic:: Description
 
-	This function is
+	This function will deselect the selected text of the LineEdit element. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Deselect()
+	win.Find('le_1').Deselect()
 
 
 Insert(string)
@@ -660,13 +665,13 @@ Insert(string)
 
 ..  topic:: Description
 
-	This function is
+	This function insert the text string at the cursor position in the LineEdit element. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Insert('My text')
+	win.Find('le_1').Insert('New Text')
 
 
 Backspace()
@@ -674,13 +679,13 @@ Backspace()
 
 ..  topic:: Description
 
-	This function is
+	This function remove the last character from the cursor position in the LineEdit element. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Backspace()
+	win.Find('le_1').Backspace()
 
 
 Del()
@@ -688,13 +693,13 @@ Del()
 
 ..  topic:: Description
 
-	This function is
+	This function remove the next character from the cursor position in the LineEdit element. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Del()
+	win.Find('le_1').Del()
 
 
 Home(bool)
@@ -702,13 +707,13 @@ Home(bool)
 
 ..  topic:: Description
 
-	This function is
+	This function is selecting all characters from cursor to beginning when set to True. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].Home(True)
+	win.Find('le_1').Home(True)
 
 
 End(bool)
@@ -716,13 +721,13 @@ End(bool)
 
 ..  topic:: Description
 
-	This function is
+	This function is selecting all characters from cursor to end when set to True. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['le_1'].End(True)
+	win.Find('le_1').End(True)
 
 
 CursorPositionAt(point)

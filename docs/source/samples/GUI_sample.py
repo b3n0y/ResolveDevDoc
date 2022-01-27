@@ -77,8 +77,9 @@ def create_main_window():
          
 
     def OnClicked(ev):
-        print(win.Find('le_1').HasSelectedText())
+        print(win.Find('le_1').CursorPositionAt(4))
         
+
     # assign event handlers
     
     win.On["my_window"].Close = OnClose
