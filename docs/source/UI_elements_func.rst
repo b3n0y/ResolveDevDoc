@@ -744,6 +744,7 @@ CursorPositionAt(point)
 	win['le_1'].CursorPositionAt(point)
 
 
+
 TextEdit
 --------
 
@@ -752,13 +753,14 @@ InsertPlainText(string)
 
 ..  topic:: Description
 
-	This function is
+	This function insert the text string at the cursor position in the TextEdit element. 
+
 
 **Type:** func 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].InsertPlainText('My text')
+	win.Find('te_1').InsertPlainText('New text')
 
 
 InsertHTML(string)
@@ -766,13 +768,13 @@ InsertHTML(string)
 
 ..  topic:: Description
 
-	This function is
+	This function insert the HTML code string at the cursor position in the TextEdit element. 
 
 **Type:** func 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].InsertHTML('<h1>My title</h1>')
+	win.Find('te_1').InsertHTML('<h1>My title</h1>')
 
 
 Append(string)
@@ -780,13 +782,13 @@ Append(string)
 
 ..  topic:: Description
 
-	This function is
+	This function is adding the string on the next line of the TextEdit box.  
 
 **Type:** func 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].Append('My text')
+	win.Find('te_1').Append('My text')
 
 
 SelectAll()
@@ -794,13 +796,14 @@ SelectAll()
 
 ..  topic:: Description
 
-	This function is
+	This function is selecting all the text in the TextEdit element. 
 
 **Type:** func 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].SelectAll()
+	win.Find('te_1').SelectAll()
+
 
 
 Clear()
@@ -808,15 +811,13 @@ Clear()
 
 ..  topic:: Description
 
-	This function is
+	This function deletes all the text in the LineEdit element. 
 
 **Type:** func 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].Clear()
-
-
+	win.Find('te_1').Clear()
 
 
 Cut()
@@ -824,27 +825,32 @@ Cut()
 
 ..  topic:: Description
 
-	This function is
+	This function will copy to clipboard and remove the selected LineEdit characters. 
+	``A selection in the LineEdit is required``
 
-**Type:** func 
+**Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].Cut()
-
+	win.Find('te_1').SetSelection(0, 4)
+	win.Find('te_1').Cut()  #this will cut the first 4 characters
+	
 
 Copy()
 ^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function will copy to clipboard the selected characters.
+	``A selection in the TextEdit is required``
+ 
 
-**Type:** func 
+**Type:** return
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].Copy()
+	win.Find('te_1').SelectAll()
+	win.Find('te_1').Copy()  #this will copy all text to clipbboard
 
 
 Paste()
@@ -852,13 +858,13 @@ Paste()
 
 ..  topic:: Description
 
-	This function is
+	This function paste the clipboard content to the cursor position in the TextEdit element. 
 
-**Type:** func 
+**Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].Paste()
+	win.Find('te_1').Paste()
 
 
 Undo()
@@ -866,13 +872,13 @@ Undo()
 
 ..  topic:: Description
 
-	This function is
+	This function wil undo the last action made on each line of the TextEdit element. 
 
-**Type:** func 
+**Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].Undo()
+	win.Find('te_1').Undo()
 
 
 Redo()
@@ -882,7 +888,7 @@ Redo()
 
 	This function is
 
-**Type:** func 
+**Type:** 
 
 ..  note:: Not tested yet
 
@@ -908,13 +914,13 @@ ZoomIn(int)
 
 ..  topic:: Description
 
-	This function is
+	This function is increase the displayed text size by defined number. 
 
 **Type:** func 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].ZoomIn(2)
+	win.Find('te_1').ZoomIn(14)  #will display text with 14pt size
 
 
 ZoomOut(int)
@@ -922,13 +928,13 @@ ZoomOut(int)
 
 ..  topic:: Description
 
-	This function is
+	This function is decrease the displayed text size by defined number. 
 
 **Type:** func 
 
 ..  note:: Not tested yet
 
-	win['te_1'].ZoomOut(2)
+	win.Find('te_1').ZoomOut(2)  #will reduce text size of 2pt
 
 
 EnsureCursorVisible()
@@ -1004,32 +1010,32 @@ Find(string, findFlags)
 TabBar
 ------
 
-AddTab(strubg)
+AddTab(string)
 ^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function adds a Tab with specified name to the TabBar
 
-**Type:** return int 
+**Type:** string
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].AddTab(strubg)
+	win.Find('tabbar_1').AddTab('Tab 1')
 
 
-InsertTab(string)
+InsertTab(int, string)
 ^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function insert a Tab in the TabBar at specified index. 
 
-**Type:** return int 
+**Type:** returns tab index (int)
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].InsertTab('Tab name')
+	win.Find('tabbar_1').InsertTab(0, 'Tab 0')  #insert tab at index 0
 
 
 Count()
@@ -1037,13 +1043,13 @@ Count()
 
 ..  topic:: Description
 
-	This function is
+	This function counts the number of Tabs
 
-**Type:** return int 
+**Type:** return number of Tab 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].Count()
+	print(win.Find('tabbar_1').Count())
 
 
 RemoveTab(int)
@@ -1055,9 +1061,9 @@ RemoveTab(int)
 
 **Type:** int= Tab index 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].RemoveTab(1)
+	win.Find('tabbar_1').RemoveTab(0)  #remove first tab
 
 
 MoveTab(int, int)
@@ -1065,13 +1071,13 @@ MoveTab(int, int)
 
 ..  topic:: Description
 
-	This function is
+	This function moves a Tab to another position
 
 **Type:** int=tab index to move  int=tab index destination 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['te_1'].MoveTab(0, 2)
+	win.Find('tabbar_1').MoveTab(1, 0)  #move second tab to first position
 
 
 Tree
@@ -1082,31 +1088,31 @@ AddTopLevelItem(item)
 
 ..  topic:: Description
 
-	This function is
+	This function adds the item at the top of the Tree.
 
 **Type:** item= TreeItem
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	item = win['mytree'].NewItem()
+	item = win.Find('tree_1').NewItem()
 	item.Text[0] = 'My Text'
-	win['mytree'].AddTopLevelItem(item)
+	win.Find('tree_1').AddTopLevelItem(item)
 
 
-InsertTopLevelItem(item)
-^^^^^^^^^^^^^^^^^^^^^^^^
+InsertTopLevelItem(int, item)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function insert the item at specified position. 
 
-**Type:** item= TreeItem
+**Type:** int= index, item= TreeItem  
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	item = win['mytree'].NewItem()
-	item.Text[0] = 'My Text'
-	win['mytree'].InsertTopLevelItem(item)
+	item = win.Find('tree_1').NewItem()
+	item.Text[0] = 'Insert'
+	win.Find('tree_1').InsertTopLevelItem(0, item)
 
 
 SetHeaderLabel(string)
@@ -1114,13 +1120,13 @@ SetHeaderLabel(string)
 
 ..  topic:: Description
 
-	This function is
+	This function is setting the name for the first header
 
 **Type:** string= header label
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].SetHeaderLabel('New header')
+	win.Find('tree_1').SetHeaderLabel('New header')
 
 
 CurrentColumn()
@@ -1128,13 +1134,13 @@ CurrentColumn()
 
 ..  topic:: Description
 
-	This function is
+	This function returns the selected column index. 
 
-**Type:** return int
+**Type:** returns int
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].CurrentColumn()
+	print(win.Find('tree_1').CurrentColumn())
 
 
 SortColumn()
@@ -1156,13 +1162,13 @@ TopLevelItemCount()
 
 ..  topic:: Description
 
-	This function is
+	This function return the number of Item in the Tree. (row)
 
-**Type:** return int
+**Type:** returns
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].TopLevelItemCount()
+	print(win.Find('tree_1').TopLevelItemCount())
 
 
 CurrentItem()
@@ -1170,13 +1176,13 @@ CurrentItem()
 
 ..  topic:: Description
 
-	This function is
+	This function returns the selected Item in the Tree (row)
 
-**Type:** return item
+**Type:** return the UITreeItem
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].CurrentItem()
+	print(win.Find('tree_1').CurrentItem().Text[0])  #print first column Text of the selected TreeItem (row)
 
 
 TopLevelItem(int)
@@ -1184,13 +1190,13 @@ TopLevelItem(int)
 
 ..  topic:: Description
 
-	This function is
+	This function return the UITreeItem at the specified index. (row) 
 
-**Type:** int=   return item
+**Type:** int= index 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].TopLevelItem(1)
+	print(win.Find('tree_1').TopLevelItem(1).Text[0])  #will print the Text of the second Item (row), first column
 
 
 TakeTopLevelItem(int)
@@ -1198,13 +1204,13 @@ TakeTopLevelItem(int)
 
 ..  topic:: Description
 
-	This function is
+	This function removes the UITreeItem at the specified index. (row) 
 
 **Type:** int=   return item
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].TakeTopLevelItem(1)
+	win.Find('tree_1').TakeTopLevelItem(1)
 
 
 InvisibleRootItem()
@@ -1218,7 +1224,7 @@ InvisibleRootItem()
 
 ..  note:: Not tested yet
 
-	win['mytree'].TakeTopLevelItem(1)
+	win['mytree'].InvisibleRootItem()
 
 
 HeaderItem()
@@ -1296,13 +1302,13 @@ Clear()
 
 ..  topic:: Description
 
-	This function is
+	This function empty all data from the Tree. 
 
 **Type:** 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].Clear()
+	win.Find('tree_1').Clear()
 
 
 VisualItemRect(item)
@@ -1324,13 +1330,13 @@ SetHeaderLabels(list)
 
 ..  topic:: Description
 
-	This function is
+	This function sets the labels header for multiple columns
 
-**Type:** list = 
+**Type:** list of string
 
-..  note:: Not tested yet
+..  code-block:: python
 	
-	win['mytree'].SetHeaderLabels(['header1', 'header2'])
+	win.Find('tree_1').SetHeaderLabels(['header1', 'header2'])
 
 
 SetHeaderItem(item)
@@ -1347,18 +1353,22 @@ SetHeaderItem(item)
 	win['mytree'].SetHeaderItem(item)
 
 
-InsertTopLevelItems(list)
-^^^^^^^^^^^^^^^^^^^^^^^^^
+InsertTopLevelItems(int, list)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
 	This function is
 
-**Type:** list = 
+**Type:** int= index to insert items, list = list of Treeitem
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].InsertTopLevelItems([item1, item2])
+	item1 = win.Find('tree_1').NewItem()
+	item1.Text[0] = 'name1'
+	item2 = win.Find('tree_1').NewItem()
+	item2.Text[0] = 'name2'
+	win.Find('tree_1').InsertTopLevelItems(0, [item1, item2])  #insert items at index 0
 
 
 AddTopLevelItems(list)
@@ -1366,13 +1376,17 @@ AddTopLevelItems(list)
 
 ..  topic:: Description
 
-	This function is
+	This function adds the list of TreeItems at the end of the Tree. 
 
-**Type:** list = 
+**Type:** list = list of TreeItem
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].AddTopLevelItems([item1, item2])
+	item1 = win.Find('tree_1').NewItem()
+	item1.Text[0] = 'name1'
+	item2 = win.Find('tree_1').NewItem()
+	item2.Text[0] = 'name2'
+	win.Find('tree_1').AddTopLevelItems([item1, item2])
 
 
 SelectedItems()
