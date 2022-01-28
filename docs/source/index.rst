@@ -46,12 +46,6 @@ Contents
 
 
 .. toctree::
-   :caption: Sample Scripts
-
-   timecode_display
-
-
-.. toctree::
    :caption: Existing Documentation
    :maxdepth: 1
 

@@ -20,6 +20,7 @@ exportType can be one of the following constants:
     - resolve.EXPORT_TEXT_TAB
     - resolve.EXPORT_DOLBY_VISION_VER_2_9
     - resolve.EXPORT_DOLBY_VISION_VER_4_0
+
 exportSubtype can be one of the following enums:
     - resolve.EXPORT_NONE
     - resolve.EXPORT_AAF_NEW
@@ -27,6 +28,7 @@ exportSubtype can be one of the following enums:
     - resolve.EXPORT_CDL
     - resolve.EXPORT_SDL
     - resolve.EXPORT_MISSING_CLIPS
+
 Please note that exportSubType is a required parameter for resolve.EXPORT_AAF and resolve.EXPORT_EDL. For rest of the exportType, exportSubtype is ignored.
 When exportType is resolve.EXPORT_AAF, valid exportSubtype values are resolve.EXPORT_AAF_NEW and resolve.EXPORT_AAF_EXISTING.
 When exportType is resolve.EXPORT_EDL, valid exportSubtype values are resolve.EXPORT_CDL, resolve.EXPORT_SDL, resolve.EXPORT_MISSING_CLIPS and resolve.EXPORT_NONE.

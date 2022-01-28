@@ -61,7 +61,7 @@ def create_main_window():
         'WindowTitle': 'My Window',
         },
         ui.VGroup([
-            ui.Tree({'ID':'tree_1', 'ColumnCount': 2 }),
+            ui.Tree({'ID':'tree_1', 'ColumnCount': 2}),
             ui.Button({'ID':'button_1', 'Text': "run func" })
         ])      
     )
@@ -77,11 +77,11 @@ def create_main_window():
          
 
     def OnClicked(ev):
-    	win.Find('tree_1').InvisibleRootItem()
-
-
-    # assign event handlers
-    
+        win.Find('tree_1').ResetIndentation()
+        
+        
+        
+        
     win.On["my_window"].Close = OnClose
     win.On["button_1"].Clicked = OnClicked
 
@@ -103,11 +103,16 @@ def initialize():
     item2 = win.Find('tree_1').NewItem()
     item2.Text[0] = 'My 2'
     item2.Text[1] = 'Myff 2'
-
+    
+    item.AddChild(item2)
     win.Find('tree_1').AddTopLevelItem(item2)
     
+    for i in range(10):
+        item = win.Find('tree_1').NewItem()
+        item.Text[0] = str(i) + 'col1'
+        item.Text[1] = str(i) + 'col2'
 
-
+        win.Find('tree_1').AddTopLevelItem(item)
    
     # win.Find("combo_1").AddItems(["Item 1","Item 2","Item 3"])
 

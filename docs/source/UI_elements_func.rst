@@ -1246,13 +1246,14 @@ IndexOfTopLevelItem(item)
 
 ..  topic:: Description
 
-	This function is
+	This function returns the index of the specified UITreeItem.
 
 **Type:** return int
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].IndexOfTopLevelItem(item)
+	some_item = win.Find('tree_1').TopLevelItem(1)
+	print(win.Find('tree_1').IndexOfTopLevelItem(some_item))  #print 1
 
 
 ItemAbove(item)
@@ -1260,13 +1261,14 @@ ItemAbove(item)
 
 ..  topic:: Description
 
-	This function is
+	This function returns the UITreeItem above the specified UITreeItem. 
 
-**Type:** item=    return item
+**Type:** item= UITreeItem   returns UITreeItem
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].ItemAbove(item)
+	some_item = win.Find('tree_1').TopLevelItem(1)
+	item_above = win.Find('tree_1').ItemAbove(some_item)  #item_above is UITreeItem at index 0
 
 
 ItemBelow(item)
@@ -1276,11 +1278,12 @@ ItemBelow(item)
 
 	This function is
 
-**Type:** item=    return item
+**Type:** item= UITreeItem   returns UITreeItem
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].ItemBelow(item)
+	some_item = win.Find('tree_1').TopLevelItem(0)
+	item_below = win.Find('tree_1').ItemBelow(some_item)  #item_below is UITreeItem at index 1
 
 
 ItemAt(point)
@@ -1316,13 +1319,14 @@ VisualItemRect(item)
 
 ..  topic:: Description
 
-	This function is
+	This function returns the rectangle on the viewport occupied by the item 
 
-**Type:** return rect
+**Type:** returns {int x, int y, int width, int height}
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytree'].VisualItemRect(item)
+	some_item = win.Find('tree_1').TopLevelItem(1)
+	print(win.Find('tree_1').VisualItemRect(some_item))   #print {1: 20, 2: 20, 3: 208, 4: 20}
 
 
 SetHeaderLabels(list)
@@ -1358,9 +1362,9 @@ InsertTopLevelItems(int, list)
 
 ..  topic:: Description
 
-	This function is
+	This function inserts a list of UITreeItems from a list at the specified index. 
 
-**Type:** int= index to insert items, list = list of Treeitem
+**Type:** int= index to insert items, list = list of UITreeItems
 
 ..  code-block:: python
 
@@ -1396,39 +1400,75 @@ SelectedItems()
 
 	This function is
 
-**Type:** return list
+**Type:** return list of all selected UITreeItems
 
 ..  note:: Not tested yet
 
 	win['mytree'].SelectedItems()
 
 
-FindItems(string, flags)
-^^^^^^^^^^^^^^^^^^^^^^^^
+FindItems(string, flags, column)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function searches for a string with a dictionary or conditions in a specified column index. 
+	
+flags:
 
-**Type:** string=  , flags=   return list
+* 'MatchExactly' : bool
+* 'MatchFixedString' : bool
+* 'MatchContains' : bool
+* 'MatchStartsWith' : bool
+* 'MatchEndsWith' : bool
+* 'MatchCaseSensitive' : bool
+* 'MatchRegExp' : bool
+* 'MatchWildcard' : bool
+* 'MatchWrap' : bool
+* 'MatchRecursive' : bool
+    
 
-..  note:: Not tested yet
+**Type:** string= text to find , flags= dict, column = int  Returns list of UITreeItems
 
-	win['mytree'].FindItems(string, flags)
+..  code-block:: python
+
+	found_item = win.Find('tree_1').FindItems("*",
+	{
+		'MatchExactly' : False,
+		'MatchFixedString' : False,
+		'MatchContains' : False,
+		'MatchStartsWith' : False,
+		'MatchEndsWith' : False,
+		'MatchCaseSensitive' : False,
+		'MatchRegExp' : False,
+		'MatchWildcard' : True,
+		'MatchWrap' : False,
+		'MatchRecursive' :True,
+	}, 0)
+	# print all items of column 0 matching conditions, * is used as a wildcard
 
 
-SortItems(int, order)
+SortItems(int, string)
 ^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function is sorting the TreeItems of the specified column index based on the specified ordering.  
 
-**Type:** int= , order= 
+	`Check out the qt5 documentation for more details <https://doc.qt.io/qt-5/qtreewidget.html#sortItems>`_
+	
+order:
 
-..  note:: Not tested yet
+* 'AscendingOrder' : The items are sorted ascending e.g. starts with 'AAA' ends with 'ZZZ' in Latin-1 locales
+* 'DescendingOrder' : The items are sorted descending e.g. starts with 'ZZZ' ends with 'AAA' in Latin-1 locales
+`Check out the qt5 documentation for more details <https://doc.qt.io/qt-5/qt.html#SortOrder-enum>`_
 
-	win['mytree'].SortItems(0, 'AscendingOrder')
+
+**Type:** int= column index, string= sorting option
+
+..  code-block:: python
+
+	win.Find('tree_1').SortItems(0, 'AscendingOrder')
 
 
 ScrollToItem(item)
@@ -1459,18 +1499,26 @@ ResetIndentation()
 	win['mytree'].ResetIndentation()
 
 
-SortByColumn(int, order)
-^^^^^^^^^^^^^^^^^^^^^
+SortByColumn(int, string)
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function Sorts the model by the values in the given column and order.
 
-**Type:** int= , order= 
+	`Check out the qt5 documentatatoin for more details <https://doc.qt.io/qt-5/qtreeview.html#sortByColumn>`_
 
-..  note:: Not tested yet
+order:
 
-	win['mytree'].SortByColumn(0, 'AscendingOrder')
+* 'AscendingOrder' : The items are sorted ascending e.g. starts with 'AAA' ends with 'ZZZ' in Latin-1 locales
+* 'DescendingOrder' : The items are sorted descending e.g. starts with 'ZZZ' ends with 'AAA' in Latin-1 locales
+
+
+**Type:** int= column index, string= order 
+
+..  code-block:: python
+
+	win.Find('tree_1').SortByColumn(0, 'AscendingOrder')
 
 
 FrameWidth()
@@ -1485,6 +1533,7 @@ FrameWidth()
 ..  note:: Not tested yet
 
 	win['mytree'].FrameWidth()
+
 
 
 TreeItem

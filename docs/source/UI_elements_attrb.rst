@@ -134,7 +134,7 @@ Alignment
 ..  topic:: Description
 
 	This label attribute is used to align Text inside the Label element. 
-	`Check out the qt5 documentatatoin for more details <https://doc.qt.io/qt-5/qt.html#AlignmentFlag-enum>`_
+	`Check out the qt5 documentation for more details <https://doc.qt.io/qt-5/qt.html#AlignmentFlag-enum>`_
 
 	* AlignCenter
 	* AlignLeft
@@ -163,7 +163,7 @@ FrameStyle
 ..  topic:: Description
 
 	This label attribute is used to Style the frame of the Label Element. 
-	`Check out the qt5 documentatatoin for more details <https://doc.qt.io/qt-5/qframe.html#Shape-enum>`_
+	`Check out the qt5 documentation for more details <https://doc.qt.io/qt-5/qframe.html#Shape-enum>`_
 
 	* 0: NoFrame
 	* 1: Box
