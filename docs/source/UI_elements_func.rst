@@ -1544,7 +1544,7 @@ AddChild(item)
 
 ..  topic:: Description
 
-	This function is addind an item as a child of an existing TreeItem. 
+	This function is adding an item as a child to an existing TreeItem. 
 
 **Type:** func
 
@@ -1560,18 +1560,24 @@ AddChild(item)
 	itm.AddChild(itm2)
 
 
-InsertChild(item)
-^^^^^^^^^^^^^^^^^
+InsertChild(int, item)
+^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	This function is
+	This function is inserting an item as a child to an existing TreeItem to a specified index.  
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].InsertChild(item)
+        parent = win.Find('tree_1').NewItem()
+        parent.Text[0] = 'Text A'
+        child = win.Find('tree_1').NewItem()
+        child.Text[0] = 'Text B'
+        win.Find('tree_1').AddTopLevelItem(parent)
+        
+        parent.InsertChild(0, child)
 
 
 RemoveChild(item)
@@ -1579,13 +1585,13 @@ RemoveChild(item)
 
 ..  topic:: Description
 
-	This function is
+	This function remove the child of the UITreeItem.
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].RemoveChild(item)
+	parent.RemoveChild(child)        
 
 
 SortChildren(int, order)
@@ -1593,13 +1599,19 @@ SortChildren(int, order)
 
 ..  topic:: Description
 
-	This function is
+	This function is sorting the Child of UITreeItem of the specified column index based on the specified ordering.  
 
-**Type:** int= , order= 
+order:
 
-..  note:: Not tested yet
+* 'AscendingOrder' : The items are sorted ascending e.g. starts with 'AAA' ends with 'ZZZ' in Latin-1 locales
+* 'DescendingOrder' : The items are sorted descending e.g. starts with 'ZZZ' ends with 'AAA' in Latin-1 locales
 
-	win['mytreeitem'].SortChildren(0, 'AscendingOrder')
+
+**Type:** int= column index, string= order 
+
+..  code-block:: python
+
+	parent.SortChildren(0, 'AscendingOrder')
 
 
 InsertChildren(int, list)
@@ -1607,13 +1619,13 @@ InsertChildren(int, list)
 
 ..  topic:: Description
 
-	This function is
+	This function inserts a list of UITreeItem as child of a parent UITreeItem at specified index. 
 
 **Type:** int= , list= 
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].InsertChildren(int, list)
+	parent.InsertChildren(0, [child, child2]) 
 
 
 AddChildren(list)
@@ -1621,13 +1633,13 @@ AddChildren(list)
 
 ..  topic:: Description
 
-	This function is
+	This function adds a list of UITreeItem as child of a parent UITreeItem. 
 
-**Type:** list= 
+**Type:** list= [UITreeItem, ...]
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].AddChildren(list)
+	parent.AddChildren([child, child2])
 
 
 IndexOfChild(item)
@@ -1635,13 +1647,13 @@ IndexOfChild(item)
 
 ..  topic:: Description
 
-	This function is
+	This function returns the index of the specified UITreeItem child. 
 
 **Type:** return int
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].IndexOfChild(item)
+	print(parent.IndexOfChild(child2))  #print 1 for second child
 
 
 Clone()
@@ -1677,13 +1689,13 @@ Parent()
 
 ..  topic:: Description
 
-	This function is
+	This function returns the UITreeItem parent of the specified UITreeItem child. 
 
 **Type:** return item
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].Parent()
+	print(child.Parent())
 
 
 Child(int)
@@ -1691,13 +1703,13 @@ Child(int)
 
 ..  topic:: Description
 
-	This function is
+	This function returns the UITreeItem child at specified index of the UITreeItem parent. 
 
 **Type:** int=   return item
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].Child(int)
+	print(parent.Child(0))  #the UITreeItem child at index 0
 
 
 TakeChild(int)
@@ -1705,13 +1717,13 @@ TakeChild(int)
 
 ..  topic:: Description
 
-	This function is
+	This function removes and returns the child UITreeItem at specified index.  
 
-**Type:** int=   return item
+**Type:** int=index   return item
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].TakeChild(int)
+	removed_child = parent.TakeChild(0)
 
 
 ChildCount()
@@ -1719,13 +1731,13 @@ ChildCount()
 
 ..  topic:: Description
 
-	This function is
+	This function returns the child count of the parent UITreeItem. 
 
 **Type:** return int
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].ChildCount()
+	print(parent.ChildCount())
 
 
 ColumnCount()
@@ -1733,13 +1745,14 @@ ColumnCount()
 
 ..  topic:: Description
 
-	This function is
+	This function returns the number of column of a UITreeItem containing data.
 
 **Type:** return int
 
-..  note:: Not tested yet
+..  code-block:: python
 
-	win['mytreeitem'].ColumnCount()
+	print(parent.ColumnCount())
+
 
 
 Window

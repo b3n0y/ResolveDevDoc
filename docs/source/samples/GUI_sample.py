@@ -3,7 +3,9 @@
 from itertools import count
 import os
 import sys
+import time
 import json
+from time import time
 from get_resolvepm import *
 
 
@@ -77,9 +79,19 @@ def create_main_window():
          
 
     def OnClicked(ev):
-        win.Find('tree_1').ResetIndentation()
+        parent = win.Find('tree_1').NewItem()
+        parent.Text[0] = 'Text A'
+        child = win.Find('tree_1').NewItem()
+        child.Text[0] = 'Text B'
+
+        child2 = win.Find('tree_1').NewItem()
+        child2.Text[0] = '123Text'
+        child2.Text[1] = '123Text'
         
-        
+
+        parent.AddChildren([child, child2])
+
+        win.Find('tree_1').AddTopLevelItem(parent)
         
         
     win.On["my_window"].Close = OnClose
@@ -105,14 +117,14 @@ def initialize():
     item2.Text[1] = 'Myff 2'
     
     item.AddChild(item2)
-    win.Find('tree_1').AddTopLevelItem(item2)
+    # win.Find('tree_1').AddTopLevelItem(item2)
     
-    for i in range(10):
-        item = win.Find('tree_1').NewItem()
-        item.Text[0] = str(i) + 'col1'
-        item.Text[1] = str(i) + 'col2'
+    # for i in range(10):
+    #     item = win.Find('tree_1').NewItem()
+    #     item.Text[0] = str(i) + 'col1'
+    #     item.Text[1] = str(i) + 'col2'
 
-        win.Find('tree_1').AddTopLevelItem(item)
+    #     win.Find('tree_1').AddTopLevelItem(item)
    
     # win.Find("combo_1").AddItems(["Item 1","Item 2","Item 3"])
 
