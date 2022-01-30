@@ -1204,7 +1204,7 @@ TakeTopLevelItem(int)
 
 ..  topic:: Description
 
-	This function removes the UITreeItem at the specified index. (row) 
+	This function removes and returns the UITreeItem at the specified index. (row) 
 
 **Type:** int=   return item
 
@@ -1763,11 +1763,11 @@ Show()
 
 ..  topic:: Description
 
-	This function is
+	This function is showing the window to the user. 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
 	win.Show()
 
@@ -1777,11 +1777,11 @@ Hide()
 
 ..  topic:: Description
 
-	This function is
+	This function is hiding the window. 
 
 **Type:** func
 
-..  note:: Not tested yet
+..  code-block:: python
 
 	win.Hide()
 

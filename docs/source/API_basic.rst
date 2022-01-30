@@ -4,6 +4,15 @@ Basic Resolve API
 | Some commonly used API functions are described below (*). 
 | As with the resolve object, each object is inspectable for properties and functions.
 
+
+..  important:: 
+
+    You must import the necessary modules in your script to get the Resolve app. 
+
+    ``from python_get_resolve import GetResolve``
+    ``resolve = GetResolve()``
+
+
 Resolve
 -------
 
@@ -26,6 +35,10 @@ GetMediaStorage()
 
     **Type:** MediaStorage
 
+..  code-block:: python
+
+    media_storage = resolve.GetMediaStorage()
+
 
 GetProjectManager()
 ^^^^^^^^^^^^^^^^^^^
@@ -36,24 +49,55 @@ GetProjectManager()
 
     **Type:** ProjectManager
 
+..  code-block:: python
+
+    project_manager = resolve.GetProjectManager()
+
 
 OpenPage(pageName)
 ^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	  Switches to indicated page in DaVinci Resolve. Input can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver").
+    Switches to indicated page in DaVinci Resolve. 
+    Input can be one of:
+
+    * "media"
+    * "cut"
+    * "edit"
+    * "fusion"
+    * "color"
+    * "fairlight"
+    * "deliver"
 
     **Type:** Bool
+
+..  code-block:: python
+
+    project_manager = resolve.OpenPage("edit")
 
 
 GetCurrentPage()
 ^^^^^^^^^^^^^^^^
 ..  topic:: Description
     
-    Returns the page currently displayed in the main window. Returned value can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver", None).
+    Returns the page currently displayed in the main window. Returned value can be one of:
 
-    **Type:** String            
+    * "media"
+    * "cut"
+    * "edit"
+    * "fusion"
+    * "color"
+    * "fairlight"
+    * "deliver"
+    * None
+
+    **Type:** String
+
+..  code-block:: python
+
+    current_page = resolve.GetCurrentPage()
+
 
 GetProductName()
 ^^^^^^^^^^^^^^^^
@@ -64,6 +108,11 @@ GetProductName()
 
     **Type:** String
 
+..  code-block:: python
+
+    product_name = resolve.GetProductName()
+
+
 GetVersion()
 ^^^^^^^^^^^^
 
@@ -73,41 +122,68 @@ GetVersion()
 
     **Type:** [version fields]
 
+..  code-block:: python
+
+    version = resolve.GetVersion()
+
+
 GetVersionString()  
-^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	  Returns product version in "major.minor.patch[suffix].build" format. 
+	Returns product version in "major.minor.patch[suffix].build" format. 
 
     **Type:** string
+
+..  code-block:: python
+
+    version = resolve.GetVersionString()
+
 
 LoadLayoutPreset(presetName) 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	  Loads UI layout from saved preset named 'presetName'. 
+    Loads UI layout from saved preset named 'presetName'. 
 
     **Type:** Bool 
+
+..  code-block:: python
+
+    resolve.LoadLayoutPreset('Custom Preset') 
+
 
 UpdateLayoutPreset(presetName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	  Overwrites preset named 'presetName' with current UI layout. 
+    Overwrites preset named 'presetName' with current UI layout. 
 
     **Type:** Bool
+
+..  code-block:: python
+
+    resolve.UpdateLayoutPreset('Custom Preset') 
+
 
 ExportLayoutPreset(presetName, presetFilePath)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-	  Exports preset named 'presetName' to path 'presetFilePath'. 
+    Exports preset named 'presetName' to path 'presetFilePath'. 
+
+    ``presetName must exist to work``
 
 **Type:** Bool
+
+..  code-block:: python
+
+    resolve.ExportLayoutPreset('Custom Preset', '/Users/admin/Desktop/Custom.preset') 
+    
 
 DeleteLayoutPreset(presetName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -118,6 +194,11 @@ DeleteLayoutPreset(presetName)
 
 **Type:** Bool
 
+..  code-block:: python
+
+    resolve.DeleteLayoutPreset('Custom Preset') 
+
+
 SaveLayoutPreset(presetName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -126,6 +207,11 @@ SaveLayoutPreset(presetName)
 	  Saves current UI layout as a preset named 'presetName'. 
 
 **Type:** Bool
+
+..  code-block:: python
+
+    resolve.SaveLayoutPreset('Custom Preset') 
+
 
 ImportLayoutPreset(presetFilePath, presetName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -136,6 +222,11 @@ ImportLayoutPreset(presetFilePath, presetName)
 
 **Type:** Bool
 
+..  code-block:: python
+
+    resolve.ImportLayoutPreset('/Users/admin/Desktop/Custom.preset', 'Custom Preset') 
+    
+
 Quit()     
 ^^^^^^
 
@@ -145,9 +236,17 @@ Quit()
 
     **Type:** None
 
+..  code-block:: python
+
+    resolve.Quit() 
+
+
 
 ProjectManager
 --------------
+
+..  note:: projectManager = resolve.GetProjectManager()
+
 
 CreateProject(projectName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,6 +257,12 @@ CreateProject(projectName)
     
     **Returns** Project            
 
+
+..  code-block:: python
+
+    projectManager.CreateProject('New Project') 
+
+
 DeleteProject(projectName)                      
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -166,6 +271,11 @@ DeleteProject(projectName)
     Delete project in the current folder if not currently loaded
 
     **Returns** Bool   
+
+..  code-block:: python
+
+    projectManager.DeleteProject('New Project') 
+
 
 LoadProject(projectName)
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -176,6 +286,11 @@ LoadProject(projectName)
 
     **Returns** Project
 
+..  code-block:: python
+
+    projectManager.LoadProject('New Project') 
+
+
 GetCurrentProject()
 ^^^^^^^^^^^^^^^^^^^
 
@@ -185,6 +300,11 @@ GetCurrentProject()
 
     **Returns** Project
 
+..  code-block:: python
+
+    currentProject = projectManager.GetCurrentProject()
+
+
 SaveProject()
 ^^^^^^^^^^^^^
 
@@ -192,8 +312,13 @@ SaveProject()
 
     Saves the currently loaded project with its own name. Returns True if successful.
 
-    **Returns** Bool   
+    **Returns** Bool
     
+..  code-block:: python
+
+    projectManager.SaveProject()
+    
+
 CloseProject(project)
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -202,6 +327,11 @@ CloseProject(project)
     Closes the specified project without saving.
 
     **Returns** Bool 
+
+..  code-block:: python
+
+    projectManager.CloseProject('Project01')
+
 
 CreateFolder(folderName)
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -212,6 +342,11 @@ CreateFolder(folderName)
 
     **Returns** Bool  
 
+..  code-block:: python
+
+    projectManager.CreateFolder('My Folder')
+
+
 DeleteFolder(folderName)
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -221,6 +356,11 @@ DeleteFolder(folderName)
 
     **Returns** Bool
 
+..  code-block:: python
+
+    projectManager.DeleteFolder('My Folder')
+
+
 GetProjectListInCurrentFolder()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -228,7 +368,12 @@ GetProjectListInCurrentFolder()
 
     Returns a list of project names in current folder.
 
-    **Returns** [project names...] 
+    **Returns** [project names...]
+
+..  code-block:: python
+
+    project_list = projectManager.GetProjectListInCurrentFolder()
+
 
 GetFolderListInCurrentFolder()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -239,6 +384,11 @@ GetFolderListInCurrentFolder()
 
     **Returns** [folder names...]
 
+..  code-block:: python
+
+    folder_list = projectManager.GetFolderListInCurrentFolder()
+
+
 GotoRootFolder()
 ^^^^^^^^^^^^^^^^
                                             
@@ -246,7 +396,12 @@ GotoRootFolder()
 
     Opens root folder in database.
 
-    **Returns** Bool   
+    **Returns** Bool
+
+..  code-block:: python
+
+    projectManager.GotoRootFolder()
+
 
 GotoParentFolder()
 ^^^^^^^^^^^^^^^^^^
@@ -257,6 +412,11 @@ GotoParentFolder()
 
     **Returns** Bool
 
+..  code-block:: python
+
+    projectManager.GotoParentFolder()
+
+
 GetCurrentFolder()
 ^^^^^^^^^^^^^^^^^^
 ..  topic:: Description
@@ -264,6 +424,11 @@ GetCurrentFolder()
     Returns the current folder name.
 
     **Returns** string
+
+..  code-block:: python
+
+    current_folder = projectManager.GetCurrentFolder()
+
 
 OpenFolder(folderName)
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -273,6 +438,11 @@ OpenFolder(folderName)
 
     **Returns** Bool  
 
+..  code-block:: python
+
+    projectManager.OpenFolder('My Folder')
+
+
 ImportProject(filePath)
 ^^^^^^^^^^^^^^^^^^^^^^^
                                       
@@ -280,7 +450,12 @@ ImportProject(filePath)
 
     Imports a project from the file path provided. Returns True if successful.
 
-    **Returns** Bool  
+    **Returns** Bool
+
+..  code-block:: python
+
+    projectManager.ImportProject('/Users/admin/Desktop/project.drp')
+
 
 ExportProject(projectName, filePath, withStillsAndLUTs=True)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -291,6 +466,11 @@ ExportProject(projectName, filePath, withStillsAndLUTs=True)
 
     **Returns** Bool  
 
+..  code-block:: python
+
+    projectManager.ExportProject('my_project', '/Users/admin/Desktop/my_project.drp', withStillsAndLUTs=True)
+
+
 RestoreProject(filePath)
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -300,6 +480,11 @@ RestoreProject(filePath)
 
     **Returns** Bool
 
+..  code-block:: python
+
+    projectManager.RestoreProject('/Users/admin/Desktop/my_project.drp')
+
+
 GetCurrentDatabase()
 ^^^^^^^^^^^^^^^^^^^^
                                       
@@ -308,7 +493,12 @@ GetCurrentDatabase()
     Returns a dictionary (with keys 'DbType', 'DbName' and optional 'IpAddress') corresponding to the current database connection
 
     **Returns** {dbInfo} 
+
+..  code-block:: python
+
+    current_db = projectManager.GetCurrentDatabase()
     
+
 GetDatabaseList()
 ^^^^^^^^^^^^^^^^^
 
@@ -317,6 +507,11 @@ GetDatabaseList()
     Returns a list of dictionary items (with keys 'DbType', 'DbName' and optional 'IpAddress') corresponding to all the databases added to Resolve
 
     **Returns** [{dbInfo}]  
+
+..  code-block:: python
+
+    current_db = projectManager.GetCurrentDatabase()
+
 
 SetCurrentDatabase({dbInfo})
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -331,9 +526,16 @@ SetCurrentDatabase({dbInfo})
 
     **Returns** Bool
 
+..  code-block:: python
+
+    projectManager.SetCurrentDatabase({'DbType':'PostgreSQL','DbName':'my_db_name', 'IpAddress': '127.0.0.1'})
+
 
 Project
 -------
+
+..  note::  currentProject = projectManager.GetCurrentProject()
+
 
 GetMediaPool()
 ^^^^^^^^^^^^^^
@@ -344,6 +546,10 @@ GetMediaPool()
 
     **Returns** MediaPool
 
+..  code-block:: python
+
+    media_pool = currentProject.GetMediaPool()
+
 GetTimelineCount()
 ^^^^^^^^^^^^^^^^^^
 
@@ -352,6 +558,11 @@ GetTimelineCount()
     Returns the number of timelines currently present in the project.
 
     **Returns** int
+
+..  code-block:: python
+
+    timeline_count = currentProject.GetTimelineCount()
+
 
 GetTimelineByIndex(idx) 
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -362,6 +573,11 @@ GetTimelineByIndex(idx)
 
     **Returns** Timeline
 
+..  code-block:: python
+
+    timeline = currentProject.GetTimelineByIndex(1)
+
+
 GetCurrentTimeline()   
 ^^^^^^^^^^^^^^^^^^^^
                                    
@@ -370,6 +586,11 @@ GetCurrentTimeline()
     Returns the currently loaded timeline.
 
     **Returns** Timeline  
+
+..  code-block:: python
+
+    current_timeline = currentProject.GetCurrentTimeline()
+
 
 SetCurrentTimeline(timeline)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -380,6 +601,7 @@ SetCurrentTimeline(timeline)
 
     **Returns** Bool
 
+
 GetGallery()                                                
 ^^^^^^^^^^^^
 
@@ -389,7 +611,12 @@ GetGallery()
 
     **Returns** Gallery
 
-GetName()                                                    
+..  code-block:: python
+
+    gallery = currentProject.GetGallery()
+
+
+GetName()
 ^^^^^^^^^
 
 ..  topic:: Description
@@ -397,6 +624,11 @@ GetName()
     Returns project name.
 
     **Returns** string
+
+..  code-block:: python
+
+    project_name = currentProject.GetName()
+
 
 SetName(projectName)                                           
 ^^^^^^^^^^^^^^^^^^^^
@@ -407,14 +639,24 @@ SetName(projectName)
 
     **Returns** Bool
 
-GetPresetList()                                 
+..  code-block:: python
+
+    currentProject.SetName('New Name')
+
+
+GetPresetList()
 ^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Returns a list of presets and their information.
 
-    **Returns** [presets...]       
+    **Returns** [presets...]  
+
+..  code-block:: python
+
+    preset_list = currentProject.GetPresetList()
+     
 
 SetPreset(presetName)                                        
 ^^^^^^^^^^^^^^^^^^^^^
@@ -425,14 +667,21 @@ SetPreset(presetName)
 
     **Returns** Bool  
 
-AddRenderJob()                                             
+
+AddRenderJob()
 ^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Adds a render job based on current render settings to the render queue. Returns a unique job id (string) for the new render job.
+    Adds a render job based on current render settings to the render queue. 
+    Returns a unique job id (string) for the new render job.
 
     **Returns** string  
+
+..  code-block:: python
+
+    render_job_id = currentProject.AddRenderJob()
+     
 
 DeleteRenderJob(jobId)                                      
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -443,7 +692,12 @@ DeleteRenderJob(jobId)
 
     **Returns** Bool  
 
-DeleteAllRenderJobs()                                         
+..  code-block:: python
+
+    render_job_id = currentProject.DeleteRenderJob('9dcfee97-7faf-4026-ac90-1a68480b5ca3')
+
+
+DeleteAllRenderJobs()
 ^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -451,6 +705,11 @@ DeleteAllRenderJobs()
     Deletes all render jobs in the queue.
 
     **Returns** Bool 
+
+..  code-block:: python
+
+    currentProject.DeleteAllRenderJobs()
+
 
 GetRenderJobList()                              
 ^^^^^^^^^^^^^^^^^^
@@ -461,14 +720,24 @@ GetRenderJobList()
 
     **Returns** [render jobs...]   
 
-GetRenderPresetList()                             
+..  code-block:: python
+
+    renderjob_list = currentProject.GetRenderJobList()
+
+
+GetRenderPresetList()
 ^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Returns a list of render presets and their information.
 
-    **Returns** [presets...]    
+    **Returns** [presets...]
+
+..  code-block:: python
+
+    renderpreset_list = currentProject.GetRenderPresetList()
+
 
 StartRendering(jobId1, jobId2, ...)                        
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -478,6 +747,11 @@ StartRendering(jobId1, jobId2, ...)
     Starts rendering jobs indicated by the input job ids.
 
     **Returns** Bool    
+
+..  code-block:: python
+
+    currentProject.StartRendering('9dcfee97-7faf-4026-ac90-1a68480b5ca3', '4fcfea93-3faf-4023-ac88-2a68480c5dd6')
+
 
 StartRendering([jobIds...], isInteractiveMode=False)    
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -492,6 +766,11 @@ StartRendering([jobIds...], isInteractiveMode=False)
 
     The optional "isInteractiveMode", when set, enables error feedback in the UI during rendering.
 
+..  code-block:: python
+
+    currentProject.StartRendering(['9dcfee97-7faf-4026-ac90-1a68480b5ca3', '4fcfea93-3faf-4023-ac88-2a68480c5dd6'], isInteractiveMode = False)
+
+
 StartRendering(isInteractiveMode=False)                       
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -505,6 +784,11 @@ StartRendering(isInteractiveMode=False)
 
     The optional "isInteractiveMode", when set, enables error feedback in the UI during rendering.
 
+..  code-block:: python
+
+    currentProject.StartRendering(isInteractiveMode = True)
+
+
 StopRendering()
 ^^^^^^^^^^^^^^^
                                                 
@@ -514,6 +798,11 @@ StopRendering()
 
     **Returns** None
 
+..  code-block:: python
+
+    currentProject.StopRendering()
+
+
 IsRenderingInProgress()                                        
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -522,6 +811,11 @@ IsRenderingInProgress()
     Returns True if rendering is in progress.
 
     **Returns** Bool
+
+..  code-block:: python
+
+    currentProject.IsRenderingInProgress()
+
 
 LoadRenderPreset(presetName)                                   
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,6 +1,5 @@
 #!/usr/local/bin/python3
 
-from itertools import count
 import os
 import sys
 import time
@@ -79,19 +78,8 @@ def create_main_window():
          
 
     def OnClicked(ev):
-        parent = win.Find('tree_1').NewItem()
-        parent.Text[0] = 'Text A'
-        child = win.Find('tree_1').NewItem()
-        child.Text[0] = 'Text B'
-
-        child2 = win.Find('tree_1').NewItem()
-        child2.Text[0] = '123Text'
-        child2.Text[1] = '123Text'
-        
-
-        parent.AddChildren([child, child2])
-
-        win.Find('tree_1').AddTopLevelItem(parent)
+        job = currentProject.AddRenderJob()
+        print(job)
         
         
     win.On["my_window"].Close = OnClose
@@ -158,8 +146,6 @@ def main():
     win.Show()
     dispatcher.RunLoop()
     win.Hide()
-
-
 
 if __name__ == "__main__":
     main()
