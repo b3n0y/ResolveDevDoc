@@ -771,7 +771,7 @@ StartRendering([jobIds...], isInteractiveMode=False)
     currentProject.StartRendering(['9dcfee97-7faf-4026-ac90-1a68480b5ca3', '4fcfea93-3faf-4023-ac88-2a68480c5dd6'], isInteractiveMode = False)
 
 
-StartRendering(isInteractiveMode=False)                       
+StartRendering(isInteractiveMode=False)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -803,7 +803,7 @@ StopRendering()
     currentProject.StopRendering()
 
 
-IsRenderingInProgress()                                        
+IsRenderingInProgress()
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -814,10 +814,13 @@ IsRenderingInProgress()
 
 ..  code-block:: python
 
-    currentProject.IsRenderingInProgress()
+    if currentProject.IsRenderingInProgress():
+        print('Render in progress')
+    else:
+        print('Nothing is rendering')
 
 
-LoadRenderPreset(presetName)                                   
+LoadRenderPreset(presetName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -826,7 +829,12 @@ LoadRenderPreset(presetName)
 
     **Returns** Bool
 
-SaveAsNewRenderPreset(presetName)                              
+..  code-block:: python
+
+    currentProject.LoadRenderPreset('My preset')
+
+
+SaveAsNewRenderPreset(presetName)
 
 ..  topic:: Description
 
@@ -834,7 +842,12 @@ SaveAsNewRenderPreset(presetName)
 
     **Returns** Bool
 
-SetRenderSettings({settings})                                  
+..  code-block:: python
+
+    currentProject.SaveAsNewRenderPreset('My preset')
+
+
+SetRenderSettings({settings})
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -845,35 +858,56 @@ SetRenderSettings({settings})
                                                                         
     Refer to :doc:`"Looking up render settings" for more information <../API_render>` section for information for supported settings
 
+..  code-block:: python
 
-GetRenderJobStatus(jobId)                            
+    currentProject.SetRenderSettings({"SelectAllFrames": True, "CustomName": 'My_Movie.mov', "ExportVideo": True, "ExportAudio": True, "FormatWidth": 1920, "FormatHeight": 1080, "FrameRate": 23.976)})
+
+
+GetRenderJobStatus(jobId)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Returns a dict with job status and completion percentage of the job by given jobId (string).
 
-    **Returns** {status info} 
+    **Returns** {status info}
 
-GetSetting(settingName)                                      
+..  code-block:: python
+
+    job01_status = currentProject.GetRenderJobStatus('9dcfee97-7faf-4026-ac90-1a68480b5ca3')
+
+
+GetSetting(settingName)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Returns value of project setting (indicated by settingName, string). Check the section below for more information.
+    Returns value of project setting (indicated by settingName, string). 
+    :doc:`Check the Project and Clip properties <../API_project_clip>` section for information
 
     **Returns** string
 
-SetSetting(settingName, settingValue)                          
+..  code-block:: python
+
+    currentProject.GetSetting(settingName)
+
+
+SetSetting(settingName, settingValue)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Sets the project setting (indicated by settingName, string) to the value (settingValue, string). Check the section below for more information.
+    Sets the project setting (indicated by settingName, string) to the value (settingValue, string). 
+    :doc:`Check the Project and Clip properties <../API_project_clip>` section for information
 
     **Returns** Bool
 
-GetRenderFormats()                               
+..  code-block:: python
+
+    currentProject.SetSetting(settingName, settingValue)
+
+
+GetRenderFormats()
 ^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -882,16 +916,34 @@ GetRenderFormats()
 
     **Returns** {render formats..}
 
-GetRenderCodecs(renderFormat)                   
+..  code-block:: python
+
+    render_formats = currentProject.GetRenderFormats()
+    '''
+    {'AVI': 'avi', 'BRAW': 'braw', 'Cineon': 'cin', 'DCP': 'dcp',
+     'DPX': 'dpx', 'EXR': 'exr', 'IMF': 'imf', 'JPEG 2000': 'j2c',
+      'MJ2': 'mj2', 'MKV': 'mkv', 'MP4': 'mp4', 'MTS': 'mts', 
+      'MXF OP-Atom': 'mxf', 'MXF OP1A': 'mxf_op1a', 'Panasonic AVC': 'pavc',
+       'QuickTime': 'mov', 'TIFF': 'tif', 'Wave': 'wav'}
+    '''
+
+
+GetRenderCodecs(renderFormat)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Returns a dict (codec description -> codec name) of available codecs for given render format (string).
 
-    **Returns** {render codecs...} 
+    **Returns** {render codecs...}
+    
+..  code-block:: python
 
-GetCurrentRenderFormatAndCodec()                 
+    render_codecs = currentProject.GetRenderCodecs('MP4')
+    #{'H.264': 'H264', 'H.265': 'H265'}
+
+
+GetCurrentRenderFormatAndCodec()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -899,6 +951,12 @@ GetCurrentRenderFormatAndCodec()
     Returns a dict with currently selected format 'format' and render codec 'codec'.
 
     **Returns** {format, codec}   
+
+..  code-block:: python
+
+    render_format_codecs = currentProject.GetCurrentRenderFormatAndCodec()
+    #{'format': 'mov', 'codec': 'ProRes422'}
+
 
 SetCurrentRenderFormatAndCodec(format, codec)                  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -909,7 +967,12 @@ SetCurrentRenderFormatAndCodec(format, codec)
 
     **Returns** Bool
 
-GetCurrentRenderMode()                                     
+..  code-block:: python
+
+    currentProject.SetCurrentRenderFormatAndCodec('mov', 'ProRes422')
+
+
+GetCurrentRenderMode()
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -918,7 +981,12 @@ GetCurrentRenderMode()
 
     **Returns** int    
 
-SetCurrentRenderMode(renderMode)                              
+..  code-block:: python
+
+    currentProject.GetCurrentRenderMode()
+
+
+SetCurrentRenderMode(renderMode)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -927,16 +995,37 @@ SetCurrentRenderMode(renderMode)
 
     **Returns** Bool 
 
-GetRenderResolutions(format, codec)              
+..  code-block:: python
+
+    currentProject.SetCurrentRenderMode(1)
+
+
+GetRenderResolutions(format, codec)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Returns list of resolutions applicable for the given render format (string) and render codec (string). Returns full list of resolutions if no argument is provided. Each element in the list is a dictionary with 2 keys "Width" and "Height".
+    Returns list of resolutions applicable for the given render format (string) and render codec (string). 
+    
+    Returns full list of resolutions if no argument is provided. Each element in the list is a dictionary with 2 keys "Width" and "Height".
 
-    **Returns** [{Resolution}]    
+    **Returns** [{Resolution}]
 
-RefreshLUTList()                                              
+..  code-block:: python
+
+    resolution = currentProject.GetRenderResolutions('mov', 'ProRes422')
+    '''
+    [{'Width': 720, 'Height': 480}, {'Width': 720, 'Height': 486}, {'Width': 720, 'Height': 576}, 
+    {'Width': 1280, 'Height': 720}, {'Width': 1280, 'Height': 1080}, {'Width': 1920, 'Height': 1080}, 
+    {'Width': 3840, 'Height': 2160}, {'Width': 7680, 'Height': 4320}, {'Width': 1828, 'Height': 1332}, 
+    {'Width': 1828, 'Height': 1556}, {'Width': 1998, 'Height': 1080}, {'Width': 2048, 'Height': 858}, 
+    {'Width': 2048, 'Height': 1080}, {'Width': 2048, 'Height': 1152}, {'Width': 2048, 'Height': 1556}, 
+    {'Width': 3072, 'Height': 2048}, {'Width': 3654, 'Height': 2664}, {'Width': 3656, 'Height': 3112}, 
+    {'Width': 3996, 'Height': 2160}, {'Width': 4096, 'Height': 1716}, {'Width': 4096, 'Height': 2160}, 
+    {'Width': 4096, 'Height': 3112}]
+    '''
+
+RefreshLUTList()
 ^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -945,10 +1034,18 @@ RefreshLUTList()
 
     **Returns** Bool 
 
+..  code-block:: python
+
+    currentProject.RefreshLUTList()
+
+
 
 MediaStorage
 ------------
 
+..  note:: media_storage = resolve.GetMediaStorage()
+
+    
 GetMountedVolumeList()
 ^^^^^^^^^^^^^^^^^^^^^^
                                  
@@ -957,6 +1054,12 @@ GetMountedVolumeList()
     Returns list of folder paths corresponding to mounted volumes displayed in Resolve's Media Storage.
 
     **Returns** [paths...]  
+
+..  code-block:: python
+
+    mounted_volumes = media_storage.GetMountedVolumeList()
+    #['/Users/admin/Movies/DaVinci Resolve Studio', '/Volumes/Macintosh HD']
+
 
 GetSubFolderList(folderPath)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -967,15 +1070,27 @@ GetSubFolderList(folderPath)
 
     **Returns** [paths...]  
 
+..  code-block:: python
+
+    subfolders = media_storage.GetSubFolderList('/Volumes/Macintosh HD')
+    #['/Volumes/Macintosh HD/Applications', '/Volumes/Macintosh HD/Library', '/Volumes/Macintosh HD/System', '/Volumes/Macintosh HD/Users']
+
+
 GetFileList(folderPath)                                 
 ^^^^^^^^^^^^^^^^^^^^^^^
 ..  topic:: Description
 
-    Returns list of media and file listings in the given absolute folder path. Note that media listings may be logically consolidated entries.
+    Returns list of media and file listings in the given absolute folder path. 
+    Note that media listings may be logically consolidated entries.
 
     **Returns** [paths...] 
 
-RevealInStorage(path)                                         
+..  code-block:: python
+
+    file_list = media_storage.GetFileList('/Volumes/Macintosh HD/Users/admin/Movies/')
+
+
+RevealInStorage(path)
 ^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -984,7 +1099,12 @@ RevealInStorage(path)
 
     **Returns** Bool 
 
-AddItemListToMediaPool(item1, item2, ...)              
+..  code-block:: python
+
+    media_storage.RevealInStorage('/Volumes/Macintosh HD/Users/admin/Desktop')
+
+
+AddItemListToMediaPool(item1, item2, ...)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -992,9 +1112,15 @@ AddItemListToMediaPool(item1, item2, ...)
     Adds specified file/folder paths from Media Storage into current Media Pool folder. 
     Input is one or more file/folder paths. Returns a list of the MediaPoolItems created.
 
-    **Returns** [clips...]  
+    **Returns** [clips...]
 
-AddItemListToMediaPool([items...])                      
+..  code-block:: python
+
+    clips_added = media_storage.AddItemListToMediaPool('/Volumes/Macintosh HD/Users/admin/Desktop', '/Volumes/Macintosh HD/Users/admin/Movies')
+    #[<PyRemoteObject object at 0x7fa28007a7f8>, <PyRemoteObject object at 0x7fa28007a9d8>, <PyRemoteObject object at 0x7fa28007ad98>]
+
+
+AddItemListToMediaPool([items...])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1002,9 +1128,15 @@ AddItemListToMediaPool([items...])
     Adds specified file/folder paths from Media Storage into current Media Pool folder. Input is an array of file/folder paths. 
     Returns a list of the MediaPoolItems created.
 
-    **Returns** [clips...] 
+    **Returns** [clips...]
 
-AddClipMattesToMediaPool(MediaPoolItem, [paths], stereoEye) 
+..  code-block:: python
+
+    clips_added = media_storage.AddItemListToMediaPool(['/Volumes/Macintosh HD/Users/admin/Desktop', '/Volumes/Macintosh HD/Users/admin/Movies'])
+    #[<PyRemoteObject object at 0x7fa28007a7f8>, <PyRemoteObject object at 0x7fa28007a9d8>, <PyRemoteObject object at 0x7fa28007ad98>]
+
+
+AddClipMattesToMediaPool(MediaPoolItem, [paths], stereoEye)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1012,7 +1144,14 @@ AddClipMattesToMediaPool(MediaPoolItem, [paths], stereoEye)
     Adds specified media files as mattes for the specified MediaPoolItem. 
     StereoEye is an optional argument for specifying which eye to add the matte to for stereo clips ("left" or "right"). Returns True if successful.
 
-    **Returns** Bool   
+    **Returns** Bool
+
+..  note:: Not tested yet
+
+    media_storage.AddClipMattesToMediaPool(MediaPoolItem, ['/Volumes/Macintosh HD/Users/admin/Movies/lefteye.mov'], "left")
+    media_storage.AddClipMattesToMediaPool(MediaPoolItem, ['/Volumes/Macintosh HD/Users/admin/Movies/righteye.mov'], "right")
+
+
 
 AddTimelineMattesToMediaPool([paths])             
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1023,9 +1162,17 @@ AddTimelineMattesToMediaPool([paths])
 
     **Returns** [MediaPoolItems] 
 
+..  note:: Not tested yet
+
+    media_storage.AddTimelineMattesToMediaPool([''/Volumes/Macintosh HD/Users/admin/Movies/lefteye.mov', '/Volumes/Macintosh HD/Users/admin/Movies/righteye.mov'])
+
+
 
 MediaPool
 ---------
+
+..  note::  media_pool = currentProject.GetMediaPool()
+
 
 GetRootFolder()
 ^^^^^^^^^^^^^^^
@@ -1036,6 +1183,12 @@ GetRootFolder()
     
     **Returns** Folder
 
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    #Folder (0x0x600017cec380) [App: 'Resolve' on 127.0.0.1, UUID: 3923b295-9579-4657-be42-33b4f4594a93]
+
+
 AddSubFolder(folder, name)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
                                    
@@ -1044,6 +1197,13 @@ AddSubFolder(folder, name)
     Adds new subfolder under specified Folder object with the given name.
 
     **Returns** Folder
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    media_pool.AddSubFolder(root_folder, 'New_Sub01')
+    #New subfolder 'New_Sub01' at Root level in the MediaPool
+
 
 CreateEmptyTimeline(name)                                  
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1054,6 +1214,11 @@ CreateEmptyTimeline(name)
 
     **Returns** Timeline
 
+..  code-block:: python
+
+    media_pool.CreateEmptyTimeline('New Timeline')
+
+
 AppendToTimeline(clip1, clip2, ...)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                 
@@ -1061,7 +1226,15 @@ AppendToTimeline(clip1, clip2, ...)
 
     Appends specified MediaPoolItem objects in the current timeline. Returns the list of appended timelineItems.
 
-    **Returns** [TimelineItem]  
+    **Returns** [TimelineItem]
+    
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    media_pool.AppendToTimeline(clip_list[0], clip_list[1])
+    #append the first 2 clips from root folder to the current timeline
+
 
 AppendToTimeline([clips])                            
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1072,14 +1245,37 @@ AppendToTimeline([clips])
 
     **Returns** [TimelineItem]
 
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    media_pool.AppendToTimeline([clip_list[0], clip_list[1]])
+    #append the first 2 clips from root folder to the current timeline
+
+
 AppendToTimeline([{clipInfo}, ...])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                  
 ..  topic:: Description
 
-    Appends list of clipInfos specified as dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int), (optional) "mediaType" (int; 1 - Video only, 2 - Audio only). Returns the list of appended timelineItems.
+    Appends list of clipInfos specified as dict:
+    
+    * "mediaPoolItem"
+    * "startFrame" (int)
+    * "endFrame" (int)
+    * (optional) "mediaType" (int; 1 - Video only, 2 - Audio only)
+  
+    Returns the list of appended timelineItems.
 
-    **Returns** [TimelineItem]  
+    **Returns** [TimelineItem]
+    
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    media_pool.AppendToTimeline([{"mediaPoolItem":clip_list[0], "startFrame": 0, "endFrame": 10, "mediaType": 2}])
+    #appends the first clip from root folder, frames 0 to 10, only audio. 
+
 
 CreateTimelineFromClips(name, clip1, clip2,...)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1090,6 +1286,13 @@ CreateTimelineFromClips(name, clip1, clip2,...)
 
     **Returns** Timeline
 
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    media_pool.CreateTimelineFromClips('My Amazing Timeline', clip_list[0], clip_list[1])
+    #create a timeline named 'My Amazing Timeline' with first 2 clips from root folder
+
 CreateTimelineFromClips(name, [clips])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1099,6 +1302,14 @@ CreateTimelineFromClips(name, [clips])
 
     **Returns** Timeline 
 
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    media_pool.CreateTimelineFromClips('My Amazing Timeline', [clip_list[0], clip_list[1]])
+    #create a timeline named 'My Amazing Timeline' with first 2 clips from root folder
+
+
 CreateTimelineFromClips(name, [{clipInfo}])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1107,6 +1318,14 @@ CreateTimelineFromClips(name, [{clipInfo}])
     Creates new timeline with specified name, appending the list of clipInfos specified as a dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int).
 
     **Returns** Timeline
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    media_pool.CreateTimelineFromClips('My Amazing Timeline', [{"mediaPoolItem":clip_list[0], "startFrame": 0, "endFrame": 10}, {"mediaPoolItem":clip_list[1], "startFrame": 0, "endFrame": 10}])
+    #create a timeline named 'My Amazing Timeline' with first 2 clips, first 10 frames, from root folder
+
 
 ImportTimelineFromFile(filePath, {importOptions}) 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1123,7 +1342,13 @@ ImportTimelineFromFile(filePath, {importOptions})
 
     **Returns** Timeline
 
-DeleteTimelines([timeline])                                   
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    media_pool.ImportTimelineFromFile('/Users/admin/Desktop/exported_timeline.aaf', {"timelineName": 'NewImport Timeline'})
+
+
+DeleteTimelines([timeline])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1132,7 +1357,15 @@ DeleteTimelines([timeline])
 
     **Returns** Bool 
 
-GetCurrentFolder()                                           
+..  code-block:: python
+
+    first_timeline =  currentProject.GetTimelineByIndex(1)
+    second_timeline = currentProject.GetTimelineByIndex(2)
+
+    media_pool.DeleteTimelines([first_timeline, second_timeline])
+
+
+GetCurrentFolder()
 ^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1141,7 +1374,13 @@ GetCurrentFolder()
 
     **Returns** Folder
 
-SetCurrentFolder(Folder)                                       
+..  code-block:: python
+
+    curent_folder = media_pool.GetCurrentFolder()
+    #Folder (0x0x600017cec380) [App: 'Resolve' on 127.0.0.1, UUID: 3723b295-9579-4657-be42-33b4f4594a93]
+
+
+SetCurrentFolder(Folder)
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1150,7 +1389,15 @@ SetCurrentFolder(Folder)
     
     **Returns** Bool
 
-DeleteClips([clips])                                           
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    folder_list = root_folder.GetSubFolderList()
+
+    media_pool.SetCurrentFolder(folder_list[0])
+
+
+DeleteClips([clips])
 ^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1159,7 +1406,15 @@ DeleteClips([clips])
 
     **Returns** Bool
 
-DeleteFolders([subfolders])                                    
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    media_pool.DeleteClips([clip_list[0], clip_list[1]])
+    #deletes the first 2 clips in the root folder
+
+DeleteFolders([subfolders])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1168,7 +1423,15 @@ DeleteFolders([subfolders])
 
     **Returns** Bool
 
-MoveClips([clips], targetFolder)                               
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    folder_list = root_folder.GetSubFolderList()
+    media_pool.DeleteFolders([folder_list[0], folder_list[1]])
+    #deletes the first 2 subfolders of the root folder
+
+
+MoveClips([clips], targetFolder)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1177,7 +1440,16 @@ MoveClips([clips], targetFolder)
 
     **Returns** Bool
 
-MoveFolders([folders], targetFolder)                           
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    folder_list = root_folder.GetSubFolderList()
+    clip_list = root_folder.GetClipList()
+    media_pool.MoveClips([clip_list[0], clip_list[1]], folder_list[1])
+    #moves the first 2 clips from Root folder to second subfolder
+
+
+MoveFolders([folders], targetFolder)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1185,6 +1457,15 @@ MoveFolders([folders], targetFolder)
     Moves specified folders to target folder.
 
     **Returns** Bool
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    folder_list = root_folder.GetSubFolderList()
+    subfolder02_content = folder_list[1].GetSubFolderList()
+    media_pool.MoveFolders([subfolder02_content[0], subfolder02_content[1]], root_folder)
+    #moves the first 2 folders of second's root subfolder to the root folder
+
 
 GetClipMatteList(MediaPoolItem)                             
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1195,7 +1476,16 @@ GetClipMatteList(MediaPoolItem)
 
     **Returns** [paths]
 
-GetTimelineMatteList(Folder)                      
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    folder_list = root_folder.GetSubFolderList()
+    clip_list = root_folder.GetClipList()
+
+    matte_list = media_pool.GetClipMatteList(clip_list[0])
+
+
+GetTimelineMatteList(Folder)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1204,7 +1494,13 @@ GetTimelineMatteList(Folder)
 
     **Returns** [MediaPoolItems] 
 
-DeleteClipMattes(MediaPoolItem, [paths])                       
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    matte_list_in_root = media_pool.GetTimelineMatteList(root_folder)
+
+
+DeleteClipMattes(MediaPoolItem, [paths])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1213,7 +1509,15 @@ DeleteClipMattes(MediaPoolItem, [paths])
 
     **Returns** Bool
 
-RelinkClips([MediaPoolItem], folderPath)                       
+..  note:: Not tested yet
+
+    root_folder = media_pool.GetRootFolder()
+    first_timeline =  currentProject.GetTimelineByIndex(1)
+
+    media_pool.DeleteClipMattes(first_timeline, ['/Users/admin/Desktop/matte.mov'])
+
+
+RelinkClips([MediaPoolItem], folderPath)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1222,7 +1526,16 @@ RelinkClips([MediaPoolItem], folderPath)
 
     **Returns** Bool
 
-UnlinkClips([MediaPoolItem])                                   
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+
+    media_pool.RelinkClips([clip_list[0], clip_list[1]], '/Users/admin/Movies/')
+    #relink first 2 clips of root mediaPool to the specified folder path
+
+
+UnlinkClips([MediaPoolItem])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1231,7 +1544,16 @@ UnlinkClips([MediaPoolItem])
 
     **Returns** Bool
 
-ImportMedia([items...])                           
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+
+    media_pool.UnlinkClips([clip_list[0]])
+    #unlink first clip of root mediaPool
+
+
+ImportMedia([items...])
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1239,6 +1561,12 @@ ImportMedia([items...])
     Imports specified file/folder paths into current Media Pool folder. Input is an array of file/folder paths. Returns a list of the MediaPoolItems created.
 
     **Returns** [MediaPoolItems] 
+
+..  code-block:: python
+
+    media_pool.ImportMedia(['/Users/admin/Movies/sample1.mov', '/Users/admin/Movies/sample2.mov'])
+    #import clips in current media pool folder
+
 
 ImportMedia([{clipInfo}])                          
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1252,6 +1580,12 @@ ImportMedia([{clipInfo}])
 
     **Returns** [MediaPoolItems]              
 
+..  code-block:: python
+
+    dpx_sequence1 = {"FilePath":"file_%03d.dpx", "StartIndex":1, "EndIndex":100}
+    media_pool.ImportMedia([dpx_sequence1])
+    #import dpx sequence file_[001-100].dpx in current media pool folder
+
 
 ExportMetadata(fileName, [clips])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1263,10 +1597,21 @@ ExportMetadata(fileName, [clips])
 
     **Returns** Bool
 
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    media_pool.ExportMetadata('/Users/admin/Desktop/metadata.csv', [clip_list[0], clip_list[1]])
+    #export CSV file on Desktop containing first 2 clips metadata
+
+
 Folder
 ------
 
-GetClipList()                                            
+..  note::  curent_folder = media_pool.GetCurrentFolder()
+
+
+GetClipList()
 ^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1274,8 +1619,15 @@ GetClipList()
     Returns a list of clips (items) within the folder.
 
     **Returns** [clips...]
+    
+..  code-block:: python
 
-GetName()                                                    
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    #[<PyRemoteObject object at 0x7fe25807a930>, <PyRemoteObject object at 0x7fe25807a948>, <PyRemoteObject object at 0x7fe25807a960>]
+
+
+GetName()
 ^^^^^^^^^
 
 ..  topic:: Description
@@ -1284,7 +1636,13 @@ GetName()
 
     **Returns** string
 
-GetSubFolderList()                                     
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    root_folder.GetName()
+    #Master
+
+GetSubFolderList()
 ^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1292,6 +1650,14 @@ GetSubFolderList()
     Returns a list of subfolders in the folder.
 
     **Returns** [folders...]
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    root_subfolders = root_folder.GetSubFolderList()
+    #[<PyRemoteObject object at 0x7fef3007a828>, <PyRemoteObject object at 0x7fef3007a840>, <PyRemoteObject object at 0x7fef3007a858>, <PyRemoteObject object at 0x7fef3007a870>]
+
+
 
 MediaPoolItem
 -------------
@@ -1525,10 +1891,14 @@ ReplaceClip(filePath)
     **Returns** Bool
 
 
+
 Timeline
 --------
 
-GetName()                                                    
+..  note::  current_timeline = currentProject.GetCurrentTimeline()
+
+
+GetName()
 ^^^^^^^^^
 
 ..  topic:: Description
@@ -1537,7 +1907,12 @@ GetName()
 
     **Returns** string
 
-SetName(timelineName)                                          
+..  code-block:: python
+
+    timeline_name = current_timeline.GetName()
+
+
+SetName(timelineName)
 ^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1546,7 +1921,12 @@ SetName(timelineName)
 
     **Returns** Bool
 
-GetStartFrame()                                                 
+..  code-block:: python
+
+    current_timeline.SetName('Better Timeline name')
+
+
+GetStartFrame()
 ^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1555,7 +1935,13 @@ GetStartFrame()
 
     **Returns** int
 
-GetEndFrame()                                                  
+..  code-block:: python
+
+    start_frame = current_timeline.GetStartFrame()
+    #86400 for a timeline starting at 01:00:00:00
+
+
+GetEndFrame()
 ^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1563,6 +1949,11 @@ GetEndFrame()
     Returns the frame number at the end of timeline.
 
     **Returns** int 
+
+..  code-block:: python
+
+    end_frame = current_timeline.GetEndFrame()
+
 
 GetTrackCount(trackType)                                        
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1573,7 +1964,12 @@ GetTrackCount(trackType)
 
     **Returns** int
 
-GetItemListInTrack(trackType, index)                     
+..  code-block:: python
+
+    video_track_count = current_timeline.GetTrackCount("video")
+
+
+GetItemListInTrack(trackType, index)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1582,7 +1978,14 @@ GetItemListInTrack(trackType, index)
 
     **Returns** [items...]
 
-AddMarker(frameId, color, name, note, duration, customData)               
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    #returns a list of video items from the current video track V1
+    #[<PyRemoteObject object at 0x7fdbb807a978>, <PyRemoteObject object at 0x7fdbb807a990>]
+
+
+AddMarker(frameId, color, name, note, duration, customData)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1590,13 +1993,20 @@ AddMarker(frameId, color, name, note, duration, customData)
     Creates a new marker at given frameId position and with given marker information. 
     'customData' is optional and helps to attach user specific data to the marker.
          
-
     **Returns** Bool 
+
+..  code-block:: python
+
+    current_timeline.AddMarker(20.0, "Green", "Marker Name", "Custom Notes", 10, 'secret_word')
+
+..  image:: images/API_timeline_addmarker.png
+	:width: 400px
+	:align: center
 
 
 .. _Timeline GetMarkers():
 
-GetMarkers()                                           
+GetMarkers()
 ^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1607,7 +2017,13 @@ GetMarkers()
 
     **Returns** {markers...}
 
-GetMarkerByCustomData(customData)                      
+..  code-block:: python
+
+    markers = current_timeline.GetMarkers()
+    #{20: {'color': 'Green', 'duration': 10, 'note': 'Custom Notes', 'name': 'Marker Name', 'customData': 'secret_word'}}
+
+
+GetMarkerByCustomData(customData)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1615,6 +2031,12 @@ GetMarkerByCustomData(customData)
     Returns marker {information} for the first matching marker with specified customData.
 
     **Returns** {markers...}
+
+..  code-block:: python
+
+    marker = current_timeline.GetMarkerByCustomData('secret_word')
+    #{20: {'color': 'Green', 'duration': 10, 'note': 'Custom Notes', 'name': 'Marker Name', 'customData': 'secret_word'}}
+
 
 UpdateMarkerCustomData(frameId, customData)                    
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1625,7 +2047,13 @@ UpdateMarkerCustomData(frameId, customData)
 
     **Returns** Bool
 
-GetMarkerCustomData(frameId)                                 
+..  code-block:: python
+
+    current_timeline.UpdateMarkerCustomData(20, 'New CustomData')
+    #{20: {'color': 'Green', 'duration': 10, 'note': 'Custom Notes', 'name': 'Marker Name', 'customData': 'New CustomData'}}
+
+
+GetMarkerCustomData(frameId)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1634,7 +2062,13 @@ GetMarkerCustomData(frameId)
 
     **Returns** string
 
-DeleteMarkersByColor(color)                                    
+..  code-block:: python
+
+    current_timeline.GetMarkerCustomData(20)
+    #New CustomData
+
+
+DeleteMarkersByColor(color)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1643,7 +2077,12 @@ DeleteMarkersByColor(color)
 
     **Returns** Bool
 
-DeleteMarkerAtFrame(frameNum)                                  
+..  code-block:: python
+
+    current_timeline.DeleteMarkersByColor('Green') 
+
+
+DeleteMarkerAtFrame(frameNum)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1652,7 +2091,12 @@ DeleteMarkerAtFrame(frameNum)
 
     **Returns** Bool
 
-DeleteMarkerByCustomData(customData)                           
+..  code-block:: python
+
+    current_timeline.DeleteMarkerAtFrame(20)
+    
+
+DeleteMarkerByCustomData(customData)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1660,6 +2104,11 @@ DeleteMarkerByCustomData(customData)
     Delete first matching marker with specified customData.
 
     **Returns** Bool
+
+..  code-block:: python
+
+    current_timeline.DeleteMarkerByCustomData('New CustomData')
+
 
 ApplyGradeFromDRX(path, gradeMode, item1, item2, ...)           
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1670,6 +2119,11 @@ ApplyGradeFromDRX(path, gradeMode, item1, item2, ...)
 
     **Returns** Bool
 
+..  note:: Not tested yet
+
+    #
+
+
 ApplyGradeFromDRX(path, gradeMode, [items])                    
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1679,7 +2133,12 @@ ApplyGradeFromDRX(path, gradeMode, [items])
 
     **Returns** Bool
 
-GetCurrentTimecode()                                         
+..  note:: Not tested yet
+
+    #
+
+
+GetCurrentTimecode()
 ^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1688,7 +2147,13 @@ GetCurrentTimecode()
 
     **Returns** string
 
-SetCurrentTimecode(timecode)                                  
+..  code-block:: python
+
+    current_timecode = current_timeline.GetCurrentTimecode()
+    #01:00:00:00
+
+
+SetCurrentTimecode(timecode)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1697,7 +2162,12 @@ SetCurrentTimecode(timecode)
 
     **Returns** Bool 
 
-GetCurrentVideoItem()                                          
+..  code-block:: python
+
+    current_timeline.SetCurrentTimecode('01:00:10:00')
+
+
+GetCurrentVideoItem()
 ^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1706,17 +2176,31 @@ GetCurrentVideoItem()
 
     **Returns** item
 
-GetCurrentClipThumbnailImage()                      
+..  code-block:: python
+
+    current_video_item = current_timeline.GetCurrentVideoItem()
+    #Timeline item (0x0x600017de9320) [App: 'Resolve' on 127.0.0.1, UUID: 3723b295-9579-4657-be42-33b4f4594a93]
+
+
+GetCurrentClipThumbnailImage()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Returns a dict (keys "width", "height", "format" and "data") with data containing raw thumbnail image data (RGB 8-bit image data encoded in base64 format) for current media in the Color Page.
     An example of how to retrieve and interpret thumbnails is provided in 6_get_current_media_thumbnail.py in the Examples folder.
+    ``CurrentPage must be the Color Page``
 
     **Returns** {thumbnailData}
 
-GetTrackName(trackType, trackIndex)                          
+..  code-block:: python
+
+    current_thumbnail = current_timeline.GetCurrentClipThumbnailImage()
+    thumbnail_format = current_thumbnail['format']
+    #RGB 8 bit
+    
+
+GetTrackName(trackType, trackIndex)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1725,7 +2209,13 @@ GetTrackName(trackType, trackIndex)
 
     **Returns** string
 
-SetTrackName(trackType, trackIndex, name)                      
+..  code-block:: python
+
+    V1_track_name = current_timeline.GetTrackName("video", 1)
+    #Video 1
+
+
+SetTrackName(trackType, trackIndex, name)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1734,7 +2224,12 @@ SetTrackName(trackType, trackIndex, name)
 
     **Returns** Bool
 
-DuplicateTimeline(timelineName)                            
+..  code-block:: python
+
+    current_timeline.SetTrackName("video", 1, 'Best track V1')
+
+
+DuplicateTimeline(timelineName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1743,16 +2238,31 @@ DuplicateTimeline(timelineName)
 
     **Returns** timeline
 
-CreateCompoundClip([timelineItems], {clipInfo})        
+..  code-block:: python
+
+    current_timeline.DuplicateTimeline('New Timeline Copy')
+
+
+CreateCompoundClip([timelineItems], {clipInfo})
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Creates a compound clip of input timeline items with an optional clipInfo map: {"startTimecode" : "00:00:00:00", "name" : "Compound Clip 1"}. It returns the created timeline item.
+    Creates a compound clip of input timeline items with an optional clipInfo map: {"startTimecode" : "00:00:00:00", "name" : "Compound Clip 1"}. 
+    It returns the created timeline item.
 
     **Returns** timelineItem
 
-CreateFusionClip([timelineItems])                      
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    clip_info = {"startTimecode" : "00:00:00:00", "name" : "Compound Clip 1"}
+
+    current_timeline.CreateCompoundClip([timeline_items[0], timeline_items[1]], clip_info)
+    #new compound clip from first 2 items in current timeline
+
+
+CreateFusionClip([timelineItems])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1760,6 +2270,14 @@ CreateFusionClip([timelineItems])
     Creates a Fusion clip of input timeline items. It returns the created timeline item.
 
     **Returns** timelineItem
+
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+
+    current_timeline.CreateFusionClip([timeline_items[0], timeline_items[1]])
+    #new fusion clip from first 2 items in current timeline
+
 
 ImportIntoTimeline(filePath, {importOptions})                
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1780,7 +2298,9 @@ ImportIntoTimeline(filePath, {importOptions})
 
     **Returns** Bool
 
-Export(fileName, exportType, exportSubtype)                    
+
+
+Export(fileName, exportType, exportSubtype)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1790,6 +2310,11 @@ Export(fileName, exportType, exportSubtype)
     **Returns** Bool
 
     Refer to section :doc:`"Looking up timeline exports properties"<../API_timeline_export>` for information on the parameters.
+
+..  code-block:: python
+
+    current_timeline.Export('/Users/admin/Desktop/exported_timeline.aaf', resolve.EXPORT_AAF, resolve.EXPORT_AAF_NEW)
+
 
 GetSetting(settingName)                                      
 ^^^^^^^^^^^^^^^^^^^^^^^

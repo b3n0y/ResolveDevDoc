@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3
 
 import os
+from ssl import CHANNEL_BINDING_TYPES
 import sys
 import time
 import json
@@ -37,8 +38,11 @@ font-size: 14px;
 try:
     resolve = GetApp("Resolve")
     projectManager = resolve.GetProjectManager()
+    media_storage = resolve.GetMediaStorage()
+    
     currentProject = projectManager.GetCurrentProject()
-    currentTimeline = currentProject.GetCurrentTimeline()
+    media_pool = currentProject.GetMediaPool()
+    current_timeline = currentProject.GetCurrentTimeline()
     projectFPS = currentProject.GetSetting('timelineFrameRate')
     project_name = currentProject.GetName()
 except AttributeError as e:
@@ -78,10 +82,17 @@ def create_main_window():
          
 
     def OnClicked(ev):
-        job = currentProject.AddRenderJob()
-        print(job)
-        
-        
+        root_folder = media_pool.GetRootFolder()
+        folder_list = root_folder.GetSubFolderList()
+        clip_list = root_folder.GetClipList()
+        # media_pool.CreateTimelineFromClips('My Amazing Timeline', [{"mediaPoolItem":clip_list[0], "startFrame": 0, "endFrame": 10}, {"mediaPoolItem":clip_list[1], "startFrame": 0, "endFrame": 10}])
+
+        first_timeline =  currentProject.GetTimelineByIndex(1)
+        # second_timeline = currentProject.GetTimelineByIndex(2)
+
+        media_pool.ImportMedia(['/Users/benbro/Movies/HD_24_mono.mov'])
+
+              
     win.On["my_window"].Close = OnClose
     win.On["button_1"].Clicked = OnClicked
 
