@@ -2989,7 +2989,7 @@ AddFlag(color)
 
     **Returns** Bool
 
-..  note:: Not tested yet
+..  code-block:: python
 
     timeline_items = current_timeline.GetItemListInTrack("video", 1)
     timeline_items[0].AddFlag('Red')
@@ -3004,7 +3004,7 @@ GetFlagList()
 
     **Returns** [colors...]
 
-..  note:: Not tested yet
+..  code-block:: python
 
     timeline_items = current_timeline.GetItemListInTrack("video", 1)
     timeline_items[0].GetFlagList()
@@ -3019,7 +3019,7 @@ ClearFlags(color)
 
     **Returns** Bool
 
-..  note:: Not tested yet
+..  code-block:: python
 
     timeline_items = current_timeline.GetItemListInTrack("video", 1)
     timeline_items[0].ClearFlags('Red')
@@ -3034,7 +3034,7 @@ GetClipColor()
 
     **Returns** string 
 
-..  note:: Not tested yet
+..  code-block:: python
 
     timeline_items = current_timeline.GetItemListInTrack("video", 1)
     timeline_items[0].GetClipColor()
@@ -3049,10 +3049,10 @@ SetClipColor(colorName)
 
     **Returns** Bool
 
-..  note:: Not tested yet
+..  code-block:: python
 
     timeline_items = current_timeline.GetItemListInTrack("video", 1)
-    timeline_items[0].SetClipColor('Red')
+    timeline_items[0].SetClipColor('Green')
     
 
 ClearClipColor()
@@ -3064,7 +3064,7 @@ ClearClipColor()
 
     **Returns** Bool
 
-..  note:: Not tested yet
+..  code-block:: python
 
     timeline_items = current_timeline.GetItemListInTrack("video", 1)
     timeline_items[0].ClearClipColor()
@@ -3163,9 +3163,9 @@ AddVersion(versionName, versionType)
 
     **Returns** Bool
 
-..  note:: Not tested yet
+..  code-block:: python
 
-    timeline_items[0].AddVersion('versionName', 0)
+    timeline_items[0].AddVersion('My version', 0)
 
 
 GetCurrentVersion()
@@ -3177,9 +3177,10 @@ GetCurrentVersion()
 
     **Returns** {versionName...}
 
-..  note:: Not tested yet
+..  code-block:: python
 
     timeline_items[0].GetCurrentVersion()
+    #{'versionName': 'My version', 'versionType': 0}
 
 
 DeleteVersionByName(versionName, versionType)
@@ -3193,7 +3194,7 @@ DeleteVersionByName(versionName, versionType)
 
 ..  note:: Not tested yet
 
-    timeline_items[0].DeleteVersionByName('versionName', 0)
+    timeline_items[0].DeleteVersionByName('My version', 0)
 
 
 LoadVersionByName(versionName, versionType)
@@ -3205,9 +3206,9 @@ LoadVersionByName(versionName, versionType)
 
     **Returns** Bool
 
-..  note:: Not tested yet
+..  code-block:: python
 
-    timeline_items[0].LoadVersionByName('versionName', 0)
+    timeline_items[0].LoadVersionByName('My version', 0)
 
 
 RenameVersionByName(oldName, newName, versionType)             
@@ -3219,9 +3220,9 @@ RenameVersionByName(oldName, newName, versionType)
 
     **Returns** Bool
 
-..  note:: Not tested yet
+..  code-block:: python
 
-    timeline_items[0].RenameVersionByName('oldName', 'newName', 0)
+    timeline_items[0].RenameVersionByName('My version', 'My version2', 0)
 
 
 GetVersionNameList(versionType)
@@ -3236,7 +3237,7 @@ GetVersionNameList(versionType)
 ..  code-block:: python
 
     version_list = timeline_items[0].GetVersionNameList(0)
-    #['Version 1']
+    #['Version 1', 'My version', 'My version2', 'My version3']
 
 
 GetMediaPoolItem()
@@ -3330,25 +3331,37 @@ SetCDL([CDL map])
     cdl_applied = timeline_items[0].SetCDL({"NodeIndex" : "1", "Slope" : "0.5 0.4 0.2", "Offset" : "0.4 0.3 0.2", "Power" : "0.6 0.7 0.8", "Saturation" : "0.65"})
 
 
-AddTake(mediaPoolItem, startFrame, endFrame)                  
+AddTake(mediaPoolItem, startFrame, endFrame)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. By default, the full clip extents is added. startFrame (int) and endFrame (int) are optional arguments used to specify the extents.
+    Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. 
+    By default, the full clip extents is added. startFrame (int) and endFrame (int) are optional arguments used to specify the extents.
 
-    **Returns** Bool 
+    **Returns** Bool
 
-GetSelectedTakeIndex()                                         
+..  code-block:: python
+
+    mediapool_item = timeline_items[0].GetMediaPoolItem()
+    timeline_items[0].AddTake(mediapool_item)
+
+
+GetSelectedTakeIndex()
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Returns the index of the currently selected take, or 0 if the clip is not a take selector.
 
-    **Returns** int 
+    **Returns** int
 
-GetTakesCount()                                                 
+..  code-block:: python
+
+    timeline_items[0].GetSelectedTakeIndex()
+
+
+GetTakesCount()
 ^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -3357,7 +3370,12 @@ GetTakesCount()
 
     **Returns** int
 
-GetTakeByIndex(idx)                                   
+..  code-block:: python
+
+    timeline_items[0].GetTakesCount()
+
+
+GetTakeByIndex(idx)
 ^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -3366,7 +3384,12 @@ GetTakeByIndex(idx)
 
     **Returns** {takeInfo...}
 
-DeleteTakeByIndex(idx)                                         
+..  code-block:: python
+
+    timeline_items[0].GetTakeByIndex(1)
+    #{'mediaPoolItem': <PyRemoteObject object at 0x7fc9f007a960>, 'startFrame': 0, 'endFrame': 704}
+
+DeleteTakeByIndex(idx)
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -3375,7 +3398,12 @@ DeleteTakeByIndex(idx)
 
     **Returns** Bool
 
-SelectTakeByIndex(idx)                                        
+..  code-block:: python
+
+    timeline_items[0].DeleteTakeByIndex(1)
+
+
+SelectTakeByIndex(idx)
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -3384,7 +3412,12 @@ SelectTakeByIndex(idx)
 
     **Returns** Bool 
 
-FinalizeTake()                                                 
+..  code-block:: python
+
+    timeline_items[0].SelectTakeByIndex(1)
+
+
+FinalizeTake()
 ^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -3393,18 +3426,32 @@ FinalizeTake()
 
     **Returns** Bool
 
-CopyGrades([tgtTimelineItems])                                
+..  code-block:: python
+
+    timeline_items[0].FinalizeTake()
+
+
+CopyGrades([tgtTimelineItems])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Copies the current grade to all the items in tgtTimelineItems list. Returns True on success and False if any error occured.
+    Copies the current grade to all the items in tgtTimelineItems list. 
+    Returns True on success and False if any error occured.
 
     **Returns** Bool 
+
+..  code-block:: python
+
+    timeline_items[0].CopyGrades([timeline_items[1], timeline_items[2]])
+    #copy grade from first item to second and third timeline item
 
 
 Gallery
 -------
+
+..  note::  gallery = currentProject.GetGallery()
+
 
 GetAlbumName(galleryStillAlbum)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3415,6 +3462,13 @@ GetAlbumName(galleryStillAlbum)
 
     **Returns** string
 
+..  code-block:: python
+
+    current_still_album = gallery.GetCurrentStillAlbum()
+    album_name = gallery.GetAlbumName(current_still_album)
+    #Stills 1
+
+
 SetAlbumName(galleryStillAlbum, albumName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3423,6 +3477,13 @@ SetAlbumName(galleryStillAlbum, albumName)
     Sets the name of the GalleryStillAlbum object 'galleryStillAlbum' to 'albumName'.
 
     **Returns** Bool
+
+..  code-block:: python
+
+    still_albums = gallery.GetGalleryStillAlbums()  
+    gallery.SetAlbumName(still_albums[0], 'Old Stills')
+    #rename the first StillAlbum
+
 
 GetCurrentStillAlbum()
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -3433,6 +3494,11 @@ GetCurrentStillAlbum()
 
     **Returns** galleryStillAlbum
 
+..  code-block:: python
+
+    current_still_album = gallery.GetCurrentStillAlbum()
+    #GalleryStillAlbum (0x0x600023ec4b00) [App: 'Resolve' on 127.0.0.1, UUID: 3723b295-9579-4657-be42-33b4f4594a93]
+
 SetCurrentStillAlbum(galleryStillAlbum)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ..  topic:: Description
@@ -3440,6 +3506,13 @@ SetCurrentStillAlbum(galleryStillAlbum)
     Sets current album to GalleryStillAlbum object 'galleryStillAlbum'.
 
     **Returns** Bool
+
+..  code-block:: python
+
+    still_albums = gallery.GetGalleryStillAlbums()  
+    gallery.SetCurrentStillAlbum(still_albums[1])
+    #change the StillAlbum to the second
+
 
 GetGalleryStillAlbums()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -3449,6 +3522,12 @@ GetGalleryStillAlbums()
     Returns the gallery albums as a list of GalleryStillAlbum objects.
 
     **Returns** [galleryStillAlbum]
+
+..  code-block:: python
+
+    still_albums = gallery.GetGalleryStillAlbums()
+    #[<PyRemoteObject object at 0x7fccf807a990>, <PyRemoteObject object at 0x7fccf807a9a8>]
+
 
 
 GalleryStillAlbum
@@ -3462,6 +3541,12 @@ GetStills()
     Returns the list of GalleryStill objects in the album.
 
     **Returns** [galleryStill]
+
+..  code-block:: python
+
+    current_still_album = gallery.GetCurrentStillAlbum()
+    stills = current_still_album.GetStills()
+    #[<PyRemoteObject object at 0x7fa8d801a990>]
     
 GetLabel(galleryStill)
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -3472,6 +3557,15 @@ GetLabel(galleryStill)
 
     **Returns** string
 
+..  code-block:: python
+
+    current_still_album = gallery.GetCurrentStillAlbum()
+    stills = current_still_album.GetStills()
+
+    current_still_album.GetLabel(stills[0])
+    #Label ot the first still in the current galleryStill
+
+
 SetLabel(galleryStill, label)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3479,9 +3573,18 @@ SetLabel(galleryStill, label)
 
     Sets the new 'label' to GalleryStill object 'galleryStill'.
 
-    **Returns** Bool 
+    **Returns** Bool
 
-ExportStills([galleryStill], folderPath, filePrefix, format)   
+..  code-block:: python
+
+    current_still_album = gallery.GetCurrentStillAlbum()
+    stills = current_still_album.GetStills()
+
+    current_still_album.SetLabel(stills[0], 'Best label')
+    #change label ot the first still in the current galleryStill
+
+
+ExportStills([galleryStill], folderPath, filePrefix, format)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -3490,12 +3593,29 @@ ExportStills([galleryStill], folderPath, filePrefix, format)
 
     **Returns** Bool
 
-DeleteStills([galleryStill])                                   
+..  code-block:: python
+
+    current_still_album = gallery.GetCurrentStillAlbum()
+    stills = current_still_album.GetStills()
+
+    current_still_album.ExportStills([stills[0], stills[1]], '/Users/admin/Desktop/', 'stills_ProjectA_', 'png')
+    #export first 2 stills to folder
+
+
+DeleteStills([galleryStill])
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Deletes specified list of GalleryStill objects '[galleryStill]'.
+
+..  code-block:: python
+
+    current_still_album = gallery.GetCurrentStillAlbum()
+    stills = current_still_album.GetStills()
+
+    current_still_album.DeleteStills([stills[0], stills[1]])
+    #delete first and second still in the current galleryStill
 
 
 GalleryStill                                                             

@@ -40,7 +40,9 @@ try:
     projectManager = resolve.GetProjectManager()
     media_storage = resolve.GetMediaStorage()
     
+    
     currentProject = projectManager.GetCurrentProject()
+    gallery = currentProject.GetGallery()
     media_pool = currentProject.GetMediaPool()
     current_timeline = currentProject.GetCurrentTimeline()
     projectFPS = currentProject.GetSetting('timelineFrameRate')
@@ -90,10 +92,13 @@ def create_main_window():
         # first_timeline =  currentProject.GetTimelineByIndex(1)
         # second_timeline = currentProject.GetTimelineByIndex(2)
         timeline_items = current_timeline.GetItemListInTrack("video", 1)
-        success = timeline_items[0].AddMarker(10.0, "Green", "Marker Name", "Custom Notes", 1.0, 'secret_word')
-        item = timeline_items[0].GetStereoRightFloatingWindowParams()
-        print(item)
+        mediapool_item = timeline_items[0].GetMediaPoolItem()
 
+        current_still_album = gallery.GetCurrentStillAlbum()
+        stills = current_still_album.GetStills()
+        current_still_album.ExportStills([stills[0], stills[1]], '/Users/benbro/Desktop/', 'stills_ProjectA_', 'dpx')
+
+        
     win.On["my_window"].Close = OnClose
     win.On["button_1"].Clicked = OnClicked
 
