@@ -19,9 +19,9 @@ Prerequisites
 
 DaVinci Resolve scripting requires one of the following to be installed (for all users):
 
-    Lua 5.1
-    Python 2.7 64-bit
-    Python 3.6 64-bit
+- Lua 5.1
+- Python 2.7 64-bit
+- Python 3.6 64-bit
 
 
 Using a script
@@ -55,17 +55,23 @@ Place your script under Utility to be listed in all pages, under Comp or Tool to
 Placing your script here and invoking it from the menu is the easiest way to use scripts. 
 
   * Mac OS X:
-      - All users: /Library/Application Support/Blackmagic Design/DaVinci Resolve/Fusion/Scripts
-      - Specific user:  /Users/<UserName>/Library/Application Support/Blackmagic Design/DaVinci Resolve/Fusion/Scripts
+  
+    - All users: /Library/Application Support/Blackmagic Design/DaVinci Resolve/Fusion/Scripts
+    - Specific user:  /Users/<UserName>/Library/Application Support/Blackmagic Design/DaVinci Resolve/Fusion/Scripts
+
   * Windows:
-      - All users: %PROGRAMDATA%\Blackmagic Design\DaVinci Resolve\Fusion\Scripts
-      - Specific user: %APPDATA%\Roaming\Blackmagic Design\DaVinci Resolve\Support\Fusion\Scripts
+
+    - All users: %PROGRAMDATA%\Blackmagic Design\DaVinci Resolve\Fusion\Scripts
+    - Specific user: %APPDATA%\Roaming\Blackmagic Design\DaVinci Resolve\Support\Fusion\Scripts
+  
   * Linux:
-      - All users: /opt/resolve/Fusion/Scripts  (or /home/resolve/Fusion/Scripts/ depending on installation)
-      - Specific user: $HOME/.local/share/DaVinciResolve/Fusion/Scripts
+
+    - All users: /opt/resolve/Fusion/Scripts  (or /home/resolve/Fusion/Scripts/ depending on installation)
+    - Specific user: $HOME/.local/share/DaVinciResolve/Fusion/Scripts
 
 The interactive Console window allows for an easy way to execute simple scripting commands, to query or modify properties, and to test scripts. The console accepts commands in Python 2.7, Python 3.6
-and Lua and evaluates and executes them immediately. For more information on how to use the Console, please refer to the DaVinci Resolve User Manual.
+and Lua and evaluates and executes them immediately. 
+For more information on how to use the Console, please refer to the DaVinci Resolve User Manual.
 
 This example Python script creates a simple project:
 
@@ -85,6 +91,22 @@ in Lua and dir, help etc in Python (among other methods). A notable scriptable o
 
 Running DaVinci Resolve in headless mode
 ----------------------------------------
+
 DaVinci Resolve can be launched in a headless mode without the user interface using the -nogui command line option. When DaVinci Resolve is launched using this option, the user interface is disabled.
 However, the various scripting APIs will continue to work as expected.
 
+
+List and Dict Data Structures
+-----------------------------
+
+Beside primitive data types, Resolve's Python API mainly uses list and dict data structures. 
+
+Lists are denoted by [ ... ] and dicts are denoted by { ... } above.
+
+As Lua does not support list and dict data structures, the Lua API implements "list" as a table with indices
+
+* e.g. { [1] = listValue1, [2] = listValue2, ... }.
+
+Similarly the Lua API implements "dict" as a table with the dictionary key as first element
+
+* e.g. { [dictKey1] = dictValue1, [dictKey2] = dictValue2, ... }.

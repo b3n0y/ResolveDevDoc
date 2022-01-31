@@ -46,7 +46,7 @@ RunLoop()
 
 ..  topic:: Description
 
-	This function is
+	This function runs a Loop listening to user events. 
 
 **Type:** function: Call when your window is ready to receive user clicks and other events    return int
 
@@ -65,14 +65,13 @@ ExitLoop(int)
 
 ..  topic:: Description
 
-	This function is
+	This function exits the running loop. 
 
 **Type:** function: Terminates the event processing, and returns int = any supplied exit code from RunLoop() 
 
 ..  note:: not tested yet
 
 	dispatcher.ExitLoop(int)
-
 
 
 Common usage is to create your window and set up any event handlers, including a Close handler for the window that calls ExitLoop(), 
@@ -98,6 +97,7 @@ AddWindow() will also accept a single child without needing a list, or a single 
 
 As well as constructing new child elements and layouts, the UIManager also offers a few useful functions:
 
+
 UIManager
 ---------
 
@@ -106,14 +106,14 @@ FindWindow(ID)
 
 ..  topic:: Description
 
-	This function is
+	This function returns the windows matching with ID
 
 **Type:**  Returns an element with matching ID
 
-..  note:: not tested yet
+..  code-block:: python
 
 	ui = fusion.UIManager
-	ui.FindWindow(ID)
+	window = ui.FindWindow('win_id')
 
 
 FindWindows(ID)
@@ -125,10 +125,10 @@ FindWindows(ID)
 
 **Type:** Returns a list of all elements with matching ID
 
-..  note:: not tested yet
+..  code-block:: python
 
 	ui = fusion.UIManager
-	ui.FindWindows(ID)
+	windows = ui.FindWindows('win_id')
 
 
 QueueEvent(element, event, {info})

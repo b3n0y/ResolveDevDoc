@@ -4,12 +4,12 @@ Welcome to ResolveDevDoc's documentation!
 Summary
 -------
 
-**ResolveDevDoc** is an unofficial documentation for scripting and workflow integration with `Davinci Resolve 17 <https://www.blackmagicdesign.com/products/davinciresolve/>`_
+**ResolveDevDoc** is an unofficial documentation for scripting using Python 3.6 and workflow integration with `Davinci Resolve 17 <https://www.blackmagicdesign.com/products/davinciresolve/>`_
 
 This documentation was reformatted for ReadTheDocs to display additionnal informations about elements and API for Davinci Resolve.
-Please refer to the original documentation if needed. A reformated version is also available below (work in progress):
+Please refer to the original documentation if needed. A reformated version or the Readme.txt is also available below (work in progress):
 
-:ref:`Scripting README.txt document <resolveapi_readme>` | :ref:`Workflow Integrations README.txt document <workflow_readme>`
+:ref:`Scripting README.txt document <readme_resolveapi>` | :ref:`Workflow Integrations README.txt document <readme_workflow>`
 
 
 .. warning::
@@ -17,11 +17,12 @@ Please refer to the original documentation if needed. A reformated version is al
    **Use at your own risk** Some errors might be present. This documentation project is still in developement.
 
 
-Some of those script were made with the help of the `SteakUnderWater WSL community <https://www.steakunderwater.com/wesuckless/>`_
+Some of those scripts were made with the help of the `SteakUnderWater WSL community <https://www.steakunderwater.com/wesuckless/>`_
 
 
 .. note::
    ResolveDevDoc has its documentation hosted on Read the Docs.
+
 
 Contents
 --------
@@ -30,11 +31,12 @@ Contents
    :caption: UI Fusion/DavinciResolve
    :maxdepth: 1
 
+   UI_intro
+   UI_dispatcher_func
+   UI_elements_layout
    UI_elements_attrb
    UI_elements_func
-   UI_elements_layout
    UI_elements_events
-   UI_dispatcher_func
 
 
 .. toctree::
@@ -43,6 +45,11 @@ Contents
 
    API_intro
    API_basic
+   API_timeline_items
+   API_project_clip
+   API_timeline_export
+   API_render
+   API_depreciated
 
 
 .. toctree::

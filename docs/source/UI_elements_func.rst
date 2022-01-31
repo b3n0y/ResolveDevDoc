@@ -15,9 +15,9 @@ Most elements have functions that can be called from them as well:
 * SetParent(element)
 * Move(point)
 * Resize(size)
-* Size()				Returns size
+* Size()			Returns size
 * Pos()				Returns position
-* HasFocus()			Returns boolean
+* HasFocus()		Returns boolean
 * SetFocus(reason)	Accepts string "MouseFocusReason", "TabFocusReason", "ActiveWindowFocusReason", "OtherFocusreason", etc
 * FocusWidget()		Returns element
 * IsActiveWindow()	Returns boolean
