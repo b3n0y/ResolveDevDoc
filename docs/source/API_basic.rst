@@ -1662,7 +1662,7 @@ GetSubFolderList()
 MediaPoolItem
 -------------
 
-GetName()                                                    
+GetName()
 ^^^^^^^^^
 
 ..  topic:: Description
@@ -1671,7 +1671,14 @@ GetName()
 
     **Returns** string
 
-GetMetadata(metadataType=None)                         
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    first_clip_name = clip_list[0].GetName()
+
+
+GetMetadata(metadataType=None)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1681,7 +1688,14 @@ GetMetadata(metadataType=None)
 
     **Returns** string|dict 
 
-SetMetadata(metadataType, metadataValue)                      
+..  note:: Not tested yet
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    first_clip_name = clip_list[0].GetMetadata()
+
+
+SetMetadata(metadataType, metadataValue)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1699,14 +1713,21 @@ SetMetadata({metadata})
 
     **Returns** Bool 
 
-GetMediaId()                                               
+GetMediaId()
 ^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Returns the unique ID for the MediaPoolItem.
 
-    **Returns** string  
+    **Returns** string 
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    first_clip_id = clip_list[0].GetMediaId()
+    #c0dc4522-ef60-4e3d-9adb-352eb868aaac
 
 AddMarker(frameId, color, name, note, duration,customData)               
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1717,6 +1738,13 @@ AddMarker(frameId, color, name, note, duration,customData)
     'customData' is optional and helps to attach user specific data to the marker.
           
     **Returns** Bool
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].AddMarker(20.0, "Green", "Marker Name", "Custom Notes", 10, 'secret_word')
+    #adds marker to the first clip of the mediapool
 
 
 .. _MediaPoolItem GetMarkers():
@@ -1733,6 +1761,14 @@ GetMarkers()
 
     **Returns** {markers...}
 
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    first_clip_markers = clip_list[0].GetMarkers()
+    #{20: {'color': 'Green', 'duration': 10, 'note': 'Custom Notes', 'name': 'Marker Name', 'customData': 'secret_word'}}
+
+
 GetMarkerByCustomData(customData)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1742,15 +1778,32 @@ GetMarkerByCustomData(customData)
 
     **Returns** {markers...} 
 
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    first_clip_marker = clip_list[0].GetMarkerByCustomData('secret_word')
+    #{20: {'color': 'Green', 'duration': 10, 'note': 'Custom Notes', 'name': 'Marker Name', 'customData': 'secret_word'}}
+
+
 UpdateMarkerCustomData(frameId, customData)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Updates customData (string) for the marker at given frameId position. 
+    Updates customData (string) for the marker at given frameId position.
+
     CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.
 
     **Returns** Bool
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].UpdateMarkerCustomData(20, 'New CustomData')
+    #{20: {'color': 'Green', 'duration': 10, 'note': 'Custom Notes', 'name': 'Marker Name', 'customData': 'New CustomData'}}
+
 
 GetMarkerCustomData(frameId)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1761,6 +1814,14 @@ GetMarkerCustomData(frameId)
 
     **Returns** string
 
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].GetMarkerCustomData(20)
+    #New CustomData
+
+
 DeleteMarkersByColor(color)                                   
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1769,6 +1830,13 @@ DeleteMarkersByColor(color)
     Delete all markers of the specified color from the media pool item. "All" as argument deletes all color markers.
 
     **Returns** Bool 
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].DeleteMarkersByColor('Green') 
+
 
 DeleteMarkerAtFrame(frameNum)                                  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1779,6 +1847,13 @@ DeleteMarkerAtFrame(frameNum)
 
     **Returns** Bool
 
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].DeleteMarkerAtFrame(20)
+
+
 DeleteMarkerByCustomData(customData)                           
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1788,7 +1863,14 @@ DeleteMarkerByCustomData(customData)
 
     **Returns** Bool
 
-AddFlag(color)                                               
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].DeleteMarkerByCustomData('New CustomData')
+
+
+AddFlag(color)
 ^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1797,7 +1879,14 @@ AddFlag(color)
 
     **Returns** Bool  
 
-GetFlagList()                                          
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].AddFlag('Red')
+    
+
+GetFlagList()
 ^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1806,7 +1895,14 @@ GetFlagList()
 
     **Returns** [colors...] 
 
-ClearFlags(color)                                              
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    first_clip_flags = clip_list[0].GetFlagList()
+    #['Red', 'Blue']
+
+ClearFlags(color)
 ^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1815,7 +1911,14 @@ ClearFlags(color)
 
     **Returns** Bool
 
-GetClipColor()                                               
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].ClearFlags('All')
+
+
+GetClipColor()
 ^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1824,7 +1927,14 @@ GetClipColor()
 
     **Returns** string
 
-SetClipColor(colorName)                                       
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    first_clip_color = clip_list[0].GetClipColor()
+
+
+SetClipColor(colorName)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1833,16 +1943,31 @@ SetClipColor(colorName)
     
     **Returns** Bool 
 
-ClearClipColor()                                              
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].SetClipColor('Blue')
+
+
+ClearClipColor()
 ^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Clears the item color.
 
-    **Returns** Bool 
+    **Returns** Bool
 
-GetClipProperty(propertyName=None)                      
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].ClearClipColor()
+
+
+GetClipProperty(propertyName=None)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1853,17 +1978,46 @@ GetClipProperty(propertyName=None)
 
     **Returns** string|dict
 
+..  code-block:: python
 
-SetClipProperty(propertyName, propertyValue)               
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    first_clip_filename = clip_list[0].GetClipProperty('File Name')
+    #sample.mov
+    first_clip_properties = clip_list[0].GetClipProperty(propertyName=None)
+    """{'Alpha mode': 'None', 'Angle': '', 'Audio Bit Depth': '16', 'Audio Ch': '6', 'Audio Codec': 'Linear PCM', 
+    'Audio Offset': '', 'Bit Depth': '10', 'Camera #': '', 'Clip Color': 'Blue', 'Clip Name': 'HD_24_mono.mov', 
+    'Comments': '', 'Data Level': 'Auto', 'Date Added': 'Sun Jan 30 2022 13:29:53', 'Date Created': 'Fri Mar 18 2016 16:47:44', 
+    'Date Modified': 'Fri Mar 18 16:47:44 2016', 'Description': '', 'Drop frame': '0', 'Duration': '00:00:30:00', 
+    'Enable Deinterlacing': '0', 'End': '719', 'End TC': '01:00:30:00', 'FPS': 24.0, 'Field Dominance': 'Auto', 
+    'File Name': 'sample.mov', 'File Path': '/Users/admin/Movies/sample.mov', 'Flags': '', 'Format': 'QuickTime', 
+    'Frames': '720', 'Good Take': '', 'H-FLIP': 'Off', 'IDT': '', 'In': '', 'Input Color Space': 'Rec.709 (Scene)', 
+    'Input LUT': '', 'Input Sizing Preset': 'None', 'Keyword': '', 'Noise Reduction': '', 'Offline Reference': '', 
+    'Out': '', 'PAR': 'Square', 'Proxy': 'None', 'Proxy Media Path': '', 'Reel Name': '', 'Resolution': '1920x1080', 
+    'Roll/Card': '', 'S3D Sync': '', 'Sample Rate': '48000', 'Scene': '', 'Sharpness': '', 'Shot': '', 'Slate TC': '01:00:00:00', 
+    'Start': '0', 'Start KeyKode': '', 'Start TC': '01:00:00:00', 'Synced Audio': '', 'Take': '', 'Type': 'Video + Audio', 
+    'Usage': '0', 'V-FLIP': 'Off', 'Video Codec': 'Apple ProRes 422', 'Super Scale': 1}"""
+
+
+SetClipProperty(propertyName, propertyValue)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Sets the given property to propertyValue (string). Check the section below for more information.
+    Sets the given property to propertyValue (string). 
 
-    **Returns** Bool    
+    Refer to section :doc:`"Looking up Project and Clip properties"<../API_project_clip>` for information.
 
-LinkProxyMedia(proxyMediaFilePath)                             
+    **Returns** Bool   
+
+..  note:: Not tested yet
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].SetClipProperty("superScale", 3)
+
+
+LinkProxyMedia(proxyMediaFilePath)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1872,7 +2026,14 @@ LinkProxyMedia(proxyMediaFilePath)
 
     **Returns** Bool
 
-UnlinkProxyMedia()                                             
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].LinkProxyMedia('/Users/admin/Desktop/proxy.mov')
+
+
+UnlinkProxyMedia()
 ^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1881,7 +2042,14 @@ UnlinkProxyMedia()
 
     **Returns** Bool
 
-ReplaceClip(filePath)                                          
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].UnlinkProxyMedia()
+
+
+ReplaceClip(filePath)
 ^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -1889,6 +2057,12 @@ ReplaceClip(filePath)
     Replaces the underlying asset and metadata of MediaPoolItem with the specified absolute clip path.
 
     **Returns** Bool
+
+..  code-block:: python
+
+    root_folder = media_pool.GetRootFolder()
+    clip_list = root_folder.GetClipList()
+    clip_list[0].ReplaceClip('/Users/admin/Movies/New_Media.mov')
 
 
 
@@ -2279,7 +2453,7 @@ CreateFusionClip([timelineItems])
     #new fusion clip from first 2 items in current timeline
 
 
-ImportIntoTimeline(filePath, {importOptions})                
+ImportIntoTimeline(filePath, {importOptions})
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2298,6 +2472,11 @@ ImportIntoTimeline(filePath, {importOptions})
 
     **Returns** Bool
 
+..  code-block:: python
+
+    aaf_file = '/Users/admin/Desktop/exported_timeline.aaf'
+    import_options = {"autoImportSourceClipsIntoMediaPool": True, "ignoreFileExtensionsWhenMatching": True}
+    current_timeline.ImportIntoTimeline(aaf_file, import_options)
 
 
 Export(fileName, exportType, exportSubtype)
@@ -2316,43 +2495,93 @@ Export(fileName, exportType, exportSubtype)
     current_timeline.Export('/Users/admin/Desktop/exported_timeline.aaf', resolve.EXPORT_AAF, resolve.EXPORT_AAF_NEW)
 
 
-GetSetting(settingName)                                      
+GetSetting(settingName)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Returns value of timeline setting (indicated by settingName : string). Check the section below for more information.
+    Returns value of timeline setting (indicated by settingName : string). 
+
+    Refer to section :doc:`"Looking up Project and Clip properties"<../API_project_clip>` for information.
 
     **Returns** string
 
-SetSetting(settingName, settingValue)                          
+..  code-block:: python
+
+    timeline_settings = current_timeline.GetSetting()
+    timeline_playback_fps = current_timeline.GetSetting('timelinePlaybackFrameRate')
+    #23.976
+
+
+SetSetting(settingName, settingValue)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Sets timeline setting (indicated by settingName : string) to the value (settingValue : string). Check the section below for more information.
+    Sets timeline setting (indicated by settingName : string) to the value (settingValue : string). 
+    
+    Refer to section :doc:`"Looking up Project and Clip properties"<../API_project_clip>` for information.
 
     **Returns** Bool
 
-InsertGeneratorIntoTimeline(generatorName)             
+..  code-block:: python
+
+    success = current_timeline.SetSetting('timelineOutputResolutionWidth', '1920')
+    #True if the Settings was modified properly
+    #WARNING: The 'Use Project Settings' option might prevent some parameters change. 
+
+
+InsertGeneratorIntoTimeline(generatorName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Inserts a generator (indicated by generatorName : string) into the timeline.
 
+    Generator List:
+
+    * '10 Step'
+    * '100mV Steps'
+    * 'BT.2111 Color Bar HLG Narrow'
+    * 'BT.2111 Color Bar PQ Full' 
+    * 'BT.2111 Color Bar PQ Narrow'
+    * 'EBU Color Bar'
+    * 'Four Color Gradient'
+    * 'Grey Scale'
+    * 'SMPTE Color Bar'
+    * 'Solid Color'
+    * 'Window'
+    * 'YCbCr Ramp'
+
     **Returns** TimelineItem
 
-InsertFusionGeneratorIntoTimeline(generatorName)       
+..  code-block:: python
+
+    current_timeline.InsertGeneratorIntoTimeline('SMPTE Color Bar')
+
+
+InsertFusionGeneratorIntoTimeline(generatorName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Inserts a Fusion generator (indicated by generatorName : string) into the timeline.
+    
+    Generator List:
+
+    * 'Contours'
+    * 'Noise Gradient'
+    * 'Paper'
+    * 'Texture Background'
 
     **Returns** TimelineItem
 
-InsertOFXGeneratorIntoTimeline(generatorName)          
+..  note::  Not tested yet
+
+    current_timeline.InsertFusionGeneratorIntoTimeline('Noise Gradient')
+
+
+InsertOFXGeneratorIntoTimeline(generatorName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2361,14 +2590,32 @@ InsertOFXGeneratorIntoTimeline(generatorName)
 
     **Returns** TimelineItem
 
-InsertTitleIntoTimeline(titleName)                     
+..  note::  Not tested yet
+
+    current_timeline.InsertOFXGeneratorIntoTimeline('OFX Generator')
+
+
+InsertTitleIntoTimeline(titleName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Inserts a title (indicated by titleName : string) into the timeline.
 
+    Title List:
+
+    * 'Left Lower Third'
+    * 'Middle Lower Third'
+    * 'Right Lower Third'
+    * 'Scroll'
+    * 'Text'
+
     **Returns** TimelineItem
+
+..  code-block:: python
+
+    current_timeline.InsertTitleIntoTimeline('Text')
+
 
 InsertFusionTitleIntoTimeline(titleName)              
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2377,9 +2624,22 @@ InsertFusionTitleIntoTimeline(titleName)
 
     Inserts a Fusion title (indicated by titleName : string) into the timeline.
 
+    Fusion Title List:
+
+    * 'Background Reveal'
+    * 'Background Reveal Lower Third'
+    * 'Call Out'
+    * ...
+
+
     **Returns** TimelineItem 
 
-GrabStill()                                            
+..  note::  Not tested yet
+
+    current_timeline.InsertFusionTitleIntoTimeline('Background Reveal')
+
+
+GrabStill()
 ^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2388,20 +2648,31 @@ GrabStill()
 
     **Returns** galleryStill
 
-GrabAllStills(stillFrameSource)                      
+..  code-block:: python
+
+    current_timeline.GrabStill()
+
+
+GrabAllStills(stillFrameSource)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
-    Grabs stills from all the clips of the timeline at 'stillFrameSource' (1 - First frame, 2 - Middle frame). Returns the list of GalleryStill objects.
+    Grabs stills from all the clips of the timeline at 'stillFrameSource' (1 - First frame, 2 - Middle frame). 
+    Returns the list of GalleryStill objects.
 
     **Returns** [galleryStill]
+
+..  code-block:: python
+
+    current_timeline.GrabAllStills(2)
+    #grab a still of each clips from middle
 
 
 TimelineItem
 ------------
 
-GetName()                                                   
+GetName()
 ^^^^^^^^^
 
 ..  topic:: Description
@@ -2410,7 +2681,13 @@ GetName()
 
     **Returns** string 
 
-GetDuration()                                                   
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    first_timeline_item_name = timeline_items[0].GetName()
+
+
+GetDuration()
 ^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2418,8 +2695,14 @@ GetDuration()
     Returns the item duration.
 
     **Returns** int
+
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    first_timeline_item_duration = timeline_items[0].GetDuration()
+
     
-GetEnd()                                                       
+GetEnd()
 ^^^^^^^^
 
 ..  topic:: Description
@@ -2428,7 +2711,13 @@ GetEnd()
 
     **Returns** int 
 
-GetFusionCompCount()                                            
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    first_timeline_item_end = timeline_items[0].GetEnd()
+
+
+GetFusionCompCount()
 ^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2436,6 +2725,12 @@ GetFusionCompCount()
     Returns number of Fusion compositions associated with the timeline item.
 
     **Returns** int
+
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].GetFusionCompCount()
+
 
 GetFusionCompByIndex(compIndex)                          
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2446,7 +2741,8 @@ GetFusionCompByIndex(compIndex)
 
     **Returns** fusionComp
 
-GetFusionCompNameList()                                  
+
+GetFusionCompNameList()
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2454,6 +2750,12 @@ GetFusionCompNameList()
     Returns a list of Fusion composition names associated with the timeline item.
 
     **Returns** [names...]
+
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].GetFusionCompNameList()
+
 
 GetFusionCompByName(compName)                            
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2464,7 +2766,13 @@ GetFusionCompByName(compName)
 
     **Returns** fusionComp
 
-GetLeftOffset()                                                
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].GetFusionCompByName()
+
+
+GetLeftOffset()
 ^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2473,7 +2781,13 @@ GetLeftOffset()
 
     **Returns** int 
 
-GetRightOffset()                                                
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    first_clip_left_offset = timeline_items[0].GetLeftOffset()
+
+
+GetRightOffset()
 ^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2482,7 +2796,13 @@ GetRightOffset()
 
     **Returns** int
 
-GetStart()                                                     
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    first_clip_right_offset = timeline_items[0].GetRightOffset()
+
+
+GetStart()
 ^^^^^^^^^^
 
 ..  topic:: Description
@@ -2491,7 +2811,14 @@ GetStart()
 
     **Returns** int 
 
-SetProperty(propertyKey, propertyValue)                        
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    first_clip_start_frame = timeline_items[0].GetStart()
+    #86400 if timeline starts at 01:00:00:00
+
+
+SetProperty(propertyKey, propertyValue)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2502,8 +2829,13 @@ SetProperty(propertyKey, propertyValue)
 
     **Returns** Bool
 
+..  code-block:: python
 
-GetProperty(propertyKey)                            
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].SetProperty('ZoomX', 2.0)
+
+
+GetProperty(propertyKey)
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2513,16 +2845,35 @@ GetProperty(propertyKey)
 
     **Returns** int/[key:value]
 
-AddMarker(frameId, color, name, note, duration,customData)            
+..  code-block:: python
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    first_clip_pan = timeline_items[0].GetProperty('Pan')
+    #0.0
+    first_clip_properties = timeline_items[0].GetProperty()
+    {'Pan': 0.0, 'Tilt': 0.0, 'ZoomX': 1.0, 'ZoomY': 1.0, 'ZoomGang': True, 'RotationAngle': 0.0, 'AnchorPointX': 0.0, 
+    'AnchorPointY': 0.0, 'Pitch': 0.0, 'Yaw': 0.0, 'FlipX': False, 'FlipY': False, 'CropLeft': 0.0, 'CropRight': 0.0, 
+    'CropTop': 0.0, 'CropBottom': 0.0, 'CropSoftness': 0.0, 'CropRetain': False, 'DynamicZoomEase': 0, 'CompositeMode': 0, 
+    'Opacity': 100.0, 'Distortion': 0.0, 'RetimeProcess': 0, 'MotionEstimation': 0, 'Scaling': 0, 'ResizeFilter': 0}
+
+
+AddMarker(frameId, color, name, note, duration,customData)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Creates a new marker at given frameId position and with given marker information. 'customData' is optional and helps to attach user specific data to the marker.
           
-    **Returns** Bool   
+    **Returns** Bool
 
-GetMarkers()                                          
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    success = timeline_items[0].AddMarker(20, "Green", "Marker Name", "Custom Notes", 10, 'secret_word')
+    #adds marker to the first clip of the timeline
+
+  
+GetMarkers()
 ^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2531,11 +2882,15 @@ GetMarkers()
 
     **Returns** {markers...} 
 
-..  topic:: Description
+    Example: a value of {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...} indicates a single green marker at clip offset 96
 
-  Example: a value of {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...} indicates a single green marker at clip offset 96
+..  note:: Not tested yet
 
-GetMarkerByCustomData(customData)                     
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    markers = timeline_items[0].GetMarkers()
+
+
+GetMarkerByCustomData(customData)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2544,14 +2899,26 @@ GetMarkerByCustomData(customData)
 
     **Returns** {markers...} 
 
-UpdateMarkerCustomData(frameId, customData)                   
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    marker = timeline_items[0].GetMarkerByCustomData('secret_word')
+
+
+UpdateMarkerCustomData(frameId, customData)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Updates customData (string) for the marker at given frameId position. CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.
 
-    **Returns** Bool 
+    **Returns** Bool
+    
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    marker = timeline_items[0].UpdateMarkerCustomData(20.0, 'new custom data')
+
 
 GetMarkerCustomData(frameId)                                 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2562,7 +2929,13 @@ GetMarkerCustomData(frameId)
 
     **Returns** string
 
-DeleteMarkersByColor(color)                                    
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    marker = timeline_items[0].GetMarkerCustomData(20.0)
+
+
+DeleteMarkersByColor(color)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2571,7 +2944,13 @@ DeleteMarkersByColor(color)
 
     **Returns** Bool
 
-DeleteMarkerAtFrame(frameNum)                                  
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].DeleteMarkersByColor('Red')
+
+
+DeleteMarkerAtFrame(frameNum)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2579,6 +2958,12 @@ DeleteMarkerAtFrame(frameNum)
     Delete marker at frame number from the timeline item.
 
     **Returns** Bool
+
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].DeleteMarkerAtFrame(20)
+
 
 DeleteMarkerByCustomData(customData)                           
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2589,16 +2974,28 @@ DeleteMarkerByCustomData(customData)
 
     **Returns** Bool
 
-AddFlag(color)                                                
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].DeleteMarkerByCustomData('new custom data')
+
+
+AddFlag(color)
 ^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
     Adds a flag with given color (string).
 
-    **Returns** Bool 
+    **Returns** Bool
 
-GetFlagList()                                           
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].AddFlag('Red')
+
+
+GetFlagList()
 ^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2607,7 +3004,13 @@ GetFlagList()
 
     **Returns** [colors...]
 
-ClearFlags(color)                                              
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].GetFlagList()
+
+
+ClearFlags(color)
 ^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2616,7 +3019,13 @@ ClearFlags(color)
 
     **Returns** Bool
 
-GetClipColor()                                              
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].ClearFlags('Red')
+
+
+GetClipColor()
 ^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2625,7 +3034,13 @@ GetClipColor()
 
     **Returns** string 
 
-SetClipColor(colorName)                                        
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].GetClipColor()
+
+
+SetClipColor(colorName)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2633,8 +3048,14 @@ SetClipColor(colorName)
     Sets the item color based on the colorName (string).
 
     **Returns** Bool
+
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].SetClipColor('Red')
     
-ClearClipColor()                                               
+
+ClearClipColor()
 ^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2643,7 +3064,13 @@ ClearClipColor()
 
     **Returns** Bool
 
-AddFusionComp()                                          
+..  note:: Not tested yet
+
+    timeline_items = current_timeline.GetItemListInTrack("video", 1)
+    timeline_items[0].ClearClipColor()
+
+
+AddFusionComp()
 ^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2652,7 +3079,12 @@ AddFusionComp()
 
     **Returns** fusionComp
 
-ImportFusionComp(path)                                   
+..  note:: Not tested yet
+
+    timeline_items[0].AddFusionComp()
+
+
+ImportFusionComp(path)
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2661,7 +3093,12 @@ ImportFusionComp(path)
 
     **Returns** fusionComp
 
-ExportFusionComp(path, compIndex)                              
+..  note:: Not tested yet
+
+    timeline_items[0].ImportFusionComp('/Users/admin/Movies/comp.mov')
+
+
+ExportFusionComp(path, compIndex)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2670,7 +3107,12 @@ ExportFusionComp(path, compIndex)
 
     **Returns** Bool
 
-DeleteFusionCompByName(compName)                               
+..  note:: Not tested yet
+
+    timeline_items[0].ExportFusionComp('/Users/admin/Movies/comp.mov', 1)
+
+
+DeleteFusionCompByName(compName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2678,6 +3120,11 @@ DeleteFusionCompByName(compName)
     Deletes the named Fusion composition.
 
     **Returns** Bool
+
+..  note:: Not tested yet
+
+    timeline_items[0].DeleteFusionCompByName('compName')
+
 
 LoadFusionCompByName(compName)                           
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2688,7 +3135,12 @@ LoadFusionCompByName(compName)
 
     **Returns** fusionComp
 
-RenameFusionCompByName(oldName, newName)                       
+..  note:: Not tested yet
+
+    timeline_items[0].LoadFusionCompByName('compName')
+
+
+RenameFusionCompByName(oldName, newName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2697,7 +3149,12 @@ RenameFusionCompByName(oldName, newName)
 
     **Returns** Bool
 
-AddVersion(versionName, versionType)                           
+..  note:: Not tested yet
+
+    timeline_items[0].RenameFusionCompByName('oldName', 'newName')
+
+
+AddVersion(versionName, versionType)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2706,7 +3163,12 @@ AddVersion(versionName, versionType)
 
     **Returns** Bool
 
-GetCurrentVersion()                                
+..  note:: Not tested yet
+
+    timeline_items[0].AddVersion('versionName', 0)
+
+
+GetCurrentVersion()
 ^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2715,7 +3177,12 @@ GetCurrentVersion()
 
     **Returns** {versionName...}
 
-DeleteVersionByName(versionName, versionType)                  
+..  note:: Not tested yet
+
+    timeline_items[0].GetCurrentVersion()
+
+
+DeleteVersionByName(versionName, versionType)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2724,7 +3191,12 @@ DeleteVersionByName(versionName, versionType)
 
     **Returns** Bool
 
-LoadVersionByName(versionName, versionType)                    
+..  note:: Not tested yet
+
+    timeline_items[0].DeleteVersionByName('versionName', 0)
+
+
+LoadVersionByName(versionName, versionType)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2732,6 +3204,11 @@ LoadVersionByName(versionName, versionType)
     Loads a named color version as the active version. versionType: 0 - local, 1 - remote.
 
     **Returns** Bool
+
+..  note:: Not tested yet
+
+    timeline_items[0].LoadVersionByName('versionName', 0)
+
 
 RenameVersionByName(oldName, newName, versionType)             
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2742,7 +3219,12 @@ RenameVersionByName(oldName, newName, versionType)
 
     **Returns** Bool
 
-GetVersionNameList(versionType)                          
+..  note:: Not tested yet
+
+    timeline_items[0].RenameVersionByName('oldName', 'newName', 0)
+
+
+GetVersionNameList(versionType)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2751,7 +3233,13 @@ GetVersionNameList(versionType)
 
     **Returns** [names...]
 
-GetMediaPoolItem()                                    
+..  code-block:: python
+
+    version_list = timeline_items[0].GetVersionNameList(0)
+    #['Version 1']
+
+
+GetMediaPoolItem()
 ^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2760,7 +3248,13 @@ GetMediaPoolItem()
 
     **Returns** MediaPoolItem
 
-GetStereoConvergenceValues()                         
+..  code-block:: python
+
+    mediapool_item = timeline_items[0].GetMediaPoolItem()
+    #Media pool item (0x0x600023d8be90) [App: 'Resolve' on 127.0.0.1, UUID: 3723b295-9579-4657-be42-33b4f4594a93]
+
+
+GetStereoConvergenceValues()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2769,7 +3263,13 @@ GetStereoConvergenceValues()
 
     **Returns** {keyframes...}
 
-GetStereoLeftFloatingWindowParams()                 
+..  code-block:: python
+
+    timeline_items[0].GetStereoConvergenceValues()
+    #{92: 0.0}
+
+
+GetStereoLeftFloatingWindowParams()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2778,6 +3278,12 @@ GetStereoLeftFloatingWindowParams()
 
     **Returns** {keyframes...} 
 
+..  code-block:: python
+
+    timeline_items[0].GetStereoLeftFloatingWindowParams()
+    #{92: {'left': 0.0, 'right': 0.0, 'top': 0.0, 'bottom': 0.0}}
+
+
 GetStereoRightFloatingWindowParams()              
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -2785,9 +3291,14 @@ GetStereoRightFloatingWindowParams()
 
     For the RIGHT eye -> returns a dict (offset -> dict) of keyframe offsets and respective floating window params. Value at particular offset includes the left, right, top and bottom floating window values.
 
-    **Returns** {keyframes...}   
+    **Returns** {keyframes...}  
 
-SetLUT(nodeIndex, lutPath)                                     
+..  code-block:: python
+
+    timeline_items[0].GetStereoRightFloatingWindowParams()
+
+
+SetLUT(nodeIndex, lutPath)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2798,7 +3309,12 @@ SetLUT(nodeIndex, lutPath)
 
     **Returns** Bool
 
-SetCDL([CDL map])                                              
+..  note:: Not tested yet
+
+    lut_applied = timeline_items[0].SetLUT(1, '/Users/admin/Movies/lut.3dl')
+
+
+SetCDL([CDL map])
 ^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
@@ -2808,6 +3324,11 @@ SetCDL([CDL map])
     Example python code - SetCDL({"NodeIndex" : "1", "Slope" : "0.5 0.4 0.2", "Offset" : "0.4 0.3 0.2", "Power" : "0.6 0.7 0.8", "Saturation" : "0.65"})
 
     **Returns** Bool
+
+..  note:: Not tested yet
+
+    cdl_applied = timeline_items[0].SetCDL({"NodeIndex" : "1", "Slope" : "0.5 0.4 0.2", "Offset" : "0.4 0.3 0.2", "Power" : "0.6 0.7 0.8", "Saturation" : "0.65"})
+
 
 AddTake(mediaPoolItem, startFrame, endFrame)                  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

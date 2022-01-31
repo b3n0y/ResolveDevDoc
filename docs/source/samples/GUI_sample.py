@@ -87,12 +87,13 @@ def create_main_window():
         clip_list = root_folder.GetClipList()
         # media_pool.CreateTimelineFromClips('My Amazing Timeline', [{"mediaPoolItem":clip_list[0], "startFrame": 0, "endFrame": 10}, {"mediaPoolItem":clip_list[1], "startFrame": 0, "endFrame": 10}])
 
-        first_timeline =  currentProject.GetTimelineByIndex(1)
+        # first_timeline =  currentProject.GetTimelineByIndex(1)
         # second_timeline = currentProject.GetTimelineByIndex(2)
+        timeline_items = current_timeline.GetItemListInTrack("video", 1)
+        success = timeline_items[0].AddMarker(10.0, "Green", "Marker Name", "Custom Notes", 1.0, 'secret_word')
+        item = timeline_items[0].GetStereoRightFloatingWindowParams()
+        print(item)
 
-        media_pool.ImportMedia(['/Users/benbro/Movies/HD_24_mono.mov'])
-
-              
     win.On["my_window"].Close = OnClose
     win.On["button_1"].Clicked = OnClicked
 
