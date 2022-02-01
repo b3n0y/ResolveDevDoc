@@ -6,16 +6,14 @@ modules for scripting access (DaVinciResolve.py) and some representative example
 
 From v16.2.0 onwards, the nodeIndex parameters accepted by SetLUT() and SetCDL() are 1-based instead of 0-based, i.e. 1 <= nodeIndex <= total number of nodes.
 
-Overview
---------
+**Overview**
 
 As with Blackmagic Design Fusion scripts, user scripts written in Lua and Python programming languages are supported. By default, scripts can be invoked from the Console window in the Fusion page,
 or via command line. This permission can be changed in Resolve Preferences, to be only from Console, or to be invoked from the local network. Please be aware of the security implications when
 allowing scripting access from outside of the Resolve application.
 
 
-Prerequisites
--------------
+**Prerequisites**
 
 DaVinci Resolve scripting requires one of the following to be installed (for all users):
 
@@ -24,8 +22,7 @@ DaVinci Resolve scripting requires one of the following to be installed (for all
 - Python 3.6 64-bit
 
 
-Using a script
---------------
+**Using a script**
 
 DaVinci Resolve needs to be running for a script to be invoked.
 
@@ -89,15 +86,13 @@ The resolve object is the fundamental starting point for scripting via Resolve. 
 in Lua and dir, help etc in Python (among other methods). A notable scriptable object above is fusion - it allows access to all existing Fusion scripting functionality.
 
 
-Running DaVinci Resolve in headless mode
-----------------------------------------
+**Running DaVinci Resolve in headless mode**
 
 DaVinci Resolve can be launched in a headless mode without the user interface using the -nogui command line option. When DaVinci Resolve is launched using this option, the user interface is disabled.
 However, the various scripting APIs will continue to work as expected.
 
 
-List and Dict Data Structures
------------------------------
+**List and Dict Data Structures**
 
 Beside primitive data types, Resolve's Python API mainly uses list and dict data structures. 
 

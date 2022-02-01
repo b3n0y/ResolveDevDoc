@@ -5,8 +5,8 @@ In this package, you will find a brief introduction to the Workflow Integration 
 Examples: containing some representative sample plugin, and a sample script.
 Scripts: containing some sample workflow scripts to interact with Resolve.
 
-Overview
---------
+
+**Overview**
 
 DaVinci Resolve Studio now supports Workflow Integration Plugins to be loaded and communicate with Resolve. Resolve can run one or more Workflow Integration Plugins at the same time.
 Users can write their own Workflow Integration Plugin (an Electron app) which could be loaded into DaVinci Resolve Studio. To interact with Resolve, Resolve's JavaScript APIs can be used from the plugin.
@@ -14,8 +14,7 @@ Users can write their own Workflow Integration Plugin (an Electron app) which co
 Alternatively, a Python or Lua script can be invoked, with the option of a user interface built with Resolve's built-in Qt-based UIManager, or with an external GUI manager. See the "Sample Workflow Integration Script" section below for details.
 
 
-Sample Workflow Integration Plugin
-----------------------------------
+**Sample Workflow Integration Plugin**
 
 A sample Workflow Integration Plugin is available in the "Examples/SamplePlugin" directory. In order for Resolve to register this plugin, this directory needs to be copied to 'Workflow Integration Plugins' root directory (mentioned in below section).
 Once a plugin is registered, plugin can be loaded from UI sub-menu under 'Workspace->Workflow Integrations'. This will load the plugin and show the plugin HTML page in a separate window.
@@ -23,14 +22,14 @@ Once a plugin is registered, plugin can be loaded from UI sub-menu under 'Worksp
 Sample plugin helps to understand how a plugin should be structured and how it works with Resolve. Please refer to the directory/file structure, manifest file info, plugin loading, JavaScript API usage examples, etc.
 This sample plugin and scripts demonstrates few basic scriptable JavaScript API usages to interact with Resolve.
 
-Loading Workflow Integration Plugin
------------------------------------
+
+**Loading Workflow Integration Plugin**
 
 On startup, DaVinci Resolve Studio scans the Workflow Integration Plugins root directory and enumerates all plugin modules. For each valid plugin module, it creates a UI sub-menu entry under 'Workspace->Workflow Integrations' menu.
 DaVinci Resolve Studio reads the basic details of the plugin from its manifest.xml file during load time. Once plugin is loaded, user can click on the 'Workflow Integrations' sub-menu to load the corresponding plugin.
 
-Workflow Integration Plugin directory structure
------------------------------------------------
+
+**Workflow Integration Plugin directory structure**
 
 ..  code-block:: javascript
 
@@ -49,8 +48,7 @@ Workflow Integration Plugin directory structure
 			<image files>
 
 
-Workflow Integration Plugins root directory
--------------------------------------------
+**Workflow Integration Plugins root directory**
 
 User should place their Workflow Integration Plugin under the following directory:
 
@@ -63,15 +61,13 @@ User should place their Workflow Integration Plugin under the following director
    "%PROGRAMDATA%\Blackmagic Design\DaVinci Resolve\Support\Workflow Integration Plugins\"
 
 
-Supported platforms
--------------------
+**Supported platforms**
 
 * Plugins: Windows, Mac OS X (not supported on Linux currently)
 * Scripts: Windows, Mac OS X, Linux
 
 
-Using scriptable JavaScript API
--------------------------------
+**Using scriptable JavaScript API**
 
 Scriptable JavaScript API execution happens under HTML environment like any typical website. 
 Once HTML page is loaded it can execute scriptable JavaScript API as needed (like clicking on a button, etc.)
@@ -91,10 +87,10 @@ The resolve object is the fundamental starting point for scripting via Resolve.
 As a native object, it can be inspected for further scriptable properties and functions in JavaScript.
 
 
-WorkflowIntegration module API
--------------------------------
+**WorkflowIntegration module API**
 
 To interact with Resolve you need to use 'WorkflowIntegration.node' Node.js module file in your plugin app. Below are the WorkflowIntegration (module) JavaScript API functions to communicate with Resolve.
+
 
 **WorkflowIntegration**
 
@@ -114,8 +110,7 @@ To interact with Resolve you need to use 'WorkflowIntegration.node' Node.js modu
   * Setting it to 0 will disable timeout. This function will return true if the timeout is set/reset successfully.
 
 
-Supported callbacks
--------------------
+**Supported callbacks**
 
 * 'RenderStart'
 * 'RenderStop'
@@ -123,8 +118,7 @@ Supported callbacks
 Please note that there is no console based support for JavaScript API.
 
 
-Sample Workflow Integration Script
-----------------------------------
+**Sample Workflow Integration Script**
 
 A sample Workflow Integration Python script is also available in the "Examples" directory. In order for Resolve to register this script, it needs to be copied to the 'Workflow Integration Plugins' root directory (mentioned in the above section).
 
@@ -139,8 +133,7 @@ When launched by Resolve, plugin scripts are automatically provided with 'resolv
 Additional third-party modules may be imported for access to asset-management systems as desired.
 
 
-UIManager Introduction
-----------------------
+**UIManager Introduction**
 
 There are two main objects needed to manage a window, the UIManager that handles layout, and the UIDispatcher that manages interaction events, accessed as follows:
 
