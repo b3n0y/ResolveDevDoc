@@ -10,6 +10,7 @@ Basic Resolve API
     You must import the necessary modules in your script to get the Resolve app. 
 
     ``from python_get_resolve import GetResolve``
+
     ``resolve = GetResolve()``
 
 
@@ -2363,6 +2364,7 @@ GetCurrentClipThumbnailImage()
 
     Returns a dict (keys "width", "height", "format" and "data") with data containing raw thumbnail image data (RGB 8-bit image data encoded in base64 format) for current media in the Color Page.
     An example of how to retrieve and interpret thumbnails is provided in 6_get_current_media_thumbnail.py in the Examples folder.
+    
     ``CurrentPage must be the Color Page``
 
     **Returns** {thumbnailData}

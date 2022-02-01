@@ -1,5 +1,7 @@
 .. versionadded::  Updated as of 25 August, 2020
 
+UI Introduction
+---------------
 
 In this package, you will find a brief introduction to the Workflow Integration Plugins support for DaVinci Resolve Studio. Apart from this README.txt file, this package contains following folders:
 Examples: containing some representative sample plugin, and a sample script.
