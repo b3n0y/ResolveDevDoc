@@ -1,7 +1,6 @@
 #!/usr/local/bin/python3
 
 import os
-from ssl import CHANNEL_BINDING_TYPES
 import sys
 import time
 import json
@@ -14,8 +13,7 @@ __author__ = "Ben"
 __version__ = "1.0"
 __status__ = "Dev"
 """
-
-- 1.5: add framerate conversion preference, update color in win_prefs
+    Workpage to test GUI elements
 
 """
 ##################################################
@@ -66,10 +64,13 @@ def create_main_window():
         'ID': "my_window",
         'Geometry': [ 400,200,250,125 ],
         'WindowTitle': 'My Window',
+
         },
         ui.VGroup([
-            ui.Tree({'ID':'tree_1', 'ColumnCount': 2}),
-            ui.Button({'ID':'button_1', 'Text': "run func" })
+            # ui.Tree({'ID':'tree_1', 'ColumnCount': 2}),
+            ui.Tree({ 'ID':'tree_1', 'IconSize': [20,20] }),
+
+            # ui.Button({'ID': 'ok_btn',  'Icon': ui.Icon({'File': r"UserData:/Scripts/images/csv.png"}), 'IconSize': [40, 40]})
         ])      
     )
     
@@ -117,11 +118,11 @@ def initialize():
     item.Text[0] = 'My Text'
     win.Find('tree_1').AddTopLevelItem(item)
 
-    item2 = win.Find('tree_1').NewItem()
-    item2.Text[0] = 'My 2'
-    item2.Text[1] = 'Myff 2'
+    # item2 = win.Find('tree_1').NewItem()
+    # item2.Text[0] = 'My 2'
+    # item2.Text[1] = 'Myff 2'
     
-    item.AddChild(item2)
+    # item.AddChild(item2)
     # win.Find('tree_1').AddTopLevelItem(item2)
     
     # for i in range(10):

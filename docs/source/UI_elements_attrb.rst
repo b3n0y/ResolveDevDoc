@@ -42,6 +42,11 @@ WindowTitle
         ])
     )
 
+..  image:: images/UI_window_title.png
+	:width: 400px
+	:align: center
+
+
 WindowOpacity
 ^^^^^^^^^^^^^
 
@@ -62,6 +67,7 @@ WindowOpacity
         ])
     )
 
+
 BackgroundColor
 ^^^^^^^^^^^^^^^
 
@@ -75,12 +81,17 @@ BackgroundColor
 
     win = dispatcher.AddWindow({
         'ID': "my_window",
-        'BackgroundColor': {'R':0.5, 'G':0, 'B':0, 'A':0.5},
+        'BackgroundColor': {'R':0.6, 'G':0.1, 'B':0.2, 'A':0.2},
         },
         ui.VGroup([
     		ui.Label({ 'ID': 'label_1', 'Text':'My text' })
         ])
     )
+
+..  image:: images/UI_window_backgroundcolor.png
+	:width: 400px
+	:align: center
+
 
 Geometry
 ^^^^^^^^
@@ -162,7 +173,8 @@ FrameStyle
 
 ..  topic:: Description
 
-	This label attribute is used to Style the frame of the Label Element. 
+	This label attribute is used to Style the frame of the Label Element.
+
 	`Check out the qt5 documentation for more details <https://doc.qt.io/qt-5/qframe.html#Shape-enum>`_
 
 	* 0: NoFrame
@@ -333,9 +345,9 @@ Checkable
 
 ..  topic:: Description
 	
-	This label attribute is used to 
+	This label attribute is used to create a 2 states button. 
 
-..  note:: Not yet tested
+..  code-block:: python
 
     ui.Button({ 'ID': 'ok_btn',  'Checkable': True })
 
@@ -356,11 +368,12 @@ Checked
 **Type:** bool
 
 ..  topic:: Description	
-	This label attribute is used to 
 
-..  note:: Not yet tested
+	This attribute is used to set the Checked status to a Checkable button
 
-    ui.Button({ 'ID': 'ok_btn',  'Checked': True })
+..  code-block:: python
+
+    ui.Button({ 'ID': 'ok_btn', 'Checkable': True, 'Checked': True })
 
 
 Icon
@@ -370,25 +383,33 @@ Icon
 
 ..  topic:: Description
 	
-	This label attribute is used to 
+	This attribute is used to add ui.Icon object to the button.
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.Button({ 'ID': 'ok_btn',  'Icon': "" })
+    ui.Button({ 'ID': 'ok_btn',  'Icon': ui.Icon({'File': r"UserData:/Scripts/images/csv.png"}) })
+
+..  image:: images/UI_button_icon.png
+	:width: 400px
+	:align: center
 
 
 IconSize
 ^^^^^^^^
 
-**Type:** bool
+**Type:** [int, int]
 
 ..  topic:: Description
 	
-	This label attribute is used to 
+	This attribute is used to resize the Icon with lenght and height numbers. 
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.Button({ 'ID': 'ok_btn',  'IconSize': "" })
+	ui.Button({'ID': 'ok_btn',  'Icon': ui.Icon({'File': r"UserData:/Scripts/images/csv.png"}), 'IconSize': [40, 40]})
+
+..  image:: images/UI_button_iconsize.png
+	:width: 400px
+	:align: center
 
 Flat
 ^^^^
@@ -432,7 +453,7 @@ Down
 
 ..  topic:: Description
 	
-	This label attribute is used to 
+	This attribute is used to  
 
 ..  note:: Not yet tested
 
@@ -446,11 +467,11 @@ Checkable
 
 ..  topic:: Description
 	
-	This label attribute is used to 
+	This label attribute is used to disable the option to check.  (default=True)
 
-..  note:: Not yet tested
+..  code-block:: python
 
-    ui.CheckBox({ 'ID': 'checkbox_1',  'Checkable': True })
+    ui.CheckBox({ 'ID': 'checkbox_1',  'Checkable': False })
 
 
 Checked
@@ -460,7 +481,7 @@ Checked
 
 ..  topic:: Description
 	
-	This label attribute is used to 
+	This label attribute is used to change the checked status of the CheckBox. 
 
 ..  code-block:: python
 
@@ -1603,11 +1624,13 @@ Stack
 
 CurrentIndex
 ^^^^^^^^^^^^
+
 toolbox_items['Stack'].CurrentIndex = 0
 
 
 AddChild()
 ^^^^^^^^^^
+
 toolbox_items['Stack'].AddChild(ui.Button({'ID': "Browse", "Icon": ui.Icon({'File': r"UserData:/Scripts/images/test.gif"}), 'IconSize' : [15, 15]}))
 
 
