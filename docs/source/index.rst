@@ -17,7 +17,7 @@ Please refer to the original documentation if needed. A reformated version or th
    **Use at your own risk** Some errors might be present. This documentation project is still in developement.
 
 
-Some of those scripts were made with the help of the `SteakUnderWater WSL community <https://www.steakunderwater.com/wesuckless/>`_
+Some of those samples were created with the help of the `SteakUnderWater WSL community <https://www.steakunderwater.com/wesuckless/>`_
 
 
 .. note::

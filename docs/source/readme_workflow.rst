@@ -3,11 +3,20 @@ Workflow Integration Readme
 
 .. _readme_workflow:
 
-.. versionadded::Updated as of 25 August, 2020
+..  important::
 
-In this package, you will find a brief introduction to the Workflow Integration Plugins support for DaVinci Resolve Studio. Apart from this README.txt file, this package contains following folders:
-Examples: containing some representative sample plugin, and a sample script.
-Scripts: containing some sample workflow scripts to interact with Resolve.
+    For the latest version of this README.TXT, please refer to the local file included with your Davinci Resolve software.  (Help > Documentation > Developer)
+
+
+..  versionadded:: Updated as of 25 August, 2020
+
+
+In this package, you will find a brief introduction to the Workflow Integration Plugins support for DaVinci Resolve Studio. 
+Apart from this README.txt file, this package contains following folders:
+
+* Examples: containing some representative sample plugin, and a sample script.
+* Scripts: containing some sample workflow scripts to interact with Resolve.
+
 
 
 Overview

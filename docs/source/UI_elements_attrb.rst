@@ -19,6 +19,7 @@ and FixedSize.
 	Check :doc:`UI Element Layout page <UI_elements_layout>` and :doc:`UI Dispatcher functions <UI_dispatcher_func>` for more details.
 
 
+
 Window
 ------
 
@@ -401,7 +402,7 @@ IconSize
 
 ..  topic:: Description
 	
-	This attribute is used to resize the Icon with lenght and height numbers. 
+	This attribute is used to resize the Icon with lenght and height values. 
 
 ..  code-block:: python
 
@@ -423,6 +424,7 @@ Flat
 ..  note:: Not yet tested
 
     ui.Button({ 'ID': 'ok_btn',  'Flat': "" })
+
 
 
 CheckBox
@@ -534,6 +536,7 @@ CheckState
     ui.CheckBox({ 'ID': 'checkbox_1',  'CheckState': "" })
 
 
+
 ComboBox
 --------
 
@@ -552,7 +555,7 @@ ItemText
 ..  note:: Not yet tested
 
     ui.ComboBox({ 'ID': 'combo_1',  'ItemText': 'test' })
-	win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
+	win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow"])
 
 
 Editable
@@ -619,6 +622,7 @@ Count
 ..  note:: Not yet tested
 
     ui.ComboBox({ 'ID': 'combo_1',  'Count': 3 })
+
 
 
 SpinBox
@@ -762,6 +766,7 @@ Wrapping
     ui.SpinBox({ 'ID': 'spin_1',  'Wrapping': True })
 
 
+
 Slider
 ------
 
@@ -888,6 +893,7 @@ SliderPosition
     print(win.Find('slider_1').SliderPosition)  #default=0
 
 
+
 LineEdit
 --------
 
@@ -1002,6 +1008,7 @@ ClearButtonEnabled
 ..  image:: images/UI_lineedit_ClearButtonEnabled.png
 	:width: 400px
 	:align: center
+
 
 
 TextEdit
@@ -1171,6 +1178,7 @@ LexerColors
     ui.TextEdit({ 'ID': 'te_1',  'LexerColors': })
 
 
+
 ColorPicker
 -----------
 
@@ -1239,6 +1247,8 @@ DoAlpha
 ..  image:: images/UI_colorpicker_doalpha.png
 	:width: 400px
 	:align: center
+
+
 
 Font
 ----
@@ -1436,6 +1446,7 @@ MonoSpaced
     ui.Font({ 'MonoSpaced': True })
 
 
+
 .. _Element Icon:
 
 Icon
@@ -1449,7 +1460,7 @@ File
 ..  topic:: Description
 
 	This attribute is used to point to an image file path to use for the Icon Element.
-	Need to be joint to an element supporting Icon attribute. (ie: ui.Button)
+	Need to be associated with an element supporting Icon attribute. (ie: ui.Button)
 
 	* .png 
 	* .jpg
@@ -1461,6 +1472,7 @@ File
 ..  image:: images/UI_icon_file.png
 	:width: 400px
 	:align: center
+
 
 
 TabBar
@@ -1610,6 +1622,7 @@ ChangeCurrentOnDrag
     ui.Tabbar({ 'ChangeCurrentOnDrag': True })
 
 
+
 Stack
 -----
 
@@ -1632,6 +1645,7 @@ AddChild()
 ^^^^^^^^^^
 
 toolbox_items['Stack'].AddChild(ui.Button({'ID': "Browse", "Icon": ui.Icon({'File': r"UserData:/Scripts/images/test.gif"}), 'IconSize' : [15, 15]}))
+
 
 
 Tree
@@ -2084,7 +2098,7 @@ Selected
 	itm = win.Find('my_tree').NewItem()
 	win.Find('my_tree').AddTopLevelItem(itm)
 
-    itm.Selected = True
+	itm.Selected = True
 
 ..  image:: images/UI_treeitem_selected.png
 	:width: 400px
@@ -2105,7 +2119,7 @@ Hidden
 	itm = win.Find('my_tree').NewItem()
 	win.Find('my_tree').AddTopLevelItem(itm)
 
-    itm.Hidden = True
+	itm.Hidden = True
 
 
 Expanded
@@ -2130,7 +2144,7 @@ Expanded
     win.Find('my_tree').AddTopLevelItem(itm)
     itm.Expanded = True
 
-..  image:: images/ui_treeitem_expanded_true.png
+..  image:: images/UI_treeitem_expanded_true.png
 	:width: 400px
 	:align: center
 
@@ -2158,7 +2172,7 @@ Disabled
     win.Find('my_tree').AddTopLevelItem(itm)
     itm.Disabled = True
 
-..  image:: images/ui_treeitem_disabled.png
+..  image:: images/UI_treeitem_disabled.png
 	:width: 400px
 	:align: center
 
@@ -2209,6 +2223,7 @@ ChildIndicatorPolicy
 .. important:: Some elements also have property arrays, indexed by item or column (zero-based), e.g. newItem.Text[2] = 'Third column text'
 
 
+
 Combo
 -----
 
@@ -2226,6 +2241,7 @@ ItemText[index]
 	win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
 	first_color = win.Find('combo_1').ItemText[0]
 	# Blue
+
 
 
 TabBar Property Array
@@ -2250,7 +2266,7 @@ TabText[index]
 
     win.Find('tabbar_1').TabText[0] = 'New Text'
 
-..  image:: images/ui_tabbar_tabtext.png
+..  image:: images/UI_tabbar_tabtext.png
 	:width: 400px
 	:align: center
 
@@ -2306,6 +2322,7 @@ TabTextColor[index]
 	:align: center
 
 
+
 Tree Property Array
 -------------------
 
@@ -2330,6 +2347,7 @@ ColumnWidth[index]
 ..  image:: images/UI_tree_columnwidth.png
 	:width: 400px
 	:align: center
+
 
 
 Treeitem Property Array
@@ -2561,6 +2579,7 @@ Element attributes can be specified when creating the element, or can be read or
 ..  code-block:: python
 
 	win.Find('myButton').Text = "Processing..."
+
 
 
 Timer

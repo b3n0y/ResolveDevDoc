@@ -3,7 +3,15 @@ Resolve API Readme
 
 .. _readme_resolveapi:
 
+..  important::
+
+    For the latest version of this README.TXT, please refer to the local file included with your Davinci Resolve software. (Help > Documentation > Developer)
+
+    `A HTML formatted version was also created <https://deric.github.io/DaVinciResolve-API-Docs/>`_
+
 .. versionadded:: Updated as of 21 October 2021
+
+
 
 Overview
 --------
