@@ -1867,3 +1867,36 @@ The GetItems() function will return a dictionary of all child elements for ease 
 
 	win_itms = win.GetItems()
 	win_itms['ElementID'].func()
+
+
+Timer
+-----
+
+Start()
+^^^^^^^
+
+..  topic:: Description
+
+	This function starts the Timer element. 
+
+**Type:** func
+
+..  note:: Not tested yet
+	
+	ui.Timer({ 'ID': 'MyTimer', 'Interval': 1000 })  # 1000 millisecs
+    MyTimer.Start()
+	dispatcher['On']['Timeout'] = OnTimer  #this create a loop each 1000ms
+
+
+Stop()
+^^^^^^
+
+..  topic:: Description
+
+	This function stops the Timer element. 
+
+**Type:** func
+
+..  note:: Not tested yet
+	
+    MyTimer.Stop()

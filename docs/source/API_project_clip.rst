@@ -1,5 +1,5 @@
-Looking up Project and Clip properties
---------------------------------------
+Project and Clip properties
+---------------------------
 
 This section covers additional notes for the functions "Project:GetSetting", "Project:SetSetting", "Timeline:GetSetting", "Timeline:SetSetting", "MediaPoolItem:GetClipProperty" and 
 "MediaPoolItem:SetClipProperty". These functions are used to get and set properties otherwise available to the user through the Project Settings and the Clip Attributes dialogs.

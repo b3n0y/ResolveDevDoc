@@ -1,5 +1,5 @@
-Looking up Render Settings
---------------------------
+Render Settings
+---------------
 
 This section covers the supported settings for the method SetRenderSettings({settings})
 

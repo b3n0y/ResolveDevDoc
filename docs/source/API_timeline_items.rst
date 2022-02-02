@@ -1,5 +1,5 @@
-Looking up Timeline item properties
------------------------------------
+Timeline item properties
+------------------------
 
 This section covers additional notes for the function "TimelineItem:SetProperty" and "TimelineItem:GetProperty". These functions are used to get and set properties mentioned.
 

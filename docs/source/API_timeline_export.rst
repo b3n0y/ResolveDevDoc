@@ -1,5 +1,5 @@
-Looking up timeline export properties
--------------------------------------
+Timeline export properties
+--------------------------
 
 This section covers the parameters for the argument Export(fileName, exportType, exportSubtype).
 

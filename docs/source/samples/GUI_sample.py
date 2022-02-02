@@ -68,7 +68,7 @@ def create_main_window():
         },
         ui.VGroup([
             # ui.Tree({'ID':'tree_1', 'ColumnCount': 2}),
-            ui.Tree({ 'ID':'tree_1', 'IconSize': [20,20] }),
+    ui.Tree({ 'ID':'my_tree', 'Icon': ui.Icon({'File': r"UserData:/Scripts/images/logo.png"}), 'IconSize': 12 })
 
             # ui.Button({'ID': 'ok_btn',  'Icon': ui.Icon({'File': r"UserData:/Scripts/images/csv.png"}), 'IconSize': [40, 40]})
         ])      
@@ -114,9 +114,9 @@ def initialize():
     win, win_items = create_main_window()
     
     
-    item = win.Find('tree_1').NewItem()
-    item.Text[0] = 'My Text'
-    win.Find('tree_1').AddTopLevelItem(item)
+    # item = win.Find('tree_1').NewItem()
+    # item.Text[0] = 'My Text'
+    # win.Find('tree_1').AddTopLevelItem(item)
 
     # item2 = win.Find('tree_1').NewItem()
     # item2.Text[0] = 'My 2'
@@ -134,8 +134,6 @@ def initialize():
    
     # win.Find("combo_1").AddItems(["Item 1","Item 2","Item 3"])
 
-    # win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
-
     # win.Find('tabbar_1').AddTab('Tab1')
     # win.Find('tabbar_1').AddTab('Tab2')
 
@@ -145,7 +143,12 @@ def initialize():
     # itm = win.Find('tree_1').NewItem()
     # itm2 = win.Find('tree_1').NewItem()
     # itm2.Text[0] = "Child of itm"
-
+    
+    # ui.Tree({ 'ID':'tree_1', 'WordWrap': True })
+    # itm = win.Find('tree_1').NewItem()
+    # itm.Text[0] = "too long text for the cell"
+    # itm.Text[1] = "this is also too long"
+    # win.Find('tree_1').AddTopLevelItem(itm)
 
     # itm.Text[0] = "First column"
     # itm.Text[1] = "Second column"

@@ -1662,9 +1662,9 @@ SortingEnabled
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute enables sorting of the TreeItems elements. (default=False)
 
-..  note:: Not yet tested
+..  code-block:: python
 
     ui.Tree({ 'ID':'my_tree', 'SortingEnabled': True })
 
@@ -1736,7 +1736,7 @@ IconSize
 
 ..  note:: Not yet tested
 
-    ui.Tree({ 'ID':'my_tree', 'IconSize': 12 })
+    ui.Tree({ 'ID':'my_tree', 'Icon': ui.Icon({'File': r"UserData:/Scripts/images/logo.png"}, 'IconSize': 12 })
 
 
 RootIsDecorated
@@ -1956,15 +1956,30 @@ AlternatingRowColors
 FrameStyle
 ^^^^^^^^^^
 
-**Type:** 
+**Type:** int
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to Style the frame of the Tree Element.
 
-..  note:: Not yet tested
+	`Check out the qt5 documentation for more details <https://doc.qt.io/qt-5/qframe.html#Shape-enum>`_
 
-    ui.Tree({ 'ID':'my_tree', 'FrameStyle':  })
+	* 0: NoFrame
+	* 1: Box
+	* 2: Panel
+	* 3: WinPanel
+	* 4: HLine
+	* 5: VLine
+	* 6: StyledPanel
+	* other to try
+
+..  code-block:: python
+
+    ui.Tree({ 'ID':'my_tree', 'FrameStyle': 1 })
+
+..  image:: images/UI_tree_framestyle.png
+	:width: 400px
+	:align: center
 
 
 LineWidth
@@ -1974,11 +1989,17 @@ LineWidth
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to adjust the line with of the selected FrameStyle
 
-..  note:: Not yet tested
+	``FrameStyle is required``
 
-    ui.Tree({ 'ID':'my_tree', 'LineWidth': 2 })
+..  code-block:: python
+
+    ui.Tree({ 'ID':'tree_1', 'FrameStyle': 1, 'LineWidth': 4 })
+
+..  image:: images/UI_tree_linewidth.png
+	:width: 400px
+	:align: center
 
 
 MidLineWidth
@@ -2037,6 +2058,7 @@ FrameShadow
     ui.Tree({ 'ID':'my_tree', 'FrameShadow': True })
 
 
+
 TreeItem
 --------
 
@@ -2045,6 +2067,7 @@ TreeItem
 	Before you can edit TreeItem attributes, you need to create a Tree element, then use the `UI Element function <UI_elements_func>`_ to add Item to the Tree
 	
 	``itm = win.Find('my_tree').NewItem()``
+
 	``win.Find('my_tree').AddTopLevelItem(itm)``
 
 Selected
@@ -2196,12 +2219,13 @@ ItemText[index]
 
 ..  topic:: Description
 	
-	This attribute is used to 
+	This attribute is used to get the Item Text of the ComboBox at specified index. 
 
-..  note:: Not yet tested
+..  code-block:: python
 
-	win_recolorize.Find("new_colorID").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
-
+	win.Find("combo_1").AddItems(["Blue","Cyan","Green","Yellow","Red","Pink","Purple","Fuchsia","Rose","Lavender","Sky","Mint","Lemon","Sand","Cocoa","Cream"])
+	first_color = win.Find('combo_1').ItemText[0]
+	# Blue
 
 
 TabBar Property Array
@@ -2280,7 +2304,6 @@ TabTextColor[index]
 ..  image:: images/UI_tabbar_TabTextColor.png
 	:width: 400px
 	:align: center
-
 
 
 Tree Property Array
@@ -2557,9 +2580,6 @@ Interval
 	ui.Timer({ 'ID': 'MyTimer', 'Interval': 1000 })  # 1000 millisecs
     mytimer.Start()
 	dispatcher['On']['Timeout'] = OnTimer  #this create a loop each 1000ms
-
-	:ref: UI_elements_func_
-	Start() and Stop()   to add in the UI_elements_func.rst
 
 
 Singleshot
