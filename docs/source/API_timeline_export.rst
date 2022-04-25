@@ -15,6 +15,8 @@ exportType can be one of the following constants:
 - resolve.EXPORT_FCPXML_1_6
 - resolve.EXPORT_FCPXML_1_7
 - resolve.EXPORT_FCPXML_1_8
+- resolve.EXPORT_FCPXML_1_9
+- resolve.EXPORT_FCPXML_1_10
 - resolve.EXPORT_HDR_10_PROFILE_A
 - resolve.EXPORT_HDR_10_PROFILE_B
 - resolve.EXPORT_TEXT_CSV

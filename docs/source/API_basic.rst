@@ -249,6 +249,18 @@ ProjectManager
 ..  note:: projectManager = resolve.GetProjectManager()
 
 
+ArchiveProject(projectName,filePath,isArchiveSrcMedia=True,isArchiveRenderCache=True,isArchiveProxyMedia=False)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Archives project to provided file path with the configuration as provided by the optional arguments
+
+..  note:: Not tested yet
+
+    projectManager.ArchiveProject('Project', '/Users/admin/Desktop/Project.drp') 
+
+
 CreateProject(projectName)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -444,8 +456,8 @@ OpenFolder(folderName)
     projectManager.OpenFolder('My Folder')
 
 
-ImportProject(filePath)
-^^^^^^^^^^^^^^^^^^^^^^^
+ImportProject(filePath, projectName=None)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                                       
 ..  topic:: Description
 
@@ -472,8 +484,8 @@ ExportProject(projectName, filePath, withStillsAndLUTs=True)
     projectManager.ExportProject('my_project', '/Users/admin/Desktop/my_project.drp', withStillsAndLUTs=True)
 
 
-RestoreProject(filePath)
-^^^^^^^^^^^^^^^^^^^^^^^^
+RestoreProject(filePath, projectName=None)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
@@ -1077,6 +1089,20 @@ GetSubFolderList(folderPath)
     #['/Volumes/Macintosh HD/Applications', '/Volumes/Macintosh HD/Library', '/Volumes/Macintosh HD/System', '/Volumes/Macintosh HD/Users']
 
 
+GetIsFolderStale()
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns true if folder is stale in collaboration mode, false otherwise
+
+    **Returns** [paths...]  
+
+..  note:: Not tested yet
+
+    media_storage.GetIsFolderStale()
+
+
 GetFileList(folderPath)                                 
 ^^^^^^^^^^^^^^^^^^^^^^^
 ..  topic:: Description
@@ -1204,6 +1230,20 @@ AddSubFolder(folder, name)
     root_folder = media_pool.GetRootFolder()
     media_pool.AddSubFolder(root_folder, 'New_Sub01')
     #New subfolder 'New_Sub01' at Root level in the MediaPool
+
+
+RefreshFolders()
+^^^^^^^^^^^^^^^^
+                                   
+..  topic:: Description
+
+    Updates the folders in collaboration mode
+
+
+..  note:: Not tested yet
+
+    root_folder = media_pool.GetRootFolder()
+    media_pool.RefreshFolders()
 
 
 CreateEmptyTimeline(name)                                  
@@ -2130,6 +2170,34 @@ GetEndFrame()
     end_frame = current_timeline.GetEndFrame()
 
 
+SetStartTimecode(timecode)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Set the start timecode of the timeline to the string 'timecode'. Returns true when the change is successful, false otherwise.
+
+    **Returns** bool
+
+..  note:: Not tested yet
+
+    current_timeline.SetStartTimecode('09:58:30:00')
+    
+
+GetStartTimecode()
+^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Returns the start timecode for the timeline.
+
+    **Returns** String 
+
+..  note:: Not tested yet
+
+    current_timecode = current_timeline.GetStartTimecode()
+   
+
 GetTrackCount(trackType)                                        
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -2581,6 +2649,20 @@ InsertFusionGeneratorIntoTimeline(generatorName)
 ..  note::  Not tested yet
 
     current_timeline.InsertFusionGeneratorIntoTimeline('Noise Gradient')
+
+
+InsertFusionCompositionIntoTimeline()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Inserts a Fusion composition into the timeline.
+    
+    **Returns** TimelineItem
+
+..  note::  Not tested yet
+
+    current_timeline.InsertFusionCompositionIntoTimeline()
 
 
 InsertOFXGeneratorIntoTimeline(generatorName)
@@ -3447,6 +3529,20 @@ CopyGrades([tgtTimelineItems])
 
     timeline_items[0].CopyGrades([timeline_items[1], timeline_items[2]])
     #copy grade from first item to second and third timeline item
+
+
+UpdateSidecar()
+^^^^^^^^^^^^^^^
+
+..  topic:: Description
+
+    Updates sidecar file for BRAW clips or RMD file for R3D clips.
+
+    **Returns** Bool 
+
+..  note:: Not tested yet
+
+    timeline_items[0].UpdateSidecar()
 
 
 Gallery

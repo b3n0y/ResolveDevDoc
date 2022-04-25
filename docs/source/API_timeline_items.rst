@@ -45,6 +45,7 @@ The supported keys with their accepted values are:
   - COMPOSITE_LIGHTEN
   - COMPOSITE_COLOR_DODGE
   - COMPOSITE_COLOR_BURN
+  - COMPOSITE_EXCLUSION
   - COMPOSITE_HUE
   - COMPOSITE_SATURATE
   - COMPOSITE_COLORIZE
@@ -84,7 +85,7 @@ The supported keys with their accepted values are:
   
 - "Scaling" : A value from the following constants
   
-  - SCALE_USE_PRODUCT = 0
+  - SCALE_USE_PROJECT = 0
   - SCALE_CROP
   - SCALE_FIT
   - SCALE_FILL
@@ -92,7 +93,7 @@ The supported keys with their accepted values are:
   
 - "ResizeFilter" : A value from the following constants
   
-  - RESIZE_FILTER_USE_FILTER = 0
+  - RESIZE_FILTER_USE_PROJECT = 0
   - RESIZE_FILTER_SHARPER
   - RESIZE_FILTER_SMOOTHER
   - RESIZE_FILTER_BICUBIC

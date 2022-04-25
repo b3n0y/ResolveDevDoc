@@ -1,4 +1,5 @@
-.. versionadded:: Updated as of 21 October 2021
+.. versionadded:: Updated as of 29 March 2022
+
 
 API Introduction
 ----------------

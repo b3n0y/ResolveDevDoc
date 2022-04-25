@@ -54,4 +54,5 @@ Project
 * StartRendering([idxs...])                       --> Bool               # Please use unique job ids (string) instead of indices.
 * DeleteRenderJobByIndex(idx)                     --> Bool               # Please use unique job ids (string) instead of indices.
 * GetRenderJobStatus(idx)                         --> {status info}      # Please use unique job ids (string) instead of indices.
-* GetSetting and SetSetting                       --> {}                 # settingName "videoMonitorUseRec601For422SDI" is no longer supported. Please use "videoMonitorUseMatrixOverrideFor422SDI" and "videoMonitorMatrixOverrideFor422SDI" instead.
+* GetSetting and SetSetting                       --> {}                 # settingName videoMonitorUseRec601For422SDI is now replaced with videoMonitorUseMatrixOverrideFor422SDI and videoMonitorMatrixOverrideFor422SDI.
+*                                                                        # settingName perfProxyMediaOn is now replaced with perfProxyMediaMode which takes values 0 - disabled, 1 - when available, 2 - when source not available.

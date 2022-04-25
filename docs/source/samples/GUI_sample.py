@@ -68,7 +68,7 @@ def create_main_window():
         },
         ui.VGroup([
             # ui.Tree({'ID':'tree_1', 'ColumnCount': 2}),
-    ui.Tree({ 'ID':'my_tree', 'Icon': ui.Icon({'File': r"UserData:/Scripts/images/logo.png"}), 'IconSize': 12 })
+    ui.Label({ 'ID':'gif_player', })
 
             # ui.Button({'ID': 'ok_btn',  'Icon': ui.Icon({'File': r"UserData:/Scripts/images/csv.png"}), 'IconSize': [40, 40]})
         ])      
@@ -78,6 +78,12 @@ def create_main_window():
         
     win_items = win.GetItems()
 
+
+    # Loading the GIF
+    print(dir(ui.Label))
+    # gif = ui.Movie("./images/success.gif")
+    # win_items['gif_player'].setMovie(gif)
+    # gif.start()
 
     # Event handlers
     def OnClose(ev):

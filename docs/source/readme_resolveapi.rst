@@ -9,8 +9,7 @@ Resolve API Readme
 
     `A HTML formatted version was also created <https://deric.github.io/DaVinciResolve-API-Docs/>`_
 
-.. versionadded:: Updated as of 21 October 2021
-
+.. versionadded:: Updated as of 29 March 2022
 
 
 Overview
@@ -129,6 +128,7 @@ Some commonly used API functions are described below (*). As with the resolve ob
 
 **ProjectManager**
 
+* ArchiveProject(projectName,filePath,isArchiveSrcMedia=True,isArchiveRenderCache=True,isArchiveProxyMedia=False)       --> Bool               # Archives project to provided file path with the configuration as provided by the optional arguments
 * CreateProject(projectName)                      --> Project            # Creates and returns a project if projectName (string) is unique, and None if it is not.
 * DeleteProject(projectName)                      --> Bool               # Delete project in the current folder if not currently loaded
 * LoadProject(projectName)                        --> Project            # Loads and returns the project with name = projectName (string) if there is a match found, and None if there is no matching Project.
@@ -143,9 +143,9 @@ Some commonly used API functions are described below (*). As with the resolve ob
 * GotoParentFolder()                              --> Bool               # Opens parent folder of current folder in database if current folder has parent.
 * GetCurrentFolder()                              --> string             # Returns the current folder name.
 * OpenFolder(folderName)                          --> Bool               # Opens folder under given name.
-* ImportProject(filePath)                         --> Bool               # Imports a project from the file path provided. Returns True if successful.
+* ImportProject(filePath, projectName=None)       --> Bool               # Imports a project from the file path provided with given project name, if any. Returns True if successful.
 * ExportProject(projectName, filePath, withStillsAndLUTs=True) --> Bool  # Exports project to provided file path, including stills and LUTs if withStillsAndLUTs is True (enabled by default). Returns True in case of success.
-* RestoreProject(filePath)                        --> Bool               # Restores a project from the file path provided. Returns True if successful.
+* RestoreProject(filePath, projectName=None)      --> Bool               # Restores a project from the file path provided with given project name, if any. Returns True if successful.
 * GetCurrentDatabase()                            --> {dbInfo}           # Returns a dictionary (with keys 'DbType', 'DbName' and optional 'IpAddress') corresponding to the current database connection
 * GetDatabaseList()                               --> [{dbInfo}]         # Returns a list of dictionary items (with keys 'DbType', 'DbName' and optional 'IpAddress') corresponding to all the databases added to Resolve
 * SetCurrentDatabase({dbInfo})                    --> Bool               # Switches current database connection to the database specified by the keys below, and closes any open project.
@@ -218,6 +218,7 @@ Some commonly used API functions are described below (*). As with the resolve ob
 
 * GetRootFolder()                                 --> Folder             # Returns root Folder of Media Pool
 * AddSubFolder(folder, name)                      --> Folder             # Adds new subfolder under specified Folder object with the given name.
+* RefreshFolders()                                --> Bool               # Updates the folders in collaboration mode
 * CreateEmptyTimeline(name)                       --> Timeline           # Adds new timeline with given name.
 * AppendToTimeline(clip1, clip2, ...)             --> [TimelineItem]     # Appends specified MediaPoolItem objects in the current timeline. Returns the list of appended timelineItems.
 * AppendToTimeline([clips])                       --> [TimelineItem]     # Appends specified MediaPoolItem objects in the current timeline. Returns the list of appended timelineItems.
@@ -261,6 +262,7 @@ Some commonly used API functions are described below (*). As with the resolve ob
 * GetClipList()                                   --> [clips...]         # Returns a list of clips (items) within the folder.
 * GetName()                                       --> string             # Returns the media folder name.
 * GetSubFolderList()                              --> [folders...]       # Returns a list of subfolders in the folder.
+* GetIsFolderStale()                              --> bool               # Returns true if folder is stale in collaboration mode, false otherwise
 
 **MediaPoolItem**
 
@@ -309,6 +311,8 @@ Some commonly used API functions are described below (*). As with the resolve ob
 * SetName(timelineName)                           --> Bool               # Sets the timeline name if timelineName (string) is unique. Returns True if successful.
 * GetStartFrame()                                 --> int                # Returns the frame number at the start of timeline.
 * GetEndFrame()                                   --> int                # Returns the frame number at the end of timeline.
+* SetStartTimecode(timecode)                      --> Bool               # Set the start timecode of the timeline to the string 'timecode'. Returns true when the change is successful, false otherwise.
+* GetStartTimecode()                              --> string             # Returns the start timecode for the timeline.
 * GetTrackCount(trackType)                        --> int                # Returns the number of tracks for the given track type ("audio", "video" or "subtitle").
 * GetItemListInTrack(trackType, index)            --> [items...]         # Returns a list of timeline items on that track (based on trackType and index). 1 <= index <= GetTrackCount(trackType).
 * AddMarker(frameId, color, name, note, duration, customData)  --> Bool  
@@ -359,6 +363,7 @@ Some commonly used API functions are described below (*). As with the resolve ob
 * SetSetting(settingName, settingValue)           --> Bool               # Sets timeline setting (indicated by settingName : string) to the value (settingValue : string). Check the section below for more information.
 * InsertGeneratorIntoTimeline(generatorName)      --> TimelineItem       # Inserts a generator (indicated by generatorName : string) into the timeline.
 * InsertFusionGeneratorIntoTimeline(generatorName) --> TimelineItem      # Inserts a Fusion generator (indicated by generatorName : string) into the timeline.
+* InsertFusionCompositionIntoTimeline()           --> TimelineItem       # Inserts a Fusion composition into the timeline.
 * InsertOFXGeneratorIntoTimeline(generatorName)   --> TimelineItem       # Inserts an OFX generator (indicated by generatorName : string) into the timeline.
 * InsertTitleIntoTimeline(titleName)              --> TimelineItem       # Inserts a title (indicated by titleName : string) into the timeline.
 * InsertFusionTitleIntoTimeline(titleName)        --> TimelineItem       # Inserts a Fusion title (indicated by titleName : string) into the timeline.
@@ -437,6 +442,8 @@ Some commonly used API functions are described below (*). As with the resolve ob
 * SelectTakeByIndex(idx)                          --> Bool               # Selects a take by index, 1 <= idx <= number of takes.
 * FinalizeTake()                                  --> Bool               # Finalizes take selection.
 * CopyGrades([tgtTimelineItems])                  --> Bool               # Copies the current grade to all the items in tgtTimelineItems list. Returns True on success and False if any error occured.
+* UpdateSidecar()                                 --> Bool               # Updates sidecar file for BRAW clips or RMD file for R3D clips.
+
 
 **Gallery**
 
@@ -566,6 +573,8 @@ exportType can be one of the following constants:
 - resolve.EXPORT_FCPXML_1_6
 - resolve.EXPORT_FCPXML_1_7
 - resolve.EXPORT_FCPXML_1_8
+- resolve.EXPORT_FCPXML_1_9
+- resolve.EXPORT_FCPXML_1_10
 - resolve.EXPORT_HDR_10_PROFILE_A
 - resolve.EXPORT_HDR_10_PROFILE_B
 - resolve.EXPORT_TEXT_CSV
@@ -638,6 +647,7 @@ The supported keys with their accepted values are:
   - COMPOSITE_LIGHTEN
   - COMPOSITE_COLOR_DODGE
   - COMPOSITE_COLOR_BURN
+  - COMPOSITE_EXCLUSION
   - COMPOSITE_HUE
   - COMPOSITE_SATURATE
   - COMPOSITE_COLORIZE
@@ -677,7 +687,7 @@ The supported keys with their accepted values are:
   
 - "Scaling" : A value from the following constants
   
-  - SCALE_USE_PRODUCT = 0
+  - SCALE_USE_PROJECT = 0
   - SCALE_CROP
   - SCALE_FIT
   - SCALE_FILL
@@ -685,7 +695,7 @@ The supported keys with their accepted values are:
   
 - "ResizeFilter" : A value from the following constants
   
-  - RESIZE_FILTER_USE_FILTER = 0
+  - RESIZE_FILTER_USE_PROJECT = 0
   - RESIZE_FILTER_SHARPER
   - RESIZE_FILTER_SMOOTHER
   - RESIZE_FILTER_BICUBIC
@@ -766,4 +776,5 @@ The following API (functions and paraameters) are no longer supported. Use job I
 * StartRendering([idxs...])                       --> Bool               # Please use unique job ids (string) instead of indices.
 * DeleteRenderJobByIndex(idx)                     --> Bool               # Please use unique job ids (string) instead of indices.
 * GetRenderJobStatus(idx)                         --> {status info}      # Please use unique job ids (string) instead of indices.
-* GetSetting and SetSetting                       --> {}                 # settingName "videoMonitorUseRec601For422SDI" is no longer supported. Please use "videoMonitorUseMatrixOverrideFor422SDI" and "videoMonitorMatrixOverrideFor422SDI" instead.
+* GetSetting and SetSetting                       --> {}                 # settingName videoMonitorUseRec601For422SDI is now replaced with videoMonitorUseMatrixOverrideFor422SDI and videoMonitorMatrixOverrideFor422SDI.
+*                                                                        # settingName perfProxyMediaOn is now replaced with perfProxyMediaMode which takes values 0 - disabled, 1 - when available, 2 - when source not available.
