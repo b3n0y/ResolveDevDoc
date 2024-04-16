@@ -3,11 +3,11 @@
 # -- Project information
 
 project = 'ResolveDevDoc'
-copyright = '2022, b3n0y'
+copyright = '2024, b3n0y'
 author = 'Benoit Breault'
 
 release = '0.1'
-version = '0.1.0'
+version = '0.2.0'
 
 # -- General configuration
 
