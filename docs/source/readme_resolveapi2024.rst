@@ -632,13 +632,15 @@ ensure the success of the operation. You can troubleshoot the validity of keys a
 
 The following Project properties have specifically enumerated values:
 "superScale" - the property value is an enumerated integer between 0 and 4 with these meanings: 0=Auto, 1=no scaling, and 2, 3 and 4 represent the Super Scale multipliers 2x, 3x and 4x.
-               for super scale multiplier '2x Enhanced', exactly 4 arguments must be passed as outlined below. If less than 4 arguments are passed, it will default to 2x.
+for super scale multiplier '2x Enhanced', exactly 4 arguments must be passed as outlined below. If less than 4 arguments are passed, it will default to 2x.
+
 Affects:
 • x = Project:GetSetting('superScale') and Project:SetSetting('superScale', x)
 • for '2x Enhanced' --> Project:SetSetting('superScale', 2, sharpnessValue, noiseReductionValue), where sharpnessValue is a float in the range [0.0, 1.0] and noiseReductionValue is a float in the range [0.0, 1.0]
 
 "timelineFrameRate" - the property value is one of the frame rates available to the user in project settings under "Timeline frame rate" option. Drop Frame can be configured for supported frame rates 
-                      by appending the frame rate with "DF", e.g. "29.97 DF" will enable drop frame and "29.97" will disable drop frame
+by appending the frame rate with "DF", e.g. "29.97 DF" will enable drop frame and "29.97" will disable drop frame
+
 Affects:
 • x = Project:GetSetting('timelineFrameRate') and Project:SetSetting('timelineFrameRate', x)
 
@@ -663,8 +665,8 @@ The parameter setting is a dictionary containing the following keys:
 
 Note that the default values for some keys may change based on values defined for other keys, as per the UI.
 For example, if the following dictionary is supplied,
-    CreateSubtitlesFromAudio( { resolve.SUBTITLE_LANGUAGE = resolve.AUTO_CAPTION_KOREAN,
-                                resolve.SUBTITLE_CAPTION_PRESET = resolve.AUTO_CAPTION_NETFLIX } )
+
+CreateSubtitlesFromAudio( { resolve.SUBTITLE_LANGUAGE = resolve.AUTO_CAPTION_KOREAN, resolve.SUBTITLE_CAPTION_PRESET = resolve.AUTO_CAPTION_NETFLIX } )
 the default value for resolve.SUBTITLE_CHARS_PER_LINE will be 16 instead of 42
 
 languageIDs:

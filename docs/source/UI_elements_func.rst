@@ -1461,6 +1461,7 @@ order:
 
 * 'AscendingOrder' : The items are sorted ascending e.g. starts with 'AAA' ends with 'ZZZ' in Latin-1 locales
 * 'DescendingOrder' : The items are sorted descending e.g. starts with 'ZZZ' ends with 'AAA' in Latin-1 locales
+
 `Check out the qt5 documentation for more details <https://doc.qt.io/qt-5/qt.html#SortOrder-enum>`_
 
 

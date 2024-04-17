@@ -2641,5 +2641,3 @@ IsActive
 ..  note:: Not yet tested
 
 	ui.Timer({ 'ID': 'MyTimer', 'IsActive': True })
-
-
