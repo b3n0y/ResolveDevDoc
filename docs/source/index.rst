@@ -49,12 +49,13 @@ Contents
    API_project_clip
    API_timeline_export
    API_render
-   API_depreciated
+   API_deprecated
 
 
 .. toctree::
    :caption: Existing Documentation
    :maxdepth: 1
 
+   readme_resolveapi2024
    readme_resolveapi
    readme_workflow
