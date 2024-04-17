@@ -1025,7 +1025,7 @@ AddTab(string)
 
 
 InsertTab(int, string)
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
@@ -1449,7 +1449,7 @@ flags:
 
 
 SortItems(int, string)
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 

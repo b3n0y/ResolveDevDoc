@@ -996,7 +996,7 @@ CurrentItemChanged
 
 
 ItemSelectionChanged
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 ..  topic:: Description
 
