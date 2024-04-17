@@ -10,6 +10,7 @@ release = '0.1'
 version = '0.2.0'
 
 # -- General configuration
+master_doc = 'index'
 
 extensions = [
     'sphinx.ext.duration',
